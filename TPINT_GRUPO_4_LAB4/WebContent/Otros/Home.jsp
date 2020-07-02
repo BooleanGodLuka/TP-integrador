@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -41,9 +41,9 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 
 <form class="w3-container w3-red w3-center" style="padding:128px 16px">
 <div class="about-section">
-  <h1>Bienvenido !</h1> <br>
-  <h3>Acerca de nosotros</h3>
-  <p>Somos una web administrativa para ayudar al cursado y organizacion educativa</p>
+  <h1>Bienvenido!</h1> <br>
+  <h3>Acerca de nosotros</h3> <br>
+  <p>Somos una web administrativa para ayudar a la organizacion de la cursada y educativa</p>
 </div>
 </form>
 
