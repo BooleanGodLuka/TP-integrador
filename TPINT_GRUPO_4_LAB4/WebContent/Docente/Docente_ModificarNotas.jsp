@@ -95,7 +95,6 @@ input[type=submit] {
 
 </head>
 <body>
-<jsp:include page="/Otros/Navegacion.html"></jsp:include>
 
 <div align="center">
 			<form action="/action_page.php" align="center">
@@ -130,10 +129,10 @@ input[type=submit] {
     <td>0001</td>
     <td>Juan</td>
     <td>Perez</td>
-    <td><input type="text" id="nota1" name="nota" placeholder="Nota"></td>
-    <td><input type="text" id="nota2" name="nota" placeholder="Nota"></td>
-    <td><input type="text" id="nota3" name="nota" placeholder="Nota"></td>
-    <td><input type="text" id="nota4" name="nota" placeholder="Nota"></td>
+    <td><input type="text" id="nota" name="nota" placeholder="Nota"></td>
+    <td><input type="text" id="nota" name="nota" placeholder="Nota"></td>
+    <td><input type="text" id="nota" name="nota" placeholder="Nota"></td>
+    <td><input type="text" id="nota" name="nota" placeholder="Nota"></td>
   </tr>
   
   <tr>
