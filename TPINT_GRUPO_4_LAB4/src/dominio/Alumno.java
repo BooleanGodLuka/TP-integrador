@@ -1,9 +1,12 @@
 package dominio;
 
+import java.util.ArrayList;
+
+
 public class Alumno {
 
 	private int id;
-	private int dni;
+	private String dni;
 	private String nombre;
 	private String apellido;
 	private String fechanacimiento;
@@ -13,7 +16,7 @@ public class Alumno {
 	private String telefono;
 	
 	
-	public Alumno(int id, int dni, String nombre, String apellido, String fechanacimiento, String email,
+	public Alumno(int id, String dni, String nombre, String apellido, String fechanacimiento, String email,
 			String direccion, int idlocalidad, String telefono) {
 		super();
 		this.id = id;
@@ -32,7 +35,7 @@ public class Alumno {
 		return id;
 	}
 	
-	public int getDni() {
+	public String getDni() {
 		return dni;
 	}
 	
@@ -68,7 +71,7 @@ public class Alumno {
 		this.id = id;
 	}
 	
-	public void setDni(int dni) {
+	public void setDni(String dni) {
 		this.dni = dni;
 	}
 	
@@ -100,6 +103,19 @@ public class Alumno {
 		this.telefono = telefono;
 	}
 	
+	
+	public boolean validar_exist ( ArrayList<Alumno> lista) {
+		boolean validar = false;
+		for (int i =0; i<lista.size();i++) {
+			String temp;
+			temp = lista.get(i).toString();
+			if (temp == this.toString()) {
+				validar = true;
+			}
+			
+		}
+		return validar;
+	}
 	
 	
 	@Override
