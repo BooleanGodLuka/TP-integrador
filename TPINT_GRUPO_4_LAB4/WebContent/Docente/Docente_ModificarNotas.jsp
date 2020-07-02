@@ -97,11 +97,11 @@ input[type=submit] {
 <body>
 
 <div align="center">
-			<form action="/action_page.php" align="center">
+			<form method="get" action="Docente_ModificarNotas.jsp" align="center">
 				<input type="text" name="txtFiltroCriterio" class="textbox" placeholder="Filtrar" style= "width: 500px;">
 			    <input type="submit" value="Buscar"/>
 			    
-			    <p>Filtrar por:</p>
+			    <h3>Filtrar por:</h3>
 				  <input type="radio" id="legajo" name="criterio" value="legajo">
 				  <label for="legajo">Legajo</label>
 				  <input type="radio" id="nombre" name="criterio" value="nombre">
@@ -114,7 +114,7 @@ input[type=submit] {
  
 <label for="fname">Curso: [INSERTE NOMBRE DE CURSO AQUÍ]</label>
 <br>
-<form action="">
+<form method="get" action="Docente_ModificarNotas.jsp">
 <table id="customers">
   <tr>
     <th>Legajo</th>
@@ -176,7 +176,9 @@ input[type=submit] {
   </tr>
   
 </table>
+
 <input type="submit" value="Guardar notas">
+
 </form>
 
 </body>

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -11,21 +11,22 @@
 
 
 
-<form action="">
+<form method="get" action="Home.jsp">
 
 <div class='bold-line'></div>
 <div class='container'>
   <div class='window'>
     <div class='overlay'></div>
     <div class='content'>
-      <div class='welcome'>Bienvenido !</div>
-      <div class='subtitle'>Por favor ingrese su cuenta</div>
+      <div class='welcome'>Bienvenido!</div> <br>
+      <div class='subtitle'>Por favor ingrese con sus credenciales</div>
       <div class='input-fields'>
-        <input type='text' placeholder='Usuario' class='input-line full-width'></input>
-        <input type='password' placeholder='Contraseña' class='input-line full-width'></input>
+        <input type='text' placeholder='Usuario' class='input-line full-width' required></input> 
+        <br> <br> 
+        <input type='password' placeholder='Contraseña' class='input-line full-width' minlength="8" required></input>
 
       </div>
-      <div><button class='ghost-round full-width'>Aceptar</button></div>
+      <div><br><br><button class='ghost-round full-width'>Aceptar</button></div>
     </div>
   </div>
 </div>
