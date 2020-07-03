@@ -2,24 +2,10 @@ drop database db_grupo4_labo4;
 CREATE database db_grupo4_labo4;
 use db_grupo4_labo4;
 
-create table paises (
-	id int not null auto_increment,
-    nombre varchar(30) not null,
-    PRIMARY KEY (id)
-);
-INSERT INTO paises (nombre) VALUES ('Argentina');
-INSERT INTO paises (nombre) VALUES ('Brasil');
-INSERT INTO paises (nombre) VALUES ('Uruguay es el mejoooor paiis');
-INSERT INTO paises (nombre) VALUES ('Chile');
-INSERT INTO paises (nombre) VALUES ('Bolivia');
-INSERT INTO paises (nombre) VALUES ('Paraguay');
-
 create table provincias (
 	id int not null auto_increment,
     nombre varchar(30) not null,
-    idpais int not null,
-    PRIMARY KEY (id),
-    FOREIGN KEY (idpais) REFERENCES paises(id)
+    PRIMARY KEY (id)
 );
 INSERT INTO provincias (nombre, idpais) VALUES ('Buenos Aires', 1);
 INSERT INTO provincias (nombre, idpais) VALUES ('Catamarca', 1);
