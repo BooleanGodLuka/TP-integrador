@@ -63,7 +63,7 @@ input[type=submit]:hover {
 <h3>Alta de alumno</h3>
 
 <div class="container" >
-  <form action="/action_page.php">
+  <form action="">
   <label for="fname">Legajo: "Autonumerico"</label>  <br>  <br>
   
     <label for="nombre">Nombre/s</label><br>

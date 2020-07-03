@@ -11,8 +11,7 @@
 
 
 
-<form method="get" action="Home.jsp">
-
+<form method="post" action="Usuario_servlet">
 <div class='bold-line'></div>
 <div class='container'>
   <div class='window'>
@@ -21,17 +20,15 @@
       <div class='welcome'>Bienvenido!</div> <br>
       <div class='subtitle'>Por favor ingrese con sus credenciales</div>
       <div class='input-fields'>
-        <input type='text' placeholder='Usuario' class='input-line full-width' required></input> 
+        <input type='text' placeholder='Usuario' class='input-line full-width' name="txtUser" required></input> 
         <br> <br> 
-        <input type='password' placeholder='Contraseña' class='input-line full-width' minlength="8" required></input>
+        <input type='password' placeholder='Contraseña' class='input-line full-width' name="txtPassword" minlength="6" required></input>
 
       </div>
-      <div><br><br><button class='ghost-round full-width'>Aceptar</button></div>
+      <div><br><br><button class='ghost-round full-width' name="btnAceptar">Aceptar</button></div>
     </div>
   </div>
 </div>
-
-
 </form>
 
 

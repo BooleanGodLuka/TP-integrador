@@ -133,7 +133,7 @@ public class Docente {
 				+ ", idlocalidad=" + idlocalidad + "]";
 	}
 
-	public boolean validar_exist ( ArrayList<Docente> lista) {
+	public boolean validar_exist (ArrayList<Docente> lista) {
 		boolean validar = false;
 		for (int i =0; i<lista.size();i++) {
 			String temp;

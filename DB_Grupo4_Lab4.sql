@@ -193,6 +193,7 @@ create table docentes (
     email varchar(100) not null,
     direccion varchar(50) not null,
     idlocalidad int not null,
+    usuario varchar(50) not null,
     PRIMARY KEY (id),
     FOREIGN KEY (idlocalidad) REFERENCES localidades(id)
 );
@@ -268,4 +269,14 @@ create table alumnos_x_cursos (
     FOREIGN KEY (idcurso) REFERENCES cursos(id),
     PRIMARY KEY (idalumno, idcurso)
 );
+
+create table usuarios (
+	idusuario int not null auto_increment,
+	usuario varchar (50) not null,
+    clave varchar(50) not null,
+    FOREIGN KEY (usuario) REFERENCES docentes(usuario),
+    PRIMARY KEY (idusuario)
+);
+
+INSERT INTO usuarios (idusuario,usuario,clave) VALUES ('1','administrator','A1234.');
     
