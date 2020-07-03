@@ -1,11 +1,11 @@
-package Dao;
+package negocio;
 
 import java.util.List;
 
 import dominio.Localidad;
 import dominio.Provincia;
 
-public interface LocalidadDao {
+public interface LocalidadNegocio {
 
 	public boolean insert(Localidad localidad);
 

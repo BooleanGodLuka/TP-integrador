@@ -9,12 +9,14 @@ import java.util.List;
 
 import Dao.LocalidadDao;
 import dominio.Localidad;
+import dominio.Provincia;
 
 public class LocalidadDaoImpl implements LocalidadDao {
 
 	private static final String insert = "INSERT INTO localidades (ID, nombre, IDProvincia) VALUES (?, ?, ?)";
 	private static final String delete = "DELETE FROM localidades WHERE id = ?";
 	private static final String readall = "SELECT * FROM localidades";
+	private static final String readallwhere = "SELECT * FROM localidades WHERE idprovincia = ?";
 	private static final String update = "UPDATE localidades (id, nombre, idprovincia) VALUES (?, ?, ?) WHERE id = ?";
 
 	@Override
@@ -65,18 +67,37 @@ public class LocalidadDaoImpl implements LocalidadDao {
 	public List<Localidad> readall() {
 		PreparedStatement statement;
 		ResultSet resultSet; // Guarda el resultado de la query
-		ArrayList<Localidad> personas = new ArrayList<Localidad>();
+		ArrayList<Localidad> localidades = new ArrayList<Localidad>();
 		Conexion conexion = Conexion.getConexion();
 		try {
 			statement = conexion.getSQLConexion().prepareStatement(readall);
 			resultSet = statement.executeQuery();
 			while (resultSet.next()) {
-				personas.add(getLocalidad(resultSet));
+				localidades.add(getLocalidad(resultSet));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return personas;
+		return localidades;
+	}
+
+	@Override
+	public List<Localidad> readall(Provincia provincia_seleccionada) {
+		PreparedStatement statement;
+		ResultSet resultSet; // Guarda el resultado de la query
+		ArrayList<Localidad> localidades = new ArrayList<Localidad>();
+		Conexion conexion = Conexion.getConexion();
+		try {
+			statement = conexion.getSQLConexion().prepareStatement(readallwhere);
+			statement.setString(1, Integer.toString(provincia_seleccionada.getID()));
+			resultSet = statement.executeQuery();
+			while (resultSet.next()) {
+				localidades.add(getLocalidad(resultSet));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return localidades;
 	}
 
 	private Localidad getLocalidad(ResultSet resultSet) throws SQLException {
