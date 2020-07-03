@@ -15,6 +15,15 @@ public class Docente {
 	
 	
 	
+	
+	
+	
+	public Docente() {
+		super();
+	}
+
+
+
 	public Docente(int id, String dni, String nombre, String apellido, String fechanacimiento, String email,
 			String direccion, int idlocalidad) {
 		super();

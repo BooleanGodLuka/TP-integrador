@@ -1,3 +1,5 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import=" dominio.Curso"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -104,6 +106,7 @@ input[type=submit] {
 		<form action="/action_page.php">
 				<select>
 				<option value="empty">Materia</option>
+				<option value="empty">Materia</option>
 				<option value="Laboratorio IV">Laboratorio IV</option>
 				<option value="Metodologia de Sistemas I">Metodologia de Sistemas I</option>
 				<option value="Diseño y Administracion de Base de Datos I">Diseño y Administracion de Base de Datos I</option><br><br>
@@ -127,30 +130,34 @@ input[type=submit] {
 	<br>
 	
 <table id="customers">
+
   <tr>
+  	<th>ID</th>
     <th>Materia</th>
 	<th>Cuatrimestre</th>
 	<th>Año</th>
 	<th>Alumnos</th>
   </tr>
+<% if (request.getParameter("lista_cursos") != null){
+	ArrayList<Curso> lista;
+	lista = (ArrayList<Curso>) request.getAttribute("lista_cursos");
+	
+	
+	for (Curso cur: lista ){
+%>  
   <tr>
-    <td>Laboratorio 4</td>
-    <td>1ro</td>
-    <td>2020</td>
+  	<td><%=cur.getId() %></td>
+    <td><%=cur.getId_materia() %></td>
+    <td><%=cur.getCuatrimestre()%></td>
+    <td><%=cur.getAño() %></td>
     <td>
     <input type="submit" value="Ver alumnos">
   </td>
     
   </tr>
-<tr>
-    <td>ARSO</td>
-    <td>2do</td>
-    <td>2020</td>
-    <td>
-    <input type="submit" value="Ver alumnos">
-  </td>
-    
-  </tr>
+  
+ <% }}%>
+
 </table>
 
 <p>Pág.</p>

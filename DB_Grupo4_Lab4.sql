@@ -72,7 +72,7 @@ INSERT INTO localidades (nombre, idprovincia) VALUES ('Quilmes', 1);
 
 create table alumnos (
 	id int not null auto_increment,
-    dni int not null,
+    dni varchar (30) not null,
     nombre varchar(50) not null,
     apellido varchar(50) not null,
     fechanacimiento date not null,
@@ -197,36 +197,36 @@ create table docentes (
     PRIMARY KEY (id),
     FOREIGN KEY (idlocalidad) REFERENCES localidades(id)
 );
-INSERT INTO `docentes` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idlocalidad`) VALUES (1,33526896,"Daryl","Chen","2000/02/22","risus.Duis.a@loremluctus.net","Apdo.:222-4402 Cum Carretera",11);
-INSERT INTO `docentes` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idlocalidad`) VALUES (2,46256673,"Heidi","Branch","1994/06/06","parturient.montes@ipsum.co.uk","Apartado núm.: 361, 6308 Et Calle",4);
-INSERT INTO `docentes` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idlocalidad`) VALUES (3,46174566,"Otto","Stephens","2009/03/11","nec.ante.Maecenas@tellusjusto.org","476-5145 Morbi Ctra.",6);
-INSERT INTO `docentes` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idlocalidad`) VALUES (4,31617922,"Keefe","Moran","2009/05/11","blandit.congue@mollisDuis.com","2067 Cras Carretera",4);
-INSERT INTO `docentes` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idlocalidad`) VALUES (5,46418078,"Karyn","Pruitt","1996/12/20","ligula.Nullam@loremvehiculaet.net","702-3260 Sed ",13);
-INSERT INTO `docentes` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idlocalidad`) VALUES (6,30730506,"Kasimir","Weber","1994/12/17","Curabitur@ametconsectetuer.co.uk","Apdo.:772-1799 Morbi Avda.",11);
-INSERT INTO `docentes` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idlocalidad`) VALUES (7,41568614,"Kiara","Kelly","2007/03/19","luctus@blanditmattis.edu","169-4915 Arcu. Ctra.",3);
-INSERT INTO `docentes` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idlocalidad`) VALUES (8,41599198,"Peter","Mccarty","2009/09/29","risus.a@nonummyacfeugiat.edu","Apdo.:955-5717 Posuere Carretera",14);
-INSERT INTO `docentes` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idlocalidad`) VALUES (9,41775524,"Virginia","Briggs","1987/10/03","lectus.a@nasceturridiculus.com","5348 Aenean C/",1);
-INSERT INTO `docentes` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idlocalidad`) VALUES (10,27536291,"Patience","Terrell","1994/12/18","tellus.lorem@Quisque.com","639-1738 Arcu. Avenida",7);
-INSERT INTO `docentes` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idlocalidad`) VALUES (11,46634799,"Fletcher","Buckley","1978/01/10","Ut.tincidunt@tincidunttempus.org","3190 Gravida C/",4);
-INSERT INTO `docentes` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idlocalidad`) VALUES (12,30566284,"Amelia","Hebert","1978/01/03","et@liberomaurisaliquam.org","Apartado núm.: 545, 2912 Sollicitudin Carretera",7);
-INSERT INTO `docentes` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idlocalidad`) VALUES (13,39614928,"Mercedes","Stokes","1991/04/12","nonummy.ultricies@Proin.edu","1885 Fermentum Av.",1);
-INSERT INTO `docentes` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idlocalidad`) VALUES (14,34658279,"Keelie","Compton","1981/09/22","urna.Nullam@cubiliaCurae.co.uk","1069 Tincidunt ",8);
-INSERT INTO `docentes` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idlocalidad`) VALUES (15,42492962,"Jana","Lara","1996/10/24","sapien.molestie.orci@felisNullatempor.org","Apdo.:448-7107 Duis C.",10);
-INSERT INTO `docentes` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idlocalidad`) VALUES (16,38655917,"Bertha","Booker","1978/08/29","justo.faucibus@nuncnulla.com","Apartado núm.: 893, 4441 Arcu. ",2);
-INSERT INTO `docentes` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idlocalidad`) VALUES (17,41843050,"Karleigh","Tate","1993/01/14","Etiam@a.com","396-8363 Metus. Calle",14);
-INSERT INTO `docentes` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idlocalidad`) VALUES (18,28261869,"Wang","Farley","1976/02/27","Mauris.non.dui@Donecconsectetuermauris.edu","Apdo.:213-2686 Mattis Av.",6);
-INSERT INTO `docentes` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idlocalidad`) VALUES (19,41151887,"Tyrone","Spencer","2004/06/03","ultricies.ligula.Nullam@semmollis.net","Apartado núm.: 880, 6018 Amet, Av.",2);
-INSERT INTO `docentes` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idlocalidad`) VALUES (20,38335006,"Sarah","Mosley","1995/05/25","mauris.eu.elit@leoelementum.co.uk","1115 Id, ",1);
-INSERT INTO `docentes` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idlocalidad`) VALUES (21,42472692,"Lunea","Blevins","1980/03/26","In@necmalesuadaut.org","1306 Eu C/",1);
-INSERT INTO `docentes` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idlocalidad`) VALUES (22,45151978,"Jessica","Mcclure","1975/06/11","ac@pede.org","4276 Aenean Avenida",9);
-INSERT INTO `docentes` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idlocalidad`) VALUES (23,36021580,"Natalie","Oneil","1985/11/19","id.nunc.interdum@loremsemperauctor.edu","Apdo.:996-2699 Vel, Avda.",1);
-INSERT INTO `docentes` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idlocalidad`) VALUES (24,43005770,"Louis","Wolf","1983/02/15","ac.eleifend@nullaDonec.com","487-2889 Augue Avenida",12);
-INSERT INTO `docentes` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idlocalidad`) VALUES (25,47590391,"Cyrus","Morton","1983/12/26","Cras@tellusfaucibus.net","Apartado núm.: 915, 2469 Sapien. Ctra.",15);
-INSERT INTO `docentes` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idlocalidad`) VALUES (26,33756293,"Bell","Gould","1977/07/07","sit@commodotincidunt.net","Apdo.:273-9710 Massa. Calle",6);
-INSERT INTO `docentes` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idlocalidad`) VALUES (27,29941709,"Zeus","Hess","1984/09/16","dui.Fusce@sedlibero.com","5256 Sit C/",2);
-INSERT INTO `docentes` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idlocalidad`) VALUES (28,49170364,"Iliana","Carlson","2000/08/29","venenatis.lacus.Etiam@vel.org","Apdo.:110-7395 Donec Carretera",3);
-INSERT INTO `docentes` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idlocalidad`) VALUES (29,31773068,"Brendan","Case","1985/10/03","egestas.rhoncus@vitaemauris.org","Apartado núm.: 764, 5901 Fusce C/",14);
-INSERT INTO `docentes` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idlocalidad`) VALUES (30,47318799,"Demetria","Ruiz","1974/04/22","Donec@feugiat.edu","280-4012 Sollicitudin ",1);
+INSERT INTO `docentes` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idlocalidad`,`usuario`) VALUES (1,33526896,"Daryl","Chen","2000/02/22","risus.Duis.a@loremluctus.net","Apdo.:222-4402 Cum Carretera",11,"dar");
+INSERT INTO `docentes` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idlocalidad`,`usuario`) VALUES (2,46256673,"Heidi","Branch","1994/06/06","parturient.montes@ipsum.co.uk","Apartado núm.: 361, 6308 Et Calle",4,"heibrac");
+INSERT INTO `docentes` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idlocalidad`,`usuario`) VALUES (3,46174566,"Otto","Stephens","2009/03/11","nec.ante.Maecenas@tellusjusto.org","476-5145 Morbi Ctra.",6,"ottostep");
+INSERT INTO `docentes` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idlocalidad`,`usuario`) VALUES (4,31617922,"Keefe","Moran","2009/05/11","blandit.congue@mollisDuis.com","2067 Cras Carretera",4,"keemo");
+INSERT INTO `docentes` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idlocalidad`,`usuario`) VALUES (5,46418078,"Karyn","Pruitt","1996/12/20","ligula.Nullam@loremvehiculaet.net","702-3260 Sed ",13,"karpru");
+INSERT INTO `docentes` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idlocalidad`,`usuario`) VALUES (6,30730506,"Kasimir","Weber","1994/12/17","Curabitur@ametconsectetuer.co.uk","Apdo.:772-1799 Morbi Avda.",11,"kasweb");
+INSERT INTO `docentes` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idlocalidad`,`usuario`) VALUES (7,41568614,"Kiara","Kelly","2007/03/19","luctus@blanditmattis.edu","169-4915 Arcu. Ctra.",3,"kiakell");
+INSERT INTO `docentes` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idlocalidad`,`usuario`) VALUES (8,41599198,"Peter","Mccarty","2009/09/29","risus.a@nonummyacfeugiat.edu","Apdo.:955-5717 Posuere Carretera",14,"petmcc");
+INSERT INTO `docentes` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idlocalidad`,`usuario`) VALUES (9,41775524,"Virginia","Briggs","1987/10/03","lectus.a@nasceturridiculus.com","5348 Aenean C/",1,"virbri");
+INSERT INTO `docentes` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idlocalidad`,`usuario`) VALUES (10,27536291,"Patience","Terrell","1994/12/18","tellus.lorem@Quisque.com","639-1738 Arcu. Avenida",7,"patterr");
+INSERT INTO `docentes` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idlocalidad`,`usuario`) VALUES (11,46634799,"Fletcher","Buckley","1978/01/10","Ut.tincidunt@tincidunttempus.org","3190 Gravida C/",4,"fletbuck");
+INSERT INTO `docentes` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idlocalidad`,`usuario`) VALUES (12,30566284,"Amelia","Hebert","1978/01/03","et@liberomaurisaliquam.org","Apartado núm.: 545, 2912 Sollicitudin Carretera",7,"ameheb");
+INSERT INTO `docentes` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idlocalidad`,`usuario`) VALUES (13,39614928,"Mercedes","Stokes","1991/04/12","nonummy.ultricies@Proin.edu","1885 Fermentum Av.",1,"mersto");
+INSERT INTO `docentes` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idlocalidad`,`usuario`) VALUES (14,34658279,"Keelie","Compton","1981/09/22","urna.Nullam@cubiliaCurae.co.uk","1069 Tincidunt ",8,"keecom");
+INSERT INTO `docentes` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idlocalidad`,`usuario`) VALUES (15,42492962,"Jana","Lara","1996/10/24","sapien.molestie.orci@felisNullatempor.org","Apdo.:448-7107 Duis C.",10,"janla");
+INSERT INTO `docentes` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idlocalidad`,`usuario`) VALUES (16,38655917,"Bertha","Booker","1978/08/29","justo.faucibus@nuncnulla.com","Apartado núm.: 893, 4441 Arcu. ",2,"berboo");
+INSERT INTO `docentes` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idlocalidad`,`usuario`) VALUES (17,41843050,"Karleigh","Tate","1993/01/14","Etiam@a.com","396-8363 Metus. Calle",14,"kartat");
+INSERT INTO `docentes` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idlocalidad`,`usuario`) VALUES (18,28261869,"Wang","Farley","1976/02/27","Mauris.non.dui@Donecconsectetuermauris.edu","Apdo.:213-2686 Mattis Av.",6,"wanfar");
+INSERT INTO `docentes` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idlocalidad`,`usuario`) VALUES (19,41151887,"Tyrone","Spencer","2004/06/03","ultricies.ligula.Nullam@semmollis.net","Apartado núm.: 880, 6018 Amet, Av.",2,"tyrspe");
+INSERT INTO `docentes` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idlocalidad`,`usuario`) VALUES (20,38335006,"Sarah","Mosley","1995/05/25","mauris.eu.elit@leoelementum.co.uk","1115 Id, ",1,"sarmos");
+INSERT INTO `docentes` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idlocalidad`,`usuario`) VALUES (21,42472692,"Lunea","Blevins","1980/03/26","In@necmalesuadaut.org","1306 Eu C/",1,"lunble");
+INSERT INTO `docentes` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idlocalidad`,`usuario`) VALUES (22,45151978,"Jessica","Mcclure","1975/06/11","ac@pede.org","4276 Aenean Avenida",9,"jessmcc");
+INSERT INTO `docentes` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idlocalidad`,`usuario`) VALUES (23,36021580,"Natalie","Oneil","1985/11/19","id.nunc.interdum@loremsemperauctor.edu","Apdo.:996-2699 Vel, Avda.",1,"natone");
+INSERT INTO `docentes` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idlocalidad`,`usuario`) VALUES (24,43005770,"Louis","Wolf","1983/02/15","ac.eleifend@nullaDonec.com","487-2889 Augue Avenida",12,"louwol");
+INSERT INTO `docentes` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idlocalidad`,`usuario`) VALUES (25,47590391,"Cyrus","Morton","1983/12/26","Cras@tellusfaucibus.net","Apartado núm.: 915, 2469 Sapien. Ctra.",15,"cyrmor");
+INSERT INTO `docentes` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idlocalidad`,`usuario`) VALUES (26,33756293,"Bell","Gould","1977/07/07","sit@commodotincidunt.net","Apdo.:273-9710 Massa. Calle",6,"nelgoul");
+INSERT INTO `docentes` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idlocalidad`,`usuario`) VALUES (27,29941709,"Zeus","Hess","1984/09/16","dui.Fusce@sedlibero.com","5256 Sit C/",2,"zeuhes");
+INSERT INTO `docentes` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idlocalidad`,`usuario`) VALUES (28,49170364,"Iliana","Carlson","2000/08/29","venenatis.lacus.Etiam@vel.org","Apdo.:110-7395 Donec Carretera",3,"ilicar");
+INSERT INTO `docentes` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idlocalidad`,`usuario`) VALUES (29,31773068,"Brendan","Case","1985/10/03","egestas.rhoncus@vitaemauris.org","Apartado núm.: 764, 5901 Fusce C/",14,"brecas");
+INSERT INTO `docentes` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idlocalidad`,`usuario`) VALUES (30,47318799,"Demetria","Ruiz","1974/04/22","Donec@feugiat.edu","280-4012 Sollicitudin ",1,"demrui");
     
 create table materias(
 	id int not null auto_increment,
@@ -277,6 +277,14 @@ create table usuarios (
     FOREIGN KEY (usuario) REFERENCES docentes(usuario),
     PRIMARY KEY (idusuario)
 );
+
+create table docentesXcursos (
+	id_docente int not null,
+    id_curso int not null,
+	FOREIGN KEY (id_docente) REFERENCES docentes(id),
+    FOREIGN KEY (idcurso) REFERENCES cursos(id),
+
+)
 
 INSERT INTO usuarios (idusuario,usuario,clave) VALUES ('1','administrator','A1234.');
     
