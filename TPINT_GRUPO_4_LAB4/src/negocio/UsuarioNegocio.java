@@ -17,4 +17,6 @@ public interface UsuarioNegocio {
 	public List<Usuario> readall_usuarios();
 	
 	public List<Usuario> readall_usuarios_consigna(String consigna);
+
+	Usuario get_usuario(String nusuario, String clave);
 }

@@ -1,12 +1,9 @@
 package negocioImpl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import Dao.UsuarioDao;
 import DaoImpl.UsuarioDaoImpl;
-import dominio.Alumno;
-import dominio.Docente;
 import dominio.Usuario;
 import negocio.UsuarioNegocio;
 
@@ -43,8 +40,11 @@ public class UsuarioNegocioImpl implements UsuarioNegocio{
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	
+	public Usuario get_usuario(String nusuario, String clave) {
+	usdao.get_usuario(nusuario, clave);
+	return null;
+	}
 	
 	
 	

@@ -63,7 +63,7 @@ public class Servlet_Login extends HttpServlet {
 			}
 
 			//requestdispatcher
-			request.setAttribute("cantFilas", "filas");
+			request.setAttribute("Usuario", usuario);
 			RequestDispatcher rd = request.getRequestDispatcher(url);
 			rd.forward(request, response);
 

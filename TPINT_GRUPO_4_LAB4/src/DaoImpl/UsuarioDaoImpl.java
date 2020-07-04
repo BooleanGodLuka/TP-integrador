@@ -104,6 +104,9 @@ public class UsuarioDaoImpl implements UsuarioDao {
 			e.printStackTrace();
 		}
 		
+		/*aca hay un flashing*/
+		
+		
 		finally {
 			if (filas!=0) {
 				
@@ -111,6 +114,9 @@ public class UsuarioDaoImpl implements UsuarioDao {
 			}
 		}
 		return usu;	
+		
+		/*aca hay un flashing*/
+		
 		
 	}
 
