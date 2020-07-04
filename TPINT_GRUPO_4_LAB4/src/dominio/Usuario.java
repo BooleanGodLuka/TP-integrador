@@ -1,44 +1,63 @@
 package dominio;
 
 public class Usuario {
-
-	private String user;
-	private String password;
 	
+	private String idusuario;
+	private String usuario;
+	private String clave;
 	
-	public Usuario(String user, String password) {
+	public Usuario(String idusuario, String usuario, String clave) {
 		super();
-		this.user = user;
-		this.password = password;
+		this.idusuario = idusuario;
+		this.usuario = usuario;
+		this.clave = clave;
 	}
 	
 	
-	public String getUser() {
-		return user;
+
+	public Usuario(String usuario, String clave) {
+		super();
+		this.usuario = usuario;
+		this.clave = clave;
 	}
 
 
-	public String getPassword() {
-		return password;
+
+	public Usuario() {
+		// TODO Auto-generated constructor stub
 	}
 
 
-	public void setUser(String user) {
-		this.user = user;
+
+	public String getIdusuario() {
+		return idusuario;
 	}
 
-
-	public void setPassword(String password) {
-		this.password = password;
+	public String getUsuario() {
+		return usuario;
 	}
-	
+
+	public String getClave() {
+		return clave;
+	}
+
+	public void setIdusuario(String idusuario) {
+		this.idusuario = idusuario;
+	}
+
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
+	}
+
+	public void setClave(String clave) {
+		this.clave = clave;
+	}
 
 	@Override
 	public String toString() {
-		return "Usuario [user=" + user + ", password=" + password + "]";
+		return "Usuario [idusuario=" + idusuario + ", usuario=" + usuario + ", clave=" + clave + "]";
 	}
-
-
+	
 	
 	
 }

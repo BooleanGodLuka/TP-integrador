@@ -5,13 +5,13 @@ import dominio.Docente;
 
 public interface DocenteDao {
 
-	public boolean insert(Docente docente);
+	public boolean insert_docente(Docente docente);
 	
-	public boolean delete(Docente docente_a_borrar);
+	public boolean delete_docente(Docente docente);
 	
 	public List<Docente> select_docentes();
 	
-	public List<Docente> select_docente_consigna(String consigna);
+	public List<Docente> select_docentes_consigna(String consigna);
 	
-	public boolean update(Docente docente_a_modificar);
+	public boolean update_docente(Docente docente_a_modificar);
 }

@@ -3,40 +3,19 @@ CREATE database db_grupo4_labo4;
 use db_grupo4_labo4;
 
 create table provincias (
-	id int not null auto_increment,
+	idpais int not null auto_increment,
     nombre varchar(30) not null,
-    PRIMARY KEY (id)
+    PRIMARY KEY (idpais)
 );
-INSERT INTO provincias (nombre, idpais) VALUES ('Buenos Aires', 1);
-INSERT INTO provincias (nombre, idpais) VALUES ('Catamarca', 1);
-INSERT INTO provincias (nombre, idpais) VALUES ('Chaco', 1);
-INSERT INTO provincias (nombre, idpais) VALUES ('Chubut', 1);
-INSERT INTO provincias (nombre, idpais) VALUES ('Córdoba', 1);
-INSERT INTO provincias (nombre, idpais) VALUES ('Corrientes', 1);
-INSERT INTO provincias (nombre, idpais) VALUES ('Enre Ríos', 1);
-INSERT INTO provincias (nombre, idpais) VALUES ('Formosa', 1);
-INSERT INTO provincias (nombre, idpais) VALUES ('Jujuy', 1);
-INSERT INTO provincias (nombre, idpais) VALUES ('La Pampa', 1);
-INSERT INTO provincias (nombre, idpais) VALUES ('La Rioja', 1);
-INSERT INTO provincias (nombre, idpais) VALUES ('Mendoza', 1);
-INSERT INTO provincias (nombre, idpais) VALUES ('Misiones', 1);
-INSERT INTO provincias (nombre, idpais) VALUES ('Neuquén', 1);
-INSERT INTO provincias (nombre, idpais) VALUES ('Río Negro', 1);
-INSERT INTO provincias (nombre, idpais) VALUES ('Salta', 1);
-INSERT INTO provincias (nombre, idpais) VALUES ('San Juan', 1);
-INSERT INTO provincias (nombre, idpais) VALUES ('San Luis', 1);
-INSERT INTO provincias (nombre, idpais) VALUES ('Santa Cruz', 1);
-INSERT INTO provincias (nombre, idpais) VALUES ('Santa Fe', 1);
-INSERT INTO provincias (nombre, idpais) VALUES ('Santiago del Estero', 1);
-INSERT INTO provincias (nombre, idpais) VALUES ('Tierra del Fuego', 1);
-INSERT INTO provincias (nombre, idpais) VALUES ('Tucumán', 1);
+INSERT INTO provincias (idpais, nombre) VALUES (1, 'Buenos Aires');
+
 
 create table localidades (
 	id int not null auto_increment,
     nombre varchar(30) not null,
     idprovincia int not null,
     PRIMARY KEY (id),
-    FOREIGN KEY (idprovincia) REFERENCES provincias(id)
+    FOREIGN KEY (idprovincia) REFERENCES provincias(idpais)
     
 );
 INSERT INTO localidades (nombre, idprovincia) VALUES ('General Pacheco', 1);
@@ -251,6 +230,7 @@ create table alumnos_x_cursos (
     nota2 int,
     nota3 int,
     nota4 int,
+    user varchar(50),
     FOREIGN KEY (idalumno) REFERENCES alumnos(id),
     FOREIGN KEY (idcurso) REFERENCES cursos(id),
     PRIMARY KEY (idalumno, idcurso)
@@ -268,9 +248,8 @@ create table docentesXcursos (
 	id_docente int not null,
     id_curso int not null,
 	FOREIGN KEY (id_docente) REFERENCES docentes(id),
-    FOREIGN KEY (idcurso) REFERENCES cursos(id),
-
-)
+    FOREIGN KEY (idcurso) REFERENCES cursos(id)
+);
 
 INSERT INTO usuarios (idusuario,usuario,clave) VALUES ('1','administrator','A1234.');
-    
+INSERT INTO usuarios (idusuario,usuario,clave) VALUES ('2','therrera','123465');

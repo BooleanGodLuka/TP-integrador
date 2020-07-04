@@ -4,20 +4,17 @@ import java.util.List;
 
 import dominio.Alumno;
 import dominio.Docente;
+import dominio.Usuario;
 
 public interface UsuarioNegocio {
-	public boolean agregar_alumno(Alumno alumno);
-	public boolean agregar_docente(Docente docente);
+
+	public boolean insert_usuario(Usuario usuario);
 	
-	public boolean borrar_alumno(Alumno alumno_a_borrar);
-	public boolean borrar_docente(Docente docente_a_borrar);
+	public boolean delete_usuario(Usuario usuario);
 	
-	public List<Alumno> leer_todo_alumno();
-	public List<Alumno> leer_todo_alummno_consigna(String consigna);
+	public boolean update_clave (Usuario clave);
 	
-	public List<Docente> leer_todo_docente();
-	public List<Docente> leer_todo_docente_consigna(String consigna);
+	public List<Usuario> readall_usuarios();
 	
-	public boolean actualizar_alumno (Alumno alumno_a_modificar);
-	public boolean actualizar_docente (Docente docente_a_modificar);
+	public List<Usuario> readall_usuarios_consigna(String consigna);
 }
