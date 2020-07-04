@@ -13,13 +13,14 @@ public class Conexion
 	private String user = "root";
 	private String pass = "root";
 	private String dbName = "db_grupo4_labo4";
+	//?autoReconnect=true&failOverReadOnly=false&maxReconnects=10"
 
 	
 	private Conexion()
 	{
 		try
 		{
-			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName("com.mysql.cj.jdbc.Driver");
 			this.connection = DriverManager.getConnection(host+dbName,user,pass);
 			this.connection.setAutoCommit(false);
 

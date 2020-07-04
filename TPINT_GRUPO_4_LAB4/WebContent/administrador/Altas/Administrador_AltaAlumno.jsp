@@ -64,6 +64,7 @@ input[type=submit]:hover {
 </head>
 <body>
 
+	<a href="../../ServletAltaAlumno?Param=1">Alta cliente</a>
 
 	<jsp:include page="/Otros/Navegacion.html"></jsp:include>
 
@@ -72,33 +73,37 @@ input[type=submit]:hover {
 
 
 	<div class="container">
-		<label for="fname">Legajo: "Autonumerico"</label> <br> <br>
-
-		<label for="nombre">Nombre/s</label><br> <input type="text"
-			id="nombre" name="nombre" placeholder="Nombres"><br> <label
-			for="apellido">Apellido/s</label><br> <input type="text"
-			id="apellido" name="apellido" placeholder="Apellidos"><br>
-
-		<label for="dni">DNI</label><br> <input type="text" id="dni"
-			name="dni" placeholder="DNI"><br> <label
-			for="fechanacimiento">Fecha de nacimiento:</label><br> <input
-			type="date" id="birthday" name="birthday"><br> <label
-			for="lname">Email</label><br> <input type="text" id="lname"
-			name="lastname" placeholder="email@ejemplo.com"><br> <label
-			for="lname">Telefono</label><br> <input type="text" id="lname"
-			name="lastname" placeholder="Telefono"><br> <label
-			for="provincia">Provincia</label><br> <select id="provincia"
-			name="provincia">
-			<option value="Vacio">-Seleccione una Provincia-</option>
-			<option value="BsAs">Buenos Aires</option>
-			<option value="Santa Fe">Santa Fe</option>
-			<option value="Chubut">Chubut</option>
-		</select><br>
-
-
 		<form method="post" action="ServletAltaAlumno">
-			<label for="localidad">Localidades</label> <br> <select
-				id="localidad" name="localidad">
+			<label for="fname">Legajo: "Autonumerico"</label> <br> <br>
+
+			<label for="nombre">Nombre/s</label><br> <input type="text"
+				id="nombre" name="nombre" placeholder="Nombres"><br> <label
+				for="apellido">Apellido/s</label><br> <input type="text"
+				id="apellido" name="apellido" placeholder="Apellidos"><br>
+
+			<label for="dni">DNI</label><br>
+			<input type="text" id="dni" name="dni" placeholder="DNI"><br>
+				<label for="fechanacimiento">Fecha de nacimiento:</label><br>
+				<input type="date" id="birthday" name="birthday"><br>
+				
+				<label for="lname">Email</label><br>
+				<input type="text" id="lname" name="lastname" placeholder="email@ejemplo.com"><br>
+			
+				<label for="lname">Telefono</label><br>	
+				<input type="text" id="lname" name="lastname" placeholder="Telefono"><br>
+				
+			<label for="provincia">Provincia</label><br>
+			<select id="provincia" name="provincia">
+				<option value="Vacio">-Seleccione una Provincia-</option>
+				<option value="BsAs">Buenos Aires</option>
+				<option value="Santa Fe">Santa Fe</option>
+				<option value="Chubut">Chubut</option>
+			</select><br> 
+			
+			<label for="localidad">Localidades</label> <br> 
+			
+			
+			<select	id="localidad" name="localidad">
 				<option value="empty">-Seleccione una Localidad-</option>
 				<%
 					List<Localidad> listLocalidades = null;
@@ -107,9 +112,10 @@ input[type=submit]:hover {
 					}
 
 					if (listLocalidades != null) {
-
 						for (Localidad loc : listLocalidades) {
 				%>
+				
+				
 				<option value=" <%=loc.getID()%> ">
 					<%=loc.getNombre()%>
 				</option>
@@ -117,8 +123,8 @@ input[type=submit]:hover {
 					}
 					}
 				%>
-			</select><br> <input type=submit value="Cargar Localidades"
-				name="btnAltaAlumno">
+			</select><br>
+			<input type=submit value="Guardar" name="btnAltaAlumno">
 		</form>
 	</div>
 </body>
