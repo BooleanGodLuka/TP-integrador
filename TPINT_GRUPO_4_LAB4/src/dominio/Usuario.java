@@ -21,8 +21,6 @@ public class Usuario {
 		this.clave = clave;
 	}
 
-
-
 	public Usuario() {
 		// TODO Auto-generated constructor stub
 	}

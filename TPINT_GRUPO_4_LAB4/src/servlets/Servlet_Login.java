@@ -1,6 +1,7 @@
 package servlets;
 
 import java.io.IOException;
+import java.sql.ResultSet;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -46,9 +47,9 @@ public class Servlet_Login extends HttpServlet {
 			nusuario = request.getParameter("txtUser");
 			clave = request.getParameter("txtPassword");
 			UsuarioDaoImpl usuarioImpl = new UsuarioDaoImpl();
-			usuario = usuarioImpl.get_usuario(nusuario, clave);
+			ResultSet resultset = 
+			usuario = usuarioImpl.get_usuario(resultset);
 			profile = Integer.parseInt(usuario.getIdusuario());
-			
 			
 			}
 			

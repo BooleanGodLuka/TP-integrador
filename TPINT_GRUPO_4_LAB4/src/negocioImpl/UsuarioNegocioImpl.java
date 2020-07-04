@@ -1,6 +1,10 @@
 package negocioImpl;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
+
+import com.mysql.cj.protocol.Resultset;
 
 import Dao.UsuarioDao;
 import DaoImpl.UsuarioDaoImpl;
@@ -41,11 +45,14 @@ public class UsuarioNegocioImpl implements UsuarioNegocio{
 		return null;
 	}
 	
-	public Usuario get_usuario(String nusuario, String clave) {
-	usdao.get_usuario(nusuario, clave);
-	return null;
+
+
+	@Override
+	public Usuario get_usuario(ResultSet resultset) throws SQLException {
+		usdao.get_usuario(resultset);
+		return (Usuario) usdao;
 	}
-	
+
 	
 	
 }

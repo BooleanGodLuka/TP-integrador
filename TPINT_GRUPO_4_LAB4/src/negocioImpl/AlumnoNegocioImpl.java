@@ -1,13 +1,16 @@
-package negocioImpl;
+/*package negocioImpl;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import Dao.AlumnoDao;
+import DaoImpl.AlumnoDaoImpl;
 import dominio.Alumno;
 import negocio.AlumnoNegocio;
 
 public class AlumnoNegocioImpl implements AlumnoNegocio {
 
+	AlumnoDao aludao = new AlumnoDaoImpl();
 	
 	public AlumnoNegocioImpl() {
 		// TODO Auto-generated constructor stub
@@ -19,9 +22,9 @@ public class AlumnoNegocioImpl implements AlumnoNegocio {
 		boolean estado=false;
 		if(alumno.getNombre().trim().length()>0 && alumno.getApellido().trim().length()>0 && alumno.getDni().trim().length() > 0)
 		{
-			ArrayList<Alumno> personas =(ArrayList<Alumno>) usdao.leer_todo_alumno();
+			ArrayList<Alumno> personas =(ArrayList<Alumno>) aludao.readall_alumnos();
 			if (!alumno.validar_exist(personas)) {
-				estado=usdao.agregar_alumno(alumno);	
+				estado=aludao.insert_alumno(alumno);	
 			}
 			
 		}
@@ -57,4 +60,4 @@ public class AlumnoNegocioImpl implements AlumnoNegocio {
 
 }
 
-
+*/

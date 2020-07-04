@@ -1,9 +1,11 @@
 package Dao;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 
-import dominio.Alumno;
-import dominio.Docente;
+import com.mysql.cj.protocol.Resultset;
+
 import dominio.Usuario;
 
 
@@ -19,6 +21,6 @@ public interface UsuarioDao {
 	
 	public List<Usuario> readall_usuarios_consigna(String consigna);
 
-	public Usuario get_usuario(String nusuario, String clave);
+	public Usuario get_usuario(ResultSet resultset) throws SQLException;
 	
 }

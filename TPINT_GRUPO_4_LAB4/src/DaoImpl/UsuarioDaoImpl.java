@@ -2,12 +2,15 @@ package DaoImpl;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
 
 import Dao.UsuarioDao;
 import dominio.Alumno;
 import dominio.Docente;
+import dominio.Provincia;
 import dominio.Usuario;
 
 public class UsuarioDaoImpl implements UsuarioDao {
@@ -81,44 +84,6 @@ public class UsuarioDaoImpl implements UsuarioDao {
 		}
 	}
 	
-	/*aca hay un flashing*/
-	
-	public Usuario get_usuario(String usuario, String clave) {
-		
-		String query = "SELECT * FROM usuarios WHERE (usuario,clave) VALUES ('"+usuario+"','"+clave+"')";
-		Connection cn = null;
-		
-		Usuario usu = new Usuario();
-		
-		int filas=0;
-		
-		try
-		{
-			cn = DriverManager.getConnection(host+dbName,user,pass);
-			Statement st = cn.createStatement();
-			filas = st.executeUpdate(query);
-		}
-		
-		catch(Exception e)
-		{
-			e.printStackTrace();
-		}
-		
-		/*aca hay un flashing*/
-		
-		
-		finally {
-			if (filas!=0) {
-				
-				return usu;
-			}
-		}
-		return usu;	
-		
-		/*aca hay un flashing*/
-		
-		
-	}
 
 	@Override
 	public boolean update_clave(String clave) {
@@ -136,6 +101,15 @@ public class UsuarioDaoImpl implements UsuarioDao {
 	public List<Usuario> readall_usuarios_consigna(String consigna) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public Usuario get_usuario(ResultSet resultSet) throws SQLException {
+		String idusuario = Integer.toString((resultSet.getInt("idusuario"))) ;
+		String usuario = resultSet.getString("usuario");
+		String clave = resultSet.getString("clave");
+		return new Usuario(idusuario, usuario, clave);
+		
 	}
 
 	

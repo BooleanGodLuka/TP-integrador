@@ -1,5 +1,7 @@
 package negocio;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 
 import dominio.Alumno;
@@ -18,5 +20,5 @@ public interface UsuarioNegocio {
 	
 	public List<Usuario> readall_usuarios_consigna(String consigna);
 
-	Usuario get_usuario(String nusuario, String clave);
+	Usuario get_usuario(ResultSet resultset) throws SQLException;
 }
