@@ -104,16 +104,50 @@ public class UsuarioDaoImpl implements UsuarioDao {
 	}
 
 	@Override
-	public Usuario get_usuario(ResultSet resultSet) throws SQLException {
-		String idusuario = Integer.toString((resultSet.getInt("idusuario"))) ;
-		String usuario = resultSet.getString("usuario");
-		String clave = resultSet.getString("clave");
-		return new Usuario(idusuario, usuario, clave);
+	public Usuario get_usuario(Usuario usuario) {
+		String idusuario = usuario.getIdusuario();
+		String nusuario = usuario.getUsuario();
+		String claveu = usuario.getClave();
+		return new Usuario (idusuario, nusuario, claveu);
 		
 	}
-
 	
+	@Override
+	public boolean validate_usuario(String nombreusuario, String claveusuario) {
+		
+		String usuario = nombreusuario;
+		String clave = claveusuario;
+		
+		Statement statement;
+		ResultSet resultset = null;
+		
+		String usuarioDB = "";
+		String claveDB = "";
+		
+		try {
+			
+		Connection conexion = Conexion.getConexion().getSQLConexion();
+		statement = conexion.createStatement();
+		resultset = statement.executeQuery("SELECT usuario, clave FROM usuarios");
+		
+		while (resultset.next()==true) {
+			usuarioDB = resultset.getString("usuario");
+			claveDB = resultset.getString("clave");	
+			if (usuario.equals(usuarioDB) && clave.equals(claveDB)) {
+				return true;
+			}
+		}
+		
+		}
 	
+		catch (SQLException e) 
+			{
+				e.printStackTrace();
+			}
+		
+		return false;
+		
+	}
 
 	
 	

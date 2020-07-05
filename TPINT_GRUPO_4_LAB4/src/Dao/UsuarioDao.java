@@ -11,9 +11,9 @@ import dominio.Usuario;
 
 public interface UsuarioDao {
 
-	public boolean insert_usuario(Usuario usuario);
+	public boolean insert_usuario(Usuario nusuario);
 	
-	public boolean delete_usuario(Usuario usuario);
+	public boolean delete_usuario(Usuario nusuario);
 	
 	public boolean update_clave (String clave);
 	
@@ -21,6 +21,8 @@ public interface UsuarioDao {
 	
 	public List<Usuario> readall_usuarios_consigna(String consigna);
 
-	public Usuario get_usuario(ResultSet resultset) throws SQLException;
+	public Usuario get_usuario(Usuario usuario);
+	
+	public boolean validate_usuario(String nombreusuario, String claveusuario);
 	
 }

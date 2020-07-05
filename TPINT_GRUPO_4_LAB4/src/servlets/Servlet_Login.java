@@ -2,6 +2,7 @@ package servlets;
 
 import java.io.IOException;
 import java.sql.ResultSet;
+import java.sql.Statement;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -33,38 +34,47 @@ public class Servlet_Login extends HttpServlet {
 		HttpSession session = request.getSession(true);
 		
 		/*usuario que se va a extraer de la bdd*/
-		Usuario usuario = new Usuario();
+		Usuario user = new Usuario();
+
 		
 		/*parametros a obtener y el home a mostrar*/
 		String nusuario = "";
-		String clave = "";
-		int profile = 0;
+		String claveu = "";
+		String iduser = "";
+		boolean exists = false;
+		String direccion = "";
+		String error = "";
 		
 		if (request.getParameter("btnAceptar")!=null)
 		{
 			
 			if (request.getParameter("txtUser") !=null && request.getParameter("txtPassword")!=null){
-			nusuario = request.getParameter("txtUser");
-			clave = request.getParameter("txtPassword");
-			UsuarioDaoImpl usuarioImpl = new UsuarioDaoImpl();
-			ResultSet resultset = 
-			usuario = usuarioImpl.get_usuario(resultset);
-			profile = Integer.parseInt(usuario.getIdusuario());
-			
-			}
-			
-			String url = "";
-			
-			if(profile == 1) {
-			session.setAttribute("Usuario", nusuario);
-			url = "/Home.jsp";
-			}
+				nusuario = request.getParameter("txtUser");
+				claveu = request.getParameter("txtPassword");
+				UsuarioDaoImpl usuarioImpl = new UsuarioDaoImpl();
+				exists = usuarioImpl.validate_usuario(user);
+				if (exists == true) {
+					user = usuarioImpl.get_usuario(usuario)
+					}
 			else {
-				url = "/Home.jsp";
+					error = "No existe el usuario cargado.";
+					}
+				
+				}
+		
+			
+			if(user.getIdusuario() == "1") {
+			session.setAttribute("Usuario", nusuario);
+			direccion = "/Home.jsp";
+			}
+			
+			else {
+				session.setAttribute("Usuario", nusuario);
+				direccion = "/Home.jsp";
 			}
 
 			//requestdispatcher
-			request.setAttribute("Usuario", usuario);
+			request.setAttribute("Usuario", unsuario);
 			RequestDispatcher rd = request.getRequestDispatcher(url);
 			rd.forward(request, response);
 
