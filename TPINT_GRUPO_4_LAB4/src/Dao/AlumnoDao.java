@@ -11,7 +11,7 @@ public interface AlumnoDao {
 		
 		public List<Alumno> select_alumnos();
 		
-		public List<Alumno>select_alummnos_consigna(String consigna);
+		public List<Alumno> select_alummnos_consigna(String consigna);
 
 		public boolean update_alumno(Alumno alumno);
 

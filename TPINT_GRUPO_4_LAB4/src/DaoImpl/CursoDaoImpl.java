@@ -13,7 +13,7 @@ import dominio.Curso;
 public class CursoDaoImpl implements CursosDao {
 
 	private static final String insert = "INSERT INTO cursos(id, cuatrimestre, año,iddocente,idmateria) VALUES(?, ?, ?, ?, ?)";
-	private static final String leer_todo = "SELECT * FROM cursos";
+	private static final String leer_todo = "SELECT * FROM cursos ";
 	private static final String update = "UPDATE cursos SET cuatrimestre= ?, año= ?,iddocente= ? where id=?";
 	private static final String delete = "DELETE FROM cursos WHERE id = ?";
 	
