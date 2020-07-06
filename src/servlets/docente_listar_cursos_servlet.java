@@ -39,21 +39,21 @@ public class docente_listar_cursos_servlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		int filas =0;
 		
-		Docente usuario = new Docente(1, "33526896", "Daryl", "Chen", "2000/02/22", "risus.Duis.a@loremluctus.net", "Apdo.:222-4402 Cum Carretera", 11);
+	//	Docente usuario = new Docente(1, "33526896", "Daryl", "Chen", "2000/02/22", "risus.Duis.a@loremluctus.net", "Apdo.:222-4402 Cum Carretera", 11);
 		
 		HttpSession session = request.getSession();
-		session.setAttribute("usr", usuario);
+	//	session.setAttribute("usr", usuario);
 		
-		String consulta = "iddocente = " + usuario.getId();
+		//String consulta = "iddocente = " + usuario.getId();
 		
 		
 		CursosNegocioImpl cudao = new CursosNegocioImpl();
 				
 		
-		ArrayList<Curso> lista = cudao.leer_todo_curso_consigna(consulta);
+		//ArrayList<Curso> lista = cudao.leer_todo_curso_consigna(consulta);
 		
 		
-		request.setAttribute("lista_cursos", lista);
+		//request.setAttribute("lista_cursos", lista);
 		
 		RequestDispatcher rd =request.getRequestDispatcher("Docente/Docente_ListarCursos.jsp");
 		rd.forward(request, response);
