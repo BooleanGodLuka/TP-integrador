@@ -17,45 +17,40 @@ public class UsuarioNegocioImpl implements UsuarioNegocio{
 	
 	@Override
 	public boolean insert_usuario(Usuario usuario) {
-		usdao.insert_usuario(usuario);
+		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public boolean delete_usuario(Usuario usuario) {
-		usdao.delete_usuario(usuario);
+		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public boolean update_clave(String clave) {
-		usdao.update_clave(clave);
+	public boolean update_clave(Usuario clave) {
+		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public List<Usuario> readall_usuarios() {
-		usdao.readall_usuarios();
+		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public List<Usuario> readall_usuarios_consigna(String consigna) {
-		usdao.readall_usuarios_consigna(consigna);
+		// TODO Auto-generated method stub
 		return null;
 	}
+	
 
 
 	@Override
-	public Usuario get_usuario(Usuario usuario){
-		Usuario User = usdao.get_usuario(usuario);
-		return User;
-	}
-
-	@Override
-	public boolean validate_usuario(String nombreusuario, String claveusuario) {
-		// TODO Auto-generated method stub
-		return false;
+	public Usuario get_usuario(ResultSet resultset) throws SQLException {
+		usdao.get_usuario(resultset);
+		return (Usuario) usdao;
 	}
 
 	
