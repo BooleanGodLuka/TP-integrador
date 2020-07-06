@@ -31,7 +31,6 @@ public class Servlet_Login extends HttpServlet {
 		/*Lo que hace el servlet una vez que obtiene el form con metodo POST del login, si el usuario es un docente*/
 		
 		/*crear variable session*/
-		
 		HttpSession session = request.getSession(true);
 		
 		/*usuario que se va a extraer de la bdd*/
@@ -75,15 +74,15 @@ public class Servlet_Login extends HttpServlet {
 			}
 
 			//requestdispatcher
-			request.setAttribute("Usuario", nusuario);
-			RequestDispatcher rd = request.getRequestDispatcher(direccion);
+			request.setAttribute("Usuario", unsuario);
+			RequestDispatcher rd = request.getRequestDispatcher(url);
 			rd.forward(request, response);
 
 
-		}
+	}
 
 																																
-	}
+}
 
 
 }
