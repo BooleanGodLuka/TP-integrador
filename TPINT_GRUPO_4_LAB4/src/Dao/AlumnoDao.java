@@ -5,15 +5,14 @@ import dominio.Alumno;
 
 public interface AlumnoDao {
 
-		public boolean insert_alumno(Alumno alumno);
-		
-		public boolean delete_alumno(Alumno alumno);
-		
-		public List<Alumno> select_alumnos();
-		
-		public List<Alumno> select_alummnos_consigna(String consigna);
+	public boolean insert(Alumno alumno);
 
-		public boolean update_alumno(Alumno alumno);
+	public boolean delete(Alumno alumno_a_borrar);
 
-	}
+	public List<Alumno> readall();
 
+	public List<Alumno> readall(String consigna);
+
+	public boolean update(Alumno alumno_a_modificar);
+
+}

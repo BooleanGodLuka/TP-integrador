@@ -5,103 +5,103 @@ import java.util.ArrayList;
 
 public class Alumno {
 
-	private int id;
-	private String dni;
-	private String nombre;
-	private String apellido;
-	private String fechanacimiento;
-	private String email;
-	private String direccion;
-	private int idlocalidad;
-	private String telefono;
+	private int ID;
+	private int Dni;
+	private String Nombre;
+	private String Apellido;
+	private String FechaNacimiento;
+	private String Email;
+	private String Direccion;
+	private String IDLocalidad;
+	//private int Telefono;
 	
 	
-	public Alumno(int id, String dni, String nombre, String apellido, String fechanacimiento, String email,
-			String direccion, int idlocalidad, String telefono) {
+	public Alumno(int id, int dni, String nombre, String apellido, String fnacimiento, String email,
+			String direccion, String idlocalidad/*, int telefono*/) {
 		super();
-		this.id = id;
-		this.dni = dni;
-		this.nombre = nombre;
-		this.apellido = apellido;
-		this.fechanacimiento = fechanacimiento;
-		this.email = email;
-		this.direccion = direccion;
-		this.idlocalidad = idlocalidad;
-		this.telefono = telefono;
+		this.ID = id;
+		this.Dni = dni;
+		this.Nombre = nombre;
+		this.Apellido = apellido;
+		this.FechaNacimiento = fnacimiento;
+		this.Email = email;
+		this.Direccion = direccion;
+		this.IDLocalidad = idlocalidad;
+		//this.Telefono = telefono;
 	}
 	
 	
-	public int getId() {
-		return id;
+	public int getID() {
+		return ID;
 	}
 	
-	public String getDni() {
-		return dni;
+	public int getDni() {
+		return Dni;
 	}
 	
 	public String getNombre() {
-		return nombre;
+		return Nombre;
 	}
 	
 	public String getApellido() {
-		return apellido;
+		return Apellido;
 	}
 	
-	public String getFechanacimiento() {
-		return fechanacimiento;
+	public String getFechaNacimiento() {
+		return FechaNacimiento;
 	}
 	
 	public String getEmail() {
-		return email;
+		return Email;
 	}
 	
 	public String getDireccion() {
-		return direccion;
+		return Direccion;
 	}
 	
-	public int getIdlocalidad() {
-		return idlocalidad;
+	public String getIDLocalidad() {
+		return IDLocalidad;
 	}
 	
-	public String getTelefono() {
-		return telefono;
+	/*public int getTelefono() {
+		return Telefono;
+	}*/
+	
+	public void setID(int id) {
+		this.ID = id;
 	}
 	
-	public void setId(int id) {
-		this.id = id;
-	}
-	
-	public void setDni(String dni) {
-		this.dni = dni;
+	public void setDni(int dni) {
+		this.Dni = dni;
 	}
 	
 	public void setNombre(String nombre) {
-		this.nombre = nombre;
+		this.Nombre = nombre;
 	}
 	
 	public void setApellido(String apellido) {
-		this.apellido = apellido;
+		this.Apellido = apellido;
 	}
 	
-	public void setFechanacimiento(String fechanacimiento) {
-		this.fechanacimiento = fechanacimiento;
+	public void setFechaNacimiento(String fechanacimiento) {
+		this.FechaNacimiento = fechanacimiento;
 	}
 	
 	public void setEmail(String email) {
-		this.email = email;
+		this.Email = email;
 	}
 	
 	public void setDireccion(String direccion) {
-		this.direccion = direccion;
+		this.Direccion = direccion;
 	}
 	
-	public void setIdlocalidad(int idlocalidad) {
-		this.idlocalidad = idlocalidad;
+	public void setIDLocalidad(String idlocalidad) {
+		this.IDLocalidad = idlocalidad;
 	}
 	
-	public void setTelefono(String telefono) {
-		this.telefono = telefono;
-	}
+	/*public void setTelefono(int telefono) {
+		this.Telefono = telefono;
+	}*/
 	
 	
 	public boolean validar_exist ( ArrayList<Alumno> lista) {
@@ -120,9 +120,9 @@ public class Alumno {
 	
 	@Override
 	public String toString() {
-		return "Alumno [id=" + id + ", dni=" + dni + ", nombre=" + nombre + ", apellido=" + apellido
-				+ ", fechanacimiento=" + fechanacimiento + ", email=" + email + ", direccion=" + direccion
-				+ ", idlocalidad=" + idlocalidad + ", telefono=" + telefono + "]";
+		return "Alumno [id=" + ID + ", dni=" + Dni + ", nombre=" + Nombre + ", apellido=" + Apellido
+				+ ", fechanacimiento=" + FechaNacimiento + ", email=" + Email + ", direccion=" + Direccion
+				+ ", idlocalidad=" + IDLocalidad /*+ ", telefono=" + Telefono */+ "]";
 	}
 	
 	

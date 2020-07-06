@@ -13,9 +13,9 @@ import dominio.Provincia;
 
 public class LocalidadDaoImpl implements LocalidadDao {
 
-	private static final String insert = "INSERT INTO localidades (ID, nombre, IDProvincia) VALUES (?, ?, ?)";
-	private static final String delete = "DELETE FROM localidades WHERE id = ?";
-	private static final String readall = "SELECT * FROM localidades";
+	private static final String insert = "INSERT INTO localidades (id, nombre, idprovincia) VALUES (?, ?, ?) ";
+	private static final String delete = "DELETE FROM localidades WHERE id = ? ";
+	private static final String readall = "SELECT * FROM localidades ";
 	private static final String readallwhere = "SELECT * FROM localidades WHERE idprovincia = ?";
 	private static final String update = "UPDATE localidades (id, nombre, idprovincia) VALUES (?, ?, ?) WHERE id = ?";
 
@@ -40,7 +40,10 @@ public class LocalidadDaoImpl implements LocalidadDao {
 			} catch (SQLException e1) {
 				e1.printStackTrace();
 			}
+		} finally {
+			((Conexion) conexion).cerrarConexion();
 		}
+		
 
 		return isInsertExitoso;
 	}
@@ -99,14 +102,7 @@ public class LocalidadDaoImpl implements LocalidadDao {
 		}
 		return localidades;
 	}
-
-	private Localidad getLocalidad(ResultSet resultSet) throws SQLException {
-		int id = resultSet.getInt("id");
-		String nombre = resultSet.getString("nombre");
-		int idprovincia = resultSet.getInt("idprovincia");
-		return new Localidad(id, nombre, idprovincia);
-	}
-
+	
 	@Override
 	public boolean update(Localidad localidad_a_modificar) {
 		PreparedStatement statement;
@@ -131,6 +127,13 @@ public class LocalidadDaoImpl implements LocalidadDao {
 		}
 
 		return isInsertExitoso;
+	}
+
+	private Localidad getLocalidad(ResultSet resultSet) throws SQLException {
+		int id = resultSet.getInt("id");
+		String nombre = resultSet.getString("nombre");
+		int idprovincia = resultSet.getInt("idprovincia");
+		return new Localidad(id, nombre, idprovincia);
 	}
 
 }

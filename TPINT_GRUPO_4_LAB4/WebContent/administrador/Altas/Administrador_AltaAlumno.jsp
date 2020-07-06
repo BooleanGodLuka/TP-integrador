@@ -1,7 +1,6 @@
 <%@ page import="dominio.Provincia"%>
 <%@ page import="dominio.Localidad"%>
 <%@ page import="java.util.List"%>
-<%@ page import="javax.swing.JOptionPane"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -65,38 +64,39 @@ input[type=submit]:hover {
 </head>
 <body>
 
-	<a href="../../ServletAltaAlumno?Param=1">Alta cliente</a>
+	<a href="../../ServletAltaAlumno?Param=1">Alta Alumno</a>
 
 	<jsp:include page="/Otros/Navegacion.html"></jsp:include>
 
 
 	<h3>Alta de alumno</h3>
 	
-	
-	
 	<div class="container">
 		<form name="form1" method="post" action="ServletAltaAlumno">
 			<label for="legajo">Legajo: "Autonumerico"</label> <br>
 
-			<label for="nombre">Nombre/s</label><br>
-			<input type="text" id="idnombre" name="nombre" placeholder="Nombres"><br>
+			<label for="txtNombre">Nombre/s</label><br>
+			<input type="text" id="txtNombre" name="nombre" placeholder="Nombres"><br>
 				
-			<label for="apellido">Apellido/s</label><br>
-			<input type="text" name="apellido" placeholder="Apellidos"><br>
+			<label for="txtApellido">Apellido/s</label><br>
+			<input type="text" id="txtApellido" name="apellido" placeholder="Apellidos"><br>
 
-			<label for="dni">DNI</label><br>
-			<input type="text" name="dni" placeholder="DNI"><br>
+			<label for="txtDni">DNI</label><br>
+			<input type="text" id="txtDni" name="dni" placeholder="DNI"><br>
 			
-			<label for="fechanacimiento">Fecha de nacimiento:</label><br>
-			<input type="date" name="fechanacimiento"><br>
+			<label for="dateFechaNacimiento">Fecha de nacimiento:</label><br>
+			<input type="date" id="dateFechaNacimiento" name="fechanacimiento"><br>
 				
-			<label for="email">Email</label><br>
-			<input type="text" name="email" placeholder="email@ejemplo.com"><br>
+			<label for="txtEmail">Email</label><br>
+			<input type="text" id="txtEmail" name="email" placeholder="email@ejemplo.com"><br>
 			
-			<label for="lname">Telefono</label><br>	
-			<input type="text" id="lname" name="lastname" placeholder="Telefono"><br>
+			<label for="txtDireccion">Direccion</label><br>	
+			<input type="text" id="txtDireccion" name="direccion" placeholder="Direccion"><br>
+			
+			<label for="txtTelefono">Telefono</label><br>	
+			<input type="text" id="txtTelefono" name="telefono" placeholder="Telefono"><br>
 				
-			<label for="provincia">Provincia</label><br>
+			<label for="cbProvincia">Provincia</label><br>
 			<select id="cbProvincias" name="provincia" onchange="test()">
 				<option value="0">-Seleccione una Provincia-</option>
 				<%
@@ -116,11 +116,50 @@ input[type=submit]:hover {
 				%>
 			</select><br>
 			
-			<label for="localidad">Localidades</label> <br> 
-			<select	name="localidad">
+			<label for="cbLocalidad">Localidades</label> <br> 
+			<select	id="cbLocalidad" name="localidad"> 
 				<option value="0">-Seleccione una Localidad-</option>
-			</select>
-			<br>
+				<%
+					List<Localidad> listLocalidades = null;
+				 	if (request.getAttribute("ListaLocalidades") != null) {
+				 		listLocalidades = (List<Localidad>) request.getAttribute("ListaLocalidades");
+				 	}
+				 	//int e = document.getElementById("cbProvincias");
+				 	
+				 	if (listLocalidades != null) {
+						for (Localidad loc : listLocalidades) {
+							//if(loc.getIDProvincia() == e.options[e.selectedIndex].value){
+							%>
+							<option value=" <%=loc.getID()%> "> <%=loc.getNombre()%> </option>
+							<%
+							}
+				%>
+
+				
+				<%
+					}
+					//}
+
+					/*
+					int selectedProvId = 0;
+					if (request.getAttribute("selectedProvId") != null){
+						selectedProvId = (int)request.getAttribute("selectedProvId");
+					}
+					*/
+				%>
+
+				<!--	
+ 				<c:forEach items="${listLocalidades}" var="localidad">
+					<option value="${localidad.id}"
+						<c:if test="${localidad.id eq selectedProvId}">selected="selected"</c:if>
+						>
+						${localidad.nombre}
+				</c:forEach>
+
+				-->
+
+			</select> <br>
+			<!-- FUNCION TEST
 			
 			<script type="text/javascript">
 					function test(){
@@ -144,14 +183,11 @@ input[type=submit]:hover {
 							alert('se lo salteo');
 						}
 					}
-					<%
-					%>
 			
 			</script>
+			 -->
 			
-			<!--     FUNCION CAMBIAR LOCALIDADES -->
-			
-			
+			<!--     FUNCION CAMBIAR LOCALIDADES
 			
 			<script type="text/javascript">
 				function cambiarLocalidades() {
@@ -184,7 +220,7 @@ input[type=submit]:hover {
 				}
 			</script>
 			
-			<!--                     -->
+			-->
 			
 			<input type=submit value="Guardar" name="btnAltaAlumno">
 		</form>

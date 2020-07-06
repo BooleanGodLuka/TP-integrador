@@ -64,34 +64,34 @@ input[type=submit]:hover {
   <form action="/action_page.php">
   <label for="fname">Legajo: "Autonumerico"</label>  <br>  <br>
     
-	    <label for="nombre">Nombre/s</label><br>
-	    <input type="text" id="nombre" name="nombre" placeholder="Nombres"><br>
+	    <label for="txtNombre">Nombre/s</label><br>
+	    <input type="text" id="txtNombre" name="nombre" placeholder="Nombres"><br>
 	
-	    <label for="apellido">Apellido/s</label><br>
-	    <input type="text" id="apellido" name="apellido" placeholder="Apellidos"><br>
+	    <label for="txtApellido">Apellido/s</label><br>
+	    <input type="text" id="txtApellido" name="apellido" placeholder="Apellidos"><br>
 	    
-	    <label for="dni">DNI</label><br>
-	    <input type="text" id="dni" name="dni" placeholder="DNI"><br>
+	    <label for="txtDni">DNI</label><br>
+	    <input type="text" id="txtDni" name="dni" placeholder="DNI"><br>
 	    
-	    <label for="fechanacimiento">Fecha de nacimiento:</label><br>
-		<input type="date" id="birthday" name="birthday"><br>
+	    <label for="dateFechaNacimiento">Fecha de nacimiento:</label><br>
+		<input type="date" id="dateFechaNacimiento" name="fechaNacimiento"><br>
 	
-    <label for="lname">Email</label><br>
-    <input type="text" id="lname" name="lastname" placeholder="email@ejemplo.com"><br>
+    <label for="txtEmail">Email</label><br>
+    <input type="text" id="txtEmail" name="email" placeholder="email@ejemplo.com"><br>
 
-    <label for="lname">Telefono</label><br>
-    <input type="text" id="lname" name="lastname" placeholder="Telefono"><br>
+    <label for="txtTelefono">Telefono</label><br>
+    <input type="text" id="txtTelefono" name="telefono" placeholder="Telefono"><br>
 
-    <label for="provincia">Provincia</label><br>
-    <select id="provincia" name="provincia">
+    <label for="cbProvincia">Provincia</label><br>
+    <select id="cbProvincia" name="provincia">
      <option value="Vacio">-Seleccione una Provincia-</option>
       <option value="BsAs">Buenos Aires</option>
       <option value="Santa Fe">Santa Fe</option>
       <option value="Chubut">Chubut</option>
     </select><br>
     
-    <label for="localidad">Localidades</label><br>
-    <select id="localidad" name="localidad">
+    <label for="cbLocalidad">Localidades</label><br>
+    <select id="cbLocalidad" name="localidad">
 		<option value="Vacio">-Seleccione una Localidad-</option>
 		<option value="Pacheco">Pacheco</option>
 		<option value="San Isidro">San Isidro</option>
