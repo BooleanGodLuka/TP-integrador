@@ -55,7 +55,7 @@ public class AlumnoDaoImpl implements AlumnoDao {
 		boolean isdeleteExitoso = false;
 		try {
 			statement = conexion.prepareStatement(delete);
-			statement.setString(1, Integer.toString(alumno_a_borrar.getID()));
+			statement.setString(1, Integer.toString(alumno_a_borrar.getLegajo()));
 			if (statement.executeUpdate() > 0) {
 				conexion.commit();
 				isdeleteExitoso = true;
@@ -135,7 +135,7 @@ public class AlumnoDaoImpl implements AlumnoDao {
 	}
 
 	private Alumno getAlumno(ResultSet resultSet) throws SQLException {
-		int id = resultSet.getInt("id");
+		int legajo = resultSet.getInt("id");
 		int dni = resultSet.getInt("dni");
 		String nombre = resultSet.getString("nombre");
 		String apellido = resultSet.getString("apellido");
@@ -144,8 +144,8 @@ public class AlumnoDaoImpl implements AlumnoDao {
 		String direccion = resultSet.getString("direccion");
 		String idlocalidad = resultSet.getString("idlocalidad");
 		int telefono = resultSet.getInt("telefono");
-		return new Alumno(id, dni, nombre, apellido,
-				fechanacimiento, email, direccion, idlocalidad, telefono);
+		return new Alumno(legajo, dni, nombre, apellido,
+				fechanacimiento, email, direccion, idlocalidad, telefono, true);
 	}
 
 }

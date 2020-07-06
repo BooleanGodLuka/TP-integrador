@@ -4,74 +4,57 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class Conexion 
-{
+public class Conexion {
 	public static Conexion instancia;
 	private Connection connection;
-	
+
 	private String host = "jdbc:mysql://localhost:3306/";
 	private String user = "root";
 	private String pass = "root";
 	private String dbName = "db_grupo4_labo4";
-	//?autoReconnect=true&failOverReadOnly=false&maxReconnects=10"
+	private String aux = "?autoReconnect=true&failOverReadOnly=false&maxReconnects=10";
 
-	
-	private Conexion()
-	{
-		try
-		{
+	private Conexion() {
+		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			this.connection = DriverManager.getConnection(host+dbName,user,pass);
+			this.connection = DriverManager.getConnection(host + dbName + aux, user, pass);
 			this.connection.setAutoCommit(false);
 
-		}
-		catch(Exception e)
-		{
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
-	
-	public static Conexion getConexion()   
-	{								
 
-		if(instancia == null)
-		{
+	public static Conexion getConexion() {
+
+		if (instancia == null) {
 			instancia = new Conexion();
 		}
 		return instancia;
 
 	}
 
-	public Connection getSQLConexion() 
-	{
+	public Connection getSQLConexion() {
 		return this.connection;
 
 	}
-	
-	public void cerrarConexion()
-	{
-		try 
-		{
+
+	public void cerrarConexion() {
+		try {
 
 			this.connection.close();
 
 		}
-		
-		catch (SQLException e) 
-		{
+
+		catch (SQLException e) {
 			e.printStackTrace();
 		}
 
 		instancia = null;
 	}
 
-
 	public void setSQLConexion(Connection conexion) {
 		this.connection = conexion;
 	}
-	
-	
 
 }
-

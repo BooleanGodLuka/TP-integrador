@@ -2,10 +2,9 @@ package dominio;
 
 import java.util.ArrayList;
 
-
 public class Alumno {
 
-	private int ID;
+	private int Legajo;
 	private int Dni;
 	private String Nombre;
 	private String Apellido;
@@ -13,13 +12,31 @@ public class Alumno {
 	private String Email;
 	private String Direccion;
 	private String IDLocalidad;
-	//private int Telefono;
+	private int Telefono;
+	private Boolean Activo;
 	
-	
-	public Alumno(int id, int dni, String nombre, String apellido, String fnacimiento, String email,
-			String direccion, String idlocalidad/*, int telefono*/) {
+	public Alumno() {
 		super();
-		this.ID = id;
+	}
+
+	public Alumno(Alumno a) {
+		super();
+		this.Legajo = a.Legajo;
+		this.Dni = a.Dni;
+		this.Nombre = a.Nombre;
+		this.Apellido = a.Apellido;
+		this.FechaNacimiento = a.FechaNacimiento;
+		this.Email = a.Email;
+		this.Direccion = a.Direccion;
+		this.IDLocalidad = a.IDLocalidad;
+		this.Telefono = a.Telefono;
+		this.Activo = a.Activo;
+	}
+
+	public Alumno(int id, int dni, String nombre, String apellido, String fnacimiento, String email, String direccion,
+			String idlocalidad, int telefono, Boolean activo) {
+		super();
+		this.Legajo = id;
 		this.Dni = dni;
 		this.Nombre = nombre;
 		this.Apellido = apellido;
@@ -27,104 +44,108 @@ public class Alumno {
 		this.Email = email;
 		this.Direccion = direccion;
 		this.IDLocalidad = idlocalidad;
-		//this.Telefono = telefono;
+		this.Telefono = telefono;
+		this.Activo = activo;
 	}
-	
-	
-	public int getID() {
-		return ID;
+
+	public int getLegajo() {
+		return Legajo;
 	}
-	
+
+	public void setLegajo(int id) {
+		Legajo = id;
+	}
+
 	public int getDni() {
 		return Dni;
 	}
-	
+
+	public void setDni(int dni) {
+		Dni = dni;
+	}
+
 	public String getNombre() {
 		return Nombre;
 	}
-	
+
+	public void setNombre(String nombre) {
+		Nombre = nombre;
+	}
+
 	public String getApellido() {
 		return Apellido;
 	}
-	
+
+	public void setApellido(String apellido) {
+		Apellido = apellido;
+	}
+
 	public String getFechaNacimiento() {
 		return FechaNacimiento;
 	}
-	
+
+	public void setFechaNacimiento(String fechaNacimiento) {
+		FechaNacimiento = fechaNacimiento;
+	}
+
 	public String getEmail() {
 		return Email;
 	}
-	
+
+	public void setEmail(String email) {
+		Email = email;
+	}
+
 	public String getDireccion() {
 		return Direccion;
 	}
-	
+
+	public void setDireccion(String direccion) {
+		Direccion = direccion;
+	}
+
 	public String getIDLocalidad() {
 		return IDLocalidad;
 	}
-	
-	/*public int getTelefono() {
+
+	public void setIDLocalidad(String iDLocalidad) {
+		IDLocalidad = iDLocalidad;
+	}
+
+	public int getTelefono() {
 		return Telefono;
-	}*/
-	
-	public void setID(int id) {
-		this.ID = id;
 	}
-	
-	public void setDni(int dni) {
-		this.Dni = dni;
+
+	public void setTelefono(int telefono) {
+		Telefono = telefono;
 	}
-	
-	public void setNombre(String nombre) {
-		this.Nombre = nombre;
+
+	public Boolean getActivo() {
+		return Activo;
 	}
-	
-	public void setApellido(String apellido) {
-		this.Apellido = apellido;
+
+	public void setActivo(Boolean activo) {
+		Activo = activo;
 	}
-	
-	public void setFechaNacimiento(String fechanacimiento) {
-		this.FechaNacimiento = fechanacimiento;
-	}
-	
-	public void setEmail(String email) {
-		this.Email = email;
-	}
-	
-	public void setDireccion(String direccion) {
-		this.Direccion = direccion;
-	}
-	
-	public void setIDLocalidad(String idlocalidad) {
-		this.IDLocalidad = idlocalidad;
-	}
-	
-	/*public void setTelefono(int telefono) {
-		this.Telefono = telefono;
-	}*/
-	
-	
-	public boolean validar_exist ( ArrayList<Alumno> lista) {
+
+	public boolean validar_exist(ArrayList<Alumno> lista) {
 		boolean validar = false;
-		for (int i =0; i<lista.size();i++) {
+		for (int i = 0; i < lista.size(); i++) {
 			String temp;
 			temp = lista.get(i).toString();
 			if (temp == this.toString()) {
 				validar = true;
 			}
-			
+
 		}
 		return validar;
 	}
-	
-	
+
 	@Override
 	public String toString() {
-		return "Alumno [id=" + ID + ", dni=" + Dni + ", nombre=" + Nombre + ", apellido=" + Apellido
+		return "Alumno [id=" + Legajo + ", dni=" + Dni + ", nombre=" + Nombre + ", apellido=" + Apellido
 				+ ", fechanacimiento=" + FechaNacimiento + ", email=" + Email + ", direccion=" + Direccion
-				+ ", idlocalidad=" + IDLocalidad /*+ ", telefono=" + Telefono */+ "]";
+				+ ", idlocalidad=" + IDLocalidad /* + ", telefono=" + Telefono */ + "]";
 	}
-	
-	
 
 }

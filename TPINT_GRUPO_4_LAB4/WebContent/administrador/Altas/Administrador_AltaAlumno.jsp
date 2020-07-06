@@ -8,95 +8,41 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Alta de Alumno</title>
-<link rel="StyleSheet" href="HojaEstilos.css" type="text/css">
-
-<style type="text/css">
-body {
-	font-family: Arial, Helvetica, sans-serif;
-}
-
-* {
-	box-sizing: border-box;
-}
-
-input[type=text], select, textarea {
-	width: 500px;
-	padding: 12px;
-	border: 1px solid #ccc;
-	border-radius: 4px;
-	box-sizing: border-box;
-	margin-top: 6px;
-	margin-bottom: 16px;
-	resize: vertical;
-}
-
-input[type=date] {
-	width: 200px;
-	padding: 12px;
-	border: 1px solid #ccc;
-	border-radius: 4px;
-	box-sizing: border-box;
-	margin-top: 6px;
-	margin-bottom: 16px;
-	resize: vertical;
-}
-
-input[type=submit] {
-	background-color: #4CAF50;
-	color: white;
-	padding: 12px 20px;
-	border: none;
-	border-radius: 4px;
-	cursor: pointer;
-}
-
-input[type=submit]:hover {
-	background-color: #45a049;
-}
-
-.container {
-	border-radius: 5px;
-	background-color: #f2f2f2;
-	padding: 20px;
-}
-</style>
-
+<link rel="stylesheet" href="../../css/Alta.css" type="text/css" />
 </head>
+
 <body>
 
-	<a href="../../ServletAltaAlumno?Param=1">Alta Alumno</a>
-
-	<jsp:include page="/Otros/Navegacion.html"></jsp:include>
-
-
-	<h3>Alta de alumno</h3>
+	<jsp:include page="/Otros/Navegacion.html"/>
+		
+	<h1>Alta de alumno</h1>
+	
+	<a href="../../ServletAlta?Param=1">
+		<h4>Cargar provincias y paises</h4>
+	</a>
 	
 	<div class="container">
-		<form name="form1" method="post" action="ServletAltaAlumno">
-			<label for="legajo">Legajo: "Autonumerico"</label> <br>
+		<form name="form1" method="post" action="ServletAlta">
 
-			<label for="txtNombre">Nombre/s</label><br>
-			<input type="text" id="txtNombre" name="nombre" placeholder="Nombres"><br>
-				
-			<label for="txtApellido">Apellido/s</label><br>
-			<input type="text" id="txtApellido" name="apellido" placeholder="Apellidos"><br>
+			<label for="txtNombre"> Nombre: </label><br>
+			<input type="text" id="txtNombre" name="nombre"><br>
 
-			<label for="txtDni">DNI</label><br>
-			<input type="text" id="txtDni" name="dni" placeholder="DNI"><br>
+			<label for="txtApellido"> Apellido: </label><br>
+			<input type="text" id="txtApellido" name="apellido"><br>
+
+			<label for="txtDni"> DNI: </label><br>
+			<input type="text" id="txtDni" name="dni"><br>
 			
-			<label for="dateFechaNacimiento">Fecha de nacimiento:</label><br>
-			<input type="date" id="dateFechaNacimiento" name="fechanacimiento"><br>
-				
-			<label for="txtEmail">Email</label><br>
+			<label for="dateFechaNacimiento"> Fecha de nacimiento: </label><br>
+			<input type="date" id="dateFechaNacimiento"><br>
+
+			<label for="txtEmail"> Email: </label><br>
 			<input type="text" id="txtEmail" name="email" placeholder="email@ejemplo.com"><br>
-			
-			<label for="txtDireccion">Direccion</label><br>	
-			<input type="text" id="txtDireccion" name="direccion" placeholder="Direccion"><br>
-			
-			<label for="txtTelefono">Telefono</label><br>	
-			<input type="text" id="txtTelefono" name="telefono" placeholder="Telefono"><br>
+
+			<label for="txtTelefono"> Teléfono: </label><br>
+			<input type="text" id="txtTelefono" name="telefono"><br>
 				
-			<label for="cbProvincia">Provincia</label><br>
+			<label for="cbProvincia"> Provincia: </label><br>
 			<select id="cbProvincias" name="provincia" onchange="test()">
 				<option value="0">-Seleccione una Provincia-</option>
 				<%
