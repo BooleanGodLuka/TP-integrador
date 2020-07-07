@@ -1,3 +1,5 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import=" dominio.alumnoXcurso"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -18,7 +20,7 @@
 
 #customers td, #customers th {
   border: 1px solid #ddd;
-  padding: 8px;
+  padding: 8px; 
 }
 
 #customers tr:nth-child(even){background-color: #f2f2f2;}
@@ -125,55 +127,25 @@ input[type=submit] {
     <th>Parcial 2</th>
     <th>Final</th>
   </tr>
+  
+  
+  <% if (request.getParameter("lista_alumnos") != null){
+	ArrayList<alumnoXcurso> lista;
+	lista = (ArrayList<alumnoXcurso>) request.getAttribute("lista_alumnos");
+	
+	
+	for (alumnoXcurso cur: lista ){
+%>  
   <tr>
     <td>0001</td>
     <td>Juan</td>
     <td>Perez</td>
-    <td><input type="text" id="nota" name="nota" placeholder="Nota"></td>
-    <td><input type="text" id="nota" name="nota" placeholder="Nota"></td>
-    <td><input type="text" id="nota" name="nota" placeholder="Nota"></td>
-    <td><input type="text" id="nota" name="nota" placeholder="Nota"></td>
+    <td><input type="text" id="nota" name="nota1" placeholder="Nota"></td>
+    <td><input type="text" id="nota" name="nota2" placeholder="Nota"></td>
+    <td><input type="text" id="nota" name="nota3" placeholder="Nota"></td>
+    <td><input type="text" id="nota" name="nota4" placeholder="Nota"></td>
   </tr>
-  
-  <tr>
-    <td>0002</td>
-    <td>Jose</td>
-    <td>Maria</td>
-    <td><input type="text" id="nota" name="nota" placeholder="Nota"></td>
-    <td><input type="text" id="nota" name="nota" placeholder="Nota"></td>
-    <td><input type="text" id="nota" name="nota" placeholder="Nota"></td>
-    <td><input type="text" id="nota" name="nota" placeholder="Nota"></td>
-  </tr>
-  
-  <tr>
-    <td>0003</td>
-    <td>Luciano</td>
-    <td>Gonsalez</td>
-    <td><input type="text" id="nota" name="nota" placeholder="Nota"></td>
-    <td><input type="text" id="nota" name="nota" placeholder="Nota"></td>
-    <td><input type="text" id="nota" name="nota" placeholder="Nota"></td>
-    <td><input type="text" id="nota" name="nota" placeholder="Nota"></td>
-  </tr>
-  
-  <tr>
-    <td>0004</td>
-    <td>Mario</td>
-    <td>Sanprieto</td>
-    <td><input type="text" id="nota" name="nota" placeholder="Nota"></td>
-    <td><input type="text" id="nota" name="nota" placeholder="Nota"></td>
-    <td><input type="text" id="nota" name="nota" placeholder="Nota"></td>
-    <td><input type="text" id="nota" name="nota" placeholder="Nota"></td>
-  </tr>
-  
-  <tr>
-    <td>Juan</td>
-    <td>Rodriguez</td>
-    <td>0005</td>
-    <td><input type="text" id="nota" name="nota" placeholder="Nota"></td>
-    <td><input type="text" id="nota" name="nota" placeholder="Nota"></td>
-    <td><input type="text" id="nota" name="nota" placeholder="Nota"></td>
-    <td><input type="text" id="nota" name="nota" placeholder="Nota"></td>
-  </tr>
+ <%}} %> 
   
 </table>
 

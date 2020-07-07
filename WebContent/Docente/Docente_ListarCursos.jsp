@@ -146,14 +146,16 @@ input[type=submit] {
 	for (Curso cur: lista ){
 %>  
   <tr>
-  	<td><%=cur.getId() %></td>
+  <form action = "../docente_modificar_nota_servlet" method ="get">
+  	<td><%=cur.getId() %>	<input type="hidden" name ="id_curso" value ="<%=cur.getId() %>"> </td>
     <td><%=cur.getId_materia() %></td>
     <td><%=cur.getCuatrimestre()%></td>
     <td><%=cur.getAño() %></td>
+   
     <td>
-    <input type="submit" value="Ver alumnos">
+    <input type="submit" name="btn_alumnos" value="Ver alumnos">
   </td>
-    
+  </form>
   </tr>
   
  <% }}%>
