@@ -27,6 +27,18 @@
       </div>
       <div><br><br><button class='ghost-round full-width' name="btnAceptar">Aceptar</button></div>
     </div>
+    
+     <div>
+           <%
+			if(request.getAttribute("login") != null)
+			{
+			%>
+				<label style="color: red;"> Usuario y/o Contraseña incorrectos </label>
+			<%
+			}
+		
+			%>
+    </div>
   </div>
 </div>
 </form>

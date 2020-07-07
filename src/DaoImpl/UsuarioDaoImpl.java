@@ -2,15 +2,13 @@ package DaoImpl;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.List;
 
 import Dao.UsuarioDao;
-import dominio.Alumno;
-import dominio.Docente;
-import dominio.Provincia;
+import DaoImpl.Conexion;
 import dominio.Usuario;
 
 public class UsuarioDaoImpl implements UsuarioDao {
@@ -19,6 +17,8 @@ public class UsuarioDaoImpl implements UsuarioDao {
 	private String user = "root";
 	private String pass = "root";
 	private String dbName = "db_grupo4_labo4";
+	public static final String validate = "SELECT usuario, clave FROM usuarios";
+	public static final String update = "UPDATE usuarios SET password_user = ? WHERE usuario_user = ?;";
 
 
 	@Override
@@ -28,13 +28,17 @@ public class UsuarioDaoImpl implements UsuarioDao {
 		Connection cn = null;
 		
 		int filas=0;
+		
 		try
+		
 		{
 			cn = DriverManager.getConnection(host+dbName,user,pass);
 			Statement st = cn.createStatement();
 			filas = st.executeUpdate(query);
 		}
+		
 		catch(Exception e)
+		
 		{
 			e.printStackTrace();
 		}
@@ -50,6 +54,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
 		return true;
 		
 		}
+		
 	}
 
 	@Override
@@ -61,6 +66,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
 		int filas=0;
 		
 		try
+		
 		{
 			cn = DriverManager.getConnection(host+dbName,user,pass);
 			Statement st = cn.createStatement();
@@ -68,6 +74,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
 		}
 		
 		catch(Exception e)
+		
 		{
 			e.printStackTrace();
 		}
@@ -82,70 +89,89 @@ public class UsuarioDaoImpl implements UsuarioDao {
 			return true;
 			
 		}
-	}
-	
-
-	@Override
-	public boolean update_clave(String clave) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public List<Usuario> readall_usuarios() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<Usuario> readall_usuarios_consigna(String consigna) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Usuario get_usuario(Usuario usuario) {
-		String idusuario = usuario.getIdusuario();
-		String nusuario = usuario.getUsuario();
-		String claveu = usuario.getClave();
-		return new Usuario (idusuario, nusuario, claveu);
 		
 	}
 	
+
 	@Override
-	public boolean validate_usuario(String nombreusuario, String claveusuario) {
+	public boolean update_clave(String nombreusuario, String claveusuario) {
 		
-		String usuario = nombreusuario;
-		String clave = claveusuario;
-		
-		Statement statement;
-		ResultSet resultset = null;
-		
-		String usuarioDB = "";
-		String claveDB = "";
-		
-		try {
+		PreparedStatement statement;
+		boolean estado = false;
+		Conexion conexion = Conexion.getConexion();
+		try 
+		{
+			statement = conexion.getSQLConexion().prepareStatement(update);
+			statement.setString(1, pass);
+			statement.setString(2, user);
 			
-		Connection conexion = Conexion.getConexion().getSQLConexion();
-		statement = conexion.createStatement();
-		resultset = statement.executeQuery("SELECT usuario, clave FROM usuarios");
-		
-		while (resultset.next()==true) {
-			usuarioDB = resultset.getString("usuario");
-			claveDB = resultset.getString("clave");	
-			if (usuario.equals(usuarioDB) && clave.equals(claveDB)) {
-				return true;
+			if(statement.executeUpdate() > 0)
+			{			
+				estado = true;
 			}
-		}
+			
+		} 
 		
-		}
-	
 		catch (SQLException e) 
-			{
-				e.printStackTrace();
-			}
 		
-		return false;
+		{
+			e.printStackTrace();
+		}
+		
+		return estado;
+	}
+	
+	
+
+
+	public Usuario get_usuario(ResultSet resultSet) throws SQLException {
+		
+		String idusuario = resultSet.getString("idusuario");
+		String iddocente = resultSet.getString("iddocente");
+		String nusuario = resultSet.getString("usuario");
+		String claveu = resultSet.getString("clave");
+		Usuario usuario = new Usuario();
+		
+		usuario.setIdusuario(idusuario);
+		usuario.setIddocente(iddocente);
+		usuario.setClave(claveu);
+		usuario.setUsuario(nusuario);
+		
+		return usuario;
+		
+	}
+	
+	@Override
+	public Usuario validate_usuario(String nombreusuario, String claveusuario) {
+		
+		PreparedStatement statement;
+		ResultSet resultSet;
+		
+		Usuario obj = new Usuario();
+		
+		Conexion conexion = Conexion.getConexion();
+		
+		try 
+		{
+			statement = conexion.getSQLConexion().prepareStatement(validate);
+			statement.setString(1, nombreusuario);
+			statement.setString(2, claveusuario);
+			resultSet = statement.executeQuery();
+			
+			while(resultSet.next())
+			{			
+				obj = get_usuario(resultSet);
+			}
+			
+		} 
+		
+		catch (SQLException e) 
+		
+		{
+			e.printStackTrace();
+		}
+		
+		return obj;
 		
 	}
 

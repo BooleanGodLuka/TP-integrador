@@ -1,9 +1,6 @@
 package servlets;
 
 import java.io.IOException;
-import java.sql.ResultSet;
-import java.sql.Statement;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import Dao.UsuarioDao;
 import DaoImpl.UsuarioDaoImpl;
 import dominio.Usuario;
 
@@ -25,64 +23,61 @@ public class Servlet_Login extends HttpServlet {
 
     }
 
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+	}
 	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		/*Lo que hace el servlet una vez que obtiene el form con metodo POST del login, si el usuario es un docente*/
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		/*crear variable session*/
-		HttpSession session = request.getSession(true);
+		UsuarioDao usdao = new UsuarioDaoImpl();
 		
-		/*usuario que se va a extraer de la bdd*/
-		Usuario user = new Usuario();
-
-		
-		/*parametros a obtener y el home a mostrar*/
-		String nusuario = "";
-		String claveu = "";
-		String iduser = "";
-		boolean exists = false;
 		String direccion = "";
-		String error = "";
 		
 		if (request.getParameter("btnAceptar")!=null)
 		{
+			/*invalidar anterior session*/
+			request.getSession().invalidate();
 			
-			if (request.getParameter("txtUser") !=null && request.getParameter("txtPassword")!=null){
-				nusuario = request.getParameter("txtUser");
-				claveu = request.getParameter("txtPassword");
-				UsuarioDaoImpl usuarioImpl = new UsuarioDaoImpl();
-				exists = usuarioImpl.validate_usuario(user);
-				if (exists == true) {
-					user = usuarioImpl.get_usuario(usuario)
+			/*crear nueva session*/
+			HttpSession session = request.getSession(true);
+	
+			if (request.getParameter("txtUser") !=null && request.getParameter("txtPassword")!=null)
+			{
+				
+				/*parametros a obtener y el home a mostrar*/
+				String nusuario = request.getParameter("txtUser");
+				String claveu = request.getParameter("txtPassword");
+				Usuario usu = new Usuario();
+				usu = usdao.validate_usuario(nusuario, claveu);
+				
+				if (usu.getIdusuario() == "1") {
+					session.setAttribute("Usuario", usu);
+					
+					direccion = "/Home.jsp";
 					}
+				if (usu.getIdusuario() != "1") {
+					session.setAttribute("Usuario", usu);
+					
+					direccion = "/Home.jsp";
+				}
+				
 			else {
-					error = "No existe el usuario cargado.";
+				boolean exists = false;
+				request.setAttribute("login", exists);
+				direccion = "/login_JSP.jsp";
 					}
 				
-				}
-		
-			
-			if(user.getIdusuario() == "1") {
-			session.setAttribute("Usuario", nusuario);
-			direccion = "/Home.jsp";
-			}
-			
-			else {
-				session.setAttribute("Usuario", nusuario);
-				direccion = "/Home.jsp";
 			}
 
 			//requestdispatcher
-			request.setAttribute("Usuario", unsuario);
-			RequestDispatcher rd = request.getRequestDispatcher(url);
+			RequestDispatcher rd = request.getRequestDispatcher(direccion);
 			rd.forward(request, response);
+			doGet(request, response);
 
-
-	}
+		}
 
 																																
-}
+    }
 
 
 }

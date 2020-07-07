@@ -123,11 +123,23 @@ body {
 <header class="w3-top">
   <div class="navbar">
   <a href="#home">Home</a>
+  <div>
+  <!-- 
+  <%
+      		String nombre = "";
+	      	HttpSession misession = request.getSession();
+      		Usuario usu = new Usuario();
+      		usu = (Usuario)misession.getAttribute("Usuario");
+      		nombre = usu.usuario();
+      		
+   %>
+   </div>
+    -->
   <form action="../docente_listar_cursos_servlet" method="get">
   <a href="../docente_listar_cursos_servlet">Cursos</a>
   </form>
   <a href="#">Alumnos</a>
-  <div style="text-align: right;color: white">"Nombre de usuario"</div>
+  <div style="text-align: right;color: white"><!--  <%=nombre%> --> </div>
 </div>
 </header>
 
