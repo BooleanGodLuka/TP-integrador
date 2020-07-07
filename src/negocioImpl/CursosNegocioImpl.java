@@ -6,6 +6,7 @@ import java.util.List;
 import Dao.CursosDao;
 import DaoImpl.CursoDaoImpl;
 import dominio.Curso;
+import dominio.alumnoXcurso;
 import negocio.CursosNegocio;
 
 public class CursosNegocioImpl implements CursosNegocio {
@@ -48,6 +49,12 @@ public class CursosNegocioImpl implements CursosNegocio {
 	public boolean actualizar_curso(Curso curso_a_modificar) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public ArrayList<alumnoXcurso> leer_alumnoXcurso(String id_curso) {
+		// TODO Auto-generated method stub
+		return cudao.leer_alumnoXcurso(id_curso);
 	}
 
 }

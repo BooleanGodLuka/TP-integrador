@@ -9,6 +9,7 @@ import java.util.List;
 
 import Dao.CursosDao;
 import dominio.Curso;
+import dominio.alumnoXcurso;
 
 public class CursoDaoImpl implements CursosDao {
 
@@ -16,6 +17,7 @@ public class CursoDaoImpl implements CursosDao {
 	private static final String leer_todo = "SELECT * FROM cursos ";
 	private static final String update = "UPDATE cursos SET cuatrimestre= ?, año= ?,iddocente= ? where id=?";
 	private static final String delete = "DELETE FROM cursos WHERE id = ?";
+	private static final String leer_alumnosXcurso = "Select * from alumnos_x_cursos ";
 	
 	
 	
@@ -143,12 +145,65 @@ public class CursoDaoImpl implements CursosDao {
 		}
 		return cursos;
 	}
+	
+	
+	
 	@Override
 	public boolean actualizar_curso(Curso curso_a_modificar) {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+
+
+	@Override
+	public ArrayList<alumnoXcurso> leer_alumnoXcurso(String id_curso) {
+		// TODO Auto-generated method stub
+				PreparedStatement statement;
+				ResultSet resultSet; //Guarda el resultado de la query
+				ArrayList<alumnoXcurso> alumnos = new ArrayList<alumnoXcurso>();
+				Conexion conexion = Conexion.getConexion();
+				
+				try 
+				{
+					statement = conexion.getSQLConexion().prepareStatement(leer_alumnosXcurso + "WHERE idcurso=" + id_curso);
+					resultSet = statement.executeQuery();
+					while(resultSet.next())
+					{
+						alumnoXcurso cur = new alumnoXcurso();
+						
+						cur.setId_alumno(getCurso_alumnos(resultSet).getId_alumno());
+						cur.setId_curso(getCurso_alumnos(resultSet).getId_curso());
+						cur.setNota1(getCurso_alumnos(resultSet).getNota1());
+						cur.setNota2(getCurso_alumnos(resultSet).getNota2());
+						cur.setNota3(getCurso_alumnos(resultSet).getNota3());
+						cur.setNota4(getCurso_alumnos(resultSet).getNota4());
+						
+						
+						
+						alumnos.add(cur);
+					}
+				} 
+				catch (SQLException e) 
+				{
+					e.printStackTrace();
+				}
+				return alumnos;
+	}
 	
+	
+	private alumnoXcurso getCurso_alumnos(ResultSet resultSet) throws SQLException
+	{
+		int id_alumno = Integer.parseInt(resultSet.getString("idalumno"));
+		int id_curso = Integer.parseInt(resultSet.getString("idcurso"));
+		int nota1 = Integer.parseInt(resultSet.getString("nota1"));
+		int nota2 = Integer.parseInt(resultSet.getString("nota2"));
+		int nota3 = Integer.parseInt(resultSet.getString("nota3"));
+		int nota4 = Integer.parseInt(resultSet.getString("nota4"));
+		
+
+		return new alumnoXcurso(id_alumno, id_curso, nota1, nota2, nota3, nota4); 
+	}
 
 
 }
