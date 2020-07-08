@@ -36,7 +36,7 @@
 
 <body>
 
-<jsp:include page="/Otros/Navegacion.html"></jsp:include>
+<jsp:include page="/Navegacion.html"></jsp:include>
 
 <h2 ALIGN="center">LISTADO DE DOCENTES</h2>
 

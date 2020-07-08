@@ -15,7 +15,7 @@
 	
 	<body>
 	
-		<jsp:include page="/Otros/Navegacion.html"/>
+		<jsp:include page="/Navegacion.html"/>
 			
 		<h1>Alta de alumno</h1>
 		

@@ -35,7 +35,7 @@
 <body>
 
 
-<jsp:include page="/Otros/Navegacion.html"></jsp:include>
+<jsp:include page="/Navegacion.html"></jsp:include>
 
 <h2 align="center">MODIFICAR DOCENTE</h2>
 

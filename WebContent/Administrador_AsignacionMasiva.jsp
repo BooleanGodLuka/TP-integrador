@@ -94,7 +94,7 @@ input[type=submit] {
 </head>
 <body>
 
-<jsp:include page="/Otros/Navegacion.html"></jsp:include>
+<jsp:include page="/Navegacion.html"></jsp:include>
 
 <br>
 <label for="fname">Curso: [INSERTE NOMBRE DE CURSO AQUÍ]</label>

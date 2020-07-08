@@ -55,7 +55,7 @@ public class docente_listar_cursos_servlet extends HttpServlet {
 		
 		request.setAttribute("lista_cursos", lista);
 		
-		RequestDispatcher rd =request.getRequestDispatcher("Docente/Docente_ListarCursos.jsp");
+		RequestDispatcher rd =request.getRequestDispatcher("Docente_ListarCursos.jsp");
 		rd.forward(request, response);
 		
 		
