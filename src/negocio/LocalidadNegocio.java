@@ -3,7 +3,6 @@ package negocio;
 import java.util.List;
 
 import dominio.Localidad;
-import dominio.Provincia;
 
 public interface LocalidadNegocio {
 
@@ -12,7 +11,7 @@ public interface LocalidadNegocio {
 	public boolean delete(Localidad localidad_a_borrar);
 
 	public List<Localidad> readall();
-	public List<Localidad> readall(Provincia provincia_seleccionada);
+	public List<Localidad> readall(String idprovincia);
 
 	public boolean update(Localidad localidad_a_modificar);
 

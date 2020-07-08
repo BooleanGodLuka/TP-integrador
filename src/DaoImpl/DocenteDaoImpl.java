@@ -12,10 +12,10 @@ import dominio.Docente;
 
 public class DocenteDaoImpl implements DocenteDao {
 
-	private static final String insert = "INSERT INTO docentes (dni, nombre, apellido, fechanacimiento, email, direccion, idlocalidad, activo) VALUES (?, ?, ?, ?, ?, ?, ?, true) ";
-	private static final String delete = "DELETE FROM alumnos WHERE id = ? ";
+	private static final String insert = "INSERT INTO docentes (dni, nombre, apellido, fechanacimiento, direccion, idlocalidad, email, telefono, activo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, true) ";
+	private static final String delete = "UPDATE docentes (activo) VALUES (false) WHERE id = ? ";
 	private static final String readall = "SELECT * FROM docentes ";
-	private static final String update = "UPDATE docentes (dni, nombre, apellido, fechanacimiento, email, direccion, idlocalidad, activo) VALUES (?, ?, ?, ?, ?, ?, ?, activo) WHERE id = ? ";
+	private static final String update = "UPDATE docentes (dni, nombre, apellido, fechanacimiento, direccion, idlocalidad, email, telefono, activo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, activo) WHERE id = ? ";
 
 	@Override
 	public boolean insert(Docente docente) {
@@ -28,9 +28,10 @@ public class DocenteDaoImpl implements DocenteDao {
 			statement.setString(2, docente.getNombre());
 			statement.setString(3, docente.getApellido());
 			statement.setString(4, docente.getFechaNacimiento());
-			statement.setString(5, docente.getEmail());
-			statement.setString(6, docente.getDireccion());
-			statement.setString(7, docente.getIDLocalidad());
+			statement.setString(5, docente.getDireccion());
+			statement.setString(6, docente.getIDLocalidad());
+			statement.setString(7, docente.getEmail());
+			statement.setInt(8, docente.getTelefono());
 			if (statement.executeUpdate() > 0) {
 				conexion.commit();
 				isInsertExitoso = true;
@@ -51,18 +52,18 @@ public class DocenteDaoImpl implements DocenteDao {
 	public boolean delete(Docente docente_a_eliminar) {
 		PreparedStatement statement;
 		Connection conexion = Conexion.getConexion().getSQLConexion();
-		boolean isdeleteExitoso = false;
+		boolean isDeleteExitoso = false;
 		try {
 			statement = conexion.prepareStatement(delete);
 			statement.setString(1, Integer.toString(docente_a_eliminar.getLegajo()));
 			if (statement.executeUpdate() > 0) {
 				conexion.commit();
-				isdeleteExitoso = true;
+				isDeleteExitoso = true;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return isdeleteExitoso;
+		return isDeleteExitoso;
 	}
 
 	@Override
@@ -112,10 +113,11 @@ public class DocenteDaoImpl implements DocenteDao {
 			statement.setString(2, docente_a_modificar.getNombre());
 			statement.setString(3, docente_a_modificar.getApellido());
 			statement.setString(4, docente_a_modificar.getFechaNacimiento());
-			statement.setString(5, docente_a_modificar.getEmail());
-			statement.setString(6, docente_a_modificar.getDireccion());
-			statement.setInt(7, docente_a_modificar.getTelefono());
-			statement.setString(8, docente_a_modificar.getIDLocalidad());
+			statement.setString(5, docente_a_modificar.getDireccion());
+			statement.setString(6, docente_a_modificar.getIDLocalidad());
+			statement.setString(7, docente_a_modificar.getEmail());
+			statement.setInt(8, docente_a_modificar.getTelefono());
+			statement.setInt(9, docente_a_modificar.getLegajo());
 			if (statement.executeUpdate() > 0) {
 				conexion.commit();
 				isInsertExitoso = true;
@@ -138,12 +140,12 @@ public class DocenteDaoImpl implements DocenteDao {
 		String nombre = resultSet.getString("nombre");
 		String apellido = resultSet.getString("apellido");
 		String fechanacimiento = resultSet.getString("fechanacimiento");
-		String email = resultSet.getString("email");
 		String direccion = resultSet.getString("direccion");
 		String idlocalidad = resultSet.getString("idlocalidad");
+		String email = resultSet.getString("email");
 		int telefono = resultSet.getInt("telefono");
 		Boolean activo = resultSet.getBoolean("activo");
-		return new Docente(legajo, dni, nombre, apellido, fechanacimiento, email, direccion, idlocalidad, telefono,
+		return new Docente(legajo, dni, nombre, apellido, fechanacimiento, direccion, idlocalidad, email, telefono,
 				activo);
 	}
 

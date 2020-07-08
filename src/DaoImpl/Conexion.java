@@ -16,8 +16,8 @@ public class Conexion {
 
 	private Conexion() {
 		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-			this.connection = DriverManager.getConnection(host + dbName + aux, user, pass);
+			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+			this.connection = DriverManager.getConnection(host + dbName /*+ aux*/, user, pass);
 			this.connection.setAutoCommit(false);
 
 		} catch (Exception e) {

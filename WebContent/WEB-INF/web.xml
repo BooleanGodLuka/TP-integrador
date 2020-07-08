@@ -19,4 +19,14 @@
     <servlet-name>asd</servlet-name>
     <url-pattern>/asd</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletProvinciaLocalidad</display-name>
+    <servlet-name>ServletProvinciaLocalidad</servlet-name>
+    <servlet-class>servlets.ServletAlta</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletProvinciaLocalidad</servlet-name>
+    <url-pattern>/ServletProvinciaLocalidad</url-pattern>
+  </servlet-mapping>
 </web-app>

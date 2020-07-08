@@ -7,11 +7,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import Dao.CursosDao;
+import Dao.CursoDao;
 import dominio.Curso;
 import dominio.alumnoXcurso;
 
-public class CursoDaoImpl implements CursosDao {
+public class CursoDaoImpl implements CursoDao {
 
 	private static final String insert = "INSERT INTO cursos(id, cuatrimestre, año,iddocente,idmateria) VALUES(?, ?, ?, ?, ?)";
 	private static final String leer_todo = "SELECT * FROM cursos ";

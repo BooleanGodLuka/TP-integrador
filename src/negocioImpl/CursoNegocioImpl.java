@@ -3,16 +3,16 @@ package negocioImpl;
 import java.util.ArrayList;
 import java.util.List;
 
-import Dao.CursosDao;
+import Dao.CursoDao;
 import DaoImpl.CursoDaoImpl;
 import dominio.Curso;
 import dominio.alumnoXcurso;
-import negocio.CursosNegocio;
+import negocio.CursoNegocio;
 
-public class CursosNegocioImpl implements CursosNegocio {
+public class CursoNegocioImpl implements CursoNegocio {
 
 	
-	CursosDao cudao = new CursoDaoImpl();
+	CursoDao cudao = new CursoDaoImpl();
 	
 	
 	@Override

@@ -20,39 +20,38 @@ import negocioImpl.AlumnoNegocioImpl;
 import negocioImpl.LocalidadNegocioImpl;
 import negocioImpl.ProvinciaNegocioImpl;
 
-@WebServlet(name = "ServletAlta", urlPatterns = { "/ServletAlta" })
+@WebServlet(name = "ServletAlta")
 public class ServletAlta extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	ProvinciaNegocio provinciaNeg = new ProvinciaNegocioImpl();
 	LocalidadNegocio localidadNeg = new LocalidadNegocioImpl();
-	AlumnoNegocio alumNeg = new AlumnoNegocioImpl();
+	AlumnoNegocio alumnoNeg = new AlumnoNegocioImpl();
 
 	public ServletAlta() {
 		super();
 	}
 
-	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try {
 			if (request.getParameter("Param") != null) {
-
+				
 				List<Provincia> provincias = provinciaNeg.readall();
 				request.setAttribute("ListaProvincias", provincias);
 
-				listLocalidades(request, response);
-
-				RequestDispatcher rd = request.getRequestDispatcher("Administrador/Alta/Administrador_AltaAlumno.jsp");
-				rd.forward(request, response);
-
+				List<Localidad> localidades = localidadNeg.readall();
+				request.setAttribute("ListaLocalidades", localidades);
 			}
+
+			RequestDispatcher rd = request.getRequestDispatcher("/Administrador/Alta/Administrador_AltaAlumno.jsp");
+			rd.forward(request, response);
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
-	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO la idea era cargar el combobox mandando un form por post... al apretar
@@ -77,24 +76,19 @@ public class ServletAlta extends HttpServlet {
 				path = "Administrador/Altas/Administrador_AltaDocente.jsp";
 			}
 
-			RequestDispatcher rd = request.getRequestDispatcher(path);
-			rd.forward(request, response);
+			if (request.getParameter("provincia") != null) {
 
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
-	private void listLocalidades(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		try {
-			if (request.getParameter("Param") != null) {
 				List<Provincia> provincias = provinciaNeg.readall();
 				request.setAttribute("ListaProvincias", provincias);
 
-				List<Localidad> localidades = localidadNeg.readall();
+				List<Localidad> localidades = localidadNeg.readall((String) request.getParameter("provincia"));
 				request.setAttribute("ListaLocalidades", localidades);
+				path = "Administrador/Altas/Administrador_AltaDocente.jsp";
 			}
+
+			RequestDispatcher rd = request.getRequestDispatcher(path);
+			rd.forward(request, response);
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -111,8 +105,8 @@ public class ServletAlta extends HttpServlet {
 		alumno.setIDLocalidad(request.getParameter("localidad"));
 		alumno.setTelefono(Integer.parseInt(request.getParameter("telefono")));
 		alumno.setActivo(Boolean.getBoolean(request.getParameter("activo")));
-		
-		alumNeg.insert(alumno);
+
+		alumnoNeg.insert(alumno);
 
 		return alumno;
 	}

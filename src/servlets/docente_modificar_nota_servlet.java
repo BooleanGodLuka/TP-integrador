@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dominio.alumnoXcurso;
-import negocioImpl.CursosNegocioImpl;
+import negocioImpl.CursoNegocioImpl;
 
 /**
  * Servlet implementation class docente_modificar_nota_servlet
@@ -34,7 +34,7 @@ public class docente_modificar_nota_servlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		CursosNegocioImpl cudao = new CursosNegocioImpl();
+		CursoNegocioImpl cudao = new CursoNegocioImpl();
 		
 		if (request.getParameter("btn_alumnos") != null) {
 			

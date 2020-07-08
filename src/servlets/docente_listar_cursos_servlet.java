@@ -15,7 +15,7 @@ import com.mysql.cj.Session;
 
 import dominio.Curso;
 import dominio.Docente;
-import negocioImpl.CursosNegocioImpl;
+import negocioImpl.CursoNegocioImpl;
 
 /**
  * Servlet implementation class docente_listar_cursos_servlet
@@ -39,15 +39,15 @@ public class docente_listar_cursos_servlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		int filas =0;
 		
-		Docente usuario = new Docente(2, "46256673", "Heidi", "Branch","1994/06/06","parturient.montes@ipsum.co.uk","Apartado núm.: 361, 6308 Et Calle",4);
+		Docente usuario = new Docente(2, 46256673, "Heidi", "Branch", "1994/06/06", "Apartado núm.: 361, 6308 Et Calle", "4", "parturient.montes@ipsum.co.uk", 47407896, true);
 		
 		HttpSession session = request.getSession();
 		session.setAttribute("usr", usuario);
 		
-		String consulta = "iddocente = " + usuario.getId();
+		String consulta = "iddocente = " + usuario.getLegajo();
 		
 		
-		CursosNegocioImpl cudao = new CursosNegocioImpl();
+		CursoNegocioImpl cudao = new CursoNegocioImpl();
 				
 		
 		ArrayList<Curso> lista = cudao.leer_todo_curso_consigna(consulta);

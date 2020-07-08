@@ -28,8 +28,8 @@ public class LocalidadNegocioImpl implements LocalidadNegocio{
 	}
 
 	@Override
-	public List<Localidad> readall(Provincia provincia_seleccionada) {
-		return ldao.readall(provincia_seleccionada);
+	public List<Localidad> readall(String idprovincia) {
+		return ldao.readall(idprovincia);
 	}
 
 	@Override

@@ -9,9 +9,9 @@ public class Docente {
 	private String Nombre;
 	private String Apellido;
 	private String FechaNacimiento;
-	private String Email;
 	private String Direccion;
 	private String IDLocalidad;
+	private String Email;
 	private int Telefono;
 	private Boolean Activo;
 
@@ -26,24 +26,39 @@ public class Docente {
 		this.Nombre = a.Nombre;
 		this.Apellido = a.Apellido;
 		this.FechaNacimiento = a.FechaNacimiento;
-		this.Email = a.Email;
 		this.Direccion = a.Direccion;
 		this.IDLocalidad = a.IDLocalidad;
+		this.Email = a.Email;
 		this.Telefono = a.Telefono;
 		this.Activo = a.Activo;
 	}
 
-	public Docente(int id, int dni, String nombre, String apellido, String fnacimiento, String email,
-			String direccion, String idlocalidad, int telefono, Boolean activo) {
+	public Docente(int id, int dni, String nombre, String apellido, String fnacimiento, String direccion,
+			String idlocalidad, String email, int telefono, Boolean activo) {
 		super();
 		this.Legajo = id;
 		this.Dni = dni;
 		this.Nombre = nombre;
 		this.Apellido = apellido;
 		this.FechaNacimiento = fnacimiento;
-		this.Email = email;
 		this.Direccion = direccion;
 		this.IDLocalidad = idlocalidad;
+		this.Email = email;
+		this.Telefono = telefono;
+		this.Activo = activo;
+	}
+
+	public Docente(int dni, String nombre, String apellido, String fnacimiento, String direccion, String idlocalidad,
+			String email, int telefono, Boolean activo) {
+		super();
+		this.Legajo = 0;
+		this.Dni = dni;
+		this.Nombre = nombre;
+		this.Apellido = apellido;
+		this.FechaNacimiento = fnacimiento;
+		this.Direccion = direccion;
+		this.IDLocalidad = idlocalidad;
+		this.Email = email;
 		this.Telefono = telefono;
 		this.Activo = activo;
 	}
@@ -88,14 +103,6 @@ public class Docente {
 		FechaNacimiento = fechaNacimiento;
 	}
 
-	public String getEmail() {
-		return Email;
-	}
-
-	public void setEmail(String email) {
-		Email = email;
-	}
-
 	public String getDireccion() {
 		return Direccion;
 	}
@@ -110,6 +117,14 @@ public class Docente {
 
 	public void setIDLocalidad(String iDLocalidad) {
 		IDLocalidad = iDLocalidad;
+	}
+
+	public String getEmail() {
+		return Email;
+	}
+
+	public void setEmail(String email) {
+		Email = email;
 	}
 
 	public int getTelefono() {
@@ -130,9 +145,7 @@ public class Docente {
 
 	@Override
 	public String toString() {
-		return "Docente [id=" + Legajo + ", dni=" + Dni + ", nombre=" + Nombre + ", apellido=" + Apellido
-				+ ", fechanacimiento=" + FechaNacimiento + ", email=" + Email + ", direccion=" + Direccion
-				+ ", idlocalidad=" + IDLocalidad + "]";
+		return "Docente " + Apellido + ", " + Nombre + " - Legajo Nº " + Legajo;
 	}
 
 	public boolean validar_exist(ArrayList<Docente> lista) {

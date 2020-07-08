@@ -1,7 +1,6 @@
 package DaoImpl;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -13,10 +12,10 @@ import dominio.Alumno;
 
 public class AlumnoDaoImpl implements AlumnoDao {
 
-	private static final String insert = "INSERT INTO alumnos(dni, nombre, apellido, fechanacimiento, email, direccion, idlocalidad) VALUES (?, ?, ?, ?, ?, ?, ?) ";
-	private static final String delete = "DELETE FROM alumnos WHERE id = ? ";
+	private static final String insert = "INSERT INTO alumnos(dni, nombre, apellido, fechanacimiento, direccion, idlocalidad, email, telefono, activo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, true) ";
+	private static final String delete = "UPDATE alumnos (activo) VALUES (false) WHERE id = ? ";
 	private static final String readall = "SELECT * FROM alumnos ";
-	private static final String update = "UPDATE alumnos (dni, nombre, apellido, fechanacimiento, email, direccion, idlocalidad) VALUES (?, ?, ?, ?, ?, ?, ?) WHERE id = ? ";
+	private static final String update = "UPDATE alumnos (dni, nombre, apellido, fechanacimiento, direccion, idlocalidad, email, telefono, activo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) WHERE id = ? ";
 
 	@Override
 	public boolean insert(Alumno alumno) {
@@ -29,9 +28,10 @@ public class AlumnoDaoImpl implements AlumnoDao {
 			statement.setString(2, alumno.getNombre());
 			statement.setString(3, alumno.getApellido());
 			statement.setString(4, alumno.getFechaNacimiento());
-			statement.setString(5, alumno.getEmail());
-			statement.setString(6, alumno.getDireccion());
-			statement.setString(7, alumno.getIDLocalidad());
+			statement.setString(5, alumno.getDireccion());
+			statement.setString(6, alumno.getIDLocalidad());
+			statement.setString(7, alumno.getEmail());
+			statement.setInt(8, alumno.getTelefono());
 			if (statement.executeUpdate() > 0) {
 				conexion.commit();
 				isInsertExitoso = true;
@@ -49,21 +49,21 @@ public class AlumnoDaoImpl implements AlumnoDao {
 	}
 
 	@Override
-	public boolean delete(Alumno alumno_a_borrar) {
+	public boolean delete(Alumno alumno_a_eliminar) {
 		PreparedStatement statement;
 		Connection conexion = Conexion.getConexion().getSQLConexion();
-		boolean isdeleteExitoso = false;
+		boolean isDeleteExitoso = false;
 		try {
 			statement = conexion.prepareStatement(delete);
-			statement.setString(1, Integer.toString(alumno_a_borrar.getLegajo()));
+			statement.setString(1, Integer.toString(alumno_a_eliminar.getLegajo()));
 			if (statement.executeUpdate() > 0) {
 				conexion.commit();
-				isdeleteExitoso = true;
+				isDeleteExitoso = true;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return isdeleteExitoso;
+		return isDeleteExitoso;
 	}
 
 	@Override
@@ -84,7 +84,6 @@ public class AlumnoDaoImpl implements AlumnoDao {
 		return lista;
 	}
 
-	//se llama readall pero lee un solo alumno a partir de la ID
 	@Override
 	public List<Alumno> readall(String consigna) {
 		PreparedStatement statement;
@@ -107,20 +106,22 @@ public class AlumnoDaoImpl implements AlumnoDao {
 	public boolean update(Alumno alumno_a_modificar) {
 		PreparedStatement statement;
 		Connection conexion = Conexion.getConexion().getSQLConexion();
-		boolean isInsertExitoso = false;
+		boolean isUpdateExitoso = false;
 		try {
 			statement = conexion.prepareStatement(update);
 			statement.setInt(1, alumno_a_modificar.getDni());
 			statement.setString(2, alumno_a_modificar.getNombre());
 			statement.setString(3, alumno_a_modificar.getApellido());
 			statement.setString(4, alumno_a_modificar.getFechaNacimiento());
-			statement.setString(5, alumno_a_modificar.getEmail());
-			statement.setString(6, alumno_a_modificar.getDireccion());
-			statement.setInt(7, alumno_a_modificar.getTelefono());
-			statement.setString(8, alumno_a_modificar.getIDLocalidad());
+			statement.setString(5, alumno_a_modificar.getDireccion());
+			statement.setString(6, alumno_a_modificar.getIDLocalidad());
+			statement.setString(7, alumno_a_modificar.getEmail());
+			statement.setInt(8, alumno_a_modificar.getTelefono());
+			statement.setBoolean(9, alumno_a_modificar.getActivo());
+			statement.setInt(10, alumno_a_modificar.getLegajo());
 			if (statement.executeUpdate() > 0) {
 				conexion.commit();
-				isInsertExitoso = true;
+				isUpdateExitoso = true;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -131,7 +132,7 @@ public class AlumnoDaoImpl implements AlumnoDao {
 			}
 		}
 
-		return isInsertExitoso;
+		return isUpdateExitoso;
 	}
 
 	private Alumno getAlumno(ResultSet resultSet) throws SQLException {
@@ -144,8 +145,9 @@ public class AlumnoDaoImpl implements AlumnoDao {
 		String direccion = resultSet.getString("direccion");
 		String idlocalidad = resultSet.getString("idlocalidad");
 		int telefono = resultSet.getInt("telefono");
+		Boolean activo = resultSet.getBoolean("activo");
 		return new Alumno(legajo, dni, nombre, apellido,
-				fechanacimiento, email, direccion, idlocalidad, telefono, true);
+				fechanacimiento, direccion, idlocalidad, email, telefono, activo);
 	}
 
 }
