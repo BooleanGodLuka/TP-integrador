@@ -44,12 +44,13 @@ public class Servlet_Login extends HttpServlet {
 			if (request.getParameter("txtUser") !=null && request.getParameter("txtPassword")!=null)
 			{
 				
-				/*parametros a obtener y el home a mostrar*/
+				/*parametros a obtener*/
 				String nusuario = request.getParameter("txtUser");
 				String claveu = request.getParameter("txtPassword");
 				Usuario usu = new Usuario();
 				usu = usdao.validate_usuario(nusuario, claveu);
 				
+				/*el home a mostrar*/
 				if (usu.getIdusuario() == "1") {
 					session.setAttribute("Usuario", usu);
 					
