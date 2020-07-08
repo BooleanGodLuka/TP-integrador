@@ -12,7 +12,7 @@ import negocio.CursosNegocio;
 public class CursosNegocioImpl implements CursosNegocio {
 
 	
-	CursosDao cudao = new CursoDaoImpl();
+	CursoDaoImpl cudao =  new CursoDaoImpl();
 	
 	
 	@Override

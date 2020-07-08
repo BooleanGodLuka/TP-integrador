@@ -56,6 +56,12 @@ public class CursoDaoImpl implements CursosDao {
 	}
 	
 	
+	public CursoDaoImpl()
+	{
+
+	}
+	
+	
 	
 	@Override
 	public boolean borrar_curso(Curso curso_a_borrar) {
