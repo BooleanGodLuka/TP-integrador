@@ -128,7 +128,7 @@ input[type=submit] {
     <th>Final</th>
   </tr>
   
-  
+   
   <% if (request.getParameter("lista_alumnos") != null){
 	ArrayList<alumnoXcurso> lista;
 	lista = (ArrayList<alumnoXcurso>) request.getAttribute("lista_alumnos");
@@ -137,19 +137,19 @@ input[type=submit] {
 	for (alumnoXcurso cur: lista ){
 %>  
   <tr>
-    <td>0001</td>
-    <td>Juan</td>
-    <td>Perez</td>
-    <td><input type="text" id="nota" name="nota1" placeholder="Nota"></td>
-    <td><input type="text" id="nota" name="nota2" placeholder="Nota"></td>
-    <td><input type="text" id="nota" name="nota3" placeholder="Nota"></td>
-    <td><input type="text" id="nota" name="nota4" placeholder="Nota"></td>
+    <td><%= cur.getId_alumno() %></td> <input type="hidden" name ="alumno_<%=cur.getId_alumno() %>" value= "<%=cur.getId_alumno() %>" >
+    <td><%= cur.getNombre() %></td>
+    <td><%= cur.getApellido() %></td>
+    <td><input type="text" id="nota" name="nota1_<%=cur.getId_alumno() %>" placeholder="<%=cur.getNota1() %>"></td>
+    <td><input type="text" id="nota" name="nota2_<%=cur.getId_alumno() %>" placeholder="<%=cur.getNota2() %>"></td>
+    <td><input type="text" id="nota" name="nota3_<%=cur.getId_alumno() %>" placeholder="<%=cur.getNota3() %>"></td>
+    <td><input type="text" id="nota" name="nota4_<%=cur.getId_alumno() %>" placeholder="<%=cur.getNota4() %>"></td>
   </tr>
  <%}} %> 
   
 </table>
 
-<input type="submit" value="Guardar notas">
+<input type="submit" name="btn_guardar" value="Guardar notas">
 
 </form>
 

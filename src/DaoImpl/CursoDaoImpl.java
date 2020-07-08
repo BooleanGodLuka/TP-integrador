@@ -7,17 +7,18 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import Dao.CursoDao;
+import Dao.CursosDao;
 import dominio.Curso;
 import dominio.alumnoXcurso;
 
-public class CursoDaoImpl implements CursoDao {
+public class CursoDaoImpl implements CursosDao {
 
 	private static final String insert = "INSERT INTO cursos(id, cuatrimestre, año,iddocente,idmateria) VALUES(?, ?, ?, ?, ?)";
 	private static final String leer_todo = "SELECT * FROM cursos ";
 	private static final String update = "UPDATE cursos SET cuatrimestre= ?, año= ?,iddocente= ? where id=?";
 	private static final String delete = "DELETE FROM cursos WHERE id = ?";
 	private static final String leer_alumnosXcurso = "Select * from alumnos_x_cursos ";
+	private static final String update_alumnoXcurso = "UPDATE alumnos_x_cursos SET nota1= ?, nota2= ?, nota3= ?, nota4= ? WHERE idalumno= ? AND idcurso= ?"; 
 	
 	
 	
@@ -174,6 +175,8 @@ public class CursoDaoImpl implements CursoDao {
 						
 						cur.setId_alumno(getCurso_alumnos(resultSet).getId_alumno());
 						cur.setId_curso(getCurso_alumnos(resultSet).getId_curso());
+						cur.setNombre(getCurso_alumnos(resultSet).getNombre());
+						cur.setApellido(getCurso_alumnos(resultSet).getApellido());
 						cur.setNota1(getCurso_alumnos(resultSet).getNota1());
 						cur.setNota2(getCurso_alumnos(resultSet).getNota2());
 						cur.setNota3(getCurso_alumnos(resultSet).getNota3());
@@ -200,10 +203,48 @@ public class CursoDaoImpl implements CursoDao {
 		int nota2 = Integer.parseInt(resultSet.getString("nota2"));
 		int nota3 = Integer.parseInt(resultSet.getString("nota3"));
 		int nota4 = Integer.parseInt(resultSet.getString("nota4"));
-		
+		String nombre = resultSet.getString("nombre_alumno");
+		String apellido = resultSet.getString("apellido_alumno");
 
-		return new alumnoXcurso(id_alumno, id_curso, nota1, nota2, nota3, nota4); 
+		return new alumnoXcurso(id_alumno, id_curso, nota1, nota2, nota3, nota4, nombre, apellido); 
 	}
 
 
+
+	@Override
+	public boolean actualizar_alumnoXcurso(alumnoXcurso alumno) {
+		PreparedStatement statement;
+		Connection conexion = Conexion.getConexion().getSQLConexion();
+		boolean isUpdateExitoso = false;
+		try
+		{
+			statement = conexion.prepareStatement(update_alumnoXcurso);
+			statement.setInt(1, alumno.getNota1());
+			statement.setInt(2, alumno.getNota2());
+			statement.setInt(3, alumno.getNota3());
+			statement.setInt(4, alumno.getNota4());
+			statement.setInt(5, alumno.getId_alumno());
+			statement.setInt(6, alumno.getId_curso());
+			
+			if(statement.executeUpdate() > 0)
+			{
+				conexion.commit();
+				isUpdateExitoso = true;
+			}
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+			try {
+				conexion.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+		}
+		
+		return isUpdateExitoso;
+	}
+
+
+	
 }

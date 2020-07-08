@@ -260,6 +260,8 @@ INSERT INTO cursos (cuatrimestre, anio, idmateria, iddocente, activo) VALUES ("2
 create table alumnos_x_cursos (
 	idalumno int not null,
     idcurso int not null,
+    nombre_alumno varchar(30),
+    apellido_alumno varchar(30),
     nota1 int,
     nota2 int,
     nota3 int,
@@ -270,10 +272,10 @@ create table alumnos_x_cursos (
     PRIMARY KEY (idalumno, idcurso)
 );
 
-INSERT INTO alumnos_x_cursos (idalumno, idcurso, nota1, nota2, nota3, nota4, aprobado) VALUES (1, 1, 7, 5, 9, 7, true);
-INSERT INTO alumnos_x_cursos (idalumno, idcurso, nota1, nota2, nota3, nota4, aprobado) VALUES (1, 2, 7, 6, 7, 8, true);
-INSERT INTO alumnos_x_cursos (idalumno, idcurso, nota1, nota2, nota3, nota4, aprobado) VALUES (1, 3, 9, 8, 9, 10, true);
-INSERT INTO alumnos_x_cursos (idalumno, idcurso, nota1, nota2, nota3, nota4, aprobado) VALUES (1, 4, 4, 7, 9, 9, true);
+INSERT INTO alumnos_x_cursos (idalumno, idcurso, nota1, nota2, nota3, nota4, aprobado, nombre_alumno, apellido_alumno) VALUES (1, 1, 7, 5, 9, 7, true,"Beatrice","Bryan");
+INSERT INTO alumnos_x_cursos (idalumno, idcurso, nota1, nota2, nota3, nota4, aprobado, nombre_alumno, apellido_alumno) VALUES (1, 2, 7, 6, 7, 8, true,"Beatrice","Bryan");
+INSERT INTO alumnos_x_cursos (idalumno, idcurso, nota1, nota2, nota3, nota4, aprobado, nombre_alumno, apellido_alumno) VALUES (1, 3, 9, 8, 9, 10, true,"Beatrice","Bryan");
+INSERT INTO alumnos_x_cursos (idalumno, idcurso, nota1, nota2, nota3, nota4, aprobado, nombre_alumno, apellido_alumno) VALUES (1, 4, 4, 7, 9, 9, true,"Beatrice","Bryan");
 
 create table usuarios (
 	idusuario int not null auto_increment,
