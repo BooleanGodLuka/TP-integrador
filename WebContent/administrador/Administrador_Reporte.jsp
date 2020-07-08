@@ -1,3 +1,5 @@
+<%@page import=" dominio.Reporte"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -140,26 +142,26 @@ input[type=submit] {
 			<th>Aprobaciones</th>
 			<th>Desaprobaciones</th>
 			<th>Porcentaje</th>
+<% if (request.getParameter("lista_reportes") != null){
+	ArrayList<Reporte> lista;
+	lista = (ArrayList<Reporte>) request.getAttribute("lista_reportes");
+	
+	
+	for (Reporte rep: lista ){
+%>  
+		
 		<tr>
-			<td>Laboratorio 4</td>
-			<td>2do</td>
-			<td>2020</td>
-			<td>Tamara Herrera</td>
-			<td>100</td>
-			<td>65</td>
-			<td>35</td>
-			<td>65%</td>
+			<td><%=rep.getMateria() %></td>
+			<td><%=rep.getCuatri() %></td>
+			<td><%=rep.getAño() %></td>
+			<td><%=rep.getDocente() %></td>
+			<td><%=rep.getCant_alumn() %></td>
+			<td><%=rep.getCant_aprob() %></td>
+			<td><%=rep.getCant_desaprob() %></td>
+			<td><%=rep.getPorcentaje() %> %</td>
+		
 		</tr>
-		<tr>
-			<td>Laboratorio 3</td>
-			<td>1ro</td>
-			<td>2020</td>
-			<td>Maximiliano Sar Fernandez</td>
-			<td>200</td>
-			<td>110</td>
-			<td>90</td>
-			<td>55%</td>
-		</tr>
+<%}} %>	
 	</table>
 	
 	<br>

@@ -19,7 +19,7 @@ public class CursoDaoImpl implements CursosDao {
 	private static final String delete = "DELETE FROM cursos WHERE id = ?";
 	private static final String leer_alumnosXcurso = "Select * from alumnos_x_cursos ";
 	private static final String update_alumnoXcurso = "UPDATE alumnos_x_cursos SET nota1= ?, nota2= ?, nota3= ?, nota4= ? WHERE idalumno= ? AND idcurso= ?"; 
-	
+	private static final String leer_mat = "SELECT * FROM materias";
 	
 	
 	@Override
@@ -243,6 +243,32 @@ public class CursoDaoImpl implements CursosDao {
 		}
 		
 		return isUpdateExitoso;
+	}
+
+
+
+	@Override
+	public String leer_materia(String id) {
+		PreparedStatement statement;
+		ResultSet resultSet; //Guarda el resultado de la query
+		Conexion conexion = Conexion.getConexion();
+		String materia = "";
+		try 
+		{
+			statement = conexion.getSQLConexion().prepareStatement(leer_mat + " WHERE id=" + id);
+			resultSet = statement.executeQuery();
+			while(resultSet.next())
+			{
+				materia = resultSet.getString("nombre");
+				
+				
+			}
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		return materia;
 	}
 
 

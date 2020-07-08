@@ -37,7 +37,6 @@ public class docente_listar_cursos_servlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		int filas =0;
 		
 		//Docente usuario = new Docente("2", "46256673", "Heidi", "Branch","1994/06/06","parturient.montes@ipsum.co.uk",,"4");
 		Docente usuario = new Docente(2, 46256673, "Heidi", "Branch", "1994/06/06", "parturient.montes@ipsum.co.uk", "Apartado núm.: 361, 6308 Et Calle", "2", 1586475641, true); 

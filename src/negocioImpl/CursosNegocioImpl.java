@@ -63,4 +63,50 @@ public class CursosNegocioImpl implements CursosNegocio {
 		return cudao.actualizar_alumnoXcurso(alumno);
 	}
 
+	@Override
+	public int calcular_cant_alumnXcurso(String id) {
+		// TODO Auto-generated method stub
+		int cont= 0;
+		ArrayList<alumnoXcurso> lista = cudao.leer_alumnoXcurso(id);
+		
+		for (alumnoXcurso al : lista) {
+		cont++;
+		}
+		return cont;
+	}
+
+	@Override
+	public int calcular_cant_alumnXcurso_aprob(String id) {
+		// TODO Auto-generated method stub
+		int cont= 0;
+		ArrayList<alumnoXcurso> lista = cudao.leer_alumnoXcurso(id);
+		
+		for (alumnoXcurso al : lista) {
+		if (al.getNota4()>6) {
+			cont++;
+		}
+		}
+		return cont;
+	}
+
+	@Override
+	public int calcular_cant_alumnXcurso_desap(String id) {
+		// TODO Auto-generated method stub
+		int cont= 0;
+		ArrayList<alumnoXcurso> lista = cudao.leer_alumnoXcurso(id);
+		
+		for (alumnoXcurso al : lista) {
+		if (al.getNota4()<6) {
+			cont++;
+		}
+		}
+		return cont;
+	}
+
+	@Override
+	public String leer_materia(String id) {
+		// TODO Auto-generated method stub
+		return cudao.leer_materia(id);
+	}
+
 }

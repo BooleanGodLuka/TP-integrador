@@ -21,5 +21,7 @@ public interface CursosDao {
 	public ArrayList <alumnoXcurso> leer_alumnoXcurso(String id_curso);
 	
 	public boolean actualizar_alumnoXcurso (alumnoXcurso alumno);
+	
+	public String leer_materia (String id);
 
 }

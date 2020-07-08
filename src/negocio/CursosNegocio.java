@@ -20,4 +20,12 @@ public interface CursosNegocio {
 	public ArrayList <alumnoXcurso> leer_alumnoXcurso(String id_curso);
 	
 	public boolean actualizar_alumnoXcurso (alumnoXcurso alumno);
+	
+	public int calcular_cant_alumnXcurso (String id);
+	
+	public int calcular_cant_alumnXcurso_aprob (String id);
+	
+	public int calcular_cant_alumnXcurso_desap (String id);
+	
+	public String leer_materia (String id);
 }
