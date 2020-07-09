@@ -51,16 +51,10 @@ public class Servlet_Login extends HttpServlet {
 				usu = usdao.validate_usuario(nusuario, claveu);
 				
 				/*el home a mostrar*/
-				if (usu.getIdusuario() == "1") {
-					session.setAttribute("Usuario", usu);
-					
+				if (usu.getIdusuario() != null ) {
+					session.setAttribute("Usuario", usu);	
 					direccion = "Home.jsp";
 					}
-				if (usu.getIdusuario() != "1") {
-					session.setAttribute("Usuario", usu);
-					
-					direccion = "Home.jsp";
-				}
 				
 			else {
 				boolean exists = false;

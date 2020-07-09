@@ -17,7 +17,7 @@
   <div class='window'>
     <div class='overlay'></div>
     <div class='content'>
-      <div class='welcome'>Bienvenido!</div> <br>
+      <div class='welcome'>Bienvenido!</div> <br> <br> <br>
       <div class='subtitle'>Por favor ingrese con sus credenciales</div>
       <div class='input-fields'>
         <input type='text' placeholder='Usuario' class='input-line full-width' name="txtUser" required></input> 
@@ -33,8 +33,9 @@
            <%
 			if(request.getAttribute("login") != null)
 			{
-			%>
-				<label style="color: red;"> Usuario y/o Contraseña incorrectos </label>
+			%><div align="center">
+				<label class='subtitle' style="color:red;"> Usuario y/o Contraseña incorrectos </label>
+				</div>
 			<%
 			}
 		

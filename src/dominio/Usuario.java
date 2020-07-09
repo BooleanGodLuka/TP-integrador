@@ -2,27 +2,27 @@ package dominio;
 
 public class Usuario {
 	
-	private String idusuario;
-	private String iddocente;
-	private String usuario;
-	private String clave;
-	boolean estado;
+	private String Idusuario;
+	private String Iddocente;
+	private String Usuario;
+	private String Clave;
+	boolean Activo;
 	
-	public Usuario(String idusuario, String iddocente, String usuario, String clave, boolean estado) {
+	public Usuario(String Idusuario, String Iddocente, String Usuario, String Clave, boolean Activo) {
 		super();
-		this.idusuario = idusuario;
-		this.iddocente = iddocente;
-		this.usuario = usuario;
-		this.clave = clave;
-		this.estado = true;
+		this.Idusuario = Idusuario;
+		this.Iddocente = Iddocente;
+		this.Usuario = Usuario;
+		this.Clave = Clave;
+		this.Activo = true;
 	}
 	
 	
 
-	public Usuario(String usuario, String clave) {
+	public Usuario(String Usuario, String Clave) {
 		super();
-		this.usuario = usuario;
-		this.clave = clave;
+		this.Usuario = Usuario;
+		this.Clave = Clave;
 	}
 
 	public Usuario() {
@@ -32,66 +32,66 @@ public class Usuario {
 
 
 	public String getIdusuario() {
-		return idusuario;
+		return Idusuario;
 	}
 
 
 
 	public String getIddocente() {
-		return iddocente;
+		return Iddocente;
 	}
 
 
 
 	public String getUsuario() {
-		return usuario;
+		return Usuario;
 	}
 
 
 
 	public String getClave() {
-		return clave;
+		return Clave;
 	}
 	
 	public boolean getEstado() {
-		return estado;
+		return Activo;
 	}
 
 
 
-	public void setIdusuario(String idusuario) {
-		this.idusuario = idusuario;
+	public void setIdusuario(String Idusuario) {
+		this.Idusuario = Idusuario;
 	}
 
 
 
-	public void setIddocente(String iddocente) {
-		this.iddocente = iddocente;
+	public void setIddocente(String Iddocente) {
+		this.Iddocente = Iddocente;
 	}
 
 
 
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
+	public void setUsuario(String Usuario) {
+		this.Usuario = Usuario;
 	}
 
 
 
-	public void setClave(String clave) {
-		this.clave = clave;
+	public void setClave(String Clave) {
+		this.Clave = Clave;
 	}
 	
 
-	public void setEstado(boolean estado) {
-		this.estado = estado;
+	public void setEstado(boolean Activo) {
+		this.Activo = Activo;
 	}
 
 
 
 	@Override
 	public String toString() {
-		return "Usuario [idusuario=" + idusuario + ", iddocente=" + iddocente + ", usuario=" + usuario + ", clave="
-				+ clave + ", estado=" + estado + "]";
+		return "Usuario [idUsuario=" + Idusuario + ", Iddocente=" + Iddocente + ", Usuario=" + Usuario + ", Clave="
+				+ Clave + ", Activo=" + Activo + "]";
 	}
 
 	

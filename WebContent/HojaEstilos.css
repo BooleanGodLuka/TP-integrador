@@ -279,6 +279,7 @@ button:focus {
 .subtitle {
   text-align: center;
   line-height: 1em;
+  font-size: 19px;
   font-weight: 100;
   letter-spacing: 0px;
   letter-spacing: 0.02rem;

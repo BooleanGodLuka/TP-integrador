@@ -87,25 +87,30 @@ body {
 
 <body>
 
-
-
-
-
-
-
-
-<!-- 
+   <div>
+  <%
+      		String nombre = "";
+	      	HttpSession misession = request.getSession();
+      		//Docente doc = new Docente(); paras ponerle el nombre despues
+      		Usuario usu = new Usuario();
+      		usu = (Usuario)misession.getAttribute("Usuario");
+      		nombre = usu.getUsuario();
+      		if (nombre.contentEquals("administrator") == true){
+   %>
+   </div>
+  
+<div>
 <header class="w3-top">
   <div class="navbar">
   <a href="#home">Home</a>
   <div class="dropdown">
-    <button class="dropbtn">Alta 
+    <button class="dropbtn" style="color: black;" >Alta 
       <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-content">
       <a href="#">>Docente</a>
       <a href="#">Curso</a>
-      <a href="../../ServletListarAlumnos">Alumno</a>
+      <a href="#">Alumno</a>
     </div>
     </div>
     <div class="dropdown">
@@ -115,18 +120,29 @@ body {
     <div class="dropdown-content">
       <a href="#">Docente</a>
       <a href="#">Curso</a>
-      <a href="#">Alumno</a>
+      <form action="ServletListarAlumnos" method="get">
+      <a href="../ServletListarAlumnos">Alumno</a>
+      </form>
     </div>
   </div>
  <form action="" method="get">
   <a href="../reporte_servlet">Reporte</a>
   </form>
-<div style="text-align: right;color: white">"Nombre de usuario"</div>
+<div style="text-align: right;color: white"><%=nombre%></div>
 </div>
 </header> 
+</div>
 
- -->  
- 
+
+<%}
+      		
+
+      	else {
+      		
+%>
+
+
+<div>
 <header class="w3-top">
   <div class="navbar">
   <a href="#home">Home</a>
@@ -134,19 +150,15 @@ body {
   <a href="../docente_listar_cursos_servlet">Cursos</a>
   </form>
   <a href="#">Alumnos</a>
-   <div>
-  <%
-      		String nombre = "";
-	      	HttpSession misession = request.getSession();
-      		//Docente doc = new Docente(); paras ponerle el nombre despues
-      		Usuario usu = new Usuario();
-      		usu = (Usuario)misession.getAttribute("Usuario");
-      		nombre = usu.getUsuario();
-   %>
-   </div>
   <div style="text-align: right;color: white"><%=nombre%></div>
 </div>
 </header>
+</div>
+<%
+
+      	}
+
+%>
 
 </body>
 
