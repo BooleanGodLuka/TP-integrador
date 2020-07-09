@@ -92,6 +92,18 @@ public class CursoNegocioImpl implements CursoNegocio {
 		return cdao.leer_materia(Integer.toString(id));
 	}
 
+	@Override
+	public String leer_ultimo_curso_id() {
+		// TODO Auto-generated method stub
+		return cdao.leer_ultimo_curso_id();
+	}
+
+	@Override
+	public boolean insert_alumnoXcurso(alumnoXcurso alumno) {
+		// TODO Auto-generated method stub
+		return cdao.insert_alumnoXcurso(alumno);
+	}
+
  
 
 

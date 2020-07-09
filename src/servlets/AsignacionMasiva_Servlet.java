@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dominio.Alumno;
+import dominio.alumnoXcurso;
 import negocioImpl.AlumnoNegocioImpl;
 import negocioImpl.CursoNegocioImpl;
 
@@ -66,6 +67,24 @@ public class AsignacionMasiva_Servlet extends HttpServlet {
 				}
 				
 			}
+			
+			int id_curso = Integer.parseInt(cudao.leer_ultimo_curso_id());
+			alumnoXcurso cursante;
+			for (Alumno alu : lista_alumnos) {
+				cursante = new alumnoXcurso();
+				cursante.setAlumno(alu);
+				cursante.setId_curso(id_curso);
+				cursante.setNota1(0);
+				cursante.setNota2(0);
+				cursante.setNota3(0);
+				cursante.setNota4(0);
+				cursante.setRegularidad("Regular");
+				cudao.insert_alumnoXcurso(cursante);
+			}
+			
+			
+			RequestDispatcher rd =request.getRequestDispatcher("Home.jsp");
+			rd.forward(request, response);
 			
 			
 			

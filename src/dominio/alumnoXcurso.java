@@ -3,9 +3,7 @@ package dominio;
 public class alumnoXcurso {
 
 	private Alumno Alumno;
-	private Curso Curso;
-	private String Nombre;
-	private String Apellido;
+	private int id_curso;
 	private int Nota1;
 	private int Nota2;
 	private int Nota3;
@@ -28,8 +26,7 @@ public class alumnoXcurso {
 		Alumno.setLegajo(id_alumno);
 		Alumno.setNombre(nombre);
 		Alumno.setApellido(apellido);
-		Curso = new Curso();
-		Curso.setID(id_curso);
+		this.id_curso = id_curso;
 		this.Nota1 = nota1;
 		this.Nota2 = nota2;
 		this.Nota3 = nota3;
@@ -44,30 +41,6 @@ public class alumnoXcurso {
 
 	public void setAlumno(Alumno alumno) {
 		Alumno = alumno;
-	}
-
-	public Curso getCurso() {
-		return Curso;
-	}
-
-	public void setCurso(Curso curso) {
-		Curso = curso;
-	}
-
-	public String getNombre() {
-		return Nombre;
-	}
-
-	public void setNombre(String nombre) {
-		Nombre = nombre;
-	}
-
-	public String getApellido() {
-		return Apellido;
-	}
-
-	public void setApellido(String apellido) {
-		Apellido = apellido;
 	}
 
 	public int getNota1() {
@@ -110,4 +83,14 @@ public class alumnoXcurso {
 		this.Regularidad = regularidad;
 	}
 
+	public int getId_curso() {
+		return id_curso;
+	}
+
+	public void setId_curso(int id_curso) {
+		this.id_curso = id_curso;
+	}
+
+	
+	
 }
