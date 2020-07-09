@@ -65,7 +65,7 @@ public class ServletAltaAlumnos extends HttpServlet {
 			cargarAlumno(alumno, request);
 			alumnoNeg.insert(alumno);
 
-			RequestDispatcher rd = request.getRequestDispatcher("Home.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("AsignacionMasiva_Servlet");
 			rd.forward(request, response);
 
 		} catch (Exception e) {

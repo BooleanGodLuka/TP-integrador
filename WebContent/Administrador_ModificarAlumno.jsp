@@ -39,28 +39,40 @@
 
 <h2 align="center">MODIFICAR ALUMNO</h2>
 
+	<%
+		if (request.getAttribute("ListaProvincias") != null) {
+			listProvincias = (List<Provincia>) request.getAttribute("ListaProvincias");
+		}
+
+		if (listProvincias != null) {
+			for (Provincia prov : listProvincias) {
+				
+			}
+		}
+	%>
+
 <table ALIGN="center" id="Modificaciones" width=80%>
-  <thead>
-  <tr>
-	<th>DNI</th>
-	<th>Nombre</th>
-	<th>Apellido</th>
-	<th>Fecha de Nacimiento</th>
-	<th>Email</th>
-    <th>Provincia</th>
-    <th>Localidad</th>
-    <th>Modificar</th>
-    <th>Eliminar</th>
-</tr>
-</thead> 
+	<thead>
+	<tr>
+		<th>DNI</th>
+		<th>Nombre</th>
+		<th>Apellido</th>
+		<th>Fecha de Nacimiento</th>
+		<th>Email</th>
+	    <th>Provincia</th>
+	    <th>Localidad</th>
+	    <th>Modificar</th>
+	    <th>Eliminar</th>
+	</tr>
+	</thead>
   
-  <tbody>
-  <tr>
-    <td><input type="text" name="dni" placeholder="DNI"></td>
-    <td><input type="text" name="nombre" placeholder="Nombre"></td>
-    <td><input type="text" name="apellido" placeholder="Apellido"></td>
-    <td><input type="date" name="fechanacimiento" placeholder="Fecha de Nacimiento"></td>
-    <td><input type="text" name="email" placeholder="email@ejemplo.com"></td>
+	<tbody>
+	<tr>
+	    <td><input type="text" name="dni" placeholder="<%= Alumno.getdn %>>"></td>
+	    <td><input type="text" name="nombre" placeholder="Nombre"></td>
+	    <td><input type="text" name="apellido" placeholder="Apellido"></td>
+	    <td><input type="date" name="fechanacimiento" placeholder="Fecha de Nacimiento"></td>
+	    <td><input type="text" name="email" placeholder="email@ejemplo.com"></td>
     <td>
     <select id="provincia" name="provincia">
     	<option value="Vacio"> Seleccione una Provincia </option>

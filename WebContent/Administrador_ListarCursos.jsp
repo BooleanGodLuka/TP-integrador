@@ -100,8 +100,10 @@
 <td> 2° Cuatrimestre </td>
 <td> 2020 </td>
 <td> Tamara Herrera </td>
-<td style="text-align:center"> <input type="button" value="Ver Alumnos" name="btn_VerAlumnos"style="BORDER: rgb(128,128,128) 3px solid; WIDTH: 150px; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;"></td>
-<td style="text-align:center"> <input type="button" value="Modificar Curso" name="btn_ModificarCurso"style="BORDER: rgb(128,128,128) 3px solid; WIDTH: 150px; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;"></td>
+<td style="text-align:center"> <input type="button" value="Ver Alumnos" name="btn_VerAlumnos"
+style="BORDER: rgb(128,128,128) 3px solid; WIDTH: 150px; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;"></td>
+<td style="text-align:center"> <input type="button" value="Modificar Curso" name="btn_ModificarCurso"
+style="BORDER: rgb(128,128,128) 3px solid; WIDTH: 150px; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;"></td>
 </tr>
 
 <tr>
@@ -109,8 +111,10 @@
 <td> 2° Cuatrimestre </td>
 <td> 2020 </td>
 <td> Lorena Palermo </td>
-<td style="text-align:center"> <input type="button" value="Ver Alumnos" name="btn_VerAlumnos"style="BORDER: rgb(128,128,128)  3px solid; WIDTH: 150px; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;"></td>
-<td style="text-align:center"> <input type="button" value="Modificar Curso" name="btn_ModificarCurso"style="BORDER: rgb(128,128,128) 3px solid; WIDTH: 150px; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;"></td>
+<td style="text-align:center"> <input type="button" value="Ver Alumnos" name="btn_VerAlumnos"
+style="BORDER: rgb(128,128,128)  3px solid; WIDTH: 150px; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;"></td>
+<td style="text-align:center"> <input type="button" value="Modificar Curso" name="btn_ModificarCurso"
+style="BORDER: rgb(128,128,128) 3px solid; WIDTH: 150px; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;"></td>
 </tr>
 
 <tr>
@@ -118,8 +122,10 @@
 <td> 2° Cuatrimestre </td>
 <td> 2020 </td>
 <td> Ines Casanovas </td>
-<td style="text-align:center"> <input type="button" value="Ver Alumnos" name="btn_VerAlumnos"style="BORDER: rgb(128,128,128) 3px solid; WIDTH: 150px; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;"></td>
-<td style="text-align:center"> <input type="button" value="Modificar Curso" name="btn_ModificarCurso"style="BORDER: rgb(128,128,128) 3px solid; WIDTH: 150px; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;"></td>
+<td style="text-align:center"> <input type="button" value="Ver Alumnos" name="btn_VerAlumnos"
+style="BORDER: rgb(128,128,128) 3px solid; WIDTH: 150px; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;"></td>
+<td style="text-align:center"> <input type="button" value="Modificar Curso" name="btn_ModificarCurso"
+style="BORDER: rgb(128,128,128) 3px solid; WIDTH: 150px; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;"></td>
 </tr>
 </tbody>
 
