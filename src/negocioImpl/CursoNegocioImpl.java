@@ -35,8 +35,7 @@ public class CursoNegocioImpl implements CursoNegocio {
 
 	@Override
 	public boolean update(Curso curso_a_modificar) {
-
-		cdao.update(curso_a_modificar);
+		return cdao.update(curso_a_modificar);
 	}
 
 	@Override

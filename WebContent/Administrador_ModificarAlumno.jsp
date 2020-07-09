@@ -34,6 +34,9 @@
 </head>
 <body>
 
+
+<jsp:include page="Navegacion.jsp"/>
+
 <h2 align="center">MODIFICAR ALUMNO</h2>
 
 <table ALIGN="center" id="Modificaciones" width=80%>
@@ -60,7 +63,7 @@
     <td><input type="text" name="Email_Alumno" placeholder="email@ejemplo.com"></td>
     <td>
     <select id="provincia" name="provincia">
-    	<option value="Vacio">-Seleccione una Provincia-</option>
+    	<option value="Vacio"> Seleccione una Provincia </option>
     	<option value="BsAs">Buenos Aires</option>
     	<option value="Santa Fe">Santa Fe</option>
 		<option value="Chubut">Chubut</option>

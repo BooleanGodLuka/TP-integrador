@@ -1,7 +1,6 @@
 package negocio;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import dominio.Curso;
 import dominio.alumnoXcurso;
