@@ -1,88 +1,72 @@
 package dominio;
 
 public class Reporte {
-	
-	private String materia;
-	private String cuatri;
-	private String docente;
-	private int cant_alumn;
-	private int cant_aprob;
-	private int cant_desaprob;
-	private float porcentaje;
-	private String año;
-	
-	
-	
-	
-	
-	
-	
+
+	private Curso Curso;
+	private int Cant_alumn;
+	private int Cant_aprob;
+	private int Cant_desaprob;
+	private float Porcentaje;
+
 	public Reporte() {
 		super();
 	}
-	public Reporte(String materia, String cuatri, String docente, int cant_alumn, int cant_aprob, int cant_desaprob) {
+
+	public Reporte(int idmateria, int cuatrimestre, int anio, int iddocente, int cant_alumn, int cant_aprob, int cant_desaprob) {
 		super();
-		this.materia = materia;
-		this.cuatri = cuatri;
-		this.docente = docente;
-		this.cant_alumn = cant_alumn;
-		this.cant_aprob = cant_aprob;
-		this.cant_desaprob = cant_desaprob;
+		this.Curso.getMateria().setID(idmateria);
+		this.Curso.setCuatrimestre(cuatrimestre);
+		this.Curso.setAnio(anio);
+		this.Curso.getDocente().setLegajo(iddocente);
+		this.Cant_alumn = cant_alumn;
+		this.Cant_aprob = cant_aprob;
+		this.Cant_desaprob = cant_desaprob;
 	}
-	public String getMateria() {
-		return materia;
+
+	
+	
+	public Curso getCurso() {
+		return Curso;
 	}
-	public void setMateria(String materia) {
-		this.materia = materia;
+
+	public void setCurso(Curso curso) {
+		Curso = curso;
 	}
-	public String getCuatri() {
-		return cuatri;
-	}
-	public void setCuatri(String cuatri) {
-		this.cuatri = cuatri;
-	}
-	public String getDocente() {
-		return docente;
-	}
-	public void setDocente(String docente) {
-		this.docente = docente;
-	}
+
 	public int getCant_alumn() {
-		return cant_alumn;
+		return Cant_alumn;
 	}
+
 	public void setCant_alumn(int cant_alumn) {
-		this.cant_alumn = cant_alumn;
+		Cant_alumn = cant_alumn;
 	}
+
 	public int getCant_aprob() {
-		return cant_aprob;
+		return Cant_aprob;
 	}
+
 	public void setCant_aprob(int cant_aprob) {
-		this.cant_aprob = cant_aprob;
+		Cant_aprob = cant_aprob;
 	}
+
 	public int getCant_desaprob() {
-		return cant_desaprob;
+		return Cant_desaprob;
 	}
+
 	public void setCant_desaprob(int cant_desaprob) {
-		this.cant_desaprob = cant_desaprob;
+		Cant_desaprob = cant_desaprob;
 	}
+
 	public float getPorcentaje() {
-		return porcentaje;
+		return Porcentaje;
 	}
+
 	public void setPorcentaje(float porcentaje) {
-		this.porcentaje = porcentaje;
+		Porcentaje = porcentaje;
 	}
-	
+
 	public void cargar_porcentaje() {
-		this.porcentaje = (this.cant_aprob*100)/this.cant_alumn;
+		this.Porcentaje = (this.Cant_aprob * 100) / this.Cant_alumn;
 	}
-	public String getAño() {
-		return año;
-	}
-	public void setAño(String año) {
-		this.año = año;
-	}
-	
-	
-	
-	
+
 }

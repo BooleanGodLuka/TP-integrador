@@ -16,37 +16,32 @@ public class CursosNegocioImpl implements CursosNegocio {
 	
 	
 	@Override
-	public boolean agregar_curso(Curso curso) {
+	public boolean insert(Curso curso) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public boolean borrar_curso(Curso curso_a_borrar) {
+	public boolean delete(Curso curso_a_borrar) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public ArrayList<Curso> leer_todo_curso() {
+	public ArrayList<Curso> readall() {
 		// TODO Auto-generated method stub
 		
 		return cudao.leer_todo_curso();
 	}
-
-	
-	
-	
-	
 	
 	@Override
-	public ArrayList<Curso> leer_todo_curso_consigna(String consigna) {
+	public ArrayList<Curso> readall(String consigna) {
 		// TODO Auto-generated method stub
 		return cudao.leer_todo_curso_consigna(consigna);
 	}
 
 	@Override
-	public boolean actualizar_curso(Curso curso_a_modificar) {
+	public boolean update(Curso curso_a_modificar) {
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -64,7 +59,7 @@ public class CursosNegocioImpl implements CursosNegocio {
 	}
 
 	@Override
-	public int calcular_cant_alumnXcurso(String id) {
+	public int calcular_cant_alumnXcurso(int id) {
 		// TODO Auto-generated method stub
 		int cont= 0;
 		ArrayList<alumnoXcurso> lista = cudao.leer_alumnoXcurso(id);
@@ -76,7 +71,7 @@ public class CursosNegocioImpl implements CursosNegocio {
 	}
 
 	@Override
-	public int calcular_cant_alumnXcurso_aprob(String id) {
+	public int calcular_cant_alumnXcurso_aprob(int id) {
 		// TODO Auto-generated method stub
 		int cont= 0;
 		ArrayList<alumnoXcurso> lista = cudao.leer_alumnoXcurso(id);
@@ -90,7 +85,7 @@ public class CursosNegocioImpl implements CursosNegocio {
 	}
 
 	@Override
-	public int calcular_cant_alumnXcurso_desap(String id) {
+	public int calcular_cant_alumnXcurso_desap(int id) {
 		// TODO Auto-generated method stub
 		int cont= 0;
 		ArrayList<alumnoXcurso> lista = cudao.leer_alumnoXcurso(id);
@@ -104,7 +99,7 @@ public class CursosNegocioImpl implements CursosNegocio {
 	}
 
 	@Override
-	public String leer_materia(String id) {
+	public String leer_materia(int id) {
 		// TODO Auto-generated method stub
 		return cudao.leer_materia(id);
 	}
