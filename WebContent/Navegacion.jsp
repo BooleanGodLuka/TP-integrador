@@ -131,16 +131,20 @@ body {
   <a href="#home">Home</a>
   <div>
   <%
-      		String nombre = "";
+  
+  			String nombre = "usuario";
+  			/*if (request.getSession() != null){
+      		
 	      	HttpSession misession = request.getSession();
       		Usuario usu = new Usuario();
       		usu = (Usuario)misession.getAttribute("Usuario");
       		nombre = usu.getUsuario();
+  			}*/
       		
    %>
    </div>
-  <form action="../docente_listar_cursos_servlet" method="get">
-  <a href="../docente_listar_cursos_servlet">Cursos</a>
+  <form action="docente_listar_cursos_servlet" method="get">
+  <a href="docente_listar_cursos_servlet">Cursos</a>
   </form>
   <a href="#">Alumnos</a>
   <div style="text-align: right;color: white"><!--  <%=nombre%> --> </div>

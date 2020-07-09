@@ -5,6 +5,7 @@
 <%@page import="java.util.List" %>
 <%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
 <%@page import="dominio.*" %>
+<%@page import="java.util.ArrayList"%>
 
 <head>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -44,7 +45,7 @@
 
 <body>
 
-<jsp:include page="/Otros/Navegacion.jsp"></jsp:include>
+<jsp:include page="/Navegacion.jsp"></jsp:include>
 
 	<h2 align="center">LISTADO DE ALUMNOS</h2>
 	
@@ -98,11 +99,11 @@
 
 	 <% 
 
-		ArrayList<Alumno> listaAlumnos;
+		ArrayList<Alumno> listaAlumnos = new ArrayList<Alumno>();
 
 		if(request.getAttribute("listaAlum") != null)
 		{
-			listaAlumnos = request.getAttribute("listaAlum");
+			listaAlumnos = (ArrayList<Alumno>) request.getAttribute("listaAlum");
 		}
 		
 	    if(listaAlumnos != null)

@@ -74,5 +74,13 @@ public class Curso {
 		}
 		return validar;
 	}
+	
+	public void igualar (Curso cur) {
+		this.año= cur.getAño();
+		this.cuatrimestre = cur.getCuatrimestre();
+		this.id = cur.getId();
+		this.id_docente = cur.getId_docente();
+		this.id_materia = cur.getId_materia();
+	}
 
 }

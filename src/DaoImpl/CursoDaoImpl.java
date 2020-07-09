@@ -110,7 +110,7 @@ public class CursoDaoImpl implements CursosDao {
 	{
 		int id = Integer.parseInt(resultSet.getString("id"))  ;
 		String cuatri = resultSet.getString("cuatrimestre");
-		String año = resultSet.getString("año");
+		String año = resultSet.getString("anio");
 		int id_docente = Integer.parseInt(resultSet.getString("iddocente"))  ;
 		int id_materia = Integer.parseInt(resultSet.getString("idmateria"))  ;
 		
