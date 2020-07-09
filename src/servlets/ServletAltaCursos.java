@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
 import dominio.Curso;
 import dominio.Docente;
 import dominio.Materia;
-import negocio.CursosNegocio;
+import negocio.CursoNegocio;
 import negocio.DocenteNegocio;
 import negocio.MateriaNegocio;
 import negocioImpl.CursoNegocioImpl;
@@ -27,7 +27,7 @@ public class ServletAltaCursos extends HttpServlet {
 
 	MateriaNegocio materiaNeg = new MateriaNegocioImpl();
 	DocenteNegocio docenteNeg = new DocenteNegocioImpl();
-	CursosNegocio cursoNeg = new CursoNegocioImpl();
+	CursoNegocio cursoNeg = new CursoNegocioImpl();
 
 	public ServletAltaCursos() {
 		super();
@@ -69,7 +69,7 @@ public class ServletAltaCursos extends HttpServlet {
 			
 			cargarCurso(curso, request);
 			
-			cursoNeg.agregar_curso(curso);
+			cursoNeg.insert(curso);
 			
 			JOptionPane.showMessageDialog(null, "Curso agregado exitosamente!");
 

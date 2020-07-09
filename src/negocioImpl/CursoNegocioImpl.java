@@ -7,14 +7,12 @@ import Dao.CursoDao;
 import DaoImpl.CursoDaoImpl;
 import dominio.Curso;
 import dominio.alumnoXcurso;
-import negocio.CursosNegocio;
+import negocio.CursoNegocio;
 
-public class CursoNegocioImpl implements CursosNegocio {
+public class CursoNegocioImpl implements CursoNegocio {
 
-	
-	CursoDaoImpl cdao =  new CursoDaoImpl();
-	
-	
+	CursoDao cdao = new CursoDaoImpl();
+
 	@Override
 	public boolean insert(Curso curso) {
 		return cdao.insert(curso);
@@ -29,9 +27,9 @@ public class CursoNegocioImpl implements CursosNegocio {
 	public ArrayList<Curso> readall() {
 		return cdao.readall();
 	}
-	
+
 	@Override
-	public ArrayList<Curso> readll(String consigna) {
+	public ArrayList<Curso> readall(String consigna) {
 		return cdao.readall(consigna);
 	}
 
@@ -54,11 +52,11 @@ public class CursoNegocioImpl implements CursosNegocio {
 	@Override
 	public int calcular_cant_alumnXcurso(int id) {
 		// TODO Auto-generated method stub
-		int cont= 0;
-		ArrayList<alumnoXcurso> lista = cudao.leer_alumnoXcurso(id);
-		
+		int cont = 0;
+		ArrayList<alumnoXcurso> lista = cdao.leer_alumnoXcurso(id);
+
 		for (alumnoXcurso al : lista) {
-		cont++;
+			cont++;
 		}
 		return cont;
 	}
@@ -66,13 +64,13 @@ public class CursoNegocioImpl implements CursosNegocio {
 	@Override
 	public int calcular_cant_alumnXcurso_aprob(int id) {
 		// TODO Auto-generated method stub
-		int cont= 0;
-		ArrayList<alumnoXcurso> lista = cudao.leer_alumnoXcurso(id);
-		
+		int cont = 0;
+		ArrayList<alumnoXcurso> lista = cdao.leer_alumnoXcurso(id);
+
 		for (alumnoXcurso al : lista) {
-		if (al.getNota4()>6) {
-			cont++;
-		}
+			if (al.getNota4() > 6) {
+				cont++;
+			}
 		}
 		return cont;
 	}
@@ -80,13 +78,13 @@ public class CursoNegocioImpl implements CursosNegocio {
 	@Override
 	public int calcular_cant_alumnXcurso_desap(int id) {
 		// TODO Auto-generated method stub
-		int cont= 0;
+		int cont = 0;
 		ArrayList<alumnoXcurso> lista = cudao.leer_alumnoXcurso(id);
-		
+
 		for (alumnoXcurso al : lista) {
-		if (al.getNota4()<6) {
-			cont++;
-		}
+			if (al.getNota4() < 6) {
+				cont++;
+			}
 		}
 		return cont;
 	}
@@ -94,7 +92,30 @@ public class CursoNegocioImpl implements CursosNegocio {
 	@Override
 	public String leer_materia(int id) {
 		// TODO Auto-generated method stub
-		return cudao.leer_materia(id);
+		return cdao.leer_materia(id);
+	}
+
+	@Override
+	public int calcular_cant_alumnXcurso(String id) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int calcular_cant_alumnXcurso_aprob(String id) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int calcular_cant_alumnXcurso_desap(String id) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int leer_materia(int id) {
+		return cdao.leer_materia(id);
 	}
 
 }

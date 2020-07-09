@@ -7,19 +7,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link rel="stylesheet" href="../../css/Alta.css" type="text/css" />
+		<link rel="stylesheet" href="EstilosAlta.css" type="text/css" />
 <title>Alta de Docente</title>
 </head>
 
 <body>
 
-	<jsp:include page="Navegacion.jsp"></jsp:include>
+	<jsp:include page="Navegacion.jsp"/>
 		
 	<h1>Alta de Docente</h1>
-	
-	<a href="../../ServletAltaAlumno?Param=1">
-		<h4>Cargar provincias y paises</h4>
-	</a>
 	
 	<div class="container">
 		<form action="ServletAlta" method="post">

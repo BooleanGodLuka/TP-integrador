@@ -47,16 +47,16 @@ public class docente_listar_cursos_servlet extends HttpServlet {
 		String consulta = "iddocente = " + usuario.getIddocente();
 		
 		
-		CursoNegocioImpl cudao = new CursoNegocioImpl();
+		CursoNegocioImpl cursoNegocio = new CursoNegocioImpl();
 				
 		
-		ArrayList<Curso> lista = cudao.leer_todo_curso_consigna(consulta);
+		ArrayList<Curso> lista = cursoNegocio.readall(consulta);
 		
 		Curso cur ;
 		String materia="";
 		for (int i=0; i<lista.size();i++) {
 			cur = new Curso(lista.get(i));
-			materia = cudao.leer_materia(cur.getMateria().getNombre());
+			materia = cursoNegocio.leer_materia(cur.getMateria().getNombre());
 			cur.getMateria().setNombre(materia);
 			lista.set(i, cur);
 			System.out.println(lista.get(i).getMateria().getNombre());

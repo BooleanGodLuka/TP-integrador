@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
 import Dao.CursoDao;
 import dominio.Curso;
@@ -17,8 +16,8 @@ public class CursoDaoImpl implements CursoDao {
 
 	private static final String insert = "INSERT INTO cursos (cuatrimestre, año, iddocente, idmateria) VALUES(?, ?, ?, ?)";
 	private static final String leer_todo = "SELECT * FROM cursos ";
-	private static final String update = "UPDATE cursos SET cuatrimestre= ?, año= ?,iddocente= ? WHERE id=?";
-	private static final String delete = "DELETE FROM cursos WHERE id = ?";
+	private static final String delete = "UPDATE cursos SET activo = false WHERE id = ?";
+	private static final String update = "UPDATE cursos SET cuatrimestre = ?, año = ?,iddocente = ? WHERE id = ?";
 	private static final String leer_alumnosXcurso = "Select * from alumnos_x_cursos ";
 	private static final String update_alumnoXcurso = "UPDATE alumnos_x_cursos SET nota1= ?, nota2= ?, nota3= ?, nota4= ?, regularidad =? WHERE idalumno= ? AND idcurso= ?";
 	private static final String leer_mat = "SELECT * FROM materias";
@@ -56,9 +55,30 @@ public class CursoDaoImpl implements CursoDao {
 	}
 
 	@Override
-	public boolean delete(Curso curso_a_borrar) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean delete(Curso curso_a_eliminar) {
+		PreparedStatement statement;
+		Connection conexion = Conexion.getConexion().getSQLConexion();
+		boolean isUpdateExitoso = false;
+		try {
+			statement = conexion.prepareStatement(delete);
+			statement.setInt(1, curso_a_eliminar.getID());
+			statement.setInt(2, curso_a_eliminar.getCuatrimestre());
+			statement.setInt(2, curso_a_eliminar.getAnio());
+			statement.setInt(2, curso_a_eliminar.getDocente().getLegajo());
+			if (statement.executeUpdate() > 0) {
+				conexion.commit();
+				isUpdateExitoso = true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			try {
+				conexion.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+		}
+
+		return isUpdateExitoso;
 	}
 
 	@Override
@@ -126,7 +146,7 @@ public class CursoDaoImpl implements CursoDao {
 	public boolean update(Curso curso_a_modificar) {
 		PreparedStatement statement;
 		Connection conexion = Conexion.getConexion().getSQLConexion();
-		boolean isInsertExitoso = false;
+		boolean isUpdateExitoso = false;
 		try {
 			statement = conexion.prepareStatement(update);
 			statement.setInt(1, curso_a_modificar.getID());
@@ -135,7 +155,7 @@ public class CursoDaoImpl implements CursoDao {
 			statement.setInt(2, curso_a_modificar.getDocente().getLegajo());
 			if (statement.executeUpdate() > 0) {
 				conexion.commit();
-				isInsertExitoso = true;
+				isUpdateExitoso = true;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -146,7 +166,7 @@ public class CursoDaoImpl implements CursoDao {
 			}
 		}
 
-		return isInsertExitoso;
+		return isUpdateExitoso;
 	}
 
 	@Override

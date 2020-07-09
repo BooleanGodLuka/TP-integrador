@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import dominio.Curso;
 import dominio.Docente;
 import dominio.Reporte;
-import negocio.CursosNegocio;
+import negocio.CursoNegocio;
 import negocio.DocenteNegocio;
 import negocioImpl.CursoNegocioImpl;
 import negocioImpl.DocenteNegocioImpl;
@@ -41,10 +41,10 @@ public class reporte_servlet extends HttpServlet {
 		
 		ArrayList<Reporte> lista = new ArrayList<Reporte>();
 		Reporte rep = new Reporte();
-		CursosNegocio cursoNeg = new CursoNegocioImpl();
+		CursoNegocio cursoNeg = new CursoNegocioImpl();
 		
 		
-		ArrayList<Curso> cursos = cursoNeg.leer_todo_curso();
+		ArrayList<Curso> cursos = cursoNeg.readall();
 		
 		for (Curso cur : cursos) {
 			rep.getCurso().setCuatrimestre(cur.getCuatrimestre());
@@ -54,7 +54,7 @@ public class reporte_servlet extends HttpServlet {
 			rep.setCant_desaprob(cursoNeg.calcular_cant_alumnXcurso_desap(Integer.toString(cur.getID())));
 			rep.cargar_porcentaje();
 			//TODO Dittu: no se que se supone que hay que mostrar en la linea a de abajo, si me explicas yo lo arreglo
-			rep.getCurso().getMateria().setID(cursoNeg.leer_materia(Integer.toString(cur.getMateria().getID())));
+			rep.getCurso().getMateria().setID(cursoNeg.leer_materia(cur.getMateria().getID()));
 			
 			lista.add(rep);
 		}

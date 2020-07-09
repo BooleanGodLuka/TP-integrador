@@ -2,12 +2,14 @@ package negocioImpl;
 
 import java.util.List;
 
+import Dao.MateriaDao;
+import DaoImpl.MateriaDaoImpl;
 import dominio.Materia;
 import negocio.MateriaNegocio;
 
 public class MateriaNegocioImpl implements MateriaNegocio{
 	
-	MateriaNegocio mdao = new MateriaNegocioImpl();
+	MateriaDao mdao = new MateriaDaoImpl();
 
 	@Override
 	public boolean insert(Materia materia) {

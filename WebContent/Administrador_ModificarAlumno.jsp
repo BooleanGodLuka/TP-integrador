@@ -34,9 +34,6 @@
 </head>
 <body>
 
-
-<jsp:include page="Navegacion.jsp"></jsp:include>
-
 <h2 align="center">MODIFICAR ALUMNO</h2>
 
 <table ALIGN="center" id="Modificaciones" width=80%>

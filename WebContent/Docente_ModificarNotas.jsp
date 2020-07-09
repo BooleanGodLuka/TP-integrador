@@ -137,19 +137,19 @@ input[type=submit] {
 	lista = (ArrayList<alumnoXcurso>) request.getAttribute("lista_alumnos");
 	
 	
-	for (alumnoXcurso cur: lista ){
+	for (alumnoXcurso axc: lista ){
 %>  
   <tr>
-    <td><%= cur.getId_alumno() %></td> <input type="hidden" name ="alumno_<%=cur.getId_alumno() %>" value= "<%=cur.getId_alumno() %>" >
-    <td><%= cur.getNombre() %></td>
-    <td><%= cur.getApellido() %></td>
-    <td><input type="text" id="nota" name="nota1_<%=cur.getId_alumno() %>" placeholder="<%=cur.getNota1() %>"></td>
-    <td><input type="text" id="nota" name="nota2_<%=cur.getId_alumno() %>" placeholder="<%=cur.getNota2() %>"></td>
-    <td><input type="text" id="nota" name="nota3_<%=cur.getId_alumno() %>" placeholder="<%=cur.getNota3() %>"></td>
-    <td><input type="text" id="nota" name="nota4_<%=cur.getId_alumno() %>" placeholder="<%=cur.getNota4() %>"></td>
-    <td><select name="Estado<%=cur.getId_alumno()%>">
+    <td><%= axc.getAlumno().getLegajo() %></td> <input type="hidden" name ="alumno" value= "<%=axc.getAlumno().getLegajo() %>" >
+    <td><%= axc.getNombre() %></td>
+    <td><%= axc.getApellido() %></td>
+    <td><input type="text" id="nota" name="nota1_<%= axc.getAlumno().getLegajo() %>" placeholder="<%= axc.getNota1() %>"></td>
+    <td><input type="text" id="nota" name="nota2_<%= axc.getAlumno().getLegajo() %>" placeholder="<%= axc.getNota2() %>"></td>
+    <td><input type="text" id="nota" name="nota3_<%= axc.getAlumno().getLegajo() %>" placeholder="<%= axc.getNota3() %>"></td>
+    <td><input type="text" id="nota" name="nota4_<%= axc.getAlumno().getLegajo() %>" placeholder="<%= axc.getNota4() %>"></td>
+    <td><select name="Estado<%= axc.getAlumno().getLegajo() %>">
 	                    <%
-	                    	if(cur.getRegularidad()== "Regular")
+	                    	if(axc.getRegularidad()== "Regular")
 	                    	{
 	                    		%>
 	                    		

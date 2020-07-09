@@ -1,11 +1,12 @@
-package Dao;
+package negocio;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import dominio.Curso;
 import dominio.alumnoXcurso;
 
-public interface CursoDao {
+public interface CursoNegocio {
 
 	public boolean insert(Curso curso);
 
@@ -21,6 +22,11 @@ public interface CursoDao {
 
 	public boolean actualizar_alumnoXcurso(alumnoXcurso alumno);
 
-	public String leer_materia(String id);
+	public int calcular_cant_alumnXcurso(String id);
 
+	public int calcular_cant_alumnXcurso_aprob(String id);
+
+	public int calcular_cant_alumnXcurso_desap(String id);
+
+	public int leer_materia(int id);
 }

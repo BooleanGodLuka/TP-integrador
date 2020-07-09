@@ -7,7 +7,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<link rel="stylesheet" href="../../css/Alta.css" type="text/css" />
+		<link rel="stylesheet" href="EstilosAlta.css" type="text/css" />
 		
 		<title>Alta de Alumno</title>
 	
@@ -18,8 +18,6 @@
 		<jsp:include page="Navegacion.jsp"/>
 			
 		<h1>Alta de alumno</h1>
-		
-		<a href="../../ServletAlta?Param=1"> Cargar provincias y paises </a>
 		
 		<div class="container">
 			<form name="form1" method="post" action="../../ServletAlta">

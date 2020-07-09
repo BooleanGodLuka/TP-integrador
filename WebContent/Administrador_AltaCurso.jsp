@@ -7,17 +7,16 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<link rel="stylesheet" href="../../css/Alta.css" type="text/css" />
+		<link rel="stylesheet" href="EstilosAlta.css" type="text/css" />
 		
 		<title>Alta de curso</title>
 	</head>
 	
 	<body>
-		<jsp:include page="Navegacion.jsp"></jsp:include>
+		<jsp:include page="Navegacion.jsp"/>
 		
 		<h1>Alta de curso</h1>
-		
-		<a href="../../ServletAltaCurso?Param=1"> Cargar comboboxes </a>
+
 		<div class="container" >
 			<form action="../../ServletAltaCurso" method="post">
 		  
