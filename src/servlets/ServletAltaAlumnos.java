@@ -61,7 +61,8 @@ public class ServletAltaAlumnos extends HttpServlet {
 		// TODO así que ahora envía los datos del alumno al server.
 		try {
 
-			Alumno alumno = cargarPersona(request);
+			Alumno alumno = new Alumno();
+			cargarAlumno(alumno, request);
 			alumnoNeg.insert(alumno);
 
 			RequestDispatcher rd = request.getRequestDispatcher("Home.jsp");
@@ -72,8 +73,7 @@ public class ServletAltaAlumnos extends HttpServlet {
 		}
 	}
 
-	private Alumno cargarPersona(HttpServletRequest request) {
-		Alumno alumno = new Alumno();
+	private void cargarAlumno(Alumno alumno, HttpServletRequest request) {
 		alumno.setDni(Integer.parseInt(request.getParameter("dni")));
 		alumno.setNombre(request.getParameter("nombre"));
 		alumno.setApellido(request.getParameter("apellido"));
@@ -83,7 +83,5 @@ public class ServletAltaAlumnos extends HttpServlet {
 		alumno.setIDLocalidad(request.getParameter("localidad"));
 		alumno.setTelefono(Integer.parseInt(request.getParameter("telefono")));
 		alumno.setActivo(Boolean.getBoolean(request.getParameter("activo")));
-
-		return alumno;
 	}
 }

@@ -1,11 +1,17 @@
 package servlets;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import dominio.Alumno;
+import negocio.AlumnoNegocio;
+import negocioImpl.AlumnoNegocioImpl;
 
 /**
  * Servlet implementation class ServletModificarAlumno
@@ -13,29 +19,55 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/ServletModificarAlumno")
 public class ServletModificarAlumno extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public ServletModificarAlumno() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+	AlumnoNegocio alumnoNeg = new AlumnoNegocioImpl();
+	
+	public ServletModificarAlumno() {
+		super();
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		try {
+
+			Alumno alumno = new Alumno();
+			cargarAlumno(alumno, request);
+
+			RequestDispatcher rd = request.getRequestDispatcher("Home.jsp");
+			rd.forward(request, response);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		try {
+
+			Alumno alumno = new Alumno();
+			cargarAlumno(alumno, request);
+			alumnoNeg.insert(alumno);
+
+			RequestDispatcher rd = request.getRequestDispatcher("Home.jsp");
+			rd.forward(request, response);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	private void cargarAlumno(Alumno alumno, HttpServletRequest request) {
+		alumno.setLegajo(Integer.parseInt(request.getParameter("legajo")));
+		alumno.setDni(Integer.parseInt(request.getParameter("dni")));
+		alumno.setNombre(request.getParameter("nombre"));
+		alumno.setApellido(request.getParameter("apellido"));
+		alumno.setFechaNacimiento(request.getParameter("fechanacimiento"));
+		alumno.setEmail(request.getParameter("email"));
+		alumno.setDireccion(request.getParameter("direccion"));
+		alumno.setIDLocalidad(request.getParameter("localidad"));
+		alumno.setTelefono(Integer.parseInt(request.getParameter("telefono")));
+		alumno.setActivo(Boolean.getBoolean(request.getParameter("activo")));
 	}
 
 }

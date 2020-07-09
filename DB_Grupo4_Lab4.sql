@@ -1,3 +1,4 @@
+drop database db_grupo4_labo4;
 CREATE database db_grupo4_labo4;
 use db_grupo4_labo4;
 
@@ -2577,10 +2578,10 @@ create table usuarios (
     PRIMARY KEY (idusuario)
 );
 
-INSERT INTO usuarios (idusuario, usuario, clave, activo) VALUES ('1','administrator', 'A1234.', true);
-INSERT INTO usuarios (idusuario, iddocente, usuario, clave, activo) VALUES ('2', 1, 'therrera','123465', true);
-INSERT INTO usuarios (idusuario, iddocente, usuario, clave, activo) VALUES ('3', 4, 'k.moran','1234', true);
-INSERT INTO usuarios (idusuario, usuario, clave, activo) VALUES ('1','admin', 'asdasd', true);
+INSERT INTO usuarios (usuario, clave, activo) VALUES ('administrator', 'A1234.', true);
+INSERT INTO usuarios (iddocente, usuario, clave, activo) VALUES ( 1, 'therrera','123465', true);
+INSERT INTO usuarios (iddocente, usuario, clave, activo) VALUES ( 4, 'k.moran','1234', true);
+INSERT INTO usuarios (usuario, clave, activo) VALUES ('asdasd', 'asdasd', true);
 
 create table docentesXcursos (
 	id_docente int not null,

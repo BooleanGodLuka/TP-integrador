@@ -144,8 +144,9 @@ body {
 	<div>
 		<header class="w3-top">
 		<div class="navbar">
-			<a href="#home">Home</a> <a href="ServletListarAlumnos">Alumnos</a> <a
-				href="docente_listar_cursos_servlet">Cursos</a>
+			<a href="Home.jsp">Home</a>
+			<a href="ServletListarAlumnos">Alumnos</a>
+			<a href="docente_listar_cursos_servlet">Cursos</a>
 			<div style="text-align: right; color: white"><%=nombre%></div>
 		</div>
 		</header>
