@@ -18,7 +18,7 @@ public class CursoDaoImpl implements CursosDao {
 	private static final String update = "UPDATE cursos SET cuatrimestre= ?, año= ?,iddocente= ? where id=?";
 	private static final String delete = "DELETE FROM cursos WHERE id = ?";
 	private static final String leer_alumnosXcurso = "Select * from alumnos_x_cursos ";
-	private static final String update_alumnoXcurso = "UPDATE alumnos_x_cursos SET nota1= ?, nota2= ?, nota3= ?, nota4= ? WHERE idalumno= ? AND idcurso= ?"; 
+	private static final String update_alumnoXcurso = "UPDATE alumnos_x_cursos SET nota1= ?, nota2= ?, nota3= ?, nota4= ?, regularidad =? WHERE idalumno= ? AND idcurso= ?"; 
 	private static final String leer_mat = "SELECT * FROM materias";
 	
 	
@@ -187,7 +187,7 @@ public class CursoDaoImpl implements CursosDao {
 						cur.setNota2(getCurso_alumnos(resultSet).getNota2());
 						cur.setNota3(getCurso_alumnos(resultSet).getNota3());
 						cur.setNota4(getCurso_alumnos(resultSet).getNota4());
-						
+						cur.setRegularidad(getCurso_alumnos(resultSet).getRegularidad());
 						
 						
 						alumnos.add(cur);
@@ -211,8 +211,9 @@ public class CursoDaoImpl implements CursosDao {
 		int nota4 = Integer.parseInt(resultSet.getString("nota4"));
 		String nombre = resultSet.getString("nombre_alumno");
 		String apellido = resultSet.getString("apellido_alumno");
+		String regular = resultSet.getString("regularidad");
 
-		return new alumnoXcurso(id_alumno, id_curso, nota1, nota2, nota3, nota4, nombre, apellido); 
+		return new alumnoXcurso(id_alumno, id_curso, nota1, nota2, nota3, nota4, nombre, apellido, regular); 
 	}
 
 
@@ -229,8 +230,9 @@ public class CursoDaoImpl implements CursosDao {
 			statement.setInt(2, alumno.getNota2());
 			statement.setInt(3, alumno.getNota3());
 			statement.setInt(4, alumno.getNota4());
-			statement.setInt(5, alumno.getId_alumno());
-			statement.setInt(6, alumno.getId_curso());
+			statement.setString(5, alumno.getRegularidad());
+			statement.setInt(6, alumno.getId_alumno());
+			statement.setInt(7, alumno.getId_curso());
 			
 			if(statement.executeUpdate() > 0)
 			{

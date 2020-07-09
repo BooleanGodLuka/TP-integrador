@@ -126,7 +126,7 @@ body {
     </div>
   </div>
  <form action="" method="get">
-  <a href="../reporte_servlet" style="color: white;">Reporte</a>
+  <a href="reporte_servlet" style="color: white;">Reporte</a>
   </form>
 <div style="text-align: right;color: white"><%=nombre%></div>
 </div>
@@ -146,8 +146,8 @@ body {
 <header class="w3-top">
   <div class="navbar">
   <a href="#home">Home</a>
-  <form action="../docente_listar_cursos_servlet" method="get">
-  <a href="../docente_listar_cursos_servlet">Cursos</a>
+  <form action="docente_listar_cursos_servlet" method="get">
+  <a href="docente_listar_cursos_servlet">Cursos</a>
   </form>
   <a href="#">Alumnos</a>
   <div style="text-align: right;color: white"><%=nombre%></div>

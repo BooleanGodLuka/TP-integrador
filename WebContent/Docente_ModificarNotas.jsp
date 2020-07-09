@@ -98,6 +98,8 @@ input[type=submit] {
 </head>
 <body>
 
+<jsp:include page="Navegacion.jsp"></jsp:include>
+
 <div align="center">
 			<form method="get" action="Docente_ModificarNotas.jsp" align="center">
 				<input type="text" name="txtFiltroCriterio" class="textbox" placeholder="Filtrar" style= "width: 500px;">
@@ -123,9 +125,10 @@ input[type=submit] {
     <th>Nombre</th>
     <th>Apellido</th>
     <th>Parcial 1</th>
-    <th>Recuperatorio</th>
+    <th>Recuperatorio 1</th>
     <th>Parcial 2</th>
-    <th>Final</th>
+    <th>Recuperatorio 2</th>
+    <th>Regularidad</th>
   </tr>
   
    
@@ -144,6 +147,30 @@ input[type=submit] {
     <td><input type="text" id="nota" name="nota2_<%=cur.getId_alumno() %>" placeholder="<%=cur.getNota2() %>"></td>
     <td><input type="text" id="nota" name="nota3_<%=cur.getId_alumno() %>" placeholder="<%=cur.getNota3() %>"></td>
     <td><input type="text" id="nota" name="nota4_<%=cur.getId_alumno() %>" placeholder="<%=cur.getNota4() %>"></td>
+    <td><select name="Estado<%=cur.getId_alumno()%>">
+	                    <%
+	                    	if(cur.getRegularidad()== "Regular")
+	                    	{
+	                    		%>
+	                    		
+								    <option value="Regular">REGULAR</option>
+								    <option value="Libre" selected>LIBRE</option>
+								  	
+							<%
+							
+	                    	}
+	                    	else
+	                    	{
+	                    		%>
+	                    		
+								    <option value="Regular" selected>REGULAR</option>
+								    <option value="Libre">LIBRE</option>
+								
+						<%
+	                    	}
+	                    
+	                    %>
+	                      </select>
   </tr>
  <%}} %> 
   

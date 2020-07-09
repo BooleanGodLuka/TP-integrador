@@ -76,7 +76,7 @@ public class docente_modificar_nota_servlet extends HttpServlet {
 			for (int i =0; i<lista.size();i++) {
 				alumno.igualar(lista.get(i));
 				if (al.readall(" WHERE id=" + alumno.getId_alumno() + " AND activo=1").get(0) != null) {
-						Alumno cursante = (Alumno) al.readall(" WHERE idalumno=" + alumno.getId_alumno() + " AND activo=1").get(0);
+						Alumno cursante = (Alumno) al.readall(" WHERE id=" + alumno.getId_alumno() + " AND activo=1").get(0);
 				 
 			}
 			
@@ -84,7 +84,7 @@ public class docente_modificar_nota_servlet extends HttpServlet {
 			request.setAttribute("lista_alumnos", lista);
 			
 			
-			RequestDispatcher rd =request.getRequestDispatcher("Docente/Docente_ModificarNotas.jsp");
+			RequestDispatcher rd =request.getRequestDispatcher("Docente_ModificarNotas.jsp");
 			rd.forward(request, response);
 			
 		}
