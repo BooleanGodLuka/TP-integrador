@@ -99,6 +99,9 @@ input[type=submit] {
 
 
 <body>
+
+<jsp:include page="/Navegacion.jsp"></jsp:include>
+
 <h2 ALIGN="center">Listado de Cursos</h2>
 <br>
 
@@ -138,13 +141,15 @@ input[type=submit] {
 	<th>Año</th>
 	<th>Alumnos</th>
   </tr>
-<% if (request.getParameter("lista_cursos") != null){
+<% if (request.getAttribute("lista_cursos") != null){
 	ArrayList<Curso> lista;
 	lista = (ArrayList<Curso>) request.getAttribute("lista_cursos");
+	Curso cur = new Curso();
+	for (int i=0; i< lista.size();i++){
+		
+	cur.igualar(lista.get(i)); 
 	
-	
-	for (Curso cur: lista ){
-%>  
+            %>       
   <tr>
   <form action = "../docente_modificar_nota_servlet" method ="get">
   	<td><%=cur.getId() %>	<input type="hidden" name ="id_curso" value ="<%=cur.getId() %>"> </td>

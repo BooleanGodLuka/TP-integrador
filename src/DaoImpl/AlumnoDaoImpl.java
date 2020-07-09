@@ -143,11 +143,12 @@ public class AlumnoDaoImpl implements AlumnoDao {
 		String fechanacimiento = resultSet.getString("fechanacimiento");
 		String email = resultSet.getString("email");
 		String direccion = resultSet.getString("direccion");
+		String provincia = resultSet.getString("provincia");
 		String idlocalidad = resultSet.getString("idlocalidad");
 		int telefono = resultSet.getInt("telefono");
 		Boolean activo = resultSet.getBoolean("activo");
 		return new Alumno(legajo, dni, nombre, apellido,
-				fechanacimiento, direccion, idlocalidad, email, telefono, activo);
+				fechanacimiento, direccion, provincia, idlocalidad, email, telefono, activo);
 	}
 
 }

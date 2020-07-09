@@ -109,4 +109,10 @@ public class ProvinciaDaoImpl implements ProvinciaDao {
 		return isInsertExitoso;
 	}
 
+	@Override
+	public List<Provincia> readall(String consigna) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

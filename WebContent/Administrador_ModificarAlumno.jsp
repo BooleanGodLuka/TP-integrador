@@ -35,7 +35,7 @@
 <body>
 
 
-<jsp:include page="/Navegacion.html"></jsp:include>
+<jsp:include page="/Navegacion.jsp"></jsp:include>
 
 <h2 align="center">MODIFICAR ALUMNO</h2>
 
