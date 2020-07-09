@@ -10,7 +10,7 @@ public class alumnoXcurso {
 	private int nota2;
 	private int nota3;
 	private int nota4;
-	
+	private String regularidad;
 	
 	
 	
@@ -20,7 +20,7 @@ public class alumnoXcurso {
 	}
 
 
-	public alumnoXcurso(int id_alumno, int id_curso, int nota1, int nota2, int nota3, int nota4, String nombre, String apellido) {
+	public alumnoXcurso(int id_alumno, int id_curso, int nota1, int nota2, int nota3, int nota4, String nombre, String apellido, String r) {
 		super();
 		this.id_alumno = id_alumno;
 		this.id_curso = id_curso;
@@ -30,6 +30,7 @@ public class alumnoXcurso {
 		this.nota4 = nota4;
 		this.nombre = nombre;
 		this.apellido = apellido;
+		this.regularidad = r;
 	}
 	
 	
@@ -99,6 +100,16 @@ public class alumnoXcurso {
 		this.nota2 = al.getNota2();
 		this.nota3 = al.getNota3();
 		this.nota4 = al.getNota4();
+	}
+
+
+	public String getRegularidad() {
+		return regularidad;
+	}
+
+
+	public void setRegularidad(String regularidad) {
+		this.regularidad = regularidad;
 	}
 	
 	

@@ -15,6 +15,7 @@ public class Alumno {
 	private String Email;
 	private int Telefono;
 	private Boolean Activo;
+	private String regularidad;
 
 	public Alumno() {
 		super();
@@ -33,10 +34,11 @@ public class Alumno {
 		this.Email = a.Email;
 		this.Telefono = a.Telefono;
 		this.Activo = a.Activo;
+		this.regularidad = a.regularidad;
 	}
 
 	public Alumno(int id, int dni, String nombre, String apellido, String fnacimiento, String direccion, String provincia,
-			String idlocalidad, String email, int telefono, Boolean activo) {
+			String idlocalidad, String email, int telefono, Boolean activo, String reg) {
 		super();
 		this.Legajo = id;
 		this.Dni = dni;
@@ -49,6 +51,7 @@ public class Alumno {
 		this.Email = email;
 		this.Telefono = telefono;
 		this.Activo = activo;
+		this.regularidad = reg;
 	}
 
 	public Alumno(int dni, String nombre, String apellido, String fnacimiento, String direccion, String provincia, String idlocalidad,
@@ -65,6 +68,16 @@ public class Alumno {
 		this.Email = email;
 		this.Telefono = telefono;
 		this.Activo = activo;
+	}
+	
+	
+
+	public String getRegularidad() {
+		return regularidad;
+	}
+
+	public void setRegularidad(String regularidad) {
+		this.regularidad = regularidad;
 	}
 
 	public int getLegajo() {

@@ -126,7 +126,7 @@ body {
     </div>
   </div>
  <form action="" method="get">
-  <a href="../reporte_servlet" style="color: white;">Reporte</a>
+  <a href="reporte_servlet" style="color: white;">Reporte</a>
   </form>
 <div style="text-align: right;color: white"><%=nombre%></div>
 </div>

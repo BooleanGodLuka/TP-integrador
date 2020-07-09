@@ -93,6 +93,16 @@ public class Curso {
 		this.nombre_materia = nombre_materia;
 	}
 
+	public Curso(Curso cur) {
+		super();
+		this.id = cur.id;
+		this.cuatrimestre = cur.cuatrimestre;
+		this.año = cur.año;
+		this.id_docente = cur.id_docente;
+		this.id_materia = cur.id_materia;
+		this.nombre_materia = cur.nombre_materia;
+	}
+
 	
 	
 	

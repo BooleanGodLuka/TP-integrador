@@ -164,7 +164,7 @@ input[type=submit] {
    
     <td>
     <input type="submit" name="btn_alumnos" value="Ver alumnos">
-  </td>
+    </td>
   </form>
   </tr>
   

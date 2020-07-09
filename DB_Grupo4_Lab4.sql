@@ -1,3 +1,4 @@
+drop database db_grupo4_labo4;
 CREATE database db_grupo4_labo4;
 use db_grupo4_labo4;
 
@@ -35,13 +36,14 @@ INSERT INTO provincias (id, nombre) VALUES
 ('24', 'Tierra del Fuego'),
 ('25', 'Tucumán');
 
+
 create table localidades (
-	id int not null auto_increment,
+    id int not null auto_increment,
     idprovincia varchar(50) not null,
     nombre varchar(50) not null,
-    PRIMARY KEY (id),
-    FOREIGN KEY (idprovincia) REFERENCES provincias(id)
+    PRIMARY KEY (id)
 );
+
 
 INSERT INTO localidades (id, idprovincia, nombre) VALUES
 ('0001', '01', '25 de Mayo'),
@@ -2454,12 +2456,12 @@ INSERT INTO `alumnos` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,
 INSERT INTO `alumnos` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idprovincia`,`idlocalidad`,activo) VALUES (7,33334511,"Iara","Waisberg","1999/03/04","iara.ut@hotmail.com","9 de Julio 234",22,1972,true);
 INSERT INTO `alumnos` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idprovincia`,`idlocalidad`,activo) VALUES (8,33743888,"Tamara","Nacleiro","2000/08/10","tamara.ut@hotmail.com","Espeleta 542",22,1973,true);
 INSERT INTO `alumnos` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idprovincia`,`idlocalidad`,activo) VALUES (9,27543011,"Rodrigo","Gonzalez","1980/03/04","rodrigo.ut@hotmail.com","Corrientes 6734",9,1069,true);
-INSERT INTO `alumnos` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idprovincia`,`idlocalidad`,activo) VALUES (10,28743011,"Matias","De Blasis","1984/09/04","matias.ut@hotmail.com","Escribanos 4367",9,1068,true);
-INSERT INTO `alumnos` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idprovincia`,`idlocalidad`,activo) VALUES (11,29743011,"Roberto","Molteni","1979/06/04","roberto.u@hotmail.com","Cazadores de Coquimbo 1242",7,881,true);
-INSERT INTO `alumnos` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idprovincia`,`idlocalidad`,activo) VALUES (12,30743011,"Paula","Ferrari","1999/10/10","paula.ut@hotmail.com","Buschiazzo 3521",7,900,true);
-INSERT INTO `alumnos` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idprovincia`,`idlocalidad`,activo) VALUES (13,31568011,"Javier","Estramil","2001/03/04","javier.ut@hotmail.com","San Martin de Tours 3421",12,1367,true);
-INSERT INTO `alumnos` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idprovincia`,`idlocalidad`,activo) VALUES (14,30555011,"Cecilia","Fiotto","1990/03/04","cecilia.ut@hotmail.com","Echeverria 2222",12,1370,true);
-INSERT INTO `alumnos` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idprovincia`,`idlocalidad`,activo) VALUES (15,31054541,"Maria","Beltran","1988/03/04","maria.ut@hotmail.com","Trebuchet 333",1,30,true);
+INSERT INTO `alumnos` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idprovincia`,`idlocalidad`,activo, `regularidad`) VALUES (10,28743011,"Matias","De Blasis","1984/09/04","matias.ut@hotmail.com","Escribanos 4367",9,1068,true);
+INSERT INTO `alumnos` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idprovincia`,`idlocalidad`,activo, `regularidad`) VALUES (11,29743011,"Roberto","Molteni","1979/06/04","roberto.u@hotmail.com","Cazadores de Coquimbo 1242",7,881,true);
+INSERT INTO `alumnos` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idprovincia`,`idlocalidad`,activo, `regularidad`) VALUES (12,30743011,"Paula","Ferrari","1999/10/10","paula.ut@hotmail.com","Buschiazzo 3521",7,900,true);
+INSERT INTO `alumnos` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idprovincia`,`idlocalidad`,activo, `regularidad`) VALUES (13,31568011,"Javier","Estramil","2001/03/04","javier.ut@hotmail.com","San Martin de Tours 3421",12,1367,true);
+INSERT INTO `alumnos` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idprovincia`,`idlocalidad`,activo, `regularidad`) VALUES (14,30555011,"Cecilia","Fiotto","1990/03/04","cecilia.ut@hotmail.com","Echeverria 2222",12,1370,true);
+INSERT INTO `alumnos` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idprovincia`,`idlocalidad`,activo, `regularidad`) VALUES (15,31054541,"Maria","Beltran","1988/03/04","maria.ut@hotmail.com","Trebuchet 333",1,30,true);
 
 
 create table docentes (
@@ -2555,15 +2557,16 @@ create table alumnos_x_cursos (
     nota3 int,
     nota4 int,
     aprobado boolean,
+    regularidad varchar(30),
     FOREIGN KEY (idalumno) REFERENCES alumnos(id),
     FOREIGN KEY (idcurso) REFERENCES cursos(id),
     PRIMARY KEY (idalumno, idcurso)
 );
 
-INSERT INTO alumnos_x_cursos (idalumno, idcurso, nota1, nota2, nota3, nota4, aprobado, nombre_alumno, apellido_alumno) VALUES (1, 1, 7, 5, 9, 7, true,"Beatrice","Bryan");
-INSERT INTO alumnos_x_cursos (idalumno, idcurso, nota1, nota2, nota3, nota4, aprobado, nombre_alumno, apellido_alumno) VALUES (1, 2, 7, 6, 7, 8, true,"Beatrice","Bryan");
-INSERT INTO alumnos_x_cursos (idalumno, idcurso, nota1, nota2, nota3, nota4, aprobado, nombre_alumno, apellido_alumno) VALUES (1, 3, 9, 8, 9, 10, true,"Beatrice","Bryan");
-INSERT INTO alumnos_x_cursos (idalumno, idcurso, nota1, nota2, nota3, nota4, aprobado, nombre_alumno, apellido_alumno) VALUES (1, 4, 4, 7, 9, 9, true,"Beatrice","Bryan");
+INSERT INTO alumnos_x_cursos (idalumno, idcurso, nota1, nota2, nota3, nota4, aprobado, nombre_alumno, apellido_alumno,regularidad) VALUES (1, 1, 7, 5, 9, 7, true,"Beatrice","Bryan","Regular");
+INSERT INTO alumnos_x_cursos (idalumno, idcurso, nota1, nota2, nota3, nota4, aprobado, nombre_alumno, apellido_alumno,regularidad) VALUES (1, 2, 7, 6, 7, 8, true,"Beatrice","Bryan","Regular");
+INSERT INTO alumnos_x_cursos (idalumno, idcurso, nota1, nota2, nota3, nota4, aprobado, nombre_alumno, apellido_alumno,regularidad) VALUES (1, 3, 9, 8, 9, 10, true,"Beatrice","Bryan","Regular");
+INSERT INTO alumnos_x_cursos (idalumno, idcurso, nota1, nota2, nota3, nota4, aprobado, nombre_alumno, apellido_alumno,regularidad) VALUES (1, 4, 4, 7, 9, 9, true,"Beatrice","Bryan","Regular");
 
 create table usuarios (
 	idusuario int not null auto_increment,
@@ -2577,6 +2580,8 @@ create table usuarios (
 
 INSERT INTO usuarios (idusuario, usuario, clave, activo) VALUES ('1','administrator', 'A1234.', true);
 INSERT INTO usuarios (idusuario, iddocente, usuario, clave, activo) VALUES ('2', 1, 'therrera','123465', true);
+INSERT INTO usuarios (idusuario, iddocente, usuario, clave, activo) VALUES ('3', 4, 'k.moran','1234', true);
+
 
 create table docentesXcursos (
 	id_docente int not null,
