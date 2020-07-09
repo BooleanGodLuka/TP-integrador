@@ -248,7 +248,7 @@ public class CursoDaoImpl implements CursoDao {
 			resultSet = statement.executeQuery();
 			while (resultSet.next()) {
 				materia = resultSet.getString("nombre");
-
+ 
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

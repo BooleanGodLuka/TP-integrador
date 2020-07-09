@@ -75,8 +75,11 @@ public class AlumnoDaoImpl implements AlumnoDao {
 		try {
 			statement = conexion.getSQLConexion().prepareStatement(readall);
 			resultSet = statement.executeQuery();
+			Alumno alumno;
 			while (resultSet.next()) {
-				lista.add(getAlumno(resultSet));
+				alumno = new Alumno();
+				cargarAlumno(alumno,resultSet);
+				lista.add(alumno);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -93,8 +96,11 @@ public class AlumnoDaoImpl implements AlumnoDao {
 		try {
 			statement = conexion.getSQLConexion().prepareStatement(readall + consigna);
 			resultSet = statement.executeQuery();
+			Alumno alumno;
 			while (resultSet.next()) {
-				lista.add(getAlumno(resultSet));
+				alumno = new Alumno();
+				cargarAlumno(alumno,resultSet);
+				lista.add(alumno);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -135,6 +141,19 @@ public class AlumnoDaoImpl implements AlumnoDao {
 		return isUpdateExitoso;
 	}
 
+<<<<<<< HEAD
+	private void cargarAlumno(Alumno alumno, ResultSet resultSet) throws SQLException {
+		alumno.setLegajo(resultSet.getInt("id"));
+		alumno.setDni(resultSet.getInt("dni"));
+		alumno.setNombre(resultSet.getString("nombre"));
+		alumno.setApellido(resultSet.getString("apellido"));
+		alumno.setFechaNacimiento(resultSet.getString("fechanacimiento"));
+		alumno.setDireccion(resultSet.getString("direccion"));
+		alumno.setIDLocalidad(resultSet.getString("idlocalidad"));
+		alumno.setEmail(resultSet.getString("email"));
+		alumno.setTelefono(resultSet.getInt("telefono"));
+		alumno.setActivo(resultSet.getBoolean("activo"));
+=======
 	private Alumno getAlumno(ResultSet resultSet) throws SQLException {
 		int legajo = resultSet.getInt("id");
 		int dni = resultSet.getInt("dni");
@@ -148,8 +167,10 @@ public class AlumnoDaoImpl implements AlumnoDao {
 		int telefono = resultSet.getInt("telefono");
 		Boolean activo = resultSet.getBoolean("activo");
 		String regular = resultSet.getString("regularidad");
+		
 		return new Alumno(legajo, dni, nombre, apellido,
-				fechanacimiento, direccion, provincia, idlocalidad, email, telefono, activo, regular);
+				fechanacimiento, direccion, provincia, idlocalidad, email, telefono, activo);
+>>>>>>> d977a21f02d9b91fcbc71fe41accb792952a4595
 	}
 
 }

@@ -17,10 +17,10 @@ public interface CursoDao {
 
 	public boolean update(Curso curso_a_modificar);
 
-	public ArrayList<alumnoXcurso> leer_alumnoXcurso(String id_curso);
-
 	public boolean actualizar_alumnoXcurso(alumnoXcurso alumno);
 
-	public String leer_materia(String id);
+	String leer_materia(String id);
+
+	ArrayList<alumnoXcurso> leer_alumnoXcurso(String id_curso);
 
 }

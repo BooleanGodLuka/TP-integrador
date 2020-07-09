@@ -49,13 +49,12 @@ public class reporte_servlet extends HttpServlet {
 		for (Curso cur : cursos) {
 			rep.getCurso().setCuatrimestre(cur.getCuatrimestre());
 			rep.getCurso().setAnio(cur.getAnio());
-			rep.setCant_alumn(cursoNeg.calcular_cant_alumnXcurso(Integer.toString(cur.getID())));
-			rep.setCant_aprob(cursoNeg.calcular_cant_alumnXcurso_aprob(Integer.toString(cur.getID())));
-			rep.setCant_desaprob(cursoNeg.calcular_cant_alumnXcurso_desap(Integer.toString(cur.getID())));
+			rep.setCant_alumn(cursoNeg.calcular_cant_alumnXcurso(cur.getID()));
+			rep.setCant_aprob(cursoNeg.calcular_cant_alumnXcurso_aprob(cur.getID()));
+			rep.setCant_desaprob(cursoNeg.calcular_cant_alumnXcurso_desap(cur.getID()));
 			rep.cargar_porcentaje();
 			//TODO Dittu: no se que se supone que hay que mostrar en la linea a de abajo, si me explicas yo lo arreglo
-			rep.getCurso().getMateria().setID(cursoNeg.leer_materia(cur.getMateria().getID()));
-			
+			rep.getCurso().getMateria().setID(Integer.parseInt(cursoNeg.leer_materia(cur.getMateria().getID())));
 			lista.add(rep);
 		}
 		

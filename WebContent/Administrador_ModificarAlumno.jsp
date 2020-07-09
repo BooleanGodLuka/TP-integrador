@@ -56,25 +56,21 @@
   
   <tbody>
   <tr>
-    <td><input type="text" name="DNI_Alumno" placeholder="DNI"></td>
-    <td><input type="text" name="Nombre_Alumno" placeholder="Nombre"></td>
-    <td><input type="text" name="Apellido_Alumno" placeholder="Apellido"></td>
-    <td><input type="date" name="fnacimiento" placeholder="Fecha de Nacimiento"></td>
-    <td><input type="text" name="Email_Alumno" placeholder="email@ejemplo.com"></td>
+    <td><input type="text" name="dni" placeholder="DNI"></td>
+    <td><input type="text" name="nombre" placeholder="Nombre"></td>
+    <td><input type="text" name="apellido" placeholder="Apellido"></td>
+    <td><input type="date" name="fechanacimiento" placeholder="Fecha de Nacimiento"></td>
+    <td><input type="text" name="email" placeholder="email@ejemplo.com"></td>
     <td>
     <select id="provincia" name="provincia">
     	<option value="Vacio"> Seleccione una Provincia </option>
-    	<option value="BsAs">Buenos Aires</option>
-    	<option value="Santa Fe">Santa Fe</option>
-		<option value="Chubut">Chubut</option>
+    	
     </select>
     </td>
     <td>
     <select id="localidad" name="localidad">
-    	<option value="Vacio">-Seleccione una Localidad-</option>
-    	<option value="Pacheco">Pacheco</option>
-    	<option value="San Isidro">San Isidro</option>
-     	<option value="Capital Federal">Capital Federal</option>
+    	<option value="Vacio"> Seleccione una Localidad </option>
+
     </select>
     </td>
     <td style="text-align:center"> <input type="button" value="Actualizar" name="btn_ModificarAlumno"style="BORDER: rgb(128,128,128) 3px solid; WIDTH: 150px; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;"></td>

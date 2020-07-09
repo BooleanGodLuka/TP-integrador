@@ -44,7 +44,7 @@ public class docente_modificar_nota_servlet extends HttpServlet {
 		CursoNegocioImpl cudao = new CursoNegocioImpl();
 
 		if (request.getParameter("btn_guardar") != null) {
-			ArrayList<alumnoXcurso> lis = cudao.leer_alumnoXcurso(request.getParameter("id_curso"));
+			ArrayList<alumnoXcurso> lis = cudao.leer_alumnoXcurso(Integer.parseInt(request.getParameter("id_curso")));
 			ArrayList<alumnoXcurso> temp = lis;
 
 			for (alumnoXcurso axc : lis) {
@@ -66,7 +66,7 @@ public class docente_modificar_nota_servlet extends HttpServlet {
 
 		if (request.getParameter("btn_alumnos") != null) {
 			AlumnoNegocio al = new AlumnoNegocioImpl();
-			ArrayList<alumnoXcurso> lista = cudao.leer_alumnoXcurso(request.getParameter("id_curso"));
+			ArrayList<alumnoXcurso> lista = cudao.leer_alumnoXcurso(Integer.parseInt(request.getParameter("id_curso")));
 			alumnoXcurso axc = new alumnoXcurso();
 
 			for (int i = 0; i < lista.size(); i++) {

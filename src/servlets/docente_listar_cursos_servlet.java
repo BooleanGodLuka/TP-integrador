@@ -56,7 +56,8 @@ public class docente_listar_cursos_servlet extends HttpServlet {
 		String materia="";
 		for (int i=0; i<lista.size();i++) {
 			cur = new Curso(lista.get(i));
-			materia = cursoNegocio.leer_materia(cur.getMateria().getNombre());
+			
+			materia = cursoNegocio.leer_materia(cur.getMateria().getID());
 			cur.getMateria().setNombre(materia);
 			lista.set(i, cur);
 			System.out.println(lista.get(i).getMateria().getNombre());
