@@ -15,6 +15,7 @@ import com.mysql.cj.Session;
 
 import dominio.Curso;
 import dominio.Docente;
+import dominio.Usuario;
 import negocioImpl.CursosNegocioImpl;
 
 /**
@@ -38,21 +39,29 @@ public class docente_listar_cursos_servlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		//Docente usuario = new Docente("2", "46256673", "Heidi", "Branch","1994/06/06","parturient.montes@ipsum.co.uk",,"4");
-		Docente usuario = new Docente(4, 31617922, "Keefe", "Moran", "2009-05-11", "blandit.congue@mollisDuis.com", "2067 Cras Carretera", "4", 4740113, true); 
 		
 		HttpSession session = request.getSession();
-		session.setAttribute("usr", usuario);
+
+		Usuario usuario = (Usuario) session.getAttribute("Usuario");
 		
-		String consulta = "iddocente = " + usuario.getLegajo();
+		String consulta = "iddocente = " + usuario.getIddocente();
 		
 		
 		CursosNegocioImpl cudao = new CursosNegocioImpl();
 				
 		
 		ArrayList<Curso> lista = cudao.leer_todo_curso_consigna(consulta);
-		//ArrayList<Curso> lista = cudao.leer_todo_curso();
-		System.out.println(lista.size());
+		
+		/*Curso cur = new Curso();
+		String materia="";
+		for (int i=0; i<lista.size();i++) {
+			cur.igualar(lista.get(i));
+			materia = cudao.leer_materia(Integer.toString(cur.getId_materia()));
+			cur.setNombre_materia(materia);
+			lista.set(i, cur);
+			System.out.println(lista.get(i).getNombre_materia());
+		}*/
+		
 		request.setAttribute("lista_cursos", lista);
 		
 		RequestDispatcher rd =request.getRequestDispatcher("Docente_ListarCursos.jsp");

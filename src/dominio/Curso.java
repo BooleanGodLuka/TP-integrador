@@ -9,6 +9,7 @@ public class Curso {
 	private String año;
 	private int id_docente;
 	private int id_materia;
+	private String nombre_materia;
 
 	public Curso() {
 	}
@@ -81,6 +82,18 @@ public class Curso {
 		this.id = cur.getId();
 		this.id_docente = cur.getId_docente();
 		this.id_materia = cur.getId_materia();
+		this.nombre_materia = cur.getNombre_materia();
 	}
 
+	public String getNombre_materia() {
+		return nombre_materia;
+	}
+
+	public void setNombre_materia(String nombre_materia) {
+		this.nombre_materia = nombre_materia;
+	}
+
+	
+	
+	
 }

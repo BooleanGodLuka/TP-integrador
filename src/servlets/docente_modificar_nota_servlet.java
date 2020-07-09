@@ -71,25 +71,24 @@ public class docente_modificar_nota_servlet extends HttpServlet {
 		if (request.getParameter("btn_alumnos") != null) {
 			AlumnoNegocio al = new AlumnoNegocioImpl();
 			ArrayList<alumnoXcurso> lista = cudao.leer_alumnoXcurso(request.getParameter("id_curso")) ;
+			alumnoXcurso alumno = new alumnoXcurso();
 			
-			for (alumnoXcurso alumno: lista) {
-				 Alumno cursante = (Alumno) al.readall(" WHERE idalumno=" + alumno.getId_alumno()).get(0);
+			for (int i =0; i<lista.size();i++) {
+				alumno.igualar(lista.get(i));
+				if (al.readall(" WHERE id=" + alumno.getId_alumno() + " AND activo=1").get(0) != null) {
+						Alumno cursante = (Alumno) al.readall(" WHERE idalumno=" + alumno.getId_alumno() + " AND activo=1").get(0);
 				 
-				 
-				 
-				 if (!cursante.getActivo()) {
-					 lista.remove(lista.indexOf(cursante));
-				 }
 			}
 			
 			
 			request.setAttribute("lista_alumnos", lista);
 			
+			
 			RequestDispatcher rd =request.getRequestDispatcher("Docente/Docente_ModificarNotas.jsp");
 			rd.forward(request, response);
 			
 		}
-		
+		}
 		
 		
 		

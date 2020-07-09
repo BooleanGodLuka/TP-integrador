@@ -90,6 +90,17 @@ public class alumnoXcurso {
 		this.apellido = apellido;
 	}
 	
+	public void igualar (alumnoXcurso al) {
+		this.apellido = al.getApellido();
+		this.id_alumno = al.getId_alumno();
+		this.id_curso = al.getId_curso();
+		this.nombre = al.getNombre();
+		this.nota1 = al.getNota1();
+		this.nota2 = al.getNota2();
+		this.nota3 = al.getNota3();
+		this.nota4 = al.getNota4();
+	}
+	
 	
 	
 	
