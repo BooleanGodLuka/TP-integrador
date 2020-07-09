@@ -56,10 +56,10 @@ public class docente_listar_cursos_servlet extends HttpServlet {
 		String materia="";
 		for (int i=0; i<lista.size();i++) {
 			cur = new Curso(lista.get(i));
-			materia = cudao.leer_materia(Integer.toString(cur.getId_materia()));
-			cur.setNombre_materia(materia);
+			materia = cudao.leer_materia(cur.getMateria().getNombre());
+			cur.getMateria().setNombre(materia);
 			lista.set(i, cur);
-			System.out.println(lista.get(i).getNombre_materia());
+			System.out.println(lista.get(i).getMateria().getNombre());
 		}
 		
 		request.setAttribute("lista_cursos", lista);

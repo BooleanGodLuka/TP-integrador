@@ -1,6 +1,7 @@
 package servlets;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -20,33 +21,31 @@ import negocioImpl.AlumnoNegocioImpl;
 import negocioImpl.LocalidadNegocioImpl;
 import negocioImpl.ProvinciaNegocioImpl;
 
-@WebServlet(name = "ServletAlta")
-public class ServletAlta extends HttpServlet {
-
+/**
+ * Servlet implementation class ServletAltaAlumnos
+ */
+@WebServlet("/ServletAltaAlumnos")
+public class ServletAltaAlumnos extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	ProvinciaNegocio provinciaNeg = new ProvinciaNegocioImpl();
 	LocalidadNegocio localidadNeg = new LocalidadNegocioImpl();
 	AlumnoNegocio alumnoNeg = new AlumnoNegocioImpl();
 
-	public ServletAlta() {
+	public ServletAltaAlumnos() {
 		super();
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try {
-			if (request.getParameter("Param") != null) {
-				
-				List<Provincia> provincias = provinciaNeg.readall();
-				request.setAttribute("ListaProvincias", provincias);
+			List<Provincia> provincias = provinciaNeg.readall();
+			request.setAttribute("ListaProvincias", provincias);
 
-				List<Localidad> localidades = localidadNeg.readall();
-				request.setAttribute("ListaLocalidades", localidades);
-			}
+			List<Localidad> localidades = localidadNeg.readall();
+			request.setAttribute("ListaLocalidades", localidades);
 
-			RequestDispatcher rd = request.getRequestDispatcher("/Administrador/Alta/Administrador_AltaAlumno.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("Administrador_AltaAlumno.jsp");
 			rd.forward(request, response);
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -62,31 +61,10 @@ public class ServletAlta extends HttpServlet {
 		// TODO así que ahora envía los datos del alumno al server.
 		try {
 
-			String path = "";
+			Alumno alumno = cargarPersona(request);
+			alumnoNeg.insert(alumno);
 
-			if (request.getParameter("btnAltaAlumno") != null) {
-
-				cargarPersona(request);
-				path = "Administrador/Altas/Administrador_AltaAlumno.jsp";
-			}
-
-			if (request.getParameter("btnAltaDocente") != null) {
-
-				cargarPersona(request);
-				path = "Administrador/Altas/Administrador_AltaDocente.jsp";
-			}
-
-			if (request.getParameter("provincia") != null) {
-
-				List<Provincia> provincias = provinciaNeg.readall();
-				request.setAttribute("ListaProvincias", provincias);
-
-				List<Localidad> localidades = localidadNeg.readall((String) request.getParameter("provincia"));
-				request.setAttribute("ListaLocalidades", localidades);
-				path = "Administrador/Altas/Administrador_AltaDocente.jsp";
-			}
-
-			RequestDispatcher rd = request.getRequestDispatcher(path);
+			RequestDispatcher rd = request.getRequestDispatcher("Home.jsp");
 			rd.forward(request, response);
 
 		} catch (Exception e) {
@@ -105,8 +83,6 @@ public class ServletAlta extends HttpServlet {
 		alumno.setIDLocalidad(request.getParameter("localidad"));
 		alumno.setTelefono(Integer.parseInt(request.getParameter("telefono")));
 		alumno.setActivo(Boolean.getBoolean(request.getParameter("activo")));
-
-		alumnoNeg.insert(alumno);
 
 		return alumno;
 	}

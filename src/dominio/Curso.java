@@ -4,63 +4,62 @@ import java.util.ArrayList;
 
 public class Curso {
 
-	private int id;
-	private String cuatrimestre;
-	private String año;
-	private int id_docente;
-	private int id_materia;
-	private String nombre_materia;
+	private int ID;
+	private Materia Materia;
+	private int Cuatrimestre;
+	private int Anio;
+	private Docente Docente;
 
 	public Curso() {
 	}
 
-	public Curso(int id, String cuatrimestre, String año, int id_docente, int id_materia) {
+	public Curso(int id, Materia materia, int cuatrimestre, int año, Docente docente) {
 		super();
-		this.id = id;
-		this.cuatrimestre = cuatrimestre;
-		this.año = año;
-		this.id_docente = id_docente;
-		this.id_materia = id_materia;
+		this.ID = id;
+		this.Materia = new Materia(materia);
+		this.Cuatrimestre = cuatrimestre;
+		this.Anio = año;
+		this.Docente = new Docente(docente);
 	}
 
-	public int getId() {
-		return id;
+	public int getID() {
+		return ID;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setID(int iD) {
+		ID = iD;
 	}
 
-	public String getCuatrimestre() {
-		return cuatrimestre;
+	public Materia getMateria() {
+		return Materia;
 	}
 
-	public void setCuatrimestre(String cuatrimestre) {
-		this.cuatrimestre = cuatrimestre;
+	public void setMateria(Materia materia) {
+		Materia = materia;
 	}
 
-	public String getAño() {
-		return año;
+	public int getCuatrimestre() {
+		return Cuatrimestre;
 	}
 
-	public void setAño(String año) {
-		this.año = año;
+	public void setCuatrimestre(int cuatrimestre) {
+		Cuatrimestre = cuatrimestre;
 	}
 
-	public int getId_docente() {
-		return id_docente;
+	public int getAnio() {
+		return Anio;
 	}
 
-	public void setId_docente(int id_docente) {
-		this.id_docente = id_docente;
+	public void setAnio(int anio) {
+		Anio = anio;
 	}
 
-	public int getId_materia() {
-		return id_materia;
+	public Docente getDocente() {
+		return Docente;
 	}
 
-	public void setId_materia(int id_materia) {
-		this.id_materia = id_materia;
+	public void setDocente(Docente docente) {
+		Docente = docente;
 	}
 
 	public boolean validar_exist(ArrayList<Curso> lista) {
@@ -75,35 +74,23 @@ public class Curso {
 		}
 		return validar;
 	}
-	
-	public void igualar (Curso cur) {
-		this.año= cur.getAño();
-		this.cuatrimestre = cur.getCuatrimestre();
-		this.id = cur.getId();
-		this.id_docente = cur.getId_docente();
-		this.id_materia = cur.getId_materia();
-		this.nombre_materia = cur.getNombre_materia();
-	}
 
-	public String getNombre_materia() {
-		return nombre_materia;
-	}
+	public void igualar(Curso cur) {
+		this.Anio = cur.getAnio();
+		this.Cuatrimestre = cur.getCuatrimestre();
+		this.ID = cur.getID();
+		this.Docente = new Docente(cur.getDocente());
+		this.Materia = new Materia(cur.getMateria());
 
-	public void setNombre_materia(String nombre_materia) {
-		this.nombre_materia = nombre_materia;
 	}
 
 	public Curso(Curso cur) {
 		super();
-		this.id = cur.id;
-		this.cuatrimestre = cur.cuatrimestre;
-		this.año = cur.año;
-		this.id_docente = cur.id_docente;
-		this.id_materia = cur.id_materia;
-		this.nombre_materia = cur.nombre_materia;
+		this.ID = cur.getID();
+		this.Cuatrimestre = cur.getCuatrimestre();
+		this.Anio = cur.Anio;
+		this.Docente = new Docente(cur.getDocente());
+		this.Materia = new Materia(cur.getMateria());
 	}
 
-	
-	
-	
 }

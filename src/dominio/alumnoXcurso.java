@@ -2,117 +2,112 @@ package dominio;
 
 public class alumnoXcurso {
 
-	private int id_alumno;
-	private int id_curso;
-	private String nombre;
-	private String apellido;
-	private int nota1;
-	private int nota2;
-	private int nota3;
-	private int nota4;
-	private String regularidad;
-	
-	
-	
-	
+	private Alumno Alumno;
+	private Curso Curso;
+	private String Nombre;
+	private String Apellido;
+	private int Nota1;
+	private int Nota2;
+	private int Nota3;
+	private int Nota4;
+	private String Regularidad;
+
 	public alumnoXcurso() {
 		super();
 	}
 
-
-	public alumnoXcurso(int id_alumno, int id_curso, int nota1, int nota2, int nota3, int nota4, String nombre, String apellido, String r) {
+	public alumnoXcurso(alumnoXcurso axc) {
 		super();
-		this.id_alumno = id_alumno;
-		this.id_curso = id_curso;
-		this.nota1 = nota1;
-		this.nota2 = nota2;
-		this.nota3 = nota3;
-		this.nota4 = nota4;
-		this.nombre = nombre;
-		this.apellido = apellido;
-		this.regularidad = r;
-	}
-	
-	
-	public int getId_alumno() {
-		return id_alumno;
-	}
-	public void setId_alumno(int id_alumno) {
-		this.id_alumno = id_alumno;
-	}
-	public int getId_curso() {
-		return id_curso;
-	}
-	public void setId_curso(int id_curso) {
-		this.id_curso = id_curso;
-	}
-	public int getNota1() {
-		return nota1;
-	}
-	public void setNota1(int nota1) {
-		this.nota1 = nota1;
-	}
-	public int getNota2() {
-		return nota2;
-	}
-	public void setNota2(int nota2) {
-		this.nota2 = nota2;
-	}
-	public int getNota3() {
-		return nota3;
-	}
-	public void setNota3(int nota3) {
-		this.nota3 = nota3;
-	}
-	public int getNota4() {
-		return nota4;
-	}
-	public void setNota4(int nota4) {
-		this.nota4 = nota4;
+		
 	}
 
+	public alumnoXcurso(int id_alumno, int id_curso, int nota1, int nota2, int nota3, int nota4, String nombre,
+			String apellido, String r) {
+		super();
+		Alumno = new Alumno();
+		Alumno.setLegajo(id_alumno);
+		Alumno.setNombre(nombre);
+		Alumno.setApellido(apellido);
+		Curso = new Curso();
+		Curso.setID(id_curso);
+		this.Nota1 = nota1;
+		this.Nota2 = nota2;
+		this.Nota3 = nota3;
+		this.Nota4 = nota4;
+		this.Regularidad = r;
+	}
+	
+	
+	public Alumno getAlumno() {
+		return Alumno;
+	}
+
+	public void setAlumno(Alumno alumno) {
+		Alumno = alumno;
+	}
+
+	public Curso getCurso() {
+		return Curso;
+	}
+
+	public void setCurso(Curso curso) {
+		Curso = curso;
+	}
 
 	public String getNombre() {
-		return nombre;
+		return Nombre;
 	}
-
 
 	public void setNombre(String nombre) {
-		this.nombre = nombre;
+		Nombre = nombre;
 	}
-
 
 	public String getApellido() {
-		return apellido;
+		return Apellido;
 	}
-
 
 	public void setApellido(String apellido) {
-		this.apellido = apellido;
-	}
-	
-	public void igualar (alumnoXcurso al) {
-		this.apellido = al.getApellido();
-		this.id_alumno = al.getId_alumno();
-		this.id_curso = al.getId_curso();
-		this.nombre = al.getNombre();
-		this.nota1 = al.getNota1();
-		this.nota2 = al.getNota2();
-		this.nota3 = al.getNota3();
-		this.nota4 = al.getNota4();
+		Apellido = apellido;
 	}
 
+	public int getNota1() {
+		return Nota1;
+	}
+
+	public void setNota1(int nota1) {
+		Nota1 = nota1;
+	}
+
+	public int getNota2() {
+		return Nota2;
+	}
+
+	public void setNota2(int nota2) {
+		Nota2 = nota2;
+	}
+
+	public int getNota3() {
+		return Nota3;
+	}
+
+	public void setNota3(int nota3) {
+		Nota3 = nota3;
+	}
+
+	public int getNota4() {
+		return Nota4;
+	}
+
+	public void setNota4(int nota4) {
+		Nota4 = nota4;
+	}
 
 	public String getRegularidad() {
-		return regularidad;
+		return Regularidad;
 	}
-
 
 	public void setRegularidad(String regularidad) {
-		this.regularidad = regularidad;
+		this.Regularidad = regularidad;
 	}
-	
-	
-	
-	
+
 }

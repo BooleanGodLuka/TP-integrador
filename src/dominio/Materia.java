@@ -5,7 +5,18 @@ public class Materia {
 	int ID;
 	String Nombre;
 
+	public Materia() {
+		super();
+	}
+
+	public Materia(Materia materia) {
+		super();
+		this.ID = materia.getID();
+		this.Nombre = materia.getNombre();
+	}
+
 	public Materia(int id, String nombre) {
+		super();
 		this.ID = id;
 		this.Nombre = nombre;
 	}

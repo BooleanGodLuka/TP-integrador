@@ -41,20 +41,20 @@ public class reporte_servlet extends HttpServlet {
 		
 		ArrayList<Reporte> lista = new ArrayList<Reporte>();
 		Reporte rep = new Reporte();
-		CursosNegocio cudao = new CursosNegocioImpl();
+		CursosNegocio cursoNeg = new CursosNegocioImpl();
 		
 		
-		ArrayList<Curso> cursos = cudao.leer_todo_curso();
+		ArrayList<Curso> cursos = cursoNeg.leer_todo_curso();
 		
 		for (Curso cur : cursos) {
-			rep.setCuatri(cur.getCuatrimestre());
-			rep.setAño(cur.getAño());
-			rep.setDocente(buscar_docente(Integer.toString(cur.getId_docente())));
-			rep.setCant_alumn(cudao.calcular_cant_alumnXcurso(Integer.toString(cur.getId())));
-			rep.setCant_aprob(cudao.calcular_cant_alumnXcurso_aprob(Integer.toString(cur.getId())));
-			rep.setCant_desaprob(cudao.calcular_cant_alumnXcurso_desap(Integer.toString(cur.getId())));
+			rep.getCurso().setCuatrimestre(cur.getCuatrimestre());
+			rep.getCurso().setAnio(cur.getAnio());
+			rep.setCant_alumn(cursoNeg.calcular_cant_alumnXcurso(Integer.toString(cur.getID())));
+			rep.setCant_aprob(cursoNeg.calcular_cant_alumnXcurso_aprob(Integer.toString(cur.getID())));
+			rep.setCant_desaprob(cursoNeg.calcular_cant_alumnXcurso_desap(Integer.toString(cur.getID())));
 			rep.cargar_porcentaje();
-			rep.setMateria(cudao.leer_materia(Integer.toString(cur.getId_materia())));
+			//TODO Dittu: no se que se supone que hay que mostrar en la linea a de abajo, si me explicas yo lo arreglo
+			rep.getCurso().getMateria().setID(cursoNeg.leer_materia(Integer.toString(cur.getMateria().getID())));
 			
 			lista.add(rep);
 		}
@@ -78,9 +78,9 @@ public class reporte_servlet extends HttpServlet {
 	
 
 	private String buscar_docente (String iddocente) {
-		DocenteNegocio docdao = new DocenteNegocioImpl();
+		DocenteNegocio docenteNeg = new DocenteNegocioImpl();
 		
-		Docente doc = docdao.readall(" WHERE id=" + iddocente).get(0);
+		Docente doc = docenteNeg.readall(" WHERE id=" + iddocente).get(0);
 		
 		String nombre = doc.getNombre() + doc.getApellido();
 		

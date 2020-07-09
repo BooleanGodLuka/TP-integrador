@@ -9,9 +9,16 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.JOptionPane;
 
+import dominio.Curso;
+import dominio.Docente;
 import dominio.Materia;
+import negocio.CursosNegocio;
+import negocio.DocenteNegocio;
 import negocio.MateriaNegocio;
+import negocioImpl.CursosNegocioImpl;
+import negocioImpl.DocenteNegocioImpl;
 import negocioImpl.MateriaNegocioImpl;
 
 @WebServlet("/ServletAltaCursos")
@@ -19,6 +26,8 @@ public class ServletAltaCursos extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	MateriaNegocio materiaNeg = new MateriaNegocioImpl();
+	DocenteNegocio docenteNeg = new DocenteNegocioImpl();
+	CursosNegocio cursoNeg = new CursosNegocioImpl();
 
 	public ServletAltaCursos() {
 		super();
@@ -32,14 +41,13 @@ public class ServletAltaCursos extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try {
-			if (request.getParameter("Param") != null) {
+			List<Materia> materias = materiaNeg.readall();
+			request.setAttribute("ListaMaterias", materias);
 
-				List<Materia> materias = materiaNeg.readall();
-				request.setAttribute("ListaMaterias", materias);
+			List<Docente> docentes = docenteNeg.readall();
+			request.setAttribute("ListaDocentes", docentes);
 
-			}
-
-			RequestDispatcher rd = request.getRequestDispatcher("/Administrador/Alta/Administrador_AltaCursos.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("Administrador_AltaCurso.jsp");
 			rd.forward(request, response);
 
 		} catch (Exception e) {
@@ -55,8 +63,29 @@ public class ServletAltaCursos extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		try {
+			
+			Curso curso = new Curso();
+			
+			cargarCurso(curso, request);
+			
+			cursoNeg.agregar_curso(curso);
+			
+			JOptionPane.showMessageDialog(null, "Curso agregado exitosamente!");
+
+			RequestDispatcher rd = request.getRequestDispatcher("Administrador_AltaCurso.jsp");
+			rd.forward(request, response);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	private void cargarCurso(Curso curso, HttpServletRequest request) {
+		curso.getMateria().setID(Integer.parseInt(request.getParameter("materia")));
+		curso.setCuatrimestre(Integer.parseInt(request.getParameter("cuatrimestre")));
+		curso.setAnio(Integer.parseInt(request.getParameter("anio")));
+		curso.getDocente().setLegajo(Integer.parseInt(request.getParameter("docente")));
 	}
 
 }
