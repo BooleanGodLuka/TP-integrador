@@ -90,6 +90,7 @@
     <th>Fecha de Nacimiento</th>
     <th>Provincia</th>
     <th>Localidad</th>
+    <th>Regularidad</th>
     <th>Modificar</th>
   </tr>
 </thead>

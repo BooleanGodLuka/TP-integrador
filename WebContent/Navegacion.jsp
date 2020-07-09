@@ -120,8 +120,8 @@ body {
     <div class="dropdown-content">
       <a href="#" style="color: black;">Docente</a>
       <a href="#" style="color: black;">Curso</a>
-      <form action="ServletListarAlumnos" method="get">
-      <a href="Administrador_ListarAlumnos.jsp" style="color: black;">Alumno</a>
+      <form action="ServletListarAlumnos" method="post">
+      <a href="ServletListarAlumnos" name="dropdown_ListarAlumnos" style="color: black;">Alumno</a>
       </form>
     </div>
   </div>
@@ -146,8 +146,8 @@ body {
 <header class="w3-top">
   <div class="navbar">
   <a href="#home">Home</a>
-  <form action="../docente_listar_cursos_servlet" method="get">
-  <a href="../docente_listar_cursos_servlet">Cursos</a>
+  <form action="docente_listar_cursos_servlet" method="get">
+  <a href="docente_listar_cursos_servlet">Cursos</a>
   </form>
   <a href="#">Alumnos</a>
   <div style="text-align: right;color: white"><%=nombre%></div>
