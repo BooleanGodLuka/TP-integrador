@@ -1,7 +1,10 @@
 <html>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-</html>
+    <%@page import="java.util.ArrayList" %>
+<%@page import="java.util.List" %>
+<%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
+<%@page import="dominio.*" %>
 
 <head>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -41,12 +44,12 @@
 
 <body>
 
-<jsp:include page="/Navegacion.html"></jsp:include>
+<jsp:include page="/Otros/Navegacion.jsp"></jsp:include>
 
 	<h2 align="center">LISTADO DE ALUMNOS</h2>
 	
 	<div align="center">
-			<form action="/action_page.php" align="center">
+			<form action="/ServletFiltrosxCriterio" align="center">
 				<input type="text" name="txtFiltroCriterio" class="textbox" placeholder="Filtrar" style= "width: 500px;">
 			    <input type="submit" value="Buscar"/>
 			    
@@ -61,13 +64,17 @@
 		</div>
 		<br>
 	
-	<div align="center"><h3>Filtro por Curso:
+	
+	<div align="center">
+	<form action="/ServletFiltrosxCurso" align="center">
+	<h3>Filtro por Curso:
 		<select>
 			  <option value="Laboratorio IV">Laboratorio IV</option>
 			  <option value="Metodologia de Sistemas I">Metodologia de Sistemas I</option>
 			  <option value="Diseño y Administracion de Base de Datos I">Diseño y Administracion de Base de Datos I</option><br><br>
 		</select>
 		</h3>
+		</form>
 	</div>
 	<br>
 
@@ -88,39 +95,44 @@
 </thead>
 
 <tbody>
+
+	 <% 
+
+		ArrayList<Alumno> listaAlumnos;
+
+		if(request.getAttribute("listaAlum") != null)
+		{
+			listaAlumnos = request.getAttribute("listaAlum");
+		}
+		
+	    if(listaAlumnos != null)
+	  	{	
+			for(Alumno alumno : listaAlumnos) 
+			{
+	  %>
+	  
   <tr>
-    <td style="text-align: center">1</td>
-    <td>Lucas</td>
-    <td>Franco Feldman</td>
-    <td>39.560.447</td>
-    <td>lucas.francofeldman@gmail.com</td>
-    <td style="text-align: center">19/03/1996</td>
-    <td>Buenos Aires</td>
-    <td>El Talar</td>
-    <td style="text-align:center"> <input type="button" value="Modificar Alumno" name="btn_ModificarAlumno"style="BORDER: rgb(128,128,128) 3px solid; WIDTH: 150px; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;"></td>
-  </tr>
-  <tr>
-    <td style="text-align: center">2</td>
-    <td>Luca</td>
-    <td>Di Tullio</td>
-    <td>40.045.247</td>
-    <td>luca_ditu@gmail.com</td>
-    <td style="text-align: center">17/06/1995</td>
-    <td>Buenos Aires</td>
-    <td>Beccar</td>
-    <td style="text-align:center"> <input align="middle" type="button" value="Modificar Alumno" name="btn_ModificarAlumno"style="BORDER: rgb(128,128,128) 3px solid; WIDTH: 150px; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;"></td>
-  </tr>
-  <tr>
-   	<td style="text-align: center">3</td>
-    <td>Guido</td>
-    <td>Amicci</td>
-    <td>39.784.996</td>
-    <td>guidoamicci1995@gmail.com</td>
-    <td style="text-align: center">02/12/1996</td>
-    <td>Buenos Aires</td>
-    <td>Pacheco</td>
-    <td style="text-align:center"> <input align="middle" type="button" value="Modificar Alumno" name="btn_ModificarAlumno"style="BORDER: rgb(128,128,128) 3px solid; WIDTH: 150px; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;"></td>
-  </tr>
+  
+  <form method="get" action="ServletListarAlumno">
+					<td><%=alumno.getLegajo() %></td> 
+					<td><%=alumno.getDni() %></td>   
+					<td><%=alumno.getNombre() %></td>  
+					<td><%=alumno.getFechaNacimiento()%></td> 
+					<td><%=alumno.getDireccion()%></td> 
+					<td><%=alumno.getProvincia() %></td>
+					<td><%=alumno.getIDLocalidad() %></td>
+					<td><%=alumno.getEmail()%></td>
+					<td><%=alumno.getTelefono() %></td>
+					
+    <td> <input type="button" value="Modificar Alumno" name="btn_ModificarAlumno"style="BORDER: rgb(128,128,128) 3px solid; WIDTH: 150px; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;"></td>
+  </form>
+ </tr>
+ 
+ <%
+			}
+	  	}			
+ %>
+  
 </tbody>
 </table>
 

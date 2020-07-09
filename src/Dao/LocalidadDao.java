@@ -11,6 +11,7 @@ public interface LocalidadDao {
 	public boolean delete(Localidad localidad_a_eliminar);
 
 	public List<Localidad> readall();
+	
 	public List<Localidad> readall(String idprovincia);
 
 	public boolean update(Localidad localidad_a_modificar);

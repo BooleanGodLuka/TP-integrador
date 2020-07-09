@@ -1,4 +1,9 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@page import="dominio.*" %>
+
 <!DOCTYPE html>
+
 <html>
 <head>
 <meta charset="ISO-8859-1">
@@ -97,9 +102,9 @@ body {
       <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-content">
-      <a href="#">Docente</a>
+      <a href="#">>Docente</a>
       <a href="#">Curso</a>
-      <a href="#">Alumno</a>
+      <a href="../../ServletListarAlumnos">Alumno</a>
     </div>
     </div>
     <div class="dropdown">
@@ -112,7 +117,7 @@ body {
       <a href="#">Alumno</a>
     </div>
   </div>
- <form action="../docente_listar_cursos_servlet" method="get">
+ <form action="" method="get">
   <a href="../reporte_servlet">Reporte</a>
   </form>
 <div style="text-align: right;color: white">"Nombre de usuario"</div>
@@ -125,19 +130,17 @@ body {
   <div class="navbar">
   <a href="#home">Home</a>
   <div>
-  <!-- 
   <%
       		String nombre = "";
 	      	HttpSession misession = request.getSession();
       		Usuario usu = new Usuario();
       		usu = (Usuario)misession.getAttribute("Usuario");
-      		nombre = usu.usuario();
+      		nombre = usu.getUsuario();
       		
    %>
    </div>
-    -->
-  <form action="docente_listar_cursos_servlet" method="get">
-  <a href="docente_listar_cursos_servlet">Cursos</a>
+  <form action="../docente_listar_cursos_servlet" method="get">
+  <a href="../docente_listar_cursos_servlet">Cursos</a>
   </form>
   <a href="#">Alumnos</a>
   <div style="text-align: right;color: white"><!--  <%=nombre%> --> </div>

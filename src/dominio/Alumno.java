@@ -10,6 +10,7 @@ public class Alumno {
 	private String Apellido;
 	private String FechaNacimiento;
 	private String Direccion;
+	private String Provincia;
 	private String IDLocalidad;
 	private String Email;
 	private int Telefono;
@@ -27,13 +28,14 @@ public class Alumno {
 		this.Apellido = a.Apellido;
 		this.FechaNacimiento = a.FechaNacimiento;
 		this.Direccion = a.Direccion;
+		this.Provincia = a.Provincia;
 		this.IDLocalidad = a.IDLocalidad;
 		this.Email = a.Email;
 		this.Telefono = a.Telefono;
 		this.Activo = a.Activo;
 	}
 
-	public Alumno(int id, int dni, String nombre, String apellido, String fnacimiento, String direccion,
+	public Alumno(int id, int dni, String nombre, String apellido, String fnacimiento, String direccion, String provincia,
 			String idlocalidad, String email, int telefono, Boolean activo) {
 		super();
 		this.Legajo = id;
@@ -42,13 +44,14 @@ public class Alumno {
 		this.Apellido = apellido;
 		this.FechaNacimiento = fnacimiento;
 		this.Direccion = direccion;
+		this.Provincia = provincia;
 		this.IDLocalidad = idlocalidad;
 		this.Email = email;
 		this.Telefono = telefono;
 		this.Activo = activo;
 	}
 
-	public Alumno(int dni, String nombre, String apellido, String fnacimiento, String direccion, String idlocalidad,
+	public Alumno(int dni, String nombre, String apellido, String fnacimiento, String direccion, String provincia, String idlocalidad,
 			String email, int telefono, Boolean activo) {
 		super();
 		this.Legajo = 0;
@@ -57,6 +60,7 @@ public class Alumno {
 		this.Apellido = apellido;
 		this.FechaNacimiento = fnacimiento;
 		this.Direccion = direccion;
+		this.Provincia = provincia;
 		this.IDLocalidad = idlocalidad;
 		this.Email = email;
 		this.Telefono = telefono;
@@ -159,6 +163,14 @@ public class Alumno {
 	@Override
 	public String toString() {
 		return "Alumno " + Apellido + ", " + Nombre + " - Legajo Nº " + Legajo;
+	}
+
+	public String getProvincia() {
+		return Provincia;
+	}
+
+	public void setProvincia(String provincia) {
+		Provincia = provincia;
 	}
 
 }
