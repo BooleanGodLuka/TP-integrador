@@ -78,7 +78,7 @@ public class AlumnoDaoImpl implements AlumnoDao {
 			Alumno alumno;
 			while (resultSet.next()) {
 				alumno = new Alumno();
-				cargarAlumno(alumno,resultSet);
+				cargarAlumno(alumno, resultSet);
 				lista.add(alumno);
 			}
 		} catch (SQLException e) {
@@ -99,7 +99,7 @@ public class AlumnoDaoImpl implements AlumnoDao {
 			Alumno alumno;
 			while (resultSet.next()) {
 				alumno = new Alumno();
-				cargarAlumno(alumno,resultSet);
+				cargarAlumno(alumno, resultSet);
 				lista.add(alumno);
 			}
 		} catch (SQLException e) {
@@ -141,7 +141,6 @@ public class AlumnoDaoImpl implements AlumnoDao {
 		return isUpdateExitoso;
 	}
 
-<<<<<<< HEAD
 	private void cargarAlumno(Alumno alumno, ResultSet resultSet) throws SQLException {
 		alumno.setLegajo(resultSet.getInt("id"));
 		alumno.setDni(resultSet.getInt("dni"));
@@ -153,24 +152,6 @@ public class AlumnoDaoImpl implements AlumnoDao {
 		alumno.setEmail(resultSet.getString("email"));
 		alumno.setTelefono(resultSet.getInt("telefono"));
 		alumno.setActivo(resultSet.getBoolean("activo"));
-=======
-	private Alumno getAlumno(ResultSet resultSet) throws SQLException {
-		int legajo = resultSet.getInt("id");
-		int dni = resultSet.getInt("dni");
-		String nombre = resultSet.getString("nombre");
-		String apellido = resultSet.getString("apellido");
-		String fechanacimiento = resultSet.getString("fechanacimiento");
-		String email = resultSet.getString("email");
-		String direccion = resultSet.getString("direccion");
-		String provincia = resultSet.getString("idprovincia");
-		String idlocalidad = resultSet.getString("idlocalidad");
-		int telefono = resultSet.getInt("telefono");
-		Boolean activo = resultSet.getBoolean("activo");
-		String regular = resultSet.getString("regularidad");
-		
-		return new Alumno(legajo, dni, nombre, apellido,
-				fechanacimiento, direccion, provincia, idlocalidad, email, telefono, activo);
->>>>>>> d977a21f02d9b91fcbc71fe41accb792952a4595
 	}
 
 }
