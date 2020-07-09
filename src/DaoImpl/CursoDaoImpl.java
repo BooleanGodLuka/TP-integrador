@@ -21,6 +21,7 @@ public class CursoDaoImpl implements CursoDao {
 	private static final String leer_alumnosXcurso = "Select * from alumnos_x_cursos ";
 	private static final String update_alumnoXcurso = "UPDATE alumnos_x_cursos SET nota1= ?, nota2= ?, nota3= ?, nota4= ?, regularidad =? WHERE idalumno= ? AND idcurso= ?";
 	private static final String leer_mat = "SELECT * FROM materias";
+	private static final String insert_alumnoXcurso = "INSERT INTO alumnos_x_cursos (idalumno, idcurso, nota1, nota2, nota3, nota4, aprobado, nombre_alumno, apellido_alumno,regularidad) VALUES (?, ?, ?, ?, ?, ?, ?,?,?,?)";
 
 	@Override
 	public boolean insert(Curso curso) {
@@ -219,7 +220,7 @@ public class CursoDaoImpl implements CursoDao {
 			statement.setInt(4, axc.getNota4());
 			statement.setString(5, axc.getRegularidad());
 			statement.setInt(6, axc.getAlumno().getLegajo());
-			statement.setInt(7, axc.getCurso().getID());
+			statement.setInt(7, axc.getId_curso());
 
 			if (statement.executeUpdate() > 0) {
 				conexion.commit();
@@ -254,6 +255,61 @@ public class CursoDaoImpl implements CursoDao {
 			e.printStackTrace();
 		}
 		return materia;
+	}
+
+	@Override
+	public boolean insert_alumnoXcurso(alumnoXcurso alumno) {
+		PreparedStatement statement;
+		Connection conexion = Conexion.getConexion().getSQLConexion();
+		boolean validar = false;
+
+		try {
+			statement = conexion.prepareStatement(insert_alumnoXcurso);
+			
+			statement.setInt(1, alumno.getAlumno().getLegajo());
+			statement.setInt(2, alumno.getId_curso());
+			statement.setInt(3, alumno.getNota1());
+			statement.setInt(4, alumno.getNota2());
+			statement.setInt(5, alumno.getNota3());
+			statement.setInt(6, alumno.getNota4());
+			statement.setBoolean(7, false);
+			statement.setString(8, alumno.getAlumno().getNombre());
+			statement.setString(9, alumno.getAlumno().getApellido());
+			statement.setString(10, alumno.getRegularidad());
+			
+			if (statement.executeUpdate() > 0) {
+				conexion.commit();
+				validar = true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			try {
+				conexion.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+		}
+
+		return validar;
+	}
+
+	@Override
+	public String leer_ultimo_curso_id() {
+		PreparedStatement statement;
+		ResultSet resultSet;
+		Conexion conexion = Conexion.getConexion();
+		String id = "";
+		try {
+			statement = conexion.getSQLConexion().prepareStatement("SELECT MAX(id) FROM cursos;");
+			resultSet = statement.executeQuery();
+			while (resultSet.next()) {
+				id = resultSet.getString("id");
+ 
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return id;
 	}
 
 }

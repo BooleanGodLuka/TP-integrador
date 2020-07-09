@@ -22,5 +22,9 @@ public interface CursoDao {
 	String leer_materia(String id);
 
 	ArrayList<alumnoXcurso> leer_alumnoXcurso(String id_curso);
+	
+	public boolean insert_alumnoXcurso (alumnoXcurso alumno);
+	
+	public String leer_ultimo_curso_id ();
 
 }

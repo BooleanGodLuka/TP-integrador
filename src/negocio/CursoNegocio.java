@@ -28,4 +28,8 @@ public interface CursoNegocio {
 	int calcular_cant_alumnXcurso(int id);
 
 	ArrayList<alumnoXcurso> leer_alumnoXcurso(int id_curso);
+	
+	public String leer_ultimo_curso_id ();
+	
+	public boolean insert_alumnoXcurso (alumnoXcurso alumno);
 }
