@@ -1,4 +1,3 @@
-drop database db_grupo4_labo4;
 CREATE database db_grupo4_labo4;
 use db_grupo4_labo4;
 
@@ -36,6 +35,13 @@ INSERT INTO provincias (id, nombre) VALUES
 ('24', 'Tierra del Fuego'),
 ('25', 'Tucumán');
 
+create table localidades (
+	id int not null auto_increment,
+    idprovincia varchar(50) not null,
+    nombre varchar(50) not null,
+    PRIMARY KEY (id),
+    FOREIGN KEY (idprovincia) REFERENCES provincias(id)
+);
 
 INSERT INTO localidades (id, idprovincia, nombre) VALUES
 ('0001', '01', '25 de Mayo'),

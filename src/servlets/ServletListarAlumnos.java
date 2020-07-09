@@ -34,9 +34,9 @@ public class ServletListarAlumnos extends HttpServlet {
 		{
 			AlumnoNegocio alumnoNeg = new AlumnoNegocioImpl();
 			
-			ArrayList<Alumno> listaAlum = alumnoNeg.readall();
+			ArrayList<Alumno> lista = alumnoNeg.readall();
 			
-			request.setAttribute("listaAlum", listaAlum);	
+			request.setAttribute("listaAlum", lista);	
 			
 			RequestDispatcher rd = request.getRequestDispatcher("Administrador_ListarAlumnos.jsp");   
 	        rd.forward(request, response);

@@ -66,7 +66,7 @@
 	
 	
 	<div align="center">
-	<form action="/ServletFiltrosxCurso" align="center">
+	<form action="/ServletFiltrosxCurso" method="post">
 	<h3>Filtro por Curso:
 		<select>
 			  <option value="Laboratorio IV">Laboratorio IV</option>
@@ -78,7 +78,7 @@
 	</div>
 	<br>
 
-<table ALIGN="center" id="Listados" width=100%>
+<table align="center" id="Listados" width=100%>
 
 <thead>
  <tr>
