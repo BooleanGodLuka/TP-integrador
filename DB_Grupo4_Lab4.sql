@@ -1,4 +1,3 @@
-drop database db_grupo4_labo4;
 CREATE database db_grupo4_labo4;
 use db_grupo4_labo4;
 
