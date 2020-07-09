@@ -1,4 +1,3 @@
-drop database db_grupo4_labo4;
 CREATE database db_grupo4_labo4;
 use db_grupo4_labo4;
 
@@ -2456,12 +2455,12 @@ INSERT INTO `alumnos` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,
 INSERT INTO `alumnos` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idprovincia`,`idlocalidad`,activo) VALUES (7,33334511,"Iara","Waisberg","1999/03/04","iara.ut@hotmail.com","9 de Julio 234",22,1972,true);
 INSERT INTO `alumnos` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idprovincia`,`idlocalidad`,activo) VALUES (8,33743888,"Tamara","Nacleiro","2000/08/10","tamara.ut@hotmail.com","Espeleta 542",22,1973,true);
 INSERT INTO `alumnos` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idprovincia`,`idlocalidad`,activo) VALUES (9,27543011,"Rodrigo","Gonzalez","1980/03/04","rodrigo.ut@hotmail.com","Corrientes 6734",9,1069,true);
-INSERT INTO `alumnos` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idprovincia`,`idlocalidad`,activo, `regularidad`) VALUES (10,28743011,"Matias","De Blasis","1984/09/04","matias.ut@hotmail.com","Escribanos 4367",9,1068,true);
-INSERT INTO `alumnos` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idprovincia`,`idlocalidad`,activo, `regularidad`) VALUES (11,29743011,"Roberto","Molteni","1979/06/04","roberto.u@hotmail.com","Cazadores de Coquimbo 1242",7,881,true);
-INSERT INTO `alumnos` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idprovincia`,`idlocalidad`,activo, `regularidad`) VALUES (12,30743011,"Paula","Ferrari","1999/10/10","paula.ut@hotmail.com","Buschiazzo 3521",7,900,true);
-INSERT INTO `alumnos` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idprovincia`,`idlocalidad`,activo, `regularidad`) VALUES (13,31568011,"Javier","Estramil","2001/03/04","javier.ut@hotmail.com","San Martin de Tours 3421",12,1367,true);
-INSERT INTO `alumnos` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idprovincia`,`idlocalidad`,activo, `regularidad`) VALUES (14,30555011,"Cecilia","Fiotto","1990/03/04","cecilia.ut@hotmail.com","Echeverria 2222",12,1370,true);
-INSERT INTO `alumnos` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idprovincia`,`idlocalidad`,activo, `regularidad`) VALUES (15,31054541,"Maria","Beltran","1988/03/04","maria.ut@hotmail.com","Trebuchet 333",1,30,true);
+INSERT INTO `alumnos` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idprovincia`,`idlocalidad`,activo) VALUES (10,28743011,"Matias","De Blasis","1984/09/04","matias.ut@hotmail.com","Escribanos 4367",9,1068,true);
+INSERT INTO `alumnos` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idprovincia`,`idlocalidad`,activo) VALUES (11,29743011,"Roberto","Molteni","1979/06/04","roberto.u@hotmail.com","Cazadores de Coquimbo 1242",7,881,true);
+INSERT INTO `alumnos` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idprovincia`,`idlocalidad`,activo) VALUES (12,30743011,"Paula","Ferrari","1999/10/10","paula.ut@hotmail.com","Buschiazzo 3521",7,900,true);
+INSERT INTO `alumnos` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idprovincia`,`idlocalidad`,activo) VALUES (13,31568011,"Javier","Estramil","2001/03/04","javier.ut@hotmail.com","San Martin de Tours 3421",12,1367,true);
+INSERT INTO `alumnos` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idprovincia`,`idlocalidad`,activo) VALUES (14,30555011,"Cecilia","Fiotto","1990/03/04","cecilia.ut@hotmail.com","Echeverria 2222",12,1370,true);
+INSERT INTO `alumnos` (`id`,`dni`,`nombre`,`apellido`,`fechanacimiento`,`email`,`direccion`,`idprovincia`,`idlocalidad`,activo) VALUES (15,31054541,"Maria","Beltran","1988/03/04","maria.ut@hotmail.com","Trebuchet 333",1,30,true);
 
 
 create table docentes (
