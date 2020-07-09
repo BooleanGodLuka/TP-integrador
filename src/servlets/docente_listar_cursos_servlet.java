@@ -44,9 +44,7 @@ public class docente_listar_cursos_servlet extends HttpServlet {
 
 		Usuario usuario = (Usuario) session.getAttribute("Usuario");
 		
-		//String consulta = "iddocente = " + usuario.getIddocente();
-		String consulta = "iddocente = 4";
-		
+		String consulta = "iddocente = " + usuario.getIddocente();
 		
 		
 		CursosNegocioImpl cudao = new CursosNegocioImpl();
@@ -54,15 +52,15 @@ public class docente_listar_cursos_servlet extends HttpServlet {
 		
 		ArrayList<Curso> lista = cudao.leer_todo_curso_consigna(consulta);
 		
-		/*Curso cur = new Curso();
+		Curso cur ;
 		String materia="";
 		for (int i=0; i<lista.size();i++) {
-			cur.igualar(lista.get(i));
+			cur = new Curso(lista.get(i));
 			materia = cudao.leer_materia(Integer.toString(cur.getId_materia()));
 			cur.setNombre_materia(materia);
 			lista.set(i, cur);
 			System.out.println(lista.get(i).getNombre_materia());
-		}*/
+		}
 		
 		request.setAttribute("lista_cursos", lista);
 		
