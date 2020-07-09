@@ -13,7 +13,7 @@
 
 <body>
 
-	<jsp:include page="/Navegacion.jsp"></jsp:include>
+	<jsp:include page="Navegacion.jsp"></jsp:include>
 		
 	<h1>Alta de Docente</h1>
 	

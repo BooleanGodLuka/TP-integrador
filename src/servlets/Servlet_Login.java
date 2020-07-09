@@ -54,18 +54,18 @@ public class Servlet_Login extends HttpServlet {
 				if (usu.getIdusuario() == "1") {
 					session.setAttribute("Usuario", usu);
 					
-					direccion = "/Home.jsp";
+					direccion = "Home.jsp";
 					}
 				if (usu.getIdusuario() != "1") {
 					session.setAttribute("Usuario", usu);
 					
-					direccion = "/Home.jsp";
+					direccion = "Home.jsp";
 				}
 				
 			else {
 				boolean exists = false;
 				request.setAttribute("login", exists);
-				direccion = "/login_JSP.jsp";
+				direccion = "login_JSP.jsp";
 					}
 				
 			}

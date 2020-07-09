@@ -17,14 +17,14 @@ public class UsuarioDaoImpl implements UsuarioDao {
 	private String user = "root";
 	private String pass = "root";
 	private String dbName = "db_grupo4_labo4";
-	public static final String validate = "SELECT usuario, clave FROM usuarios";
-	public static final String update = "UPDATE usuarios SET password_user = ? WHERE usuario_user = ?;";
+	public static final String validate = "SELECT * FROM usuarios WHERE usuario = ? AND clave= ?;";
+	public static final String update = "UPDATE usuarios SET clave = ? WHERE usuario = ?;";
 
 
 	@Override
 	public boolean insert_usuario(Usuario usuario) {
 		
-		String query = "INSERT INTO usuarios(idusuario,usuario,clave) VALUES ('"+usuario.getIdusuario()+"','"+usuario.getUsuario()+"','"+usuario.getClave()+"')";
+		String query = "INSERT INTO usuarios(idusuario,iddocente,usuario,clave,estado) VALUES ('"+usuario.getIdusuario()+"','"+usuario.getIddocente()+"','"+usuario.getUsuario()+"','"+usuario.getClave()+"','true')";
 		Connection cn = null;
 		
 		int filas=0;
@@ -60,7 +60,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
 	@Override
 	public boolean delete_usuario(Usuario usuario) {
 		
-		String query = "DELETE FROM usuarios (idusuario,usuario,clave) VALUES ('"+usuario.getIdusuario()+"','"+usuario.getUsuario()+"','"+usuario.getClave()+"')";
+		String query = "UPDATE FROM usuarios (estado) VALUES ('false')";
 		Connection cn = null;
 		
 		int filas=0;
@@ -102,8 +102,8 @@ public class UsuarioDaoImpl implements UsuarioDao {
 		try 
 		{
 			statement = conexion.getSQLConexion().prepareStatement(update);
-			statement.setString(1, pass);
-			statement.setString(2, user);
+			statement.setString(1, nombreusuario);
+			statement.setString(2, claveusuario);
 			
 			if(statement.executeUpdate() > 0)
 			{			
@@ -147,7 +147,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
 		PreparedStatement statement;
 		ResultSet resultSet;
 		
-		Usuario obj = new Usuario();
+		Usuario usu = new Usuario();
 		
 		Conexion conexion = Conexion.getConexion();
 		
@@ -160,7 +160,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
 			
 			while(resultSet.next())
 			{			
-				obj = get_usuario(resultSet);
+				usu = get_usuario(resultSet);
 			}
 			
 		} 
@@ -171,7 +171,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
 			e.printStackTrace();
 		}
 		
-		return obj;
+		return usu;
 		
 	}
 

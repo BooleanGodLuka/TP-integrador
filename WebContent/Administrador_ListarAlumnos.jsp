@@ -5,7 +5,6 @@
 <%@page import="java.util.List" %>
 <%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
 <%@page import="dominio.*" %>
-<%@page import="java.util.ArrayList"%>
 
 <head>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -45,7 +44,7 @@
 
 <body>
 
-<jsp:include page="/Navegacion.jsp"></jsp:include>
+<jsp:include page="Navegacion.jsp"></jsp:include>
 
 	<h2 align="center">LISTADO DE ALUMNOS</h2>
 	
@@ -103,7 +102,7 @@
 
 		if(request.getAttribute("listaAlum") != null)
 		{
-			listaAlumnos = (ArrayList<Alumno>) request.getAttribute("listaAlum");
+			listaAlumnos = (ArrayList<Alumno>)request.getAttribute("listaAlum");
 		}
 		
 	    if(listaAlumnos != null)
@@ -124,9 +123,9 @@
 					<td><%=alumno.getIDLocalidad() %></td>
 					<td><%=alumno.getEmail()%></td>
 					<td><%=alumno.getTelefono() %></td>
-					
-    <td> <input type="button" value="Modificar Alumno" name="btn_ModificarAlumno"style="BORDER: rgb(128,128,128) 3px solid; WIDTH: 150px; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;"></td>
-  </form>
+					<td> <input type="button" value="Modificar Alumno" name="btn_ModificarAlumno"style="BORDER: rgb(128,128,128) 3px solid; WIDTH: 150px; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;"></td>
+</form>				
+    
  </tr>
  
  <%
