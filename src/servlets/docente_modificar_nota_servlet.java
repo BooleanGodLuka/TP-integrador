@@ -16,7 +16,7 @@ import dominio.Alumno;
 import dominio.alumnoXcurso;
 import negocio.AlumnoNegocio;
 import negocioImpl.AlumnoNegocioImpl;
-import negocioImpl.CursosNegocioImpl;
+import negocioImpl.CursoNegocioImpl;
 
 /**
  * Servlet implementation class docente_modificar_nota_servlet
@@ -41,7 +41,7 @@ public class docente_modificar_nota_servlet extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
-		CursosNegocioImpl cudao = new CursosNegocioImpl();
+		CursoNegocioImpl cudao = new CursoNegocioImpl();
 
 		if (request.getParameter("btn_guardar") != null) {
 			ArrayList<alumnoXcurso> lis = cudao.leer_alumnoXcurso(request.getParameter("id_curso"));

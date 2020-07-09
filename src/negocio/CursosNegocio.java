@@ -8,14 +8,14 @@ import dominio.alumnoXcurso;
 
 public interface CursosNegocio {
 
-	public boolean agregar_curso(Curso curso);
+	public boolean insert(Curso curso);
 	
-	public boolean borrar_curso(Curso curso_a_borrar);
+	public boolean insert(Curso curso_a_eliminar);
 	
-	public ArrayList<Curso> leer_todo_curso();
-	public ArrayList<Curso> leer_todo_curso_consigna(String consigna);
+	public ArrayList<Curso> readall();
+	public ArrayList<Curso> readall(String consigna);
 	
-	public boolean actualizar_curso (Curso curso_a_modificar);
+	public boolean update (Curso curso_a_modificar);
 	
 	public ArrayList <alumnoXcurso> leer_alumnoXcurso(String id_curso);
 	

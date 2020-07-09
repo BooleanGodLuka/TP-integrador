@@ -3,59 +3,52 @@ package negocioImpl;
 import java.util.ArrayList;
 import java.util.List;
 
-import Dao.CursosDao;
+import Dao.CursoDao;
 import DaoImpl.CursoDaoImpl;
 import dominio.Curso;
 import dominio.alumnoXcurso;
 import negocio.CursosNegocio;
 
-public class CursosNegocioImpl implements CursosNegocio {
+public class CursoNegocioImpl implements CursosNegocio {
 
 	
-	CursoDaoImpl cudao =  new CursoDaoImpl();
+	CursoDaoImpl cdao =  new CursoDaoImpl();
 	
 	
 	@Override
 	public boolean insert(Curso curso) {
-		// TODO Auto-generated method stub
-		return false;
+		return cdao.insert(curso);
 	}
 
 	@Override
-	public boolean delete(Curso curso_a_borrar) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean delete(Curso curso_a_eliminar) {
+		return cdao.delete(curso_a_eliminar);
 	}
 
 	@Override
 	public ArrayList<Curso> readall() {
-		// TODO Auto-generated method stub
-		
-		return cudao.leer_todo_curso();
+		return cdao.readall();
 	}
 	
 	@Override
-	public ArrayList<Curso> readall(String consigna) {
-		// TODO Auto-generated method stub
-		return cudao.leer_todo_curso_consigna(consigna);
+	public ArrayList<Curso> readll(String consigna) {
+		return cdao.readall(consigna);
 	}
 
 	@Override
 	public boolean update(Curso curso_a_modificar) {
-		// TODO Auto-generated method stub
-		return false;
+
+		cdao.update(curso_a_modificar);
 	}
 
 	@Override
 	public ArrayList<alumnoXcurso> leer_alumnoXcurso(String id_curso) {
-		// TODO Auto-generated method stub
-		return cudao.leer_alumnoXcurso(id_curso);
+		return cdao.leer_alumnoXcurso(id_curso);
 	}
 
 	@Override
 	public boolean actualizar_alumnoXcurso(alumnoXcurso alumno) {
-		// TODO Auto-generated method stub
-		return cudao.actualizar_alumnoXcurso(alumno);
+		return cdao.actualizar_alumnoXcurso(alumno);
 	}
 
 	@Override

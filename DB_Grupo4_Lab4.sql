@@ -2581,7 +2581,7 @@ create table usuarios (
 INSERT INTO usuarios (idusuario, usuario, clave, activo) VALUES ('1','administrator', 'A1234.', true);
 INSERT INTO usuarios (idusuario, iddocente, usuario, clave, activo) VALUES ('2', 1, 'therrera','123465', true);
 INSERT INTO usuarios (idusuario, iddocente, usuario, clave, activo) VALUES ('3', 4, 'k.moran','1234', true);
-
+INSERT INTO usuarios (idusuario, usuario, clave, activo) VALUES ('1','admin', 'asdasd', true);
 
 create table docentesXcursos (
 	id_docente int not null,

@@ -98,8 +98,6 @@ input[type=submit] {
 
 </head>
 <body>
-
-	<jsp:include page="/Navegacion.jsp"></jsp:include>
 	
 	
 
@@ -151,10 +149,10 @@ input[type=submit] {
 %>  
 		
 		<tr>
-			<td><%=rep.getMateria() %></td>
-			<td><%=rep.getCuatri() %></td>
-			<td><%=rep.getAño() %></td>
-			<td><%=rep.getDocente() %></td>
+			<td><%=rep.getCurso().getMateria().getNombre() %></td>
+			<td><%=rep.getCurso().getCuatrimestre() %></td>
+			<td><%=rep.getCurso().getAnio() %></td>
+			<td><%=rep.getCurso().getDocente().getNombre() %></td>
 			<td><%=rep.getCant_alumn() %></td>
 			<td><%=rep.getCant_aprob() %></td>
 			<td><%=rep.getCant_desaprob() %></td>

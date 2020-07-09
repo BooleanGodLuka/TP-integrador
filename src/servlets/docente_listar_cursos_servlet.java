@@ -16,7 +16,7 @@ import com.mysql.cj.Session;
 import dominio.Curso;
 import dominio.Docente;
 import dominio.Usuario;
-import negocioImpl.CursosNegocioImpl;
+import negocioImpl.CursoNegocioImpl;
 
 /**
  * Servlet implementation class docente_listar_cursos_servlet
@@ -47,7 +47,7 @@ public class docente_listar_cursos_servlet extends HttpServlet {
 		String consulta = "iddocente = " + usuario.getIddocente();
 		
 		
-		CursosNegocioImpl cudao = new CursosNegocioImpl();
+		CursoNegocioImpl cudao = new CursoNegocioImpl();
 				
 		
 		ArrayList<Curso> lista = cudao.leer_todo_curso_consigna(consulta);

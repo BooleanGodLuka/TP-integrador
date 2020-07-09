@@ -17,7 +17,7 @@ import dominio.Materia;
 import negocio.CursosNegocio;
 import negocio.DocenteNegocio;
 import negocio.MateriaNegocio;
-import negocioImpl.CursosNegocioImpl;
+import negocioImpl.CursoNegocioImpl;
 import negocioImpl.DocenteNegocioImpl;
 import negocioImpl.MateriaNegocioImpl;
 
@@ -27,7 +27,7 @@ public class ServletAltaCursos extends HttpServlet {
 
 	MateriaNegocio materiaNeg = new MateriaNegocioImpl();
 	DocenteNegocio docenteNeg = new DocenteNegocioImpl();
-	CursosNegocio cursoNeg = new CursosNegocioImpl();
+	CursosNegocio cursoNeg = new CursoNegocioImpl();
 
 	public ServletAltaCursos() {
 		super();

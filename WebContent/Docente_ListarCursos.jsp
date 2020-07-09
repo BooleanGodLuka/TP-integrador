@@ -134,41 +134,42 @@ input[type=submit] {
 	
 <table id="customers">
 
-  <tr>
-  	<th>ID</th>
-    <th>Materia</th>
-	<th>Cuatrimestre</th>
-	<th>Año</th>
-	<th>Alumnos</th>
-  </tr>
-<% if (request.getAttribute("lista_cursos") != null){
-	ArrayList<Curso> lista;
-	lista = (ArrayList<Curso>) request.getAttribute("lista_cursos");
-	Curso cur = new Curso();
-	for (int i=0; i< lista.size();i++){
-		
-	cur.setAño(lista.get(i).getAño());
-	cur.setCuatrimestre(lista.get(i).getCuatrimestre());
-	cur.setId(lista.get(i).getId());
-	cur.setId_docente(lista.get(i).getId_docente());
-	cur.setId_materia(lista.get(i).getId_materia());
-	cur.setNombre_materia(lista.get(i).getNombre_materia());
-	 
-            %>       
-  <tr>
-  <form action = "docente_modificar_nota_servlet" method ="get">
-  	<td><%=cur.getId() %>	<input type="hidden" name ="id_curso" value ="<%=cur.getId() %>"> </td>
-    <td><%=cur.getNombre_materia() %></td>
-    <td><%=cur.getCuatrimestre()%></td>
-    <td><%=cur.getAño() %></td>
-   
-    <td>
-    <input type="submit" name="btn_alumnos" value="Ver alumnos">
-    </td>
-  </form>
-  </tr>
-  
- <% }}%>
+	<tr>
+	  	<th>ID</th>
+	    <th>Materia</th>
+		<th>Cuatrimestre</th>
+		<th>Año</th>
+		<th>Alumnos</th>
+	</tr>
+	<% 
+	if (request.getAttribute("lista_cursos") != null){
+		ArrayList<Curso> lista;
+		lista = (ArrayList<Curso>) request.getAttribute("lista_cursos");
+		Curso cur = new Curso();
+		for (int i=0; i< lista.size();i++){
+				
+			cur.setAnio(lista.get(i).getAnio());
+			cur.setCuatrimestre(lista.get(i).getCuatrimestre());
+			cur.setID(lista.get(i).getID());
+			cur.getDocente().setLegajo(lista.get(i).getDocente().getLegajo());
+			cur.getMateria().setID((lista.get(i).getMateria().getID()));
+			cur.getMateria().setNombre((lista.get(i).getMateria().getNombre()));
+			 
+		            %>       
+			<tr>
+				<form action = "docente_modificar_nota_servlet" method ="get">
+				  	<td> <%=cur.getID() %> <input type="hidden" name ="id_curso" value ="<%= cur.getID() %>"> </td>
+				    <td> <%=cur.getMateria().getID() %> </td>
+				    <td> <%=cur.getCuatrimestre() %> </td>
+				    <td> <%=cur.getAnio() %> </td>
+					<td> <input type="submit" name="btn_alumnos" value="Ver alumnos"></td>
+				</form>
+			</tr>
+		  
+		 <%
+		 	}
+		}
+	 %>
 
 </table>
 

@@ -15,7 +15,7 @@ import dominio.Docente;
 import dominio.Reporte;
 import negocio.CursosNegocio;
 import negocio.DocenteNegocio;
-import negocioImpl.CursosNegocioImpl;
+import negocioImpl.CursoNegocioImpl;
 import negocioImpl.DocenteNegocioImpl;
 
 /**
@@ -41,7 +41,7 @@ public class reporte_servlet extends HttpServlet {
 		
 		ArrayList<Reporte> lista = new ArrayList<Reporte>();
 		Reporte rep = new Reporte();
-		CursosNegocio cursoNeg = new CursosNegocioImpl();
+		CursosNegocio cursoNeg = new CursoNegocioImpl();
 		
 		
 		ArrayList<Curso> cursos = cursoNeg.leer_todo_curso();
