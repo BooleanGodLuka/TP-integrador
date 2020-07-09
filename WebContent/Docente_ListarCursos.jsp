@@ -147,13 +147,18 @@ input[type=submit] {
 	Curso cur = new Curso();
 	for (int i=0; i< lista.size();i++){
 		
-	cur.igualar(lista.get(i)); 
-	
+	cur.setAño(lista.get(i).getAño());
+	cur.setCuatrimestre(lista.get(i).getCuatrimestre());
+	cur.setId(lista.get(i).getId());
+	cur.setId_docente(lista.get(i).getId_docente());
+	cur.setId_materia(lista.get(i).getId_materia());
+	cur.setNombre_materia(lista.get(i).getNombre_materia());
+	 
             %>       
   <tr>
-  <form action = "../docente_modificar_nota_servlet" method ="get">
+  <form action = "docente_modificar_nota_servlet" method ="get">
   	<td><%=cur.getId() %>	<input type="hidden" name ="id_curso" value ="<%=cur.getId() %>"> </td>
-    <td><%=cur.getId_materia() %></td>
+    <td><%=cur.getNombre_materia() %></td>
     <td><%=cur.getCuatrimestre()%></td>
     <td><%=cur.getAño() %></td>
    
