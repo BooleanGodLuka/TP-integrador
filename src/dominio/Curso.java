@@ -11,14 +11,16 @@ public class Curso {
 	private Docente Docente;
 
 	public Curso() {
+		Materia = new Materia();
+		Docente = new Docente();
 	}
 
-	public Curso(int id, Materia materia, int cuatrimestre, int año, Docente docente) {
+	public Curso(int id, Materia materia, int cuatrimestre, int anio, Docente docente) {
 		super();
 		this.ID = id;
 		this.Materia = new Materia(materia);
 		this.Cuatrimestre = cuatrimestre;
-		this.Anio = año;
+		this.Anio = anio;
 		this.Docente = new Docente(docente);
 	}
 

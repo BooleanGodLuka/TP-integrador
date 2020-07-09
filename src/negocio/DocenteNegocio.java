@@ -1,10 +1,8 @@
 package negocio;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import dominio.Docente;
-import dominio.Reporte;
 
 public interface DocenteNegocio {
 

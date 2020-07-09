@@ -53,8 +53,6 @@ public class ServletAltaCursos extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
-		// response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
@@ -64,17 +62,17 @@ public class ServletAltaCursos extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try {
-			
-			Curso curso = new Curso();
-			
-			cargarCurso(curso, request);
-			
-			cursoNeg.insert(curso);
-			
-			JOptionPane.showMessageDialog(null, "Curso agregado exitosamente!");
+			if (request.getParameter("btnAltaCurso") != null) {
+				Curso curso = new Curso();
+				
 
-			RequestDispatcher rd = request.getRequestDispatcher("Administrador_AltaCurso.jsp");
-			rd.forward(request, response);
+				cargarCurso(curso, request);
+
+				cursoNeg.insert(curso);
+
+				RequestDispatcher rd = request.getRequestDispatcher("AsignacionMasiva_Servlet");
+				rd.forward(request, response);
+			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -83,9 +81,9 @@ public class ServletAltaCursos extends HttpServlet {
 
 	private void cargarCurso(Curso curso, HttpServletRequest request) {
 		curso.getMateria().setID(Integer.parseInt(request.getParameter("materia")));
+		curso.getDocente().setLegajo(Integer.parseInt(request.getParameter("docente")));
 		curso.setCuatrimestre(Integer.parseInt(request.getParameter("cuatrimestre")));
 		curso.setAnio(Integer.parseInt(request.getParameter("anio")));
-		curso.getDocente().setLegajo(Integer.parseInt(request.getParameter("docente")));
 	}
 
 }

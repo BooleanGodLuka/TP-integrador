@@ -14,10 +14,10 @@ import dominio.alumnoXcurso;
 
 public class CursoDaoImpl implements CursoDao {
 
-	private static final String insert = "INSERT INTO cursos (cuatrimestre, año, iddocente, idmateria) VALUES(?, ?, ?, ?)";
+	private static final String insert = "INSERT INTO cursos (cuatrimestre, anio, iddocente, idmateria, activo) VALUES(?, ?, ?, ?, true)";
 	private static final String leer_todo = "SELECT * FROM cursos ";
 	private static final String delete = "UPDATE cursos SET activo = false WHERE id = ?";
-	private static final String update = "UPDATE cursos SET cuatrimestre = ?, año = ?,iddocente = ? WHERE id = ?";
+	private static final String update = "UPDATE cursos SET cuatrimestre = ?, anio = ?,iddocente = ? WHERE id = ?";
 	private static final String leer_alumnosXcurso = "Select * from alumnos_x_cursos ";
 	private static final String update_alumnoXcurso = "UPDATE alumnos_x_cursos SET nota1= ?, nota2= ?, nota3= ?, nota4= ?, regularidad =? WHERE idalumno= ? AND idcurso= ?";
 	private static final String leer_mat = "SELECT * FROM materias";

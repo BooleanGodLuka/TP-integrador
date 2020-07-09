@@ -1,4 +1,5 @@
 <%@ page import="dominio.Materia"%>
+<%@ page import="dominio.Docente"%>
 <%@ page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -14,11 +15,10 @@
 	
 	<body>
 		<jsp:include page="Navegacion.jsp"/>
-		
 		<h1>Alta de curso</h1>
-
+		
 		<div class="container" >
-			<form action="../../ServletAltaCurso" method="post">
+			<form action="ServletAltaCursos" method="post">
 		  
 				<label for="meteria"> Materia </label><br>
 				<select id="cbMateria" name="materia">
@@ -33,7 +33,7 @@
 							for (Materia mat : listMaterias) {
 					%>
 					
-					<option value=" <%=mat.getID()%> "> <%=mat.getNombre()%> </option>
+					<option value="<%=mat.getID()%>"> <%=mat.getNombre()%> </option>
 					<%
 						}
 						}
@@ -60,9 +60,24 @@
 				<label for="docente"> Docente </label><br>
 				<select id="cbDocente" name="docente">
 					<option value="empty"> Seleccione un docente </option>
-			    </select><br>
+					<%
+						List<Docente> listDocentes = null;
+						if (request.getAttribute("ListaDocentes") != null) {
+							listDocentes = (List<Docente>) request.getAttribute("ListaDocentes");
+						}
+	
+						if (listDocentes != null) {
+							for (Docente doc : listDocentes) {
+					%>
+					
+					<option value="<%=doc.getLegajo()%>"> <%=doc.getNombre()%> </option>
+					<%
+							}
+						}
+					%>
+				</select><br>
 				
-			    <input type="submit" value="Aceptar"> <br>		  
+			    <input type="submit" name="btnAltaCurso" value="Aceptar"> <br>		  
 			</form>
 			
 			<p>Presione el boton para proseguir con la asignacion de alumnos</p>

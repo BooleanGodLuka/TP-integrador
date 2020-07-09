@@ -70,8 +70,11 @@ public class MateriaDaoImpl implements MateriaDao {
 		try {
 			statement = conexion.getSQLConexion().prepareStatement(readall);
 			resultSet = statement.executeQuery();
+			Materia mat;
 			while (resultSet.next()) {
-				materias.add(getMateria(resultSet));
+				mat = new Materia();
+				getMateria(mat,resultSet);
+				materias.add(mat);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -104,10 +107,9 @@ public class MateriaDaoImpl implements MateriaDao {
 		return isUpdateExitoso;
 	}
 
-	private Materia getMateria(ResultSet resultSet) throws SQLException {
-		int id = resultSet.getInt("id");
-		String nombre = resultSet.getString("nombre");
-		return new Materia(id, nombre);
+	private void getMateria(Materia materia, ResultSet resultSet) throws SQLException {
+		materia.setID(resultSet.getInt("id"));
+		materia.setNombre(resultSet.getString("nombre"));
 	}
 
 }
