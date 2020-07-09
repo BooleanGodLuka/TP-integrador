@@ -113,7 +113,7 @@
 	  
   <tr>
   
-  <form method="get" action="ServletListarAlumno">
+  <form method="post" action="ServletListarAlumno">
 					<td><%=alumno.getLegajo() %></td> 
 					<td><%=alumno.getDni() %></td>   
 					<td><%=alumno.getNombre() %></td>  

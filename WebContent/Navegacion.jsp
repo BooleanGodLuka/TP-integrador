@@ -102,31 +102,31 @@ body {
 <div>
 <header class="w3-top">
   <div class="navbar">
-  <a href="#home">Home</a>
+  <a href="Home.jsp">Home</a>
   <div class="dropdown">
     <button class="dropbtn" style="color: black;" >Alta 
       <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-content">
-      <a href="#">>Docente</a>
-      <a href="#">Curso</a>
-      <a href="#">Alumno</a>
+      <a href="#" style="color: black;">Docente</a>
+      <a href="#" style="color: black;">Curso</a>
+      <a href="#" style="color: black;">Alumno</a>
     </div>
     </div>
     <div class="dropdown">
-    <button class="dropbtn">Listar 
+    <button class="dropbtn" style="color: black;">Listar 
       <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-content">
-      <a href="#">Docente</a>
-      <a href="#">Curso</a>
+      <a href="#" style="color: black;">Docente</a>
+      <a href="#" style="color: black;">Curso</a>
       <form action="ServletListarAlumnos" method="get">
-      <a href="../ServletListarAlumnos">Alumno</a>
+      <a href="Administrador_ListarAlumnos.jsp" style="color: black;">Alumno</a>
       </form>
     </div>
   </div>
  <form action="" method="get">
-  <a href="../reporte_servlet">Reporte</a>
+  <a href="../reporte_servlet" style="color: white;">Reporte</a>
   </form>
 <div style="text-align: right;color: white"><%=nombre%></div>
 </div>

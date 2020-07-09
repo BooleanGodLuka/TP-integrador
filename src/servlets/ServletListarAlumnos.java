@@ -1,7 +1,7 @@
 package servlets;
 
-import java.awt.List;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dominio.Alumno;
 import negocio.AlumnoNegocio;
 import negocioImpl.AlumnoNegocioImpl;
 
@@ -33,7 +34,7 @@ public class ServletListarAlumnos extends HttpServlet {
 		{
 			AlumnoNegocio alumnoNeg = new AlumnoNegocioImpl();
 			
-			List listaAlum = (List) alumnoNeg.readall();
+			ArrayList<Alumno> listaAlum = alumnoNeg.readall();
 			
 			request.setAttribute("listaAlum", listaAlum);	
 			

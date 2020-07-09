@@ -67,7 +67,7 @@ public class AlumnoDaoImpl implements AlumnoDao {
 	}
 
 	@Override
-	public List<Alumno> readall() {
+	public ArrayList<Alumno> readall() {
 		PreparedStatement statement;
 		ResultSet resultSet; // Guarda el resultado de la query
 		ArrayList<Alumno> lista = new ArrayList<Alumno>();
@@ -85,7 +85,7 @@ public class AlumnoDaoImpl implements AlumnoDao {
 	}
 
 	@Override
-	public List<Alumno> readall(String consigna) {
+	public ArrayList<Alumno> readall(String consigna) {
 		PreparedStatement statement;
 		ResultSet resultSet; // Guarda el resultado de la query
 		ArrayList<Alumno> lista = new ArrayList<Alumno>();

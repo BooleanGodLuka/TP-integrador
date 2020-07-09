@@ -1,5 +1,6 @@
 package negocioImpl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import Dao.AlumnoDao;
@@ -33,12 +34,12 @@ public class AlumnoNegocioImpl implements AlumnoNegocio {
 	}
 
 	@Override
-	public List<Alumno> readall() {
+	public ArrayList<Alumno> readall() {
 		return dao.readall();
 	}
 
 	@Override
-	public List<Alumno> readall(String consigna) {
+	public ArrayList<Alumno> readall(String consigna) {
 		return dao.readall(consigna);
 	}
 
