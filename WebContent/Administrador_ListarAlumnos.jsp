@@ -2,7 +2,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@page import="java.util.ArrayList" %>
-<%@page import="java.util.List" %>
 <%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
 <%@page import="dominio.*" %>
 
@@ -88,9 +87,11 @@
     <th>DNI</th>
     <th>Email</th>
     <th>Fecha de Nacimiento</th>
-    <th>Provincia</th>
+    <th>Direccion</th>
+    <!-- <th>Provincia</th>-->
     <th>Localidad</th>
-    <th>Regularidad</th>
+    <th>Telefono</th>
+   <!-- <th>Regularidad</th>-->
     <th>Modificar</th>
   </tr>
 </thead>
@@ -110,19 +111,22 @@
 	  	{	
 			for(Alumno alumno : listaAlumnos) 
 			{
+				
+				if (alumno.getActivo() == true){
 	  %>
 	  
   <tr>
   
-  <form method="post" action="ServletListarAlumno">
-					<td><%=alumno.getLegajo() %></td> 
-					<td><%=alumno.getDni() %></td>   
-					<td><%=alumno.getNombre() %></td>  
-					<td><%=alumno.getFechaNacimiento()%></td> 
-					<td><%=alumno.getDireccion()%></td> 
-					<td><%=alumno.getProvincia() %></td>
-					<td><%=alumno.getIDLocalidad() %></td>
+  <form method="get" action="ServletListarAlumno">
+					<td><%=alumno.getLegajo() %></td>   
+					<td><%=alumno.getNombre() %></td> 
+					<td><%=alumno.getApellido() %></td>
+					<td><%=alumno.getDni() %></td> 
 					<td><%=alumno.getEmail()%></td>
+					<td><%=alumno.getFechaNacimiento()%></td>
+					<td><%=alumno.getDireccion()%></td> 
+					<!-- <<td>alumno.getProvincia()</td> -->
+					<td><%=alumno.getIDLocalidad() %></td>
 					<td><%=alumno.getTelefono() %></td>
 					<td> <input type="button" value="Modificar Alumno" name="btn_ModificarAlumno"style="BORDER: rgb(128,128,128) 3px solid; WIDTH: 150px; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;"></td>
 </form>				
@@ -130,6 +134,7 @@
  </tr>
  
  <%
+				}
 			}
 	  	}			
  %>

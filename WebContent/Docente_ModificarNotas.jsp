@@ -141,8 +141,8 @@ input[type=submit] {
 %>  
   <tr>
     <td><%= axc.getAlumno().getLegajo() %></td> <input type="hidden" name ="alumno" value= "<%=axc.getAlumno().getLegajo() %>" >
-    <td><%= axc.getNombre() %></td>
-    <td><%= axc.getApellido() %></td>
+    <td><%= axc.getAlumno().getNombre()%></td>
+    <td><%= axc.getAlumno().getApellido() %></td>
     <td><input type="text" id="nota" name="nota1_<%= axc.getAlumno().getLegajo() %>" placeholder="<%= axc.getNota1() %>"></td>
     <td><input type="text" id="nota" name="nota2_<%= axc.getAlumno().getLegajo() %>" placeholder="<%= axc.getNota2() %>"></td>
     <td><input type="text" id="nota" name="nota3_<%= axc.getAlumno().getLegajo() %>" placeholder="<%= axc.getNota3() %>"></td>

@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@page import="java.util.ArrayList" %>
+<%@page import="java.util.List" %>
+<%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
+<%@page import="dominio.*" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -56,66 +60,69 @@
 		</div>
 		<br>
 
+
 <table ALIGN="center" id="Listados" width=100%>
 
 
 <thead>
  <tr>
  	<th>Legajo</th>
-    <th>Usuario</th>
+   <!--  <th>Usuario</th> -->
     <th>Nombre/s</th>
     <th>Apellido/s</th>
     <th>DNI</th>
     <th>Email</th>
     <th>Fecha de Nacimiento</th>
     <th>Provincia</th>
-    <th>Localidad</th>
+    <!--<th>Localidad</th>-->
+    <th>Telefono</th>
     <th>Modificar</th>
   </tr>
 </thead>
 
 <tbody>
-<tr>
-<td style="text-align: center"> 1 </td>
-<td> cfernandez </td>
-<td> Claudio </td>
-<td> Fernandez </td>
-<td> 25.247.145 </td>
-<td> claudio_fernandez00@red.utn.frgp.edu.ar </td>
-<td style="text-align: center">04/05/1970</td>
-<td> Buenos Aires </td>
-<td> Tigre </td>
-<td style="text-align:center"> <input type="button" value="Modificar Docente" name="btn_ModificarDocente"style="BORDER: rgb(128,128,128) 3px solid; WIDTH: 150px; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;"></td>	
-</tr>
 
+	 <% 
+
+		ArrayList<Docente> listaDocentes = new ArrayList<Docente>();
+
+		if(request.getAttribute("listaDoc") != null)
+		{
+			listaDocentes = (ArrayList<Docente>)request.getAttribute("listaDoc");
+		}
+		
+	    if(listaDocentes != null)
+	  	{	
+			for(Docente docente : listaDocentes) 
+			{
+				if (docente.getActivo() == true){
+	  %>
 <tr>
-<td style="text-align: center"> 2 </td>
-<td> therrera </td>
-<td> Tamara </td>
-<td> Herrera </td>
-<td> 30.478.634 </td>
-<td> tamiherrera@red.utn.frgp.edu.ar </td>
-<td style="text-align: center">15/02/1985</td>
-<td> Buenos Aires </td>
-<td> Vicente Lopez </td>
+
+					<td><%=docente.getLegajo() %></td> 
+					<!--  <td>docente.getUsuario()</td>   -->
+					<td><%=docente.getNombre() %></td> 
+					<td><%=docente.getApellido()%></td>  
+					<td><%=docente.getDni()%></td> 
+					<td><%=docente.getEmail()%></td> 
+					<td><%=docente.getFechaNacimiento()%></td> 
+					<td><%=docente.getIDLocalidad() %></td>
+					<td><%=docente.getTelefono() %></td>
+
 <td style="text-align:center"> <input type="button" value="Modificar Docente" name="btn_ModificarDocente"style="BORDER: rgb(128,128,128) 3px solid; WIDTH: 150px; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;"></td>
 </tr>
 
-<tr>
-<td style="text-align: center"> 3 </td>
-<td> crodriguez </td>
-<td> Carlos Javier </td>
-<td> Rodriguez </td>
-<td> 33.145.777 </td>
-<td>cjrodriguez@red.utn.frgp.edu.ar </td>
-<td style="text-align: center">09/10/1977</td>
-<td> Buenos Aires </td>
-<td> EL Talar </td>
-<td style="text-align:center"> <input type="button" value="Modificar Docente" name="btn_ModificarDocente"style="BORDER: rgb(128,128,128) 3px solid; WIDTH: 150px; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;"></td>
-</tr>
+
+ <%
+ 
+ 
+				}
+			}
+	  	}			
+ %>
 </tbody>
-
 </table>
+
 
 <p>Pág.</p>
 <input type="submit" value="1">

@@ -1,7 +1,11 @@
+<html>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@page import="java.util.ArrayList" %>
+<%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
+<%@page import="dominio.*" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Listado de Cursos</title>
@@ -94,39 +98,38 @@
 </thead>
 
 <tbody>
+<% 
+		ArrayList<Curso> listaCursos = new ArrayList<Curso>();
 
+		if(request.getAttribute("listacur") != null)
+		{
+			listaCursos = (ArrayList<Curso>)request.getAttribute("listacur");
+		}
+		
+	    if(listaCursos != null)
+	  	{	
+			for(Curso cur : listaCursos) 
+			{
+				
+	  %>
 <tr>
-<td> Laboratorio de Computacion IV </td>
-<td> 2° Cuatrimestre </td>
-<td> 2020 </td>
-<td> Tamara Herrera </td>
-<td style="text-align:center"> <input type="button" value="Ver Alumnos" name="btn_VerAlumnos"
-style="BORDER: rgb(128,128,128) 3px solid; WIDTH: 150px; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;"></td>
-<td style="text-align:center"> <input type="button" value="Modificar Curso" name="btn_ModificarCurso"
-style="BORDER: rgb(128,128,128) 3px solid; WIDTH: 150px; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;"></td>
+<td><%=cur.getMateria().getNombre() %></td> 
+<td><%=cur.getCuatrimestre() %></td> 
+<td><%=cur.getAnio() %></td> 
+<td><%=cur.getDocente() %></td> 
+<td style="text-align:center"> <input type="button" value="Ver Alumnos" name="btn_VerAlumnos"style="BORDER: rgb(128,128,128) 3px solid; WIDTH: 150px; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;"></td>
+<td style="text-align:center"> <input type="button" value="Modificar Curso" name="btn_ModificarCurso"style="BORDER: rgb(128,128,128) 3px solid; WIDTH: 150px; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;"></td>
 </tr>
 
-<tr>
-<td> Metodologia de Sistemas I</td>
-<td> 2° Cuatrimestre </td>
-<td> 2020 </td>
-<td> Lorena Palermo </td>
-<td style="text-align:center"> <input type="button" value="Ver Alumnos" name="btn_VerAlumnos"
-style="BORDER: rgb(128,128,128)  3px solid; WIDTH: 150px; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;"></td>
-<td style="text-align:center"> <input type="button" value="Modificar Curso" name="btn_ModificarCurso"
-style="BORDER: rgb(128,128,128) 3px solid; WIDTH: 150px; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;"></td>
-</tr>
 
-<tr>
-<td> Diseño y Administracion de base de Datos I </td>
-<td> 2° Cuatrimestre </td>
-<td> 2020 </td>
-<td> Ines Casanovas </td>
-<td style="text-align:center"> <input type="button" value="Ver Alumnos" name="btn_VerAlumnos"
-style="BORDER: rgb(128,128,128) 3px solid; WIDTH: 150px; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;"></td>
-<td style="text-align:center"> <input type="button" value="Modificar Curso" name="btn_ModificarCurso"
-style="BORDER: rgb(128,128,128) 3px solid; WIDTH: 150px; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;"></td>
-</tr>
+<%
+			}
+		
+	  	}
+
+
+%>
+
 </tbody>
 
 </table>

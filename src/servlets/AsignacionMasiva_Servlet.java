@@ -52,18 +52,24 @@ public class AsignacionMasiva_Servlet extends HttpServlet {
 
 		if (request.getParameter("btn_cargar") != null) {
 
+			AlumnoNegocioImpl alumn = new AlumnoNegocioImpl();
 			String[] alumnos_seleccionados = request.getParameterValues("seleccionado");
 			ArrayList<Alumno> lista_alumnos = new ArrayList<Alumno>();
-			lista_alumnos = (ArrayList<Alumno>) request.getAttribute("lista_alumnos");
-			boolean bandera;
-
+			lista_alumnos = alumn.readall();
+			boolean bandera;  
+			Alumno al;  
+			String temp="";
+			
 			CursoNegocioImpl cudao = new CursoNegocioImpl();
 
-			for (Alumno al : lista_alumnos) {
+			for (int i =0; i<lista_alumnos.size(); i++) {
 				bandera = true;
+				al = lista_alumnos.get(i);
 
-				for (String id : alumnos_seleccionados) {
-					if (Integer.toString(al.getLegajo()) == id) {
+				for (int j=0; j<alumnos_seleccionados.length;j++) {
+					temp = alumnos_seleccionados[j];
+					
+					if (Integer.toString(al.getLegajo()) == temp) {
 						bandera = false;
 					}
 				}
