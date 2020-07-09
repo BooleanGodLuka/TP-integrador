@@ -1,9 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    <%@page import="javax.servlet.http.HttpSession"%>
 <%@page import="dominio.*" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -130,21 +129,21 @@ body {
 <header class="w3-top">
   <div class="navbar">
   <a href="#home">Home</a>
+  <div>
+  <%
+      		String nombre = "";
+	      	HttpSession misession = request.getSession();
+      		Usuario usu = new Usuario();
+      		usu = (Usuario)misession.getAttribute("Usuario");
+      		nombre = usu.getUsuario();
+      		
+   %>
+   </div>
   <form action="../docente_listar_cursos_servlet" method="get">
   <a href="../docente_listar_cursos_servlet">Cursos</a>
   </form>
   <a href="#">Alumnos</a>
-   <div>
-  <%
-      		String nombre = "";
-	      	HttpSession misession = request.getSession();
-      		//Docente doc = new Docente(); paras ponerle el nombre despues
-      		Usuario usu = new Usuario();
-      		usu = (Usuario)misession.getAttribute("Usuario");
-      		nombre = usu.getUsuario();
-   %>
-   </div>
-  <div style="text-align: right;color: white"><%=nombre%></div>
+  <div style="text-align: right;color: white"><!--  <%=nombre%> --> </div>
 </div>
 </header>
 

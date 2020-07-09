@@ -12,10 +12,10 @@ import dominio.Alumno;
 
 public class AlumnoDaoImpl implements AlumnoDao {
 
-	private static final String insert = "INSERT INTO alumnos(dni, nombre, apellido, fechanacimiento, direccion, idlocalidad, email, telefono, activo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, true);";
-	private static final String delete = "UPDATE alumnos (activo) VALUES (false) WHERE id = ? ;";
-	private static final String readall = "SELECT * FROM alumnos ;";
-	private static final String update = "UPDATE alumnos (dni, nombre, apellido, fechanacimiento, direccion, idlocalidad, email, telefono, activo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) WHERE id = ? ;";
+	private static final String insert = "INSERT INTO alumnos(dni, nombre, apellido, fechanacimiento, direccion, idlocalidad, email, telefono, activo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, true) ";
+	private static final String delete = "UPDATE alumnos (activo) VALUES (false) WHERE id = ? ";
+	private static final String readall = "SELECT * FROM alumnos ";
+	private static final String update = "UPDATE alumnos (dni, nombre, apellido, fechanacimiento, direccion, idlocalidad, email, telefono, activo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) WHERE id = ? ";
 
 	@Override
 	public boolean insert(Alumno alumno) {
@@ -143,12 +143,11 @@ public class AlumnoDaoImpl implements AlumnoDao {
 		String fechanacimiento = resultSet.getString("fechanacimiento");
 		String email = resultSet.getString("email");
 		String direccion = resultSet.getString("direccion");
-		String provincia = resultSet.getString("provincia");
 		String idlocalidad = resultSet.getString("idlocalidad");
 		int telefono = resultSet.getInt("telefono");
 		Boolean activo = resultSet.getBoolean("activo");
 		return new Alumno(legajo, dni, nombre, apellido,
-				fechanacimiento, direccion, provincia, idlocalidad, email, telefono, activo);
+				fechanacimiento, direccion, idlocalidad, email, telefono, activo);
 	}
 
 }

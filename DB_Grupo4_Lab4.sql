@@ -183,8 +183,8 @@ create table docentes (
     direccion varchar(50) not null,
     idlocalidad int not null,
     email varchar(100) not null,
-	activo boolean not null,
     telefono varchar(50) not null,
+    activo boolean not null,
     PRIMARY KEY (id),
     UNIQUE KEY (dni),
     FOREIGN KEY (idlocalidad) REFERENCES localidades(id)
@@ -282,13 +282,13 @@ create table usuarios (
     iddocente int,
 	usuario varchar (50) not null,
     clave varchar(50) not null,
-    estado bool not null,
+    activo bool not null,
     FOREIGN KEY (iddocente) REFERENCES docentes(id),
     PRIMARY KEY (idusuario)
 );
 
-INSERT INTO usuarios (idusuario, usuario, clave, estado) VALUES ('1','administrator', 'A1234.', true);
-INSERT INTO usuarios (idusuario, iddocente, usuario, clave, estado) VALUES ('2', 1, 'therrera','123465', true);
+INSERT INTO usuarios (idusuario, usuario, clave, activo) VALUES ('1','administrator', 'A1234.', true);
+INSERT INTO usuarios (idusuario, iddocente, usuario, clave, activo) VALUES ('2', 1, 'therrera','123465', true);
 
 create table docentesXcursos (
 	id_docente int not null,
