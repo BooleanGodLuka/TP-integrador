@@ -25,6 +25,7 @@
         <input type='password' placeholder='Contraseña' class='input-line full-width' name="txtPassword" minlength="4" required></input>
 
       </div>
+      
       <div><br><br><button class='ghost-round full-width' name="btnAceptar">Aceptar</button></div>
     </div>
     

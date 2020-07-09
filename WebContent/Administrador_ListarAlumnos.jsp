@@ -44,7 +44,7 @@
 
 <body>
 
-<jsp:include page="/Otros/Navegacion.jsp"></jsp:include>
+<jsp:include page="Navegacion.jsp"></jsp:include>
 
 	<h2 align="center">LISTADO DE ALUMNOS</h2>
 	
@@ -98,11 +98,11 @@
 
 	 <% 
 
-		ArrayList<Alumno> listaAlumnos;
+		ArrayList<Alumno> listaAlumnos = new ArrayList<Alumno>();
 
 		if(request.getAttribute("listaAlum") != null)
 		{
-			listaAlumnos = request.getAttribute("listaAlum");
+			listaAlumnos = (ArrayList<Alumno>)request.getAttribute("listaAlum");
 		}
 		
 	    if(listaAlumnos != null)
@@ -123,9 +123,9 @@
 					<td><%=alumno.getIDLocalidad() %></td>
 					<td><%=alumno.getEmail()%></td>
 					<td><%=alumno.getTelefono() %></td>
-					
-    <td> <input type="button" value="Modificar Alumno" name="btn_ModificarAlumno"style="BORDER: rgb(128,128,128) 3px solid; WIDTH: 150px; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;"></td>
-  </form>
+					<td> <input type="button" value="Modificar Alumno" name="btn_ModificarAlumno"style="BORDER: rgb(128,128,128) 3px solid; WIDTH: 150px; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;"></td>
+</form>				
+    
  </tr>
  
  <%
