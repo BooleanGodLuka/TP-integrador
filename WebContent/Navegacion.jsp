@@ -120,8 +120,8 @@ body {
     <div class="dropdown-content">
       <a href="#" style="color: black;">Docente</a>
       <a href="#" style="color: black;">Curso</a>
-      <form action="ServletListarAlumnos" method="get">
-      <a href="Administrador_ListarAlumnos.jsp" style="color: black;">Alumno</a>
+      <form action="ServletListarAlumnos" method="post">
+      <a href="ServletListarAlumnos" name="dropdown_ListarAlumnos" style="color: black;">Alumno</a>
       </form>
     </div>
   </div>
