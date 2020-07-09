@@ -39,8 +39,8 @@ public class CursoNegocioImpl implements CursoNegocio {
 	}
 
 	@Override
-	public ArrayList<alumnoXcurso> leer_alumnoXcurso(String id_curso) {
-		return cdao.leer_alumnoXcurso(id_curso);
+	public ArrayList<alumnoXcurso> leer_alumnoXcurso(int id_curso) {
+		return cdao.leer_alumnoXcurso(Integer.toString(id_curso));
 	}
 
 	@Override
@@ -52,7 +52,7 @@ public class CursoNegocioImpl implements CursoNegocio {
 	public int calcular_cant_alumnXcurso(int id) {
 		// TODO Auto-generated method stub
 		int cont = 0;
-		ArrayList<alumnoXcurso> lista = cdao.leer_alumnoXcurso(id);
+		ArrayList<alumnoXcurso> lista = cdao.leer_alumnoXcurso(Integer.toString(id));
 
 		for (alumnoXcurso al : lista) {
 			cont++;
@@ -60,11 +60,10 @@ public class CursoNegocioImpl implements CursoNegocio {
 		return cont;
 	}
 
-	@Override
 	public int calcular_cant_alumnXcurso_aprob(int id) {
 		// TODO Auto-generated method stub
 		int cont = 0;
-		ArrayList<alumnoXcurso> lista = cdao.leer_alumnoXcurso(id);
+		ArrayList<alumnoXcurso> lista = cdao.leer_alumnoXcurso(Integer.toString(id));
 
 		for (alumnoXcurso al : lista) {
 			if (al.getNota4() > 6) {
@@ -74,11 +73,10 @@ public class CursoNegocioImpl implements CursoNegocio {
 		return cont;
 	}
 
-	@Override
 	public int calcular_cant_alumnXcurso_desap(int id) {
 		// TODO Auto-generated method stub
 		int cont = 0;
-		ArrayList<alumnoXcurso> lista = cudao.leer_alumnoXcurso(id);
+		ArrayList<alumnoXcurso> lista = cdao.leer_alumnoXcurso(Integer.toString(id));
 
 		for (alumnoXcurso al : lista) {
 			if (al.getNota4() < 6) {
@@ -91,30 +89,10 @@ public class CursoNegocioImpl implements CursoNegocio {
 	@Override
 	public String leer_materia(int id) {
 		// TODO Auto-generated method stub
-		return cdao.leer_materia(id);
+		return cdao.leer_materia(Integer.toString(id));
 	}
 
-	@Override
-	public int calcular_cant_alumnXcurso(String id) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+ 
 
-	@Override
-	public int calcular_cant_alumnXcurso_aprob(String id) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int calcular_cant_alumnXcurso_desap(String id) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int leer_materia(int id) {
-		return cdao.leer_materia(id);
-	}
 
 }

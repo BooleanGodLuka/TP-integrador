@@ -1,3 +1,5 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import=" dominio.Alumno"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -126,40 +128,38 @@ input[type=submit] {
     <th>Apellido</th>
     <th>Opcion</th>
   </tr>
+  <form action = "AsignacionMasiva_Servlet" method= "post">
+  
+  <%
+  if (request.getAttribute("lista_alumnos")!= null){
+	  
+	ArrayList<Alumno> lista;  
+	 lista = (ArrayList<Alumno>) request.getAttribute("lista_alumnos");
+	 
+  for (Alumno al : lista){
+	  
+  
+  
+  %>
+  
   <tr>
-    <td>0001</td>
-    <td>Juan</td>
-    <td>Perez</td>
+    <td><%=al.getLegajo() %></td>
+    <td><%=al.getNombre() %></td>
+    <td><%=al.getApellido() %></td>
     <td>Agregar a curso
-  <input type="checkbox">
-  <span class="checkmark"></span>
-  </td>
-    
-  </tr>
-  <tr>
-    <td>0002</td>
-    <td>Jose</td>
-    <td>Maria</td>
-    <td>Agregar a curso
-  <input type="checkbox">
-  <span class="checkmark"></span>
-  </td>
-  </tr>
-  <tr>
-    <td>0003</td>
-    <td>Luciano</td>
-    <td>Gonzalez</td>
-    <td>Agregar a curso
-  <input type="checkbox">
+  <input type="checkbox" name ="seleccionado" value ="<%=al.getLegajo()%>">
   <span class="checkmark"></span>
   </td>
   </tr>
+  
+  <%}} %>
+ 
 </table>
 <br>
 	<label for="fname">Oprima para terminar el agregado de alumnos</label>
 	<br>
-    <input type="submit" value="Aceptar">
-    
+    <input type="submit" name="btn_cargar" value="Aceptar">
+    </form>
 
 
 </body>

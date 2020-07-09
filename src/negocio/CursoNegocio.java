@@ -17,15 +17,15 @@ public interface CursoNegocio {
 
 	public boolean update(Curso curso_a_modificar);
 
-	public ArrayList<alumnoXcurso> leer_alumnoXcurso(String id_curso);
-
 	public boolean actualizar_alumnoXcurso(alumnoXcurso alumno);
 
-	public int calcular_cant_alumnXcurso(String id);
+	public String leer_materia(int id);
 
-	public int calcular_cant_alumnXcurso_aprob(String id);
+	int calcular_cant_alumnXcurso_aprob(int id);
 
-	public int calcular_cant_alumnXcurso_desap(String id);
+	int calcular_cant_alumnXcurso_desap(int id);
 
-	public int leer_materia(int id);
+	int calcular_cant_alumnXcurso(int id);
+
+	ArrayList<alumnoXcurso> leer_alumnoXcurso(int id_curso);
 }

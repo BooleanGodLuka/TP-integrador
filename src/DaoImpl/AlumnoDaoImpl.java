@@ -148,8 +148,9 @@ public class AlumnoDaoImpl implements AlumnoDao {
 		int telefono = resultSet.getInt("telefono");
 		Boolean activo = resultSet.getBoolean("activo");
 		String regular = resultSet.getString("regularidad");
+		
 		return new Alumno(legajo, dni, nombre, apellido,
-				fechanacimiento, direccion, provincia, idlocalidad, email, telefono, activo, regular);
+				fechanacimiento, direccion, provincia, idlocalidad, email, telefono, activo);
 	}
 
 }
