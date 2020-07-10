@@ -32,10 +32,8 @@ public class ServletModificarAlumno extends HttpServlet {
 
 			Alumno alumno = new Alumno();
 			cargarAlumno(alumno, request);
-			
-			request.setAttribute("Alumno", alumno);
 
-			RequestDispatcher rd = request.getRequestDispatcher("Aministrador_ModificarAlumno.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("Home.jsp");
 			rd.forward(request, response);
 
 		} catch (Exception e) {
@@ -51,7 +49,7 @@ public class ServletModificarAlumno extends HttpServlet {
 			cargarAlumno(alumno, request);
 			alumnoNeg.insert(alumno);
 
-			RequestDispatcher rd = request.getRequestDispatcher("Administrador_ListarAlumnos.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("Home.jsp");
 			rd.forward(request, response);
 
 		} catch (Exception e) {
