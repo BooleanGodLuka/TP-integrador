@@ -7,12 +7,12 @@ public interface AlumnoDao {
 
 	public boolean insert(Alumno alumno);
 
-	public boolean delete(Alumno alumno_a_eliminar);
+	public boolean delete(Alumno alumno);
 
 	public ArrayList<Alumno> readall();
 
-	public ArrayList<Alumno> readall(String consigna);
+	public Alumno read(int idalumno);
 
-	public boolean update(Alumno alumno_a_modificar);
+	public boolean update(Alumno alumno);
 
 }

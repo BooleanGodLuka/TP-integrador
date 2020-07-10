@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import DaoImpl.AlumnoDaoImpl;
 import dominio.Alumno;
-import dominio.alumnoXcurso;
+import dominio.AlumnoXCurso;
 import negocio.AlumnoNegocio;
 import negocioImpl.AlumnoNegocioImpl;
 import negocioImpl.CursoNegocioImpl;
@@ -44,10 +44,10 @@ public class docente_modificar_nota_servlet extends HttpServlet {
 		CursoNegocioImpl cudao = new CursoNegocioImpl();
 
 		if (request.getParameter("btn_guardar") != null) {
-			ArrayList<alumnoXcurso> lis = cudao.leer_alumnoXcurso(Integer.parseInt(request.getParameter("id_curso")));
-			ArrayList<alumnoXcurso> temp = lis;
+			ArrayList<AlumnoXCurso> lis = cudao.leer_alumnoXcurso(Integer.parseInt(request.getParameter("id_curso")));
+			ArrayList<AlumnoXCurso> temp = lis;
 
-			for (alumnoXcurso axc : lis) {
+			for (AlumnoXCurso axc : lis) {
 				axc.setNota1(Integer.parseInt(request.getParameter("nota1_" + axc.getAlumno().getLegajo())));
 				axc.setNota1(Integer.parseInt(request.getParameter("nota2_" + axc.getAlumno().getLegajo())));
 				axc.setNota1(Integer.parseInt(request.getParameter("nota3_" + axc.getAlumno().getLegajo())));
@@ -66,11 +66,11 @@ public class docente_modificar_nota_servlet extends HttpServlet {
 
 		if (request.getParameter("btn_alumnos") != null) {
 			AlumnoNegocio al = new AlumnoNegocioImpl();
-			ArrayList<alumnoXcurso> lista = cudao.leer_alumnoXcurso(Integer.parseInt(request.getParameter("id_curso")));
-			alumnoXcurso axc = new alumnoXcurso();
+			ArrayList<AlumnoXCurso> lista = cudao.leer_alumnoXcurso(Integer.parseInt(request.getParameter("id_curso")));
+			AlumnoXCurso axc = new AlumnoXCurso();
 
 			for (int i = 0; i < lista.size(); i++) {
-				axc = new alumnoXcurso(lista.get(i));
+				axc = new AlumnoXCurso(lista.get(i));
 				if (al.readall(" WHERE id=" + axc.getAlumno().getLegajo() + " AND activo=1").get(0) != null) {
 					Alumno cursante = (Alumno) al.readall(" WHERE id=" + axc.getAlumno().getLegajo() + " AND activo=1")
 							.get(0);

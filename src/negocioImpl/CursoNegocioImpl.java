@@ -6,7 +6,7 @@ import java.util.List;
 import Dao.CursoDao;
 import DaoImpl.CursoDaoImpl;
 import dominio.Curso;
-import dominio.alumnoXcurso;
+import dominio.AlumnoXCurso;
 import negocio.CursoNegocio;
 
 public class CursoNegocioImpl implements CursoNegocio {
@@ -39,12 +39,12 @@ public class CursoNegocioImpl implements CursoNegocio {
 	}
 
 	@Override
-	public ArrayList<alumnoXcurso> leer_alumnoXcurso(int id_curso) {
+	public ArrayList<AlumnoXCurso> leer_alumnoXcurso(int id_curso) {
 		return cdao.leer_alumnoXcurso(Integer.toString(id_curso));
 	}
 
 	@Override
-	public boolean actualizar_alumnoXcurso(alumnoXcurso alumno) {
+	public boolean actualizar_alumnoXcurso(AlumnoXCurso alumno) {
 		return cdao.actualizar_alumnoXcurso(alumno);
 	}
 
@@ -52,9 +52,9 @@ public class CursoNegocioImpl implements CursoNegocio {
 	public int calcular_cant_alumnXcurso(int id) {
 		// TODO Auto-generated method stub
 		int cont = 0;
-		ArrayList<alumnoXcurso> lista = cdao.leer_alumnoXcurso(Integer.toString(id));
+		ArrayList<AlumnoXCurso> lista = cdao.leer_alumnoXcurso(Integer.toString(id));
 
-		for (alumnoXcurso al : lista) {
+		for (AlumnoXCurso al : lista) {
 			cont++;
 		}
 		return cont;
@@ -63,9 +63,9 @@ public class CursoNegocioImpl implements CursoNegocio {
 	public int calcular_cant_alumnXcurso_aprob(int id) {
 		// TODO Auto-generated method stub
 		int cont = 0;
-		ArrayList<alumnoXcurso> lista = cdao.leer_alumnoXcurso(Integer.toString(id));
+		ArrayList<AlumnoXCurso> lista = cdao.leer_alumnoXcurso(Integer.toString(id));
 
-		for (alumnoXcurso al : lista) {
+		for (AlumnoXCurso al : lista) {
 			if (al.getNota4() > 6) {
 				cont++;
 			}
@@ -76,9 +76,9 @@ public class CursoNegocioImpl implements CursoNegocio {
 	public int calcular_cant_alumnXcurso_desap(int id) {
 		// TODO Auto-generated method stub
 		int cont = 0;
-		ArrayList<alumnoXcurso> lista = cdao.leer_alumnoXcurso(Integer.toString(id));
+		ArrayList<AlumnoXCurso> lista = cdao.leer_alumnoXcurso(Integer.toString(id));
 
-		for (alumnoXcurso al : lista) {
+		for (AlumnoXCurso al : lista) {
 			if (al.getNota4() < 6) {
 				cont++;
 			}
@@ -99,7 +99,7 @@ public class CursoNegocioImpl implements CursoNegocio {
 	}
 
 	@Override
-	public boolean insert_alumnoXcurso(alumnoXcurso alumno) {
+	public boolean insert_alumnoXcurso(AlumnoXCurso alumno) {
 		// TODO Auto-generated method stub
 		return cdao.insert_alumnoXcurso(alumno);
 	}

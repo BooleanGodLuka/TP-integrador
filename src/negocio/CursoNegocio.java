@@ -3,7 +3,7 @@ package negocio;
 import java.util.ArrayList;
 
 import dominio.Curso;
-import dominio.alumnoXcurso;
+import dominio.AlumnoXCurso;
 
 public interface CursoNegocio {
 
@@ -17,7 +17,7 @@ public interface CursoNegocio {
 
 	public boolean update(Curso curso_a_modificar);
 
-	public boolean actualizar_alumnoXcurso(alumnoXcurso alumno);
+	public boolean actualizar_alumnoXcurso(AlumnoXCurso alumno);
 
 	public String leer_materia(int id);
 
@@ -27,9 +27,9 @@ public interface CursoNegocio {
 
 	int calcular_cant_alumnXcurso(int id);
 
-	ArrayList<alumnoXcurso> leer_alumnoXcurso(int id_curso);
+	ArrayList<AlumnoXCurso> leer_alumnoXcurso(int id_curso);
 	
 	public String leer_ultimo_curso_id ();
 	
-	public boolean insert_alumnoXcurso (alumnoXcurso alumno);
+	public boolean insert_alumnoXcurso (AlumnoXCurso alumno);
 }

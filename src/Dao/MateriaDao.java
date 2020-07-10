@@ -7,10 +7,12 @@ public interface MateriaDao {
 
 	public boolean insert(Materia materia);
 
-	public boolean delete(Materia materia_a_eliminar);
+	public boolean delete(Materia materia);
 
 	public ArrayList<Materia> readall();
+	
+	public Materia read(int idmateria);
 
-	public boolean update(Materia materia_a_modificar);
+	public boolean update(Materia materia);
 
 }

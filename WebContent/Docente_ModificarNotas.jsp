@@ -1,5 +1,5 @@
 <%@page import="java.util.ArrayList"%>
-<%@page import=" dominio.alumnoXcurso"%>
+<%@page import="dominio.AlumnoXCurso"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -132,13 +132,14 @@ input[type=submit] {
   </tr>
   
    
-  <% if (request.getParameter("lista_alumnos") != null){
-	ArrayList<alumnoXcurso> lista;
-	lista = (ArrayList<alumnoXcurso>) request.getAttribute("lista_alumnos");
-	
-	
-	for (alumnoXcurso axc: lista ){
-%>  
+  <%
+       	if (request.getParameter("lista_alumnos") != null){
+       	ArrayList<AlumnoXCurso> lista;
+       	lista = (ArrayList<AlumnoXCurso>) request.getAttribute("lista_alumnos");
+       	
+       	
+       	for (AlumnoXCurso axc: lista ){
+       %>  
   <tr>
     <td><%= axc.getAlumno().getLegajo() %></td> <input type="hidden" name ="alumno" value= "<%=axc.getAlumno().getLegajo() %>" >
     <td><%= axc.getAlumno().getNombre()%></td>

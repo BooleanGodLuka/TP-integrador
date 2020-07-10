@@ -62,7 +62,7 @@ public class MateriaDaoImpl implements MateriaDao {
 	}
 
 	@Override
-	public List<Materia> readall() {
+	public ArrayList<Materia> readall() {
 		PreparedStatement statement;
 		ResultSet resultSet;
 		ArrayList<Materia> materias = new ArrayList<Materia>();
@@ -73,13 +73,32 @@ public class MateriaDaoImpl implements MateriaDao {
 			Materia mat;
 			while (resultSet.next()) {
 				mat = new Materia();
-				getMateria(mat,resultSet);
+				getMateria(mat, resultSet);
 				materias.add(mat);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return materias;
+	}
+
+	@Override
+	public Materia read(int idmateria) {
+		PreparedStatement statement;
+		ResultSet resultSet;
+		Materia materia = new Materia();
+		Conexion conexion = Conexion.getConexion();
+		try {
+			statement = conexion.getSQLConexion().prepareStatement(readall + "WHERE id = " + idmateria);
+			resultSet = statement.executeQuery();
+			if (resultSet != null) {
+				getMateria(materia, resultSet);
+				return materia;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return materia;
 	}
 
 	@Override

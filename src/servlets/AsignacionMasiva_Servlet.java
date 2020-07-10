@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import dominio.Alumno;
 import dominio.Provincia;
-import dominio.alumnoXcurso;
+import dominio.AlumnoXCurso;
 import negocio.AlumnoNegocio;
 import negocioImpl.AlumnoNegocioImpl;
 import negocioImpl.CursoNegocioImpl;
@@ -80,9 +80,9 @@ public class AsignacionMasiva_Servlet extends HttpServlet {
 			}
 
 			int id_curso = Integer.parseInt(cudao.leer_ultimo_curso_id());
-			alumnoXcurso cursante;
+			AlumnoXCurso cursante;
 			for (Alumno alu : lista_alumnos) {
-				cursante = new alumnoXcurso();
+				cursante = new AlumnoXCurso();
 				cursante.setAlumno(alu);
 				cursante.setId_curso(id_curso);
 				cursante.setNota1(0);

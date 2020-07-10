@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
 import Dao.AlumnoDao;
 import dominio.Alumno;
@@ -93,24 +92,23 @@ public class AlumnoDaoImpl implements AlumnoDao {
 	}
 
 	@Override
-	public ArrayList<Alumno> readall(String consigna) {
+	public Alumno read(int idalumno) {
 		PreparedStatement statement;
 		ResultSet resultSet;
-		ArrayList<Alumno> lista = new ArrayList<Alumno>();
 		Conexion conexion = Conexion.getConexion();
+		Alumno alumno = new Alumno();
 		try {
-			statement = conexion.getSQLConexion().prepareStatement(readall + consigna);
+			statement = conexion.getSQLConexion().prepareStatement(readall + "WHERE id = " + idalumno);
 			resultSet = statement.executeQuery();
-			Alumno alumno;
-			while (resultSet.next()) {
-				alumno = new Alumno();
+			if (resultSet != null) {
 				cargarAlumno(alumno, resultSet);
-				lista.add(alumno);
+				return alumno;
 			}
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return lista;
+		return null;
 	}
 
 	@Override

@@ -1,3 +1,4 @@
+drop database db_grupo4_labo4;
 CREATE database db_grupo4_labo4;
 use db_grupo4_labo4;
 
@@ -2555,15 +2556,16 @@ create table alumnosxcursos (
     nota4 int,
     aprobado boolean,
     regularidad varchar(30),
+    activo boolean not null,
     FOREIGN KEY (idalumno) REFERENCES alumnos(id),
     FOREIGN KEY (idcurso) REFERENCES cursos(id),
     PRIMARY KEY (idalumno, idcurso)
 );
 
-INSERT INTO alumnosxcursos (idalumno, idcurso, nota1, nota2, nota3, nota4, aprobado, regularidad) VALUES (1, 1, 7, 5, 9, 7, true,"Regular");
-INSERT INTO alumnosxcursos (idalumno, idcurso, nota1, nota2, nota3, nota4, aprobado, regularidad) VALUES (1, 2, 7, 6, 7, 8, true,"Regular");
-INSERT INTO alumnosxcursos (idalumno, idcurso, nota1, nota2, nota3, nota4, aprobado, regularidad) VALUES (1, 3, 9, 8, 9, 10, true,"Regular");
-INSERT INTO alumnosxcursos (idalumno, idcurso, nota1, nota2, nota3, nota4, aprobado, regularidad) VALUES (1, 4, 4, 7, 9, 9, true,"Regular");
+INSERT INTO alumnosxcursos (idalumno, idcurso, nota1, nota2, nota3, nota4, aprobado, regularidad, activo) VALUES (1, 1, 7, 5, 9, 7, true,"Regular", true);
+INSERT INTO alumnosxcursos (idalumno, idcurso, nota1, nota2, nota3, nota4, aprobado, regularidad, activo) VALUES (1, 2, 7, 6, 7, 8, true,"Regular", true);
+INSERT INTO alumnosxcursos (idalumno, idcurso, nota1, nota2, nota3, nota4, aprobado, regularidad, activo) VALUES (1, 3, 9, 8, 9, 10, true,"Regular", true);
+INSERT INTO alumnosxcursos (idalumno, idcurso, nota1, nota2, nota3, nota4, aprobado, regularidad, activo) VALUES (1, 4, 4, 7, 9, 9, true,"Regular", true);
 
 create table usuarios (
 	idusuario int not null auto_increment,

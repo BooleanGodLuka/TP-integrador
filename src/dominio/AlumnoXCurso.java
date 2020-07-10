@@ -1,46 +1,53 @@
 package dominio;
 
-public class alumnoXcurso {
+public class AlumnoXCurso {
 
 	private Alumno Alumno;
-	private int IDcurso;
+	private Curso Curso;
 	private int Nota1;
 	private int Nota2;
 	private int Nota3;
 	private int Nota4;
 	private String Regularidad;
 
-	public alumnoXcurso() {
-		super();
+	public AlumnoXCurso() {
+		Alumno = new Alumno();
+		Curso = new Curso();
 	}
 
-	public alumnoXcurso(alumnoXcurso axc) {
-		super();
-		//TODO 
+	public AlumnoXCurso(AlumnoXCurso axc) {
+		Alumno = new Alumno(axc.getAlumno());
+		Curso = new Curso(axc.getCurso());
 	}
 
-	public alumnoXcurso(int idalumno, int idcurso, int nota1, int nota2, int nota3, int nota4, String nombre,
-			String apellido, String r) {
+	public AlumnoXCurso(int idalumno, int idcurso, int nota1, int nota2, int nota3, int nota4, String nombre,
+			String apellido, String regularidad) {
 		super();
 		Alumno = new Alumno();
 		Alumno.setLegajo(idalumno);
-		Alumno.setNombre(nombre);
-		Alumno.setApellido(apellido);
-		this.IDcurso = idcurso;
+		Curso = new Curso();
+		Curso.setID(idcurso);
 		this.Nota1 = nota1;
 		this.Nota2 = nota2;
 		this.Nota3 = nota3;
 		this.Nota4 = nota4;
-		this.Regularidad = r;
+		this.Regularidad = regularidad;
 	}
-	
-	
+
 	public Alumno getAlumno() {
 		return Alumno;
 	}
 
 	public void setAlumno(Alumno alumno) {
 		Alumno = alumno;
+	}
+
+	public Curso getCurso() {
+		return Curso;
+	}
+
+	public void setCurso(Curso curso) {
+		Curso = curso;
 	}
 
 	public int getNota1() {
@@ -80,17 +87,8 @@ public class alumnoXcurso {
 	}
 
 	public void setRegularidad(String regularidad) {
-		this.Regularidad = regularidad;
+		Regularidad = regularidad;
 	}
-
-	public int getIDcurso() {
-		return IDcurso;
-	}
-
-	public void setIDcurso(int idcurso) {
-		this.IDcurso = idcurso;
-	}
-
 	
-	
+
 }
