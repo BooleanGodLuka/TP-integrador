@@ -2529,8 +2529,8 @@ INSERT INTO materias (nombre) VALUES ('Contabilidad');
 
 create table cursos(
 	id int not null auto_increment,
-    cuatrimestre varchar(30) not null,
-    anio varchar(30) not null,
+    cuatrimestre int not null,
+    anio int not null,
     idmateria int not null,
     iddocente int not null,
     activo bool not null,
@@ -2539,11 +2539,11 @@ create table cursos(
     FOREIGN KEY (iddocente) REFERENCES docentes(id)
 );
 
-INSERT INTO cursos (cuatrimestre, anio, idmateria, iddocente, activo) VALUES ("1ro", "2018", 1, 4, true);
-INSERT INTO cursos (cuatrimestre, anio, idmateria, iddocente, activo) VALUES ("2do", "2018", 2, 4, true);
-INSERT INTO cursos (cuatrimestre, anio, idmateria, iddocente, activo) VALUES ("2do", "2018", 8, 4, true);
-INSERT INTO cursos (cuatrimestre, anio, idmateria, iddocente, activo) VALUES ("1ro", "2019", 3, 4, true);
-INSERT INTO cursos (cuatrimestre, anio, idmateria, iddocente, activo) VALUES ("2do", "2019", 4, 4, true);
+INSERT INTO cursos (cuatrimestre, anio, idmateria, iddocente, activo) VALUES (1, "2018", 1, 4, true);
+INSERT INTO cursos (cuatrimestre, anio, idmateria, iddocente, activo) VALUES (2, "2018", 2, 4, true);
+INSERT INTO cursos (cuatrimestre, anio, idmateria, iddocente, activo) VALUES (2, "2018", 8, 4, true);
+INSERT INTO cursos (cuatrimestre, anio, idmateria, iddocente, activo) VALUES (1, "2019", 3, 4, true);
+INSERT INTO cursos (cuatrimestre, anio, idmateria, iddocente, activo) VALUES (2, "2019", 4, 4, true);
 
 
 create table alumnosxcursos (
