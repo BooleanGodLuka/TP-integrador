@@ -38,7 +38,7 @@ INSERT INTO provincias (id, nombre) VALUES
 
 create table localidades (
     id int not null auto_increment,
-    idprovincia varchar(50) not null,
+    idprovincia int not null,
     nombre varchar(50) not null,
     PRIMARY KEY (id)
 );
