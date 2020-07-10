@@ -5,14 +5,14 @@ import java.util.ArrayList;
 public class Docente {
 
 	private int Legajo;
-	private int Dni;
+	private String Dni;
 	private String Nombre;
 	private String Apellido;
 	private String FechaNacimiento;
 	private String Direccion;
 	private String IDLocalidad;
 	private String Email;
-	private int Telefono;
+	private String Telefono;
 	private Boolean Activo;
 
 	public Docente() {
@@ -33,8 +33,8 @@ public class Docente {
 		this.Activo = a.Activo;
 	}
 
-	public Docente(int id, int dni, String nombre, String apellido, String fnacimiento, String direccion,
-			String idlocalidad, String email, int telefono, Boolean activo) {
+	public Docente(int id, String dni, String nombre, String apellido, String fnacimiento, String direccion,
+			String idlocalidad, String email, String telefono, Boolean activo) {
 		super();
 		this.Legajo = id;
 		this.Dni = dni;
@@ -48,8 +48,8 @@ public class Docente {
 		this.Activo = activo;
 	}
 
-	public Docente(int dni, String nombre, String apellido, String fnacimiento, String direccion, String idlocalidad,
-			String email, int telefono, Boolean activo) {
+	public Docente(String dni, String nombre, String apellido, String fnacimiento, String direccion, String idlocalidad,
+			String email, String telefono, Boolean activo) {
 		super();
 		this.Legajo = 0;
 		this.Dni = dni;
@@ -71,11 +71,11 @@ public class Docente {
 		Legajo = legajo;
 	}
 
-	public int getDni() {
+	public String getDni() {
 		return Dni;
 	}
 
-	public void setDni(int dni) {
+	public void setDni(String dni) {
 		Dni = dni;
 	}
 
@@ -127,11 +127,11 @@ public class Docente {
 		Email = email;
 	}
 
-	public int getTelefono() {
+	public String getTelefono() {
 		return Telefono;
 	}
 
-	public void setTelefono(int telefono) {
+	public void setTelefono(String telefono) {
 		Telefono = telefono;
 	}
 

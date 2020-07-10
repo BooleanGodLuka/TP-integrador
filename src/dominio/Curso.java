@@ -6,8 +6,8 @@ public class Curso {
 
 	private int ID;
 	private Materia Materia;
-	private int Cuatrimestre;
-	private int Anio;
+	private String Cuatrimestre;
+	private String Anio;
 	private Docente Docente;
 
 	public Curso() {
@@ -15,7 +15,7 @@ public class Curso {
 		Docente = new Docente();
 	}
 
-	public Curso(int id, Materia materia, int cuatrimestre, int anio, Docente docente) {
+	public Curso(int id, Materia materia, String cuatrimestre, String anio, Docente docente) {
 		super();
 		this.ID = id;
 		this.Materia = new Materia(materia);
@@ -40,19 +40,19 @@ public class Curso {
 		Materia = materia;
 	}
 
-	public int getCuatrimestre() {
+	public String getCuatrimestre() {
 		return Cuatrimestre;
 	}
 
-	public void setCuatrimestre(int cuatrimestre) {
+	public void setCuatrimestre(String cuatrimestre) {
 		Cuatrimestre = cuatrimestre;
 	}
 
-	public int getAnio() {
+	public String getAnio() {
 		return Anio;
 	}
 
-	public void setAnio(int anio) {
+	public void setAnio(String anio) {
 		Anio = anio;
 	}
 

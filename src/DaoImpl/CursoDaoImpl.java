@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import Dao.CursoDao;
+import dominio.Alumno;
 import dominio.Curso;
 import dominio.Docente;
 import dominio.Materia;
@@ -15,13 +16,13 @@ import dominio.alumnoXcurso;
 public class CursoDaoImpl implements CursoDao {
 
 	private static final String insert = "INSERT INTO cursos (cuatrimestre, anio, iddocente, idmateria, activo) VALUES(?, ?, ?, ?, true)";
-	private static final String leer_todo = "SELECT * FROM cursos ";
-	private static final String delete = "UPDATE cursos SET activo = false WHERE id = ?";
-	private static final String update = "UPDATE cursos SET cuatrimestre = ?, anio = ?,iddocente = ? WHERE id = ?";
-	private static final String leer_alumnosXcurso = "Select * from alumnos_x_cursos ";
-	private static final String update_alumnoXcurso = "UPDATE alumnos_x_cursos SET nota1= ?, nota2= ?, nota3= ?, nota4= ?, regularidad =? WHERE idalumno= ? AND idcurso= ?";
-	private static final String leer_mat = "SELECT * FROM materias";
-	private static final String insert_alumnoXcurso = "INSERT INTO alumnos_x_cursos (idalumno, idcurso, nota1, nota2, nota3, nota4, aprobado, nombre_alumno, apellido_alumno,regularidad) VALUES (?, ?, ?, ?, ?, ?, ?,?,?,?)";
+	private static final String readall = "SELECT * FROM cursos ";
+	private static final String delete = "UPDATE cursos SET activo = false WHERE id = ? ";
+	private static final String update = "UPDATE cursos SET materia= ?, cuatrimestre = ?, anio = ?, iddocente = ? WHERE id = ? ";
+	private static final String readallalumnosXcurso = "Select * from alumnos_x_cursos ";
+	private static final String updatealumnoXcurso = "UPDATE alumnos_x_cursos SET nota1= ?, nota2= ?, nota3= ?, nota4= ?, regularidad =? WHERE idalumno= ? AND idcurso= ?";
+	private static final String readallmaterias = "SELECT * FROM materias";
+	private static final String insertalumnoXcurso = "INSERT INTO alumnos_x_cursos (idalumno, idcurso, nota1, nota2, nota3, nota4, aprobado, nombre_alumno, apellido_alumno,regularidad) VALUES (?, ?, ?, ?, ?, ?, ?,?,?,?)";
 
 	@Override
 	public boolean insert(Curso curso) {
@@ -31,8 +32,8 @@ public class CursoDaoImpl implements CursoDao {
 
 		try {
 			statement = conexion.prepareStatement(insert);
-			statement.setInt(1, curso.getCuatrimestre());
-			statement.setInt(2, curso.getAnio());
+			statement.setString(1, curso.getCuatrimestre());
+			statement.setString(2, curso.getAnio());
 			statement.setInt(3, curso.getDocente().getLegajo());
 			statement.setInt(4, curso.getMateria().getID());
 			if (statement.executeUpdate() > 0) {
@@ -56,16 +57,16 @@ public class CursoDaoImpl implements CursoDao {
 	}
 
 	@Override
-	public boolean delete(Curso curso_a_eliminar) {
+	public boolean delete(Curso curso) {
 		PreparedStatement statement;
 		Connection conexion = Conexion.getConexion().getSQLConexion();
 		boolean isUpdateExitoso = false;
 		try {
 			statement = conexion.prepareStatement(delete);
-			statement.setInt(1, curso_a_eliminar.getID());
-			statement.setInt(2, curso_a_eliminar.getCuatrimestre());
-			statement.setInt(2, curso_a_eliminar.getAnio());
-			statement.setInt(2, curso_a_eliminar.getDocente().getLegajo());
+			statement.setInt(1, curso.getID());
+			statement.setString(2, curso.getCuatrimestre());
+			statement.setString(2, curso.getAnio());
+			statement.setInt(2, curso.getDocente().getLegajo());
 			if (statement.executeUpdate() > 0) {
 				conexion.commit();
 				isUpdateExitoso = true;
@@ -84,21 +85,20 @@ public class CursoDaoImpl implements CursoDao {
 
 	@Override
 	public ArrayList<Curso> readall() {
-		// TODO Auto-generated method stub
 		PreparedStatement statement;
-		ResultSet resultSet; // Guarda el resultado de la query
+		ResultSet resultSet;
 		ArrayList<Curso> cursos = new ArrayList<Curso>();
 		Conexion conexion = Conexion.getConexion();
-
 		try {
-			statement = conexion.getSQLConexion().prepareStatement(leer_todo);
+			statement = conexion.getSQLConexion().prepareStatement(readall);
 			resultSet = statement.executeQuery();
+			Curso curso = null;
 			while (resultSet.next()) {
-				Curso cur = new Curso();
+				curso = new Curso();
+				
+				cargarCurso(curso, resultSet);
 
-				cargarCurso(resultSet);
-
-				cursos.add(cur);
+				cursos.add(curso);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -108,21 +108,21 @@ public class CursoDaoImpl implements CursoDao {
 
 	@Override
 	public ArrayList<Curso> readall(String consigna) {
-		// TODO Auto-generated method stub
 		PreparedStatement statement;
-		ResultSet resultSet; // Guarda el resultado de la query
+		ResultSet resultSet;
 		ArrayList<Curso> cursos = new ArrayList<Curso>();
 		Conexion conexion = Conexion.getConexion();
 
 		try {
-			statement = conexion.getSQLConexion().prepareStatement(leer_todo + "WHERE " + consigna);
+			statement = conexion.getSQLConexion().prepareStatement(readall + consigna);
 			resultSet = statement.executeQuery();
+			Curso curso = null;
 			while (resultSet.next()) {
-				Curso cur = new Curso();
+				curso = new Curso();
+				
+				cargarCurso(curso, resultSet);
 
-				cargarCurso(resultSet);
-
-				cursos.add(cur);
+				cursos.add(curso);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -130,30 +130,27 @@ public class CursoDaoImpl implements CursoDao {
 		return cursos;
 	}
 
-	private Curso cargarCurso(ResultSet resultSet) throws SQLException {
-		Materia materia = new Materia();
-		Docente docente = new Docente();
-		
-		int id = Integer.parseInt(resultSet.getString("id"));
-		materia.setID(Integer.parseInt(resultSet.getString("idmateria")));
-		int cuatrimestre = resultSet.getInt("cuatrimestre");
-		int año = resultSet.getInt("anio");
-		docente.setLegajo(Integer.parseInt(resultSet.getString("iddocente")));
+	private void cargarCurso(Curso curso, ResultSet resultSet) throws SQLException {
+		curso.setID(resultSet.getInt("id"));
+		curso.getMateria().setID(resultSet.getInt("idmateria"));
+		curso.setCuatrimestre(resultSet.getString("cuatrimestre"));
+		curso.setAnio(resultSet.getString("anio"));
+		curso.getDocente().setLegajo(resultSet.getInt("iddocente"));
 
-		return new Curso(id, materia, cuatrimestre, año, docente);
 	}
 
 	@Override
-	public boolean update(Curso curso_a_modificar) {
+	public boolean update(Curso curso) {
 		PreparedStatement statement;
 		Connection conexion = Conexion.getConexion().getSQLConexion();
 		boolean isUpdateExitoso = false;
 		try {
 			statement = conexion.prepareStatement(update);
-			statement.setInt(1, curso_a_modificar.getID());
-			statement.setInt(2, curso_a_modificar.getCuatrimestre());
-			statement.setInt(2, curso_a_modificar.getAnio());
-			statement.setInt(2, curso_a_modificar.getDocente().getLegajo());
+			statement.setInt(1, curso.getMateria().getID());
+			statement.setString(2, curso.getCuatrimestre());
+			statement.setString(3, curso.getAnio());
+			statement.setInt(4, curso.getDocente().getLegajo());
+			statement.setInt(5, curso.getID());
 			if (statement.executeUpdate() > 0) {
 				conexion.commit();
 				isUpdateExitoso = true;
@@ -249,7 +246,7 @@ public class CursoDaoImpl implements CursoDao {
 			resultSet = statement.executeQuery();
 			while (resultSet.next()) {
 				materia = resultSet.getString("nombre");
- 
+
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -265,7 +262,7 @@ public class CursoDaoImpl implements CursoDao {
 
 		try {
 			statement = conexion.prepareStatement(insert_alumnoXcurso);
-			
+
 			statement.setInt(1, alumno.getAlumno().getLegajo());
 			statement.setInt(2, alumno.getId_curso());
 			statement.setInt(3, alumno.getNota1());
@@ -276,7 +273,7 @@ public class CursoDaoImpl implements CursoDao {
 			statement.setString(8, alumno.getAlumno().getNombre());
 			statement.setString(9, alumno.getAlumno().getApellido());
 			statement.setString(10, alumno.getRegularidad());
-			
+
 			if (statement.executeUpdate() > 0) {
 				conexion.commit();
 				validar = true;
@@ -304,7 +301,7 @@ public class CursoDaoImpl implements CursoDao {
 			resultSet = statement.executeQuery();
 			while (resultSet.next()) {
 				id = resultSet.getString("id");
- 
+
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

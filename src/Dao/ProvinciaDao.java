@@ -1,7 +1,6 @@
 package Dao;
 
-import java.util.List;
-
+import java.util.ArrayList;
 import dominio.Provincia;
 
 public interface ProvinciaDao {
@@ -10,9 +9,9 @@ public interface ProvinciaDao {
 
 	public boolean delete(Provincia provincia_a_borrar);
 
-	public List<Provincia> readall();
+	public ArrayList<Provincia> readall();
 	
-	public List<Provincia> readall(String consigna);
+	public ArrayList<Provincia> readall(String consigna);
 
 	public boolean update(Provincia provincia_a_modificar);
 

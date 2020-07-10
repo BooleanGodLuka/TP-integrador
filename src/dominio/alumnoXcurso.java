@@ -3,7 +3,7 @@ package dominio;
 public class alumnoXcurso {
 
 	private Alumno Alumno;
-	private int id_curso;
+	private int IDcurso;
 	private int Nota1;
 	private int Nota2;
 	private int Nota3;
@@ -16,17 +16,17 @@ public class alumnoXcurso {
 
 	public alumnoXcurso(alumnoXcurso axc) {
 		super();
-		
+		//TODO 
 	}
 
-	public alumnoXcurso(int id_alumno, int id_curso, int nota1, int nota2, int nota3, int nota4, String nombre,
+	public alumnoXcurso(int idalumno, int idcurso, int nota1, int nota2, int nota3, int nota4, String nombre,
 			String apellido, String r) {
 		super();
 		Alumno = new Alumno();
-		Alumno.setLegajo(id_alumno);
+		Alumno.setLegajo(idalumno);
 		Alumno.setNombre(nombre);
 		Alumno.setApellido(apellido);
-		this.id_curso = id_curso;
+		this.IDcurso = idcurso;
 		this.Nota1 = nota1;
 		this.Nota2 = nota2;
 		this.Nota3 = nota3;
@@ -83,12 +83,12 @@ public class alumnoXcurso {
 		this.Regularidad = regularidad;
 	}
 
-	public int getId_curso() {
-		return id_curso;
+	public int getIDcurso() {
+		return IDcurso;
 	}
 
-	public void setId_curso(int id_curso) {
-		this.id_curso = id_curso;
+	public void setIDcurso(int idcurso) {
+		this.IDcurso = idcurso;
 	}
 
 	

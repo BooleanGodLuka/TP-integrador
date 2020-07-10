@@ -3,24 +3,24 @@ package dominio;
 public class Reporte {
 
 	private Curso Curso;
-	private int Cant_alumn;
-	private int Cant_aprob;
-	private int Cant_desaprob;
+	private int CantAlum;
+	private int CantAprob;
+	private int CantDesaprob;
 	private float Porcentaje;
 
 	public Reporte() {
 		super();
 	}
 
-	public Reporte(int idmateria, int cuatrimestre, int anio, int iddocente, int cant_alumn, int cant_aprob, int cant_desaprob) {
+	public Reporte(int idmateria, String cuatrimestre, String anio, int iddocente, int cantalum, int cantaprob, int cantdesaprob) {
 		super();
 		this.Curso.getMateria().setID(idmateria);
 		this.Curso.setCuatrimestre(cuatrimestre);
 		this.Curso.setAnio(anio);
 		this.Curso.getDocente().setLegajo(iddocente);
-		this.Cant_alumn = cant_alumn;
-		this.Cant_aprob = cant_aprob;
-		this.Cant_desaprob = cant_desaprob;
+		this.CantAlum = cantalum;
+		this.CantAprob = cantaprob;
+		this.CantDesaprob = cantdesaprob;
 	}
 
 	
@@ -34,27 +34,27 @@ public class Reporte {
 	}
 
 	public int getCant_alumn() {
-		return Cant_alumn;
+		return CantAlum;
 	}
 
-	public void setCant_alumn(int cant_alumn) {
-		Cant_alumn = cant_alumn;
+	public void setCant_alumn(int cantalum) {
+		CantAlum = cantalum;
 	}
 
 	public int getCant_aprob() {
-		return Cant_aprob;
+		return CantAprob;
 	}
 
-	public void setCant_aprob(int cant_aprob) {
-		Cant_aprob = cant_aprob;
+	public void setCant_aprob(int cantaprob) {
+		CantAprob = cantaprob;
 	}
 
 	public int getCant_desaprob() {
-		return Cant_desaprob;
+		return CantDesaprob;
 	}
 
-	public void setCant_desaprob(int cant_desaprob) {
-		Cant_desaprob = cant_desaprob;
+	public void setCant_desaprob(int cantdesaprob) {
+		CantDesaprob = cantdesaprob;
 	}
 
 	public float getPorcentaje() {
@@ -66,7 +66,7 @@ public class Reporte {
 	}
 
 	public void cargar_porcentaje() {
-		this.Porcentaje = (this.Cant_aprob * 100) / this.Cant_alumn;
+		this.Porcentaje = (this.CantDesaprob * 100) / this.CantAlum;
 	}
 
 }

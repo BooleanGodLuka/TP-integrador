@@ -4,12 +4,12 @@ import dominio.Usuario;
 
 public interface UsuarioDao {
 
-	public boolean insert_usuario(Usuario nombreusuario);
+	public boolean insert(Usuario nombreusuario);
 	
-	public boolean delete_usuario(Usuario nombreusuario);
+	public boolean delete(Usuario nombreusuario);
 	
-	public boolean update_clave (String nombreusuario, String claveusuario);
+	public boolean updateClave (String nombreusuario, String claveusuario);
 	
-	public Usuario validate_usuario(String nombreusuario, String claveusuario);
+	public Usuario validateUsuario(String nombreusuario, String claveusuario);
 	
 }

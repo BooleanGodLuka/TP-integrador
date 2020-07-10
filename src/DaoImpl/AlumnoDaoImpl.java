@@ -24,22 +24,27 @@ public class AlumnoDaoImpl implements AlumnoDao {
 		boolean isInsertExitoso = false;
 		try {
 			statement = conexion.prepareStatement(insert);
-			statement.setInt(1, alumno.getDni());
+			statement.setString(1, alumno.getDni());
 			statement.setString(2, alumno.getNombre());
 			statement.setString(3, alumno.getApellido());
 			statement.setString(4, alumno.getFechaNacimiento());
 			statement.setString(5, alumno.getDireccion());
 			statement.setString(6, alumno.getIDLocalidad());
 			statement.setString(7, alumno.getEmail());
-			statement.setInt(8, alumno.getTelefono());
+			statement.setString(8, alumno.getTelefono());
 			if (statement.executeUpdate() > 0) {
 				conexion.commit();
 				isInsertExitoso = true;
 			}
-		} catch (SQLException e) {
+
+		}
+
+		catch (SQLException e) {
 			e.printStackTrace();
+
 			try {
 				conexion.rollback();
+
 			} catch (SQLException e1) {
 				e1.printStackTrace();
 			}
@@ -49,13 +54,13 @@ public class AlumnoDaoImpl implements AlumnoDao {
 	}
 
 	@Override
-	public boolean delete(Alumno alumno_a_eliminar) {
+	public boolean delete(Alumno alumno) {
 		PreparedStatement statement;
 		Connection conexion = Conexion.getConexion().getSQLConexion();
 		boolean isDeleteExitoso = false;
 		try {
 			statement = conexion.prepareStatement(delete);
-			statement.setString(1, Integer.toString(alumno_a_eliminar.getLegajo()));
+			statement.setString(1, Integer.toString(alumno.getLegajo()));
 			if (statement.executeUpdate() > 0) {
 				conexion.commit();
 				isDeleteExitoso = true;
@@ -69,7 +74,7 @@ public class AlumnoDaoImpl implements AlumnoDao {
 	@Override
 	public ArrayList<Alumno> readall() {
 		PreparedStatement statement;
-		ResultSet resultSet; // Guarda el resultado de la query
+		ResultSet resultSet;
 		ArrayList<Alumno> lista = new ArrayList<Alumno>();
 		Conexion conexion = Conexion.getConexion();
 		try {
@@ -90,7 +95,7 @@ public class AlumnoDaoImpl implements AlumnoDao {
 	@Override
 	public ArrayList<Alumno> readall(String consigna) {
 		PreparedStatement statement;
-		ResultSet resultSet; // Guarda el resultado de la query
+		ResultSet resultSet;
 		ArrayList<Alumno> lista = new ArrayList<Alumno>();
 		Conexion conexion = Conexion.getConexion();
 		try {
@@ -109,22 +114,22 @@ public class AlumnoDaoImpl implements AlumnoDao {
 	}
 
 	@Override
-	public boolean update(Alumno alumno_a_modificar) {
+	public boolean update(Alumno alumno) {
 		PreparedStatement statement;
 		Connection conexion = Conexion.getConexion().getSQLConexion();
 		boolean isUpdateExitoso = false;
 		try {
 			statement = conexion.prepareStatement(update);
-			statement.setInt(1, alumno_a_modificar.getDni());
-			statement.setString(2, alumno_a_modificar.getNombre());
-			statement.setString(3, alumno_a_modificar.getApellido());
-			statement.setString(4, alumno_a_modificar.getFechaNacimiento());
-			statement.setString(5, alumno_a_modificar.getDireccion());
-			statement.setString(6, alumno_a_modificar.getIDLocalidad());
-			statement.setString(7, alumno_a_modificar.getEmail());
-			statement.setInt(8, alumno_a_modificar.getTelefono());
-			statement.setBoolean(9, alumno_a_modificar.getActivo());
-			statement.setInt(10, alumno_a_modificar.getLegajo());
+			statement.setString(1, alumno.getDni());
+			statement.setString(2, alumno.getNombre());
+			statement.setString(3, alumno.getApellido());
+			statement.setString(4, alumno.getFechaNacimiento());
+			statement.setString(5, alumno.getDireccion());
+			statement.setString(6, alumno.getIDLocalidad());
+			statement.setString(7, alumno.getEmail());
+			statement.setString(8, alumno.getTelefono());
+			statement.setBoolean(9, alumno.getActivo());
+			statement.setInt(10, alumno.getLegajo());
 			if (statement.executeUpdate() > 0) {
 				conexion.commit();
 				isUpdateExitoso = true;
@@ -143,14 +148,14 @@ public class AlumnoDaoImpl implements AlumnoDao {
 
 	private void cargarAlumno(Alumno alumno, ResultSet resultSet) throws SQLException {
 		alumno.setLegajo(resultSet.getInt("id"));
-		alumno.setDni(resultSet.getInt("dni"));
+		alumno.setDni(resultSet.getString("dni"));
 		alumno.setNombre(resultSet.getString("nombre"));
 		alumno.setApellido(resultSet.getString("apellido"));
 		alumno.setFechaNacimiento(resultSet.getString("fechanacimiento"));
 		alumno.setDireccion(resultSet.getString("direccion"));
 		alumno.setIDLocalidad(resultSet.getString("idlocalidad"));
 		alumno.setEmail(resultSet.getString("email"));
-		alumno.setTelefono(resultSet.getInt("telefono"));
+		alumno.setTelefono(resultSet.getString("telefono"));
 		alumno.setActivo(resultSet.getBoolean("activo"));
 	}
 

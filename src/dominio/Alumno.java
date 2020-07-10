@@ -5,15 +5,14 @@ import java.util.ArrayList;
 public class Alumno {
 
 	private int Legajo;
-	private int Dni;
+	private String Dni;
 	private String Nombre;
 	private String Apellido;
 	private String FechaNacimiento;
 	private String Direccion;
-	private String Provincia;
 	private String IDLocalidad;
 	private String Email;
-	private int Telefono;
+	private String Telefono;
 	private Boolean Activo;
 
 	public Alumno() {
@@ -28,15 +27,14 @@ public class Alumno {
 		this.Apellido = a.Apellido;
 		this.FechaNacimiento = a.FechaNacimiento;
 		this.Direccion = a.Direccion;
-		this.Provincia = a.Provincia;
 		this.IDLocalidad = a.IDLocalidad;
 		this.Email = a.Email;
 		this.Telefono = a.Telefono;
 		this.Activo = a.Activo;
 	}
 
-	public Alumno(int id, int dni, String nombre, String apellido, String fnacimiento, String direccion, String provincia,
-			String idlocalidad, String email, int telefono, Boolean activo) {
+	public Alumno(int id, String dni, String nombre, String apellido, String fnacimiento, String direccion,
+			String idlocalidad, String email, String telefono, Boolean activo) {
 		super();
 		this.Legajo = id;
 		this.Dni = dni;
@@ -44,15 +42,14 @@ public class Alumno {
 		this.Apellido = apellido;
 		this.FechaNacimiento = fnacimiento;
 		this.Direccion = direccion;
-		this.Provincia = provincia;
 		this.IDLocalidad = idlocalidad;
 		this.Email = email;
 		this.Telefono = telefono;
 		this.Activo = activo;
 	}
 
-	public Alumno(int dni, String nombre, String apellido, String fnacimiento, String direccion, String provincia, String idlocalidad,
-			String email, int telefono, Boolean activo) {
+	public Alumno(String dni, String nombre, String apellido, String fnacimiento, String direccion, String idlocalidad,
+			String email, String telefono, Boolean activo) {
 		super();
 		this.Legajo = 0;
 		this.Dni = dni;
@@ -60,13 +57,11 @@ public class Alumno {
 		this.Apellido = apellido;
 		this.FechaNacimiento = fnacimiento;
 		this.Direccion = direccion;
-		this.Provincia = provincia;
 		this.IDLocalidad = idlocalidad;
 		this.Email = email;
 		this.Telefono = telefono;
 		this.Activo = activo;
 	}
-	
 	
 
 	public int getLegajo() {
@@ -77,11 +72,11 @@ public class Alumno {
 		Legajo = id;
 	}
 
-	public int getDni() {
+	public String getDni() {
 		return Dni;
 	}
 
-	public void setDni(int dni) {
+	public void setDni(String dni) {
 		Dni = dni;
 	}
 
@@ -133,11 +128,11 @@ public class Alumno {
 		Email = email;
 	}
 
-	public int getTelefono() {
+	public String getTelefono() {
 		return Telefono;
 	}
 
-	public void setTelefono(int telefono) {
+	public void setTelefono(String telefono) {
 		Telefono = telefono;
 	}
 
@@ -167,12 +162,5 @@ public class Alumno {
 		return "Alumno " + Apellido + ", " + Nombre + " - Legajo Nº " + Legajo;
 	}
 
-	public String getProvincia() {
-		return Provincia;
-	}
-
-	public void setProvincia(String provincia) {
-		Provincia = provincia;
-	}
 
 }

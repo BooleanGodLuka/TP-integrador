@@ -1,7 +1,6 @@
 package Dao;
 
 import java.util.ArrayList;
-import java.util.List;
 import dominio.Alumno;
 
 public interface AlumnoDao {

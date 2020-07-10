@@ -1,6 +1,6 @@
 package Dao;
 
-import java.util.List;
+import java.util.ArrayList;
 import dominio.Docente;
 
 public interface DocenteDao {
@@ -9,9 +9,9 @@ public interface DocenteDao {
 	
 	public boolean delete(Docente docente_a_eliminar);
 	
-	public List<Docente> readall();
+	public ArrayList<Docente> readall();
 	
-	public List<Docente> readall(String consigna);
+	public ArrayList<Docente> readall(String consigna);
 	
 	public boolean update(Docente docente_a_modificar);
 }

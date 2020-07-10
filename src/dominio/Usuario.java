@@ -2,16 +2,16 @@ package dominio;
 
 public class Usuario {
 	
-	private String Idusuario;
-	private String Iddocente;
+	private int IDUsuario;
+	private int IDDocente;
 	private String Usuario;
 	private String Clave;
 	boolean Activo;
 	
-	public Usuario(String Idusuario, String Iddocente, String Usuario, String Clave, boolean Activo) {
+	public Usuario(int Idusuario, int Iddocente, String Usuario, String Clave, boolean Activo) {
 		super();
-		this.Idusuario = Idusuario;
-		this.Iddocente = Iddocente;
+		this.IDUsuario = Idusuario;
+		this.IDDocente = Iddocente;
 		this.Usuario = Usuario;
 		this.Clave = Clave;
 		this.Activo = true;
@@ -25,20 +25,15 @@ public class Usuario {
 		this.Clave = Clave;
 	}
 
-	public Usuario() {
-		// TODO Auto-generated constructor stub
+
+	public int getIdusuario() {
+		return IDUsuario;
 	}
 
 
 
-	public String getIdusuario() {
-		return Idusuario;
-	}
-
-
-
-	public String getIddocente() {
-		return Iddocente;
+	public int getIddocente() {
+		return IDDocente;
 	}
 
 
@@ -59,14 +54,14 @@ public class Usuario {
 
 
 
-	public void setIdusuario(String Idusuario) {
-		this.Idusuario = Idusuario;
+	public void setIdusuario(int Idusuario) {
+		this.IDUsuario = Idusuario;
 	}
 
 
 
-	public void setIddocente(String Iddocente) {
-		this.Iddocente = Iddocente;
+	public void setIddocente(int Iddocente) {
+		this.IDDocente = Iddocente;
 	}
 
 
@@ -90,7 +85,7 @@ public class Usuario {
 
 	@Override
 	public String toString() {
-		return "Usuario [idUsuario=" + Idusuario + ", Iddocente=" + Iddocente + ", Usuario=" + Usuario + ", Clave="
+		return "Usuario [idUsuario=" + IDUsuario + ", Iddocente=" + IDDocente + ", Usuario=" + Usuario + ", Clave="
 				+ Clave + ", Activo=" + Activo + "]";
 	}
 
