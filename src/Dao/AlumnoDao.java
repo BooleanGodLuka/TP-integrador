@@ -10,6 +10,8 @@ public interface AlumnoDao {
 	public boolean delete(Alumno alumno);
 
 	public ArrayList<Alumno> readall();
+	
+	public ArrayList<Alumno> readall(String consigna);
 
 	public Alumno read(int idalumno);
 

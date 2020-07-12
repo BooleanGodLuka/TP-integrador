@@ -22,7 +22,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
 
 
 	@Override
-	public boolean insert_usuario(Usuario usuario) {
+	public boolean insert(Usuario usuario) {
 		
 		String query = "INSERT INTO usuarios(idusuario,iddocente,usuario,clave,estado) VALUES ('"+usuario.getIdusuario()+"','"+usuario.getIddocente()+"','"+usuario.getUsuario()+"','"+usuario.getClave()+"','true')";
 		Connection cn = null;
@@ -58,7 +58,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
 	}
 
 	@Override
-	public boolean delete_usuario(Usuario usuario) {
+	public boolean delete(Usuario usuario) {
 		
 		String query = "UPDATE FROM usuarios (estado) VALUES ('false')";
 		Connection cn = null;
@@ -94,7 +94,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
 	
 
 	@Override
-	public boolean update_clave(String nombreusuario, String claveusuario) {
+	public boolean updateClave(String nombreusuario, String claveusuario) {
 		
 		PreparedStatement statement;
 		boolean estado = false;
@@ -132,8 +132,8 @@ public class UsuarioDaoImpl implements UsuarioDao {
 		String claveu = resultSet.getString("clave");
 		Usuario usuario = new Usuario();
 		
-		usuario.setIdusuario(idusuario);
-		usuario.setIddocente(iddocente);
+		usuario.setIdusuario(Integer.parseInt(idusuario));
+		usuario.setIddocente(Integer.parseInt(iddocente));
 		usuario.setClave(claveu);
 		usuario.setUsuario(nusuario);
 		
@@ -142,7 +142,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
 	}
 	
 	@Override
-	public Usuario validate_usuario(String nombreusuario, String claveusuario) {
+	public Usuario validateUsuario(String nombreusuario, String claveusuario) {
 		
 		PreparedStatement statement;
 		ResultSet resultSet;

@@ -38,7 +38,6 @@ public class AlumnoNegocioImpl implements AlumnoNegocio {
 		return dao.readall();
 	}
 
-	@Override
 	public ArrayList<Alumno> readall(String consigna) {
 		return dao.readall(consigna);
 	}

@@ -61,7 +61,7 @@ public class ProvinciaDaoImpl implements ProvinciaDao {
 	}
 
 	@Override
-	public List<Provincia> readall() {
+	public ArrayList<Provincia> readall() {
 		PreparedStatement statement;
 		ResultSet resultSet; // Guarda el resultado de la query
 		ArrayList<Provincia> provincias = new ArrayList<Provincia>();
@@ -110,7 +110,7 @@ public class ProvinciaDaoImpl implements ProvinciaDao {
 	}
 
 	@Override
-	public List<Provincia> readall(String consigna) {
+	public ArrayList<Provincia> readall(String consigna) {
 		// TODO Auto-generated method stub
 		return null;
 	}

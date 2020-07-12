@@ -11,24 +11,24 @@ public class UsuarioNegocioImpl implements UsuarioNegocio{
 	
 	@Override
 	public boolean insert_usuario(Usuario usuario) {
-		return usdao.insert_usuario(usuario);
+		return usdao.insert(usuario);
 	}
 
 	@Override
 	public boolean delete_usuario(Usuario usuario) {
-		return usdao.delete_usuario(usuario);
+		return usdao.delete(usuario);
 	}
 
 	@Override
 	public boolean update_clave(String nombreusuario, String claveusuario) {
 		boolean estado = false;
-		estado = usdao.update_clave(nombreusuario, claveusuario);
+		estado = usdao.updateClave(nombreusuario, claveusuario);
 		return estado;
 	}	
 
 	@Override
 	public Usuario validate_usuario(String nombreusuario, String claveusuario) {
-		return usdao.validate_usuario(nombreusuario, claveusuario);
+		return usdao.validateUsuario(nombreusuario, claveusuario);
 	}
 	
 }

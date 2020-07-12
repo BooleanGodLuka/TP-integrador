@@ -12,8 +12,11 @@ public interface CursoDao {
 
 	public ArrayList<Curso> readall();
 
+	public ArrayList<Curso> readall(String consigna);
+	
 	public Curso read(int idcurso);
 
 	public boolean update(Curso curso);
 
+	public ArrayList<Curso> leer_ultimo_curso_id ();
 }

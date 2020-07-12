@@ -2,6 +2,7 @@
     pageEncoding="ISO-8859-1"%>
     <%@page import="javax.servlet.http.HttpSession"%>
 <%@page import="dominio.*" %>
+<%@page import="dominio.Usuario" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
@@ -97,7 +98,7 @@ body {
       		nombre = usu.getUsuario();
       		if (nombre.contentEquals("administrator") == true){
    %>
-   </div>
+   </div> 
   
 <div>
 <header class="w3-top">

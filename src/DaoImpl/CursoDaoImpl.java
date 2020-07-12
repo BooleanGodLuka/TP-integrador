@@ -162,4 +162,52 @@ public class CursoDaoImpl implements CursoDao {
 		return isUpdateExitoso;
 	}
 
+	@Override
+	public ArrayList<Curso> readall(String consigna) {
+		// TODO Auto-generated method stub
+		PreparedStatement statement;
+		ResultSet resultSet;
+		ArrayList<Curso> cursos = new ArrayList<Curso>();
+		Conexion conexion = Conexion.getConexion();
+		try {
+			statement = conexion.getSQLConexion().prepareStatement(readall + " WHERE " + consigna);
+			resultSet = statement.executeQuery();
+			Curso curso = null;
+			while (resultSet.next()) {
+				curso = new Curso();
+
+				cargarCurso(curso, resultSet);
+
+				cursos.add(curso);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return cursos;
+	}
+
+	@Override
+	public ArrayList<Curso> leer_ultimo_curso_id() {
+		// TODO Auto-generated method stub
+		PreparedStatement statement;
+		ResultSet resultSet;
+		ArrayList<Curso> cursos = new ArrayList<Curso>();
+		Conexion conexion = Conexion.getConexion();
+		try {
+			statement = conexion.getSQLConexion().prepareStatement("SELECT * FROM cursos ORDER BY id DESC LIMIT 0, 1");
+			resultSet = statement.executeQuery();
+			Curso curso = null;
+			while (resultSet.next()) {
+				curso = new Curso();
+
+				cargarCurso(curso, resultSet);
+
+				cursos.add(curso);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return cursos;
+	}
+
 }

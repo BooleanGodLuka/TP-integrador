@@ -64,7 +64,7 @@ public class LocalidadDaoImpl implements LocalidadDao {
 	}
 
 	@Override
-	public List<Localidad> readall() {
+	public ArrayList<Localidad> readall() {
 		PreparedStatement statement;
 		ResultSet resultSet;
 		ArrayList<Localidad> localidades = new ArrayList<Localidad>();
@@ -82,7 +82,7 @@ public class LocalidadDaoImpl implements LocalidadDao {
 	}
 
 	@Override
-	public List<Localidad> readall(String idprovincia) {
+	public ArrayList<Localidad> readall(String idprovincia) {
 		PreparedStatement statement;
 		ResultSet resultSet;
 		ArrayList<Localidad> localidades = new ArrayList<Localidad>();

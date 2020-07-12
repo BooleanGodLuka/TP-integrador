@@ -33,7 +33,7 @@ public class AlumnoXCursoDaoImpl implements AlumnoXCursoDao {
 			statement = conexion.prepareStatement(insert);
 
 			statement.setInt(1, alumXcurso.getAlumno().getLegajo());
-			statement.setInt(2, alumXcurso.g());
+			statement.setInt(2, alumXcurso.getCurso().getID());
 			statement.setInt(3, alumXcurso.getNota1());
 			statement.setInt(4, alumXcurso.getNota2());
 			statement.setInt(5, alumXcurso.getNota3());
@@ -95,7 +95,7 @@ public class AlumnoXCursoDaoImpl implements AlumnoXCursoDao {
 		alumXcurso.setNota3(resultSet.getInt("nota3"));
 		alumXcurso.setNota4(resultSet.getInt("nota4"));
 		alumXcurso.setRegularidad(resultSet.getString("regularidad"));
-	}
+	} 
 
 	@Override
 	public boolean update(AlumnoXCurso alumXcurso) {
@@ -146,5 +146,7 @@ public class AlumnoXCursoDaoImpl implements AlumnoXCursoDao {
 		}
 		return id;
 	}
+ 
+
 
 }

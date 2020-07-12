@@ -19,6 +19,16 @@ public class Usuario {
 	
 	
 
+	
+	
+	public Usuario() {
+		super();
+	}
+
+
+
+
+
 	public Usuario(String Usuario, String Clave) {
 		super();
 		this.Usuario = Usuario;

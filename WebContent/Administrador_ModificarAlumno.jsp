@@ -39,7 +39,7 @@
 
 <h2 align="center">MODIFICAR ALUMNO</h2>
 
-	<%
+	<%/*
 		if (request.getAttribute("ListaProvincias") != null) {
 			listProvincias = (List<Provincia>) request.getAttribute("ListaProvincias");
 		}
@@ -48,7 +48,7 @@
 			for (Provincia prov : listProvincias) {
 				
 			}
-		}
+		}*/
 	%>
 
 <table ALIGN="center" id="Modificaciones" width=80%>
@@ -68,7 +68,7 @@
   
 	<tbody>
 	<tr>
-	    <td><input type="text" name="dni" placeholder="<%= Alumno.getdn %>>"></td>
+	    <td><input type="text" name="dni" placeholder="<%= "Alumno.getdn" %>>"></td> <!-- Esto lo pongo asi para salvarnos el error por ahora -->
 	    <td><input type="text" name="nombre" placeholder="Nombre"></td>
 	    <td><input type="text" name="apellido" placeholder="Apellido"></td>
 	    <td><input type="date" name="fechanacimiento" placeholder="Fecha de Nacimiento"></td>

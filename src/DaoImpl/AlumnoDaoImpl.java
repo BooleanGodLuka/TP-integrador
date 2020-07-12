@@ -157,4 +157,26 @@ public class AlumnoDaoImpl implements AlumnoDao {
 		alumno.setActivo(resultSet.getBoolean("activo"));
 	}
 
+	@Override
+	public ArrayList<Alumno> readall(String consigna) {
+		// TODO Auto-generated method stub
+		PreparedStatement statement;
+		ResultSet resultSet;
+		ArrayList<Alumno> lista = new ArrayList<Alumno>();
+		Conexion conexion = Conexion.getConexion();
+		try {
+			statement = conexion.getSQLConexion().prepareStatement(readall + " WHERE " + consigna);
+			resultSet = statement.executeQuery();
+			Alumno alumno;
+			while (resultSet.next()) {
+				alumno = new Alumno();
+				cargarAlumno(alumno, resultSet);
+				lista.add(alumno);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return lista;
+	}
+
 }

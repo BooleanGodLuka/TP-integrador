@@ -24,14 +24,14 @@ public class DocenteDaoImpl implements DocenteDao {
 		boolean isInsertExitoso = false;
 		try {
 			statement = conexion.prepareStatement(insert);
-			statement.setInt(1, docente.getDni());
+			statement.setString(1, docente.getDni());
 			statement.setString(2, docente.getNombre());
 			statement.setString(3, docente.getApellido());
 			statement.setString(4, docente.getFechaNacimiento());
 			statement.setString(5, docente.getDireccion());
 			statement.setString(6, docente.getIDLocalidad());
 			statement.setString(7, docente.getEmail());
-			statement.setInt(8, docente.getTelefono());
+			statement.setString(8, docente.getTelefono());
 			if (statement.executeUpdate() > 0) {
 				conexion.commit();
 				isInsertExitoso = true;
@@ -67,7 +67,7 @@ public class DocenteDaoImpl implements DocenteDao {
 	}
 
 	@Override
-	public List<Docente> readall() {
+	public ArrayList<Docente> readall() {
 		PreparedStatement statement;
 		ResultSet resultSet; // Guarda el resultado de la query
 		ArrayList<Docente> lista = new ArrayList<Docente>();
@@ -85,7 +85,7 @@ public class DocenteDaoImpl implements DocenteDao {
 	}
 
 	@Override
-	public List<Docente> readall(String consigna) {
+	public ArrayList<Docente> readall(String consigna) {
 		PreparedStatement statement;
 		ResultSet resultSet; // Guarda el resultado de la query
 		ArrayList<Docente> lista = new ArrayList<Docente>();
@@ -109,14 +109,14 @@ public class DocenteDaoImpl implements DocenteDao {
 		boolean isInsertExitoso = false;
 		try {
 			statement = conexion.prepareStatement(update);
-			statement.setInt(1, docente_a_modificar.getDni());
+			statement.setString(1, docente_a_modificar.getDni());
 			statement.setString(2, docente_a_modificar.getNombre());
 			statement.setString(3, docente_a_modificar.getApellido());
 			statement.setString(4, docente_a_modificar.getFechaNacimiento());
 			statement.setString(5, docente_a_modificar.getDireccion());
 			statement.setString(6, docente_a_modificar.getIDLocalidad());
 			statement.setString(7, docente_a_modificar.getEmail());
-			statement.setInt(8, docente_a_modificar.getTelefono());
+			statement.setString(8, docente_a_modificar.getTelefono());
 			statement.setInt(9, docente_a_modificar.getLegajo());
 			if (statement.executeUpdate() > 0) {
 				conexion.commit();
@@ -136,17 +136,17 @@ public class DocenteDaoImpl implements DocenteDao {
 
 	private Docente getDocente(ResultSet resultSet) throws SQLException {
 		int legajo = resultSet.getInt("id");
-		int dni = resultSet.getInt("dni");
+		String dni = resultSet.getString("dni");
 		String nombre = resultSet.getString("nombre");
 		String apellido = resultSet.getString("apellido");
 		String fechanacimiento = resultSet.getString("fechanacimiento");
 		String direccion = resultSet.getString("direccion");
 		String idlocalidad = resultSet.getString("idlocalidad");
 		String email = resultSet.getString("email");
-		int telefono = resultSet.getInt("telefono");
+		String telefono = resultSet.getString("telefono");
 		Boolean activo = resultSet.getBoolean("activo");
-		return new Docente(legajo, dni, nombre, apellido, fechanacimiento, direccion, idlocalidad, email, telefono,
-				activo);
+		return new Docente(legajo, dni, nombre, apellido, fechanacimiento, direccion, idlocalidad, email, telefono, activo);
+
 	}
 
 }

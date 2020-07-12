@@ -38,73 +38,14 @@ public class CursoNegocioImpl implements CursoNegocio {
 		return cdao.update(curso_a_modificar);
 	}
 
-	@Override
-	public ArrayList<AlumnoXCurso> leer_alumnoXcurso(int id_curso) {
-		return cdao.leer_alumnoXcurso(Integer.toString(id_curso));
-	}
+
 
 	@Override
-	public boolean actualizar_alumnoXcurso(AlumnoXCurso alumno) {
-		return cdao.actualizar_alumnoXcurso(alumno);
-	}
-
-	@Override
-	public int calcular_cant_alumnXcurso(int id) {
-		// TODO Auto-generated method stub
-		int cont = 0;
-		ArrayList<AlumnoXCurso> lista = cdao.leer_alumnoXcurso(Integer.toString(id));
-
-		for (AlumnoXCurso al : lista) {
-			cont++;
-		}
-		return cont;
-	}
-
-	public int calcular_cant_alumnXcurso_aprob(int id) {
-		// TODO Auto-generated method stub
-		int cont = 0;
-		ArrayList<AlumnoXCurso> lista = cdao.leer_alumnoXcurso(Integer.toString(id));
-
-		for (AlumnoXCurso al : lista) {
-			if (al.getNota4() > 6) {
-				cont++;
-			}
-		}
-		return cont;
-	}
-
-	public int calcular_cant_alumnXcurso_desap(int id) {
-		// TODO Auto-generated method stub
-		int cont = 0;
-		ArrayList<AlumnoXCurso> lista = cdao.leer_alumnoXcurso(Integer.toString(id));
-
-		for (AlumnoXCurso al : lista) {
-			if (al.getNota4() < 6) {
-				cont++;
-			}
-		}
-		return cont;
-	}
-
-	@Override
-	public String leer_materia(int id) {
-		// TODO Auto-generated method stub
-		return cdao.leer_materia(Integer.toString(id));
-	}
-
-	@Override
-	public String leer_ultimo_curso_id() {
+	public ArrayList<Curso> leer_ultimo_curso_id() {
 		// TODO Auto-generated method stub
 		return cdao.leer_ultimo_curso_id();
 	}
 
-	@Override
-	public boolean insert_alumnoXcurso(AlumnoXCurso alumno) {
-		// TODO Auto-generated method stub
-		return cdao.insert_alumnoXcurso(alumno);
-	}
-
- 
 
 
 }

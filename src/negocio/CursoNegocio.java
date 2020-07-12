@@ -16,20 +16,8 @@ public interface CursoNegocio {
 	public ArrayList<Curso> readall(String consigna);
 
 	public boolean update(Curso curso_a_modificar);
-
-	public boolean actualizar_alumnoXcurso(AlumnoXCurso alumno);
-
-	public String leer_materia(int id);
-
-	int calcular_cant_alumnXcurso_aprob(int id);
-
-	int calcular_cant_alumnXcurso_desap(int id);
-
-	int calcular_cant_alumnXcurso(int id);
-
-	ArrayList<AlumnoXCurso> leer_alumnoXcurso(int id_curso);
 	
-	public String leer_ultimo_curso_id ();
-	
-	public boolean insert_alumnoXcurso (AlumnoXCurso alumno);
+	public ArrayList<Curso> leer_ultimo_curso_id ();
+
+
 }

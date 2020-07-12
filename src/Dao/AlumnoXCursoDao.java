@@ -13,9 +13,7 @@ public interface AlumnoXCursoDao {
 
 	public boolean update(AlumnoXCurso axc);
 
-	String leer_materia(int idcurso);
-
-
 	public String leer_ultimo_curso_id();
+
 
 }
