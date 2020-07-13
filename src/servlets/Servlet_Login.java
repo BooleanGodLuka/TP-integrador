@@ -48,10 +48,10 @@ public class Servlet_Login extends HttpServlet {
 				String nusuario = request.getParameter("txtUser");
 				String claveu = request.getParameter("txtPassword");
 				Usuario usu = new Usuario();
-				usu = usdao.validate_usuario(nusuario, claveu);
+				usu = usdao.validateUsuario(nusuario, claveu);
 				
 				/*el home a mostrar*/
-				if (usu.getIdusuario() != null ) {
+				if (usu.getIdusuario() > 0 ) {
 					session.setAttribute("Usuario", usu);	
 					direccion = "Home.jsp";
 					}

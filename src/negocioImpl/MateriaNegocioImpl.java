@@ -31,4 +31,10 @@ public class MateriaNegocioImpl implements MateriaNegocio{
 		return mdao.update(materia_a_modificar);
 	}
 
+	@Override
+	public Materia read(int idmateria) {
+		// TODO Auto-generated method stub
+		return mdao.read(idmateria);
+	}
+
 }

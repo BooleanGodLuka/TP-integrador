@@ -13,5 +13,7 @@ public interface MateriaNegocio {
 	public List<Materia> readall();
 
 	public boolean update(Materia materia_a_modificar);
+	
+	public Materia read(int idmateria);
 
 }

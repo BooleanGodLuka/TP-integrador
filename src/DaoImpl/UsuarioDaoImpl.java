@@ -132,8 +132,12 @@ public class UsuarioDaoImpl implements UsuarioDao {
 		String claveu = resultSet.getString("clave");
 		Usuario usuario = new Usuario();
 		
+		if (iddocente == null) {
+			usuario.setIddocente(0);
+		}else {
+			usuario.setIddocente(Integer.parseInt(iddocente));	
+		}
 		usuario.setIdusuario(Integer.parseInt(idusuario));
-		usuario.setIddocente(Integer.parseInt(iddocente));
 		usuario.setClave(claveu);
 		usuario.setUsuario(nusuario);
 		

@@ -17,6 +17,7 @@ import dominio.Curso;
 import dominio.Docente;
 import dominio.Usuario;
 import negocioImpl.CursoNegocioImpl;
+import negocioImpl.MateriaNegocioImpl;
 
 /**
  * Servlet implementation class docente_listar_cursos_servlet
@@ -48,6 +49,7 @@ public class docente_listar_cursos_servlet extends HttpServlet {
 		
 		
 		CursoNegocioImpl cursoNegocio = new CursoNegocioImpl();
+		MateriaNegocioImpl matdao = new MateriaNegocioImpl();
 				
 		
 		ArrayList<Curso> lista = cursoNegocio.readall(consulta);
@@ -56,8 +58,7 @@ public class docente_listar_cursos_servlet extends HttpServlet {
 		String materia="";
 		for (int i=0; i<lista.size();i++) {
 			cur = new Curso(lista.get(i));
-			
-			materia = cursoNegocio.leer_materia(cur.getMateria().getID());
+			materia = matdao.read(cur.getMateria().getID()).getNombre();
 			cur.getMateria().setNombre(materia);
 			lista.set(i, cur);
 			System.out.println(lista.get(i).getMateria().getNombre());
