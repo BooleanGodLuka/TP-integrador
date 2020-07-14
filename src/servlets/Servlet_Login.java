@@ -9,9 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import Dao.UsuarioDao;
-import DaoImpl.UsuarioDaoImpl;
 import dominio.Usuario;
+import negocio.UsuarioNegocio;
+import negocioImpl.UsuarioNegocioImpl;
 
 @WebServlet("/Servlet_Login")
 public class Servlet_Login extends HttpServlet {
@@ -29,7 +29,7 @@ public class Servlet_Login extends HttpServlet {
 	
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		UsuarioDao usdao = new UsuarioDaoImpl();
+		UsuarioNegocio usneg = new UsuarioNegocioImpl();
 		
 		String direccion = "";
 		
@@ -47,11 +47,12 @@ public class Servlet_Login extends HttpServlet {
 				/*parametros a obtener*/
 				String nusuario = request.getParameter("txtUser");
 				String claveu = request.getParameter("txtPassword");
+				Usuario aux = new Usuario(nusuario, claveu);
 				Usuario usu = new Usuario();
-				usu = usdao.validateUsuario(nusuario, claveu);
+				usu = usneg.validateLogin(aux);
 				
 				/*el home a mostrar*/
-				if (usu.getIdusuario() > 0 ) {
+				if (usu.getIDUsuario() != 0 ) {
 					session.setAttribute("Usuario", usu);	
 					direccion = "Home.jsp";
 					}

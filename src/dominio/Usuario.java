@@ -8,6 +8,12 @@ public class Usuario {
 	private String Clave;
 	boolean Activo;
 	
+	
+	
+	public Usuario() {
+		super();
+	}
+
 	public Usuario(int Idusuario, int Iddocente, String Usuario, String Clave, boolean Activo) {
 		super();
 		this.IDUsuario = Idusuario;
@@ -19,16 +25,6 @@ public class Usuario {
 	
 	
 
-	
-	
-	public Usuario() {
-		super();
-	}
-
-
-
-
-
 	public Usuario(String Usuario, String Clave) {
 		super();
 		this.Usuario = Usuario;
@@ -36,13 +32,13 @@ public class Usuario {
 	}
 
 
-	public int getIdusuario() {
+	public int getIDUsuario() {
 		return IDUsuario;
 	}
 
 
 
-	public int getIddocente() {
+	public int getIDDocente() {
 		return IDDocente;
 	}
 
@@ -64,13 +60,13 @@ public class Usuario {
 
 
 
-	public void setIdusuario(int Idusuario) {
+	public void setIDUsuario(int Idusuario) {
 		this.IDUsuario = Idusuario;
 	}
 
 
 
-	public void setIddocente(int Iddocente) {
+	public void setIDDocente(int Iddocente) {
 		this.IDDocente = Iddocente;
 	}
 
@@ -95,11 +91,10 @@ public class Usuario {
 
 	@Override
 	public String toString() {
-		return "Usuario [idUsuario=" + IDUsuario + ", Iddocente=" + IDDocente + ", Usuario=" + Usuario + ", Clave="
+		return "Usuario [IDUsuario=" + IDUsuario + ", IDDocente=" + IDDocente + ", Usuario=" + Usuario + ", Clave="
 				+ Clave + ", Activo=" + Activo + "]";
 	}
 
-	
 	
 	
 }
