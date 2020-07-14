@@ -22,12 +22,12 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="F:/Programas Instalados/Eclipse/Conector J/mysql-connector-java-8.0.20/mysql-connector-java-8.0.20.jar">
+	<classpathentry kind="lib" path="C:/Users/Luca/Desktop/UTN/LAB 4/mysql/mysql-connector-java-8.0.20/mysql-connector-java-8.0.20.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
-	<classpathentry kind="lib" path="F:/Programas Instalados/Apache Software Foundation/Tomcat 8.5/lib/servlet-api.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/Apache Software Foundation/Tomcat 8.5/lib/servlet-api.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

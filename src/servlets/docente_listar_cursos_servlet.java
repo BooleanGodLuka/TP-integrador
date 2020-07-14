@@ -44,8 +44,8 @@ public class docente_listar_cursos_servlet extends HttpServlet {
 		HttpSession session = request.getSession();
 
 		Usuario usuario = (Usuario) session.getAttribute("Usuario");
-		
-		String consulta = "iddocente = " + usuario.getIddocente();
+		 
+		String consulta = "iddocente = " + usuario.getIDDocente();
 		
 		
 		CursoNegocioImpl cursoNegocio = new CursoNegocioImpl();

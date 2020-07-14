@@ -46,17 +46,19 @@ public class docente_modificar_nota_servlet extends HttpServlet {
 		AlumnoXCursoNegocioImpl aldao = new AlumnoXCursoNegocioImpl();
 
 		/*if (request.getParameter("btn_guardar") != null) {
-			ArrayList<AlumnoXCurso> lis = cudao.leer_alumnoXcurso(Integer.parseInt(request.getParameter("id_curso")));
+			ArrayList<AlumnoXCurso> lis = aldao.leer_alumnoXcurso(Integer.parseInt(request.getParameter("id_curso")));
 			ArrayList<AlumnoXCurso> temp = lis;
-
-			for (AlumnoXCurso axc : lis) {
+			AlumnoXCurso axc = new AlumnoXCurso();
+			
+			for (int i = 0; i < lis.size(); i++) {
+				axc.igualar(lis.get(i));
 				axc.setNota1(Integer.parseInt(request.getParameter("nota1_" + axc.getAlumno().getLegajo())));
 				axc.setNota1(Integer.parseInt(request.getParameter("nota2_" + axc.getAlumno().getLegajo())));
 				axc.setNota1(Integer.parseInt(request.getParameter("nota3_" + axc.getAlumno().getLegajo())));
 				axc.setNota1(Integer.parseInt(request.getParameter("nota4_" + axc.getAlumno().getLegajo())));
 
 				temp.add(axc);
-				cudao.actualizar_alumnoXcurso(axc);
+				aldao.actualizar_alumnoXcurso(axc);
 			}
 
 			request.setAttribute("lista_alumnos", temp);
@@ -76,24 +78,25 @@ public class docente_modificar_nota_servlet extends HttpServlet {
 			AlumnoXCurso axc = new AlumnoXCurso();
 			
 			 
-			for (int i = 0; i < lista.size(); i++) {
+			/*for (int i = 0; i < lista.size(); i++) {
 				axc.igualar(lista.get(i));
 				if (al.readall(" id=" + axc.getAlumno().getLegajo()) != null) {
 				Alumno cursante = new Alumno((Alumno) al.readall(" id=" + axc.getAlumno().getLegajo()).get(0));
 				axc.setAlumno(cursante);
 				//if (cursante.getActivo()) {
 					
-					/*lista_final.add(cont,axc);
-					cont ++;*/
-					lista.set(i+1, axc);
+					//lista_final.add(cont,axc);
+					//cont ++;
+					lista.set(i, axc);
 					//}
 				}
-			}
+			}*/
 		
 			request.setAttribute("lista_alumnos", lista);
 			//request.setAttribute("lista_alumnos", lista_final);
 
-			RequestDispatcher rd = request.getRequestDispatcher("Docente_ModificarNotas.jsp");
+			
+			RequestDispatcher rd = request.getRequestDispatcher("Docente_ModificarNota.jsp");
 			rd.forward(request, response);
 		
 		
@@ -109,6 +112,12 @@ public class docente_modificar_nota_servlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
+		
+		
+		
+		
+		
 		doGet(request, response);
 	}
 

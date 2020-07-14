@@ -16,7 +16,7 @@ public class AlumnoXCursoNegocioImpl implements AlumnoXCursoNegocio {
 	@Override
 	public boolean actualizar_alumnoXcurso(AlumnoXCurso alumno) {
 		// TODO Auto-generated method stub
-		return false;
+		return aldao.update(alumno);
 	}
 
 	@Override
