@@ -2,7 +2,8 @@
     pageEncoding="ISO-8859-1"%>
     <%@page import="javax.servlet.http.HttpSession"%>
 <%@page import="dominio.*" %>
-<%@page import="dominio.Usuario" %>
+<%@page import="negocio.*" %>
+<%@page import="negocioImpl.*" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
@@ -90,15 +91,20 @@ body {
 
    <div>
   <%
-      		String nombre = "";
+      		int idusuario;
+  			int iddocente;
+  			String nombre = "";
+  			String apellido = "";
+  			UsuarioNegocio usneg =  new UsuarioNegocioImpl();
 	      	HttpSession misession = request.getSession();
-      		//Docente doc = new Docente(); paras ponerle el nombre despues
       		Usuario usu = new Usuario();
       		usu = (Usuario)misession.getAttribute("Usuario");
+      		idusuario = usu.getIDUsuario();
+      		iddocente = usu.getIDDocente();
       		nombre = usu.getUsuario();
-      		if (nombre.contentEquals("administrator") == true){
+      		if (idusuario == 1){
    %>
-   </div> 
+   </div>
   
 <div>
 <header class="w3-top">
@@ -143,6 +149,8 @@ body {
       		
 
       	else {
+      		nombre = usneg.getNombreDocente(iddocente);
+      		apellido = usneg.getApellidoDocente(iddocente);
       		
 %>
 
@@ -155,7 +163,7 @@ body {
   <a href="docente_listar_cursos_servlet">Cursos</a>
   </form>
   <a href="#">Alumnos</a>
-  <div style="text-align: right;color: white"><%=nombre%></div>
+  <div style="text-align: right;color: white"><%=nombre%> <%=apellido%></div>
 </div>
 </header>
 </div>

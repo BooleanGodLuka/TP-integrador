@@ -1,14 +1,26 @@
 package negocio;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
+
 import dominio.Usuario;
 
 public interface UsuarioNegocio {
 
-	public boolean insert_usuario(Usuario usuario);
+	public boolean insert(Usuario usuario);
 	
-	public boolean delete_usuario(Usuario usuario);
+	public boolean delete(Usuario usuario);
 	
-	public boolean update_clave(String nombreusuario, String claveusuario);
+	public boolean updateClave (Usuario usuario);
 	
-	public Usuario validate_usuario(String nombreusuario, String claveusuario);
+	public boolean validateUsuario(Usuario usuario);
+	
+	public ArrayList<Usuario> readall();
+
+	public Usuario validateLogin(Usuario aux);
+	
+	public String getNombreDocente (int iddocente) throws SQLException;
+	
+	public String getApellidoDocente (int iddocente) throws SQLException;
+
 }
