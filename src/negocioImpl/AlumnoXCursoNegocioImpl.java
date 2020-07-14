@@ -2,11 +2,13 @@ package negocioImpl;
 
 import java.util.ArrayList;
 
+import DaoImpl.AlumnoXCursoDaoImpl;
 import dominio.AlumnoXCurso;
 import negocio.AlumnoXCursoNegocio;
 
 public class AlumnoXCursoNegocioImpl implements AlumnoXCursoNegocio {
 
+	AlumnoXCursoDaoImpl aldao = new AlumnoXCursoDaoImpl();
 	public AlumnoXCursoNegocioImpl() {
 		// TODO Auto-generated constructor stub
 	}
@@ -44,7 +46,7 @@ public class AlumnoXCursoNegocioImpl implements AlumnoXCursoNegocio {
 	@Override
 	public ArrayList<AlumnoXCurso> leer_alumnoXcurso(int id_curso) {
 		// TODO Auto-generated method stub
-		return null;
+		return aldao.readall(id_curso);
 	}
 
 }

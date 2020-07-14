@@ -14,7 +14,7 @@ public class AlumnoXCurso {
 		Alumno = new Alumno();
 		Curso = new Curso();
 	}
-
+ 
 	public AlumnoXCurso(AlumnoXCurso axc) {
 		Alumno = new Alumno(axc.getAlumno());
 		Curso = new Curso(axc.getCurso());
@@ -88,6 +88,18 @@ public class AlumnoXCurso {
 
 	public void setRegularidad(String regularidad) {
 		Regularidad = regularidad;
+	}
+	
+	public void igualar (AlumnoXCurso al) {
+		this.Alumno = new Alumno(al.getAlumno());
+		this.Curso = new Curso(al.getCurso());
+		//this.Alumno.igualar(al.getAlumno());
+		//this.Curso.igualar(al.getCurso());
+		this.Nota1 = al.getNota1();
+		this.Nota2 = al.getNota2();
+		this.Nota3 = al.getNota3();
+		this.Nota4 = al.getNota4();
+		this.Regularidad = al.getRegularidad();
 	}
 	
 

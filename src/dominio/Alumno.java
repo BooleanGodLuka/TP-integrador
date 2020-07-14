@@ -161,6 +161,19 @@ public class Alumno {
 	public String toString() {
 		return "Alumno " + Apellido + ", " + Nombre + " - Legajo Nº " + Legajo;
 	}
+	
+	public void igualar (Alumno al) {
+		this.Activo = al.getActivo();
+		this.Apellido = al.getApellido();
+		this.Direccion = al.getDireccion();
+		this.Dni = al.getDni();
+		this.Email = al.getEmail();
+		this.FechaNacimiento = al.getFechaNacimiento();
+		this.IDLocalidad = al.getIDLocalidad();
+		this.Legajo = al.getLegajo();
+		this.Nombre = al.getNombre();
+		this.Telefono = al.getTelefono();
+	}
 
 
 }

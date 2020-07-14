@@ -133,12 +133,14 @@ input[type=submit] {
   
    
   <%
-       	if (request.getParameter("lista_alumnos") != null){
+       	if (request.getAttribute("lista_alumnos") != null){
        	ArrayList<AlumnoXCurso> lista;
        	lista = (ArrayList<AlumnoXCurso>) request.getAttribute("lista_alumnos");
+       	AlumnoXCurso axc = new AlumnoXCurso();
        	
-       	
-       	for (AlumnoXCurso axc: lista ){
+       	for (int i=0; i<lista.size();i++ ){
+       		axc.igualar(lista.get(i));
+       		if (axc.getAlumno().getActivo()){
        %>  
   <tr>
     <td><%= axc.getAlumno().getLegajo() %></td> <input type="hidden" name ="alumno" value= "<%=axc.getAlumno().getLegajo() %>" >
@@ -173,7 +175,7 @@ input[type=submit] {
 	                    %>
 	                      </select>
   </tr>
- <%}} %> 
+ <%}}} %> 
   
 </table>
 

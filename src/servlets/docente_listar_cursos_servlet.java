@@ -69,7 +69,7 @@ public class docente_listar_cursos_servlet extends HttpServlet {
 		RequestDispatcher rd =request.getRequestDispatcher("Docente_ListarCursos.jsp");
 		rd.forward(request, response);
 		
-		//ahre
+		
 		
 		
 		//response.getWriter().append("Served at: ").append(request.getContextPath());

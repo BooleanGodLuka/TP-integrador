@@ -16,6 +16,7 @@ import dominio.Alumno;
 import dominio.AlumnoXCurso;
 import negocio.AlumnoNegocio;
 import negocioImpl.AlumnoNegocioImpl;
+import negocioImpl.AlumnoXCursoNegocioImpl;
 import negocioImpl.CursoNegocioImpl;
 
 /**
@@ -42,8 +43,9 @@ public class docente_modificar_nota_servlet extends HttpServlet {
 		// TODO Auto-generated method stub
 
 		CursoNegocioImpl cudao = new CursoNegocioImpl();
+		AlumnoXCursoNegocioImpl aldao = new AlumnoXCursoNegocioImpl();
 
-		if (request.getParameter("btn_guardar") != null) {
+		/*if (request.getParameter("btn_guardar") != null) {
 			ArrayList<AlumnoXCurso> lis = cudao.leer_alumnoXcurso(Integer.parseInt(request.getParameter("id_curso")));
 			ArrayList<AlumnoXCurso> temp = lis;
 
@@ -62,27 +64,39 @@ public class docente_modificar_nota_servlet extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("Docente/Docente_ModificarNotas.jsp");
 			rd.forward(request, response);
 
-		}
+		}*/
 
 		if (request.getParameter("btn_alumnos") != null) {
 			AlumnoNegocio al = new AlumnoNegocioImpl();
-			ArrayList<AlumnoXCurso> lista = cudao.leer_alumnoXcurso(Integer.parseInt(request.getParameter("id_curso")));
+			
+			ArrayList<AlumnoXCurso> lista = aldao.leer_alumnoXcurso(Integer.parseInt(request.getParameter("id_curso")));
+			ArrayList<AlumnoXCurso> lista_final = new ArrayList<AlumnoXCurso>();
+			int cont =0;
+			
 			AlumnoXCurso axc = new AlumnoXCurso();
-
+			
+			 
 			for (int i = 0; i < lista.size(); i++) {
-				axc = new AlumnoXCurso(lista.get(i));
-				if (al.readall(" WHERE id=" + axc.getAlumno().getLegajo() + " AND activo=1").get(0) != null) {
-					Alumno cursante = (Alumno) al.readall(" WHERE id=" + axc.getAlumno().getLegajo() + " AND activo=1")
-							.get(0);
-
+				axc.igualar(lista.get(i));
+				if (al.readall(" id=" + axc.getAlumno().getLegajo()) != null) {
+				Alumno cursante = new Alumno((Alumno) al.readall(" id=" + axc.getAlumno().getLegajo()).get(0));
+				axc.setAlumno(cursante);
+				//if (cursante.getActivo()) {
+					
+					/*lista_final.add(cont,axc);
+					cont ++;*/
+					lista.set(i+1, axc);
+					//}
 				}
-
-				request.setAttribute("lista_alumnos", lista);
-
-				RequestDispatcher rd = request.getRequestDispatcher("Docente_ModificarNotas.jsp");
-				rd.forward(request, response);
-
 			}
+		
+			request.setAttribute("lista_alumnos", lista);
+			//request.setAttribute("lista_alumnos", lista_final);
+
+			RequestDispatcher rd = request.getRequestDispatcher("Docente_ModificarNotas.jsp");
+			rd.forward(request, response);
+		
+		
 		}
 
 		response.getWriter().append("Served at: ").append(request.getContextPath());
