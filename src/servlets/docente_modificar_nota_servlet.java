@@ -44,34 +44,39 @@ public class docente_modificar_nota_servlet extends HttpServlet {
 
 		CursoNegocioImpl cudao = new CursoNegocioImpl();
 		AlumnoXCursoNegocioImpl aldao = new AlumnoXCursoNegocioImpl();
+		ArrayList<AlumnoXCurso> lista = aldao.leer_alumnoXcurso(Integer.parseInt(request.getParameter("id_curso")));
 
-		/*if (request.getParameter("btn_guardar") != null) {
-			ArrayList<AlumnoXCurso> lis = aldao.leer_alumnoXcurso(Integer.parseInt(request.getParameter("id_curso")));
-			ArrayList<AlumnoXCurso> temp = lis;
+		
+		if (request.getParameter("btn_guardar") != null) {
 			AlumnoXCurso axc = new AlumnoXCurso();
 			
-			for (int i = 0; i < lis.size(); i++) {
-				axc.igualar(lis.get(i));
-				axc.setNota1(Integer.parseInt(request.getParameter("nota1_" + axc.getAlumno().getLegajo())));
-				axc.setNota1(Integer.parseInt(request.getParameter("nota2_" + axc.getAlumno().getLegajo())));
-				axc.setNota1(Integer.parseInt(request.getParameter("nota3_" + axc.getAlumno().getLegajo())));
-				axc.setNota1(Integer.parseInt(request.getParameter("nota4_" + axc.getAlumno().getLegajo())));
+			for (int i = 0; i < lista.size(); i++) {
+				axc.igualar(lista.get(i));
 
-				temp.add(axc);
+				axc.setNota1(Integer.parseInt(request.getParameter("nota1_" + axc.getAlumno().getLegajo())));
+				axc.setNota2(Integer.parseInt(request.getParameter("nota2_" + axc.getAlumno().getLegajo())));
+				axc.setNota3(Integer.parseInt(request.getParameter("nota3_" + axc.getAlumno().getLegajo())));
+				axc.setNota4(Integer.parseInt(request.getParameter("nota4_" + axc.getAlumno().getLegajo())));
+
 				aldao.actualizar_alumnoXcurso(axc);
+				//lista.set(i, axc);
 			}
 
-			request.setAttribute("lista_alumnos", temp);
+			lista = null;
+			lista =aldao.leer_alumnoXcurso(Integer.parseInt(request.getParameter("id_curso")));
+			request.setAttribute("lista_alumnos", lista);
 
-			RequestDispatcher rd = request.getRequestDispatcher("Docente/Docente_ModificarNotas.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("Docente_ModificarNotas.jsp");
 			rd.forward(request, response);
 
-		}*/
-
-		if (request.getParameter("btn_alumnos") != null) {
+			
+			
+			
+			
+		}else if (request.getParameter("btn_alumnos") != null) {
 			AlumnoNegocio al = new AlumnoNegocioImpl();
 			
-			ArrayList<AlumnoXCurso> lista = aldao.leer_alumnoXcurso(Integer.parseInt(request.getParameter("id_curso")));
+			
 			ArrayList<AlumnoXCurso> lista_final = new ArrayList<AlumnoXCurso>();
 			int cont =0;
 			
@@ -95,8 +100,7 @@ public class docente_modificar_nota_servlet extends HttpServlet {
 			request.setAttribute("lista_alumnos", lista);
 			//request.setAttribute("lista_alumnos", lista_final);
 
-			
-			RequestDispatcher rd = request.getRequestDispatcher("Docente_ModificarNota.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("Docente_ModificarNotas.jsp");
 			rd.forward(request, response);
 		
 		
@@ -105,13 +109,21 @@ public class docente_modificar_nota_servlet extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
+	
+	
+	
+	
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+
+	
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
 		
 		
 		

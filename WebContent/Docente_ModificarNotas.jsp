@@ -118,7 +118,7 @@ input[type=submit] {
  
 <label for="fname">Curso: [INSERTE NOMBRE DE CURSO AQUÍ]</label>
 <br>
-<form method="get" action="Docente_ModificarNotas.jsp">
+<form method="get" action="docente_modificar_nota_servlet">
 <table id="customers">
   <tr>
     <th>Legajo</th>
@@ -140,16 +140,15 @@ input[type=submit] {
        	
        	for (int i=0; i<lista.size();i++ ){
        		axc.igualar(lista.get(i));
-       		if (axc.getAlumno().getActivo()){
        %>  
   <tr>
-    <td><%= axc.getAlumno().getLegajo() %></td> <input type="hidden" name ="alumno" value= "<%=axc.getAlumno().getLegajo() %>" >
+    <td><%= axc.getAlumno().getLegajo() %></td> <!--  <input type="hidden" name ="alumno" value= "<%//axc.getAlumno().getLegajo() %>" >-->
     <td><%= axc.getAlumno().getNombre()%></td>
     <td><%= axc.getAlumno().getApellido() %></td>
-    <td><input type="text" id="nota" name="nota1_<%= axc.getAlumno().getLegajo() %>" placeholder="<%= axc.getNota1() %>"></td>
-    <td><input type="text" id="nota" name="nota2_<%= axc.getAlumno().getLegajo() %>" placeholder="<%= axc.getNota2() %>"></td>
-    <td><input type="text" id="nota" name="nota3_<%= axc.getAlumno().getLegajo() %>" placeholder="<%= axc.getNota3() %>"></td>
-    <td><input type="text" id="nota" name="nota4_<%= axc.getAlumno().getLegajo() %>" placeholder="<%= axc.getNota4() %>"></td>
+    <td><input type="text" id="nota" name="nota1_<%= axc.getAlumno().getLegajo() %>" value="<%= axc.getNota1() %>"></td>
+    <td><input type="text" id="nota" name="nota2_<%= axc.getAlumno().getLegajo() %>" value="<%= axc.getNota2() %>"></td>
+    <td><input type="text" id="nota" name="nota3_<%= axc.getAlumno().getLegajo() %>" value="<%= axc.getNota3() %>"></td>
+    <td><input type="text" id="nota" name="nota4_<%= axc.getAlumno().getLegajo() %>" value="<%= axc.getNota4() %>"></td>
     <td><select name="Estado<%= axc.getAlumno().getLegajo() %>">
 	                    <%
 	                    	if(axc.getRegularidad()== "Regular")
@@ -175,9 +174,12 @@ input[type=submit] {
 	                    %>
 	                      </select>
   </tr>
- <%}}} %> 
+ <%}%>
+ <input type="hidden" name ="id_curso" value="<%=lista.get(0).getCurso().getID() %>">
+ <%}%>
   
 </table>
+
 
 <input type="submit" name="btn_guardar" value="Guardar notas">
 
