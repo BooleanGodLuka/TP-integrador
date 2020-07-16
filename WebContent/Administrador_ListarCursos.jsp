@@ -89,6 +89,7 @@
 <thead>
 <tr>
 	<th>Curso</th>
+	<th>Materia</th>
 	<th>Cuatrimestre</th>
 	<th>Año</th>
 	<th>Docente</th>
@@ -113,10 +114,11 @@
 				
 	  %>
 <tr>
-<td><%=cur.getMateria().getNombre() %></td> 
+<td><%=cur.getID() %> <input type="hidden" name="idCurso" value="<%=cur.getID()%>"> </td> 
+<td><%=cur.getMateria().getNombre()%></td>
 <td><%=cur.getCuatrimestre() %></td> 
 <td><%=cur.getAnio() %></td> 
-<td><%=cur.getDocente() %></td> 
+<td><%=cur.getDocente().getNombre() %></td> 
 <td style="text-align:center"> <input type="button" value="Ver Alumnos" name="btn_VerAlumnos"style="BORDER: rgb(128,128,128) 3px solid; WIDTH: 150px; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;"></td>
 <td style="text-align:center"> <input type="button" value="Modificar Curso" name="btn_ModificarCurso"style="BORDER: rgb(128,128,128) 3px solid; WIDTH: 150px; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;"></td>
 </tr>

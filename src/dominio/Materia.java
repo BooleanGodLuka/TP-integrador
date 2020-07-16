@@ -2,7 +2,7 @@ package dominio;
 
 public class Materia {
 
-	int ID;
+	private int ID;
 	String Nombre;
 
 	public Materia() {

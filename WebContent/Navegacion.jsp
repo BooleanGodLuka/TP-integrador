@@ -158,7 +158,7 @@ body {
 <div>
 <header class="w3-top">
   <div class="navbar">
-  <a href="#home">Home</a>
+  <a href="Home.jsp">Home</a>
   <form action="docente_listar_cursos_servlet" method="get">
   <a href="docente_listar_cursos_servlet">Cursos</a>
   </form>
