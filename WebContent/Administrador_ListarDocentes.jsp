@@ -102,8 +102,9 @@
 				if (docente.getActivo() == true){
 	  %>
 <tr>
+<form action="ServletModificarDocente" method="get"> 
 
-					<td><%=docente.getLegajo() %></td> 
+					<td><%=docente.getLegajo() %></td> <input type="hidden" name="id_doc" value="docente.getLegajo()">
 					<!--  <td>docente.getUsuario()</td>   -->
 					<td><%=docente.getNombre() %></td> 
 					<td><%=docente.getApellido()%></td>  
@@ -114,6 +115,9 @@
 					<td><%=docente.getTelefono() %></td>
 
 <td style="text-align:center"> <input type="button" value="Modificar Docente" name="btn_ModificarDocente"style="BORDER: rgb(128,128,128) 3px solid; WIDTH: 150px; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;"></td>
+
+</form>
+
 </tr>
 
 

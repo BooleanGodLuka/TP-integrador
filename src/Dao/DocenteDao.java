@@ -9,7 +9,7 @@ public interface DocenteDao {
 
 	public boolean insert(Docente docente);
 	
-	public boolean delete(Docente docente_a_eliminar);
+	public boolean delete(String docente_a_eliminar);
 	
 	public ArrayList<Docente> readall();
 	

@@ -123,8 +123,9 @@
 	  %>
 	
   <tr>
-					<form method="get" action="/ServletModificarAlumno">
-					<td><%=alumno.getLegajo() %></td>   
+
+					<form action="ServletModificarAlumno" method="get">
+					<td><%=alumno.getLegajo() %></td>	 <input type="hidden" name="id_alumno" value ="<%=alumno.getLegajo()%>">
 					<td><%=alumno.getNombre() %></td> 
 					<td><%=alumno.getApellido() %></td>
 					<td><%=alumno.getDni() %></td> 
@@ -136,7 +137,8 @@
 					<td><%=alumno.getTelefono() %></td>	
 					<td> <input type="button" value="Modificar Alumno" name="btn_ModificarAlumno"style="BORDER: rgb(128,128,128) 3px solid; WIDTH: 150px; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;"></td>
 					</form>
-    
+					  
+					
  </tr>
  
  <%

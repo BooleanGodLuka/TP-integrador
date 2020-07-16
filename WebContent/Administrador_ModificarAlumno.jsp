@@ -58,11 +58,14 @@
 <table ALIGN="center" id="Modificaciones" width=80%>
 	<thead>
 	<tr>
+		<th>ID</th>
 		<th>DNI</th>
 		<th>Nombre</th>
 		<th>Apellido</th>
 		<th>Fecha de Nacimiento</th>
 		<th>Email</th>
+		<th>Telefono</th>
+		<th>Direccion</th>
 	    <th>Provincia</th>
 	    <th>Localidad</th>
 	    <th>Modificar</th>
@@ -80,11 +83,18 @@
 	%>
 	
 	<tr>
-	    <td><input type="text" name="id" value="<%=al.getLegajo()%>" readonly></td> 
+	    <td><input type="text" name="id" value="<%=al.getLegajo()%>" readonly></td>
+	    <td><input type="text" name="dni" value="<%=al.getDni()%>"></td> 
 	    <td><input type="text" name="nombre" value="<%=al.getNombre()%>"></td>
 	    <td><input type="text" name="apellido" value="<%=al.getApellido()%>"></td>
 	    <td><input type="date" name="fechanacimiento" value="<%=al.getFechaNacimiento() %>"></td>
 	    <td><input type="text" name="email" value="<%=al.getEmail()%>"></td>
+	    <td><input type="text" name="telefono" value="<%=al.getTelefono()%>"></td>
+	    <td><input type="text" name="direccion" value="<%=al.getDireccion()%>"></td>
+    
+    
+    
+    
     <td>
     <select id="provincia" name="provincia">
     	<%ArrayList<Provincia> provincias = (ArrayList<Provincia>) request.getAttribute("provincias"); 
@@ -93,10 +103,13 @@
     		prov.setID(provincias.get(i).getID());
     		prov.setNombre(provincias.get(i).getNombre());
     	%>
-    	<option name="prov_<%=prov.getID() %>" value="<%=prov.getNombre()%>"><%=prov.getNombre()%></option>
+    	<option name="prov_<%=prov.getID() %>" value="<%=prov.getID()%>"><%=prov.getNombre()%></option>
     	<%} %>
     </select>
     </td>
+    
+    
+    
     <td>
     <select id="localidad" name="localidad">
     		<%ArrayList<Localidad> localidades = (ArrayList<Localidad>) request.getAttribute("localidades"); 
@@ -106,11 +119,11 @@
     		loc.setNombre(localidades.get(i).getNombre());
     		loc.setIDProvincia(localidades.get(i).getIDProvincia());
     	%>
-    	<option name="loc_<%=loc.getID() %>" value="<%=loc.getNombre()%>"><%=loc.getNombre()%></option>
+    	<option name="loc_<%=loc.getID() %>" value="<%=loc.getID()%>"><%=loc.getNombre()%></option>
     	<%} %>
     </select>
     </td>
-    <td style="text-align:center"> <input type="button" value="Actualizar" name="btn_ModificarAlumno"style="BORDER: rgb(128,128,128) 3px solid; WIDTH: 150px; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;"></td>
+    <td style="text-align:center"> <input type="button" value="Actualizar" name="btn_ModAlumno"style="BORDER: rgb(128,128,128) 3px solid; WIDTH: 150px; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;"></td>
     <td style="text-align:center"> <input type="button" value="Eliminar" name="btn_EliminarAlumno"style="BORDER: rgb(128,128,128) 3px solid; WIDTH: 150px; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;"></td>
   </tr>
 <%} %>

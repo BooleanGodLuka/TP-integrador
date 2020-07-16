@@ -53,13 +53,13 @@ public class AlumnoDaoImpl implements AlumnoDao {
 	}
 
 	@Override
-	public boolean delete(Alumno alumno) {
+	public boolean delete(String alumno) {
 		PreparedStatement statement;
 		Connection conexion = Conexion.getConexion().getSQLConexion();
 		boolean isDeleteExitoso = false;
 		try {
 			statement = conexion.prepareStatement(delete);
-			statement.setString(1, Integer.toString(alumno.getLegajo()));
+			statement.setString(1, alumno);
 			if (statement.executeUpdate() > 0) {
 				conexion.commit();
 				isDeleteExitoso = true;

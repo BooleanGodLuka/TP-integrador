@@ -53,16 +53,14 @@ public class CursoDaoImpl implements CursoDao {
 	}
 
 	@Override
-	public boolean delete(Curso curso) {
+	public boolean delete(int id) {
 		PreparedStatement statement;
 		Connection conexion = Conexion.getConexion().getSQLConexion();
 		boolean isUpdateExitoso = false;
 		try {
 			statement = conexion.prepareStatement(delete);
-			statement.setInt(1, curso.getID());
-			statement.setString(2, curso.getCuatrimestre());
-			statement.setString(2, curso.getAnio());
-			statement.setInt(2, curso.getDocente().getLegajo());
+			statement.setInt(1, id);
+
 			if (statement.executeUpdate() > 0) {
 				conexion.commit();
 				isUpdateExitoso = true;

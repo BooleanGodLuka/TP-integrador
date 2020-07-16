@@ -17,6 +17,10 @@ public class LocalidadNegocioImpl implements LocalidadNegocio{
 		return ldao.readall(idprovincia);
 	}
 
+	@Override
+	public ArrayList<Localidad> readall() {
+		return ldao.readall();
+	}
 
 	@Override
 	public String getNombreLocalidad(String idlocalidad) throws SQLException {

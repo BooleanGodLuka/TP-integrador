@@ -20,9 +20,9 @@
       <div class='welcome'>Bienvenido!</div> <br> <br> <br>
       <div class='subtitle'>Por favor ingrese con sus credenciales</div>
       <div class='input-fields'>
-        <input type='text' placeholder='Usuario' class='input-line full-width' name="txtUser" required></input> 
+        <input type='text' placeholder='Usuario' value="administrator" class='input-line full-width' name="txtUser" required></input> 
         <br> <br> 
-        <input type='password' placeholder='Contraseña' class='input-line full-width' name="txtPassword" minlength="4" required></input>
+        <input type='password' placeholder='Contraseña' value="A1234." class='input-line full-width' name="txtPassword" minlength="4" required></input>
 
       </div>
       

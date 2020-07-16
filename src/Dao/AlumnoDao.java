@@ -7,7 +7,7 @@ public interface AlumnoDao {
 
 	public boolean insert(Alumno alumno);
 
-	public boolean delete(Alumno alumno);
+	public boolean delete(String alumno);
 
 	public ArrayList<Alumno> readall();
 	

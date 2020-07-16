@@ -10,7 +10,7 @@ public interface AlumnoNegocio {
 
 		public boolean insert(Alumno alumno);
 
-		public boolean delete(Alumno alumno);
+		public boolean delete(String id_alumno);
 
 		public ArrayList<Alumno> readall();
 		

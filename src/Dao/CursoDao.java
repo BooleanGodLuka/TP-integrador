@@ -8,7 +8,7 @@ public interface CursoDao {
 
 	public boolean insert(Curso curso);
 
-	public boolean delete(Curso curso);
+	public boolean delete(int id);
 
 	public ArrayList<Curso> readall();
 

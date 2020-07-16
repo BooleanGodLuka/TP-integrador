@@ -20,7 +20,7 @@ public class CursoNegocioImpl implements CursoNegocio {
 	}
 
 	@Override
-	public boolean delete(Curso curso_a_eliminar) {
+	public boolean delete(int curso_a_eliminar) {
 		return cdao.delete(curso_a_eliminar);
 	}
 

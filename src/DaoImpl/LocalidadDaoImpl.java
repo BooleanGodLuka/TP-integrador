@@ -11,7 +11,7 @@ import dominio.Localidad;
 public class LocalidadDaoImpl implements LocalidadDao {
 
 	private static final String readallwhere = "SELECT * FROM localidades INNER JOIN provincias ON localidades.idprovincia = provincias.id WHERE provincias.id = ? ";
-
+	private static final String readall = "SELECT * FROM localidades";
 
 	@Override
 	public ArrayList<Localidad> readall(String idprovincia) {
@@ -33,6 +33,26 @@ public class LocalidadDaoImpl implements LocalidadDao {
 	}
 
 
+	@Override
+	public ArrayList<Localidad> readall() {
+		PreparedStatement statement;
+		ResultSet resultSet;
+		ArrayList<Localidad> localidades = new ArrayList<Localidad>();
+		Conexion conexion = Conexion.getConexion();
+		try {
+			statement = conexion.getSQLConexion().prepareStatement(readallwhere);
+			resultSet = statement.executeQuery();
+			while (resultSet.next()) {
+				localidades.add(getLocalidad(resultSet));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return localidades;
+	}
+	
+	
+	
 	private Localidad getLocalidad(ResultSet resultSet) throws SQLException {
 		int id = resultSet.getInt("id");
 		String nombre = resultSet.getString("nombre");

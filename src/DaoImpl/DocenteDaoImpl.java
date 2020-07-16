@@ -50,13 +50,13 @@ public class DocenteDaoImpl implements DocenteDao {
 	}
 
 	@Override
-	public boolean delete(Docente docente_a_eliminar) {
+	public boolean delete(String docente_a_eliminar) {
 		PreparedStatement statement;
 		Connection conexion = Conexion.getConexion().getSQLConexion();
 		boolean isDeleteExitoso = false;
 		try {
 			statement = conexion.prepareStatement(delete);
-			statement.setString(1, Integer.toString(docente_a_eliminar.getLegajo()));
+			statement.setString(1, docente_a_eliminar);
 			if (statement.executeUpdate() > 0) {
 				conexion.commit();
 				isDeleteExitoso = true;

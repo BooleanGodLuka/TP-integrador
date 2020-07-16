@@ -1,3 +1,7 @@
+<%@page import="dominio.Docente"%>
+<%@page import="dominio.Materia"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="dominio.Curso"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -75,32 +79,60 @@
 </tr>
 </thead> 
   
+  
+  
+  
+  
+  
+  
   <tbody>
+  
+  <%if (request.getAttribute("curso") != null){
+	 Curso cur = new Curso();
+	 cur.igualar((Curso)request.getAttribute("curso"));
+	  
+  %>
+  
+  
+  
+  
   <tr>
-  	<td><input type="text" name="ID_Curso" placeholder="1"></td>
+  <form action="ServletModificarCurso" method="get">
+  	<td><input type="text" name="ID_Curso" value="<%=cur.getID() %>" readonly="readonly"></td>
+  	  
+  	  
+  	  
+  	  
   	  <td>
     <select id="Materia" name="Materia">
-      <option value="">-Seleccione la Materia-</option>
-      <option value="">--------</option>
-      <option value="LaboratorioIV">Laboratorio IV</option>
-      <option value="MetodologiadeSistemasI">Metodologia de Sistemas I</option>
-      <option value="DiseñoyAdministraciondeBasedeDatosI">Diseño y Administracion de Base de Datos I</option>
+ 
+    <%ArrayList<Materia> materias = (ArrayList)request.getAttribute("materias");
+    Materia mat = new Materia();
+    
+    for (int i =0; i<materias.size(); i++){
+    	mat.setID(materias.get(i).getID());
+    	mat.setNombre(materias.get(i).getNombre());
+ 
+    %>
+      <option value="<%=mat.getID() %>"><%=mat.getNombre() %></option>
+    <%} %>
+ 
     </select>
     </td>
+ 
+ 
      
     <td>
     <select id="Cuatrimestre" name="Cuatrimestre">
-      <option value="">-Seleccione el Cuatrimestre-</option>
-      <option value="">--------</option>
-      <option value="Primero">1° Cuatrimestre</option>
-      <option value="Segundo">2° Cuatrimestre</option>
+      <option value="1ro">1° Cuatrimestre</option>
+      <option value="2do">2° Cuatrimestre</option>
     </select>
     </td>
+ 
+ 
     
     <td>
     <select id="Año" name="Año">
-      <option value="">-Seleccione el Año-</option>
-      <option value="">--------</option>
       <option value="2020">2020</option>
       <option value="2019">2019</option>
       <option value="2018">2018</option>
@@ -124,21 +156,32 @@
       <option value="2000">2000</option>
     </select>
     </td>
+ 
+ 
     
     <td>
     <select id="Docente" name="Docente">
-      <option value="">-Seleccionar Docente-</option>
-      <option value="">--------</option>
-      <option value="THerrera">Tamara Herrera</option>
-      <option value="CFernandez">Claudio Fernandez</option>
-      <option value="CJRodriguez">Carlos Javier Rodriguez</option>
+      
+      <%ArrayList<Docente> docentes = (ArrayList)request.getAttribute("docentes");
+    Docente doc = new Docente();
+    
+    for (int i =0; i<docentes.size(); i++){
+    	doc.igualar(docentes.get(i));
+ 
+    %>
+    
+      <option value="<%=doc.getLegajo() %>"><%=doc.getApellido()%>, <%=doc.getNombre()%> </option>
+    <%} %>
     </select>
     </td>
     <td style="text-align:center"> <input type="button" value="Actualizar Curso" name="btn_ModificarCurso"style="BORDER: rgb(128,128,128) 3px solid; WIDTH: 150px; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;"></td>
     <td style="text-align:center"> <input type="button" value="Eliminar Curso" name="btn_EliminarCurso"style="BORDER: rgb(128,128,128) 3px solid; WIDTH: 150px; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;"></td>
     
-  </tr>
+    
 
+  </form>
+  </tr>
+<%}%>
 </tbody>
 
 </table>

@@ -38,8 +38,44 @@ public class ServletModificarAlumno extends HttpServlet {
 		ProvinciaNegocioImpl prodao = new ProvinciaNegocioImpl();
 		LocalidadNegocioImpl locdao = new LocalidadNegocioImpl();
 		
+		if (request.getParameter("btn_EliminarAlumno") != null) {	//Si entra al boton de eliminar
+			String id_alumno = request.getParameter("id");
+			aldao.delete(id_alumno);
+			RequestDispatcher rd = request.getRequestDispatcher("Home.jsp");
+			rd.forward(request, response);
 		
-		if (request.getParameter("btn_ModificarAlumno") != null) {
+		
+		}else if (request.getParameter("btn_ModAlumno") != null) {	//Si entra al boton de modificar
+			al.setActivo(true);
+			al.setApellido(request.getParameter("apellido"));
+			al.setDireccion(request.getParameter("direccion"));
+			al.setDni(request.getParameter("dni"));
+			al.setEmail(request.getParameter("email"));
+			al.setFechaNacimiento(request.getParameter("fechanacimiento").toString());
+			al.setLegajo(Integer.parseInt(request.getParameter("id")));
+			al.setNombre(request.getParameter("nombre"));
+			al.setTelefono(request.getParameter("telefono"));
+			al.setIDLocalidad(request.getParameter("localidad"));
+			al.setIDProvincia(request.getParameter("provincia"));
+			
+			
+			aldao.update(al);
+			
+			ArrayList<Provincia> provincias = new ArrayList<Provincia>();
+			provincias = (ArrayList<Provincia>) prodao.readall();
+			request.setAttribute("provincias", provincias);
+			
+			ArrayList<Localidad> localidades = new ArrayList<Localidad>();
+			localidades = (ArrayList<Localidad>) locdao.readall();
+			request.setAttribute("localidades", localidades);
+			
+			request.setAttribute("alumno", al);
+
+			RequestDispatcher rd = request.getRequestDispatcher("Administrador_ModificarAlumno.jsp");
+			rd.forward(request, response);
+
+			
+		}else if (request.getParameter("btn_ModificarAlumno") != null) {	//Si entra a la pantalla por el listar cursos
 		
 			String id = request.getParameter("id_alumno");
 			al.igualar(aldao.readall(id).get(0));
@@ -68,18 +104,8 @@ public class ServletModificarAlumno extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		try {
-
-			Alumno alumno = new Alumno();
-			//cargarAlumno(alumno, request);
-			alumnoNeg.insert(alumno);
-
-			RequestDispatcher rd = request.getRequestDispatcher("Home.jsp");
-			rd.forward(request, response);
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		// TODO Auto-generated method stub
+				doGet(request, response);
 	}
 
 

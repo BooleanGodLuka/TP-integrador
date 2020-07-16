@@ -15,8 +15,8 @@ public class DocenteNegocioImpl implements DocenteNegocio {
 		return docdao.insert(docente);
 	}
 
-	public boolean delete(Docente docente_a_eliminar) {
-		return docdao.delete(docente_a_eliminar);
+	public boolean delete(String id) {
+		return docdao.delete(id);
 	}
 
 	public ArrayList<Docente> readall() {

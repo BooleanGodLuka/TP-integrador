@@ -29,8 +29,8 @@ public class AlumnoNegocioImpl implements AlumnoNegocio {
 	}
 
 	@Override
-	public boolean delete(Alumno alumno_a_borrar) {
-		return dao.delete(alumno_a_borrar);
+	public boolean delete(String id_alumno) {
+		return dao.delete(id_alumno);
 	}
 
 	@Override

@@ -8,7 +8,7 @@ public interface DocenteNegocio {
 
 	public boolean insert(Docente docente);
 	
-	public boolean delete(Docente docente_a_eliminar);
+	public boolean delete(String id);
 	
 	public ArrayList<Docente> readall();
 	

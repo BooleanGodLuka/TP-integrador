@@ -26,6 +26,16 @@ public class ServletListarAlumnos extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
+		if (request.getParameter("btn_ModificarCurso") != null) {
+			String id = request.getParameter("idCurso");
+		
+			request.setAttribute("id", id);
+			
+			RequestDispatcher rd = request.getRequestDispatcher("ServletModificarCurso.java");
+			rd.forward(request, response);
+			
+		}
+		
 		AlumnoNegocio alumnoNeg = new AlumnoNegocioImpl();
 
 		ArrayList<Alumno> lista = alumnoNeg.readall();

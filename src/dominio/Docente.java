@@ -160,5 +160,18 @@ public class Docente {
 		}
 		return validar;
 	}
+	
+	public void igualar (Docente doc) {
+		this.Activo = doc.Activo;
+		this.Apellido = doc.Apellido;
+		this.Direccion = doc.Direccion;
+		this.Dni = doc.Dni;
+		this.Email = doc.Email;
+		this.FechaNacimiento = doc.FechaNacimiento;
+		this.IDLocalidad = doc.IDLocalidad;
+		this.Legajo = doc.Legajo;
+		this.Nombre = doc.Nombre;
+		this.Telefono = doc.Telefono;
+	}
 
 }

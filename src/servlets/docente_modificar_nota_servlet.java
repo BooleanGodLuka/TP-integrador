@@ -57,7 +57,8 @@ public class docente_modificar_nota_servlet extends HttpServlet {
 				axc.setNota2(Integer.parseInt(request.getParameter("nota2_" + axc.getAlumno().getLegajo())));
 				axc.setNota3(Integer.parseInt(request.getParameter("nota3_" + axc.getAlumno().getLegajo())));
 				axc.setNota4(Integer.parseInt(request.getParameter("nota4_" + axc.getAlumno().getLegajo())));
-
+				axc.setRegularidad(request.getParameter("Estado"+ axc.getAlumno().getLegajo()));
+				
 				aldao.actualizar_alumnoXcurso(axc);
 				//lista.set(i, axc);
 			}

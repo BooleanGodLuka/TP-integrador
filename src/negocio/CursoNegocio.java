@@ -9,7 +9,7 @@ public interface CursoNegocio {
 
 	public boolean insert(Curso curso);
 
-	public boolean delete(Curso curso_a_eliminar);
+	public boolean delete(int curso_a_eliminar);
 
 	public ArrayList<Curso> readall();
 
