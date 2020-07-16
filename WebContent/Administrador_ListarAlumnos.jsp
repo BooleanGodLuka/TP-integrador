@@ -135,7 +135,7 @@
 					<td><%=provneg.getNombreProvincia(alumno.getIDLocalidad()) %></td>
 					<td><%=lneg.getNombreLocalidad(alumno.getIDLocalidad()) %></td>
 					<td><%=alumno.getTelefono() %></td>	
-					<td> <input type="button" value="Modificar Alumno" name="btn_ModificarAlumno"style="BORDER: rgb(128,128,128) 3px solid; WIDTH: 150px; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;"></td>
+					<td> <input type="submit" value="Modificar Alumno" name="btn_ModificarAlumno"style="BORDER: rgb(128,128,128) 3px solid; WIDTH: 150px; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;"></td>
 					</form>
 					  
 					

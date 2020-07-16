@@ -1,5 +1,6 @@
 <%@ page import="dominio.*"%>
 <%@ page import="java.util.ArrayList"%>
+<%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -39,8 +40,8 @@
 				<label for="txtTelefono"> Teléfono: </label><br>
 				<input type="text" id="txtTelefono" name="telefono" required></input><br>
 			
-				<label for="cbProvincia"> Provincia: </label><br>
-				<select id="cbProvincias" name="slctProvincia" required onchange="this.form1.submit()">
+				<label for="slctProvincia"> Provincia: </label><br>
+				<select id="slctProvincia" name="slctProvincia" required onchange="this.form1.submit()">
 					<option value="0">- Seleccione Provincia -</option>
 					<%
 						ArrayList<Provincia> listProvincias = null;
@@ -96,7 +97,7 @@
 				<label for="txtDireccion"> Direccion: </label><br>
 				<input type="text" id="txtDireccion" name="direccion" required></input><br>
 	
-				<input type=submit value="Guardar" name="btnAltaAlumno"></input>
+				<input type="submit" value="Guardar" name="btnAltaAlumno"></input>
 				
 			</form>
 		</div>

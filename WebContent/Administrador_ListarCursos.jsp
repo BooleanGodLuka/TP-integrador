@@ -120,17 +120,20 @@
 	  %>
 <tr>
 
-<form action="ServletListarAlumnos" method="get">
+
 
 <td><%=cur.getID() %> <input type="hidden" name="idCurso" value="<%=cur.getID()%>"> </td> 
 <td><%=mneg.getNombreMateria(cur.getMateria().getID())%></td>
 <td><%=cur.getCuatrimestre() %></td> 
 <td><%=cur.getAnio() %></td> 
 <td><%=docneg.getApellidoDocente(cur.getDocente().getLegajo())%></td> 
-<td style="text-align:center"> <input type="button" value="Ver Alumnos" name="btn_VerAlumnos"style="BORDER: rgb(128,128,128) 3px solid; WIDTH: 150px; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;"></td>
-<td style="text-align:center"> <input type="button" value="Modificar Curso" name="btn_ModificarCurso"style="BORDER: rgb(128,128,128) 3px solid; WIDTH: 150px; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;"></td>
-
+<form action="ServletListarAlumnos" method="post">
+<td style="text-align:center"> <input type="submit" value="Ver Alumnos" name="btn_VerAlumnos"style="BORDER: rgb(128,128,128) 3px solid; WIDTH: 150px; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;"></td>
 </form>
+<form action="ServletModificarCurso" method="post">
+<td style="text-align:center"> <input type="submit" value="Modificar Curso" name="btn_ModificarCurso"style="BORDER: rgb(128,128,128) 3px solid; WIDTH: 150px; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;"></td>
+</form>
+
 
 </tr>
 

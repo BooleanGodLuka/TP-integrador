@@ -22,7 +22,7 @@
       <div class='input-fields'>
         <input type='text' placeholder='Usuario' value="administrator" class='input-line full-width' name="txtUser" required></input> 
         <br> <br> 
-        <input type='password' placeholder='Contraseña' value="A1234." class='input-line full-width' name="txtPassword" minlength="4" required></input>
+        <input type='password' placeholder='Contraseña' value="A1234." class='input-line full-width' name="txtPassword" required></input>
 
       </div>
       
