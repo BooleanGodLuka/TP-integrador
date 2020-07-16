@@ -122,7 +122,7 @@
 
 
 
-<td><%=cur.getID() %> <input type="hidden" name="idCurso" value="<%=cur.getID()%>"> </td> 
+<td><%=cur.getID() %> </td> 
 <td><%=mneg.getNombreMateria(cur.getMateria().getID())%></td>
 <td><%=cur.getCuatrimestre() %></td> 
 <td><%=cur.getAnio() %></td> 
@@ -131,6 +131,7 @@
 <td style="text-align:center"> <input type="submit" value="Ver Alumnos" name="btn_VerAlumnos"style="BORDER: rgb(128,128,128) 3px solid; WIDTH: 150px; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;"></td>
 </form>
 <form action="ServletModificarCurso" method="post">
+<input type="hidden" name="idCurso" value="<%=cur.getID()%>">
 <td style="text-align:center"> <input type="submit" value="Modificar Curso" name="btn_ModificarCurso"style="BORDER: rgb(128,128,128) 3px solid; WIDTH: 150px; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;"></td>
 </form>
 

@@ -51,15 +51,15 @@ public class ServletModificarCurso extends HttpServlet {
 			rd.forward(request, response);
 		
 		
-		}else if(request.getParameter("btn_ModificarCurso") !=null) {
+		}else if(request.getParameter("btn_ModCurso") !=null) {
 			
-			cur.setAnio(request.getParameter("Año"));
+			cur.setAnio(request.getParameter("Anio"));
 			cur.setCuatrimestre(request.getParameter("Cuatrimestre"));
 			cur.getDocente().setLegajo(Integer.parseInt(request.getParameter("Docente")));
 			cur.setID(Integer.parseInt(request.getParameter("ID_Curso")));
 			cur.getMateria().setID(Integer.parseInt(request.getParameter("Materia")));
 			
-			curdao.update(cur);
+			boolean temp =curdao.update(cur);
 			
 			request.setAttribute("curso", cur);
 			
@@ -78,9 +78,10 @@ public class ServletModificarCurso extends HttpServlet {
 		}
 		
 		
-		if (request.getParameter("id") != null) {
+		if (request.getParameter("btn_ModificarCurso") != null) {
 		
-			cur.igualar(curdao.readall("id="+request.getParameter("id")).get(0));
+			String id = request.getParameter("idCurso");
+			cur.igualar(curdao.readall("id="+id).get(0));
 			request.setAttribute("curso", cur);
 			
 			ArrayList<Materia> materias = new ArrayList<Materia>();

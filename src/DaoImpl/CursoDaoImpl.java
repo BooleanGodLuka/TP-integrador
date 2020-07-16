@@ -18,7 +18,7 @@ public class CursoDaoImpl implements CursoDao {
 	private static final String insert = "INSERT INTO cursos (cuatrimestre, anio, iddocente, idmateria, activo) VALUES(?, ?, ?, ?, true)";
 	private static final String readall = "SELECT * FROM cursos ";
 	private static final String delete = "UPDATE cursos SET activo = false WHERE id = ? ";
-	private static final String update = "UPDATE cursos SET materia= ?, cuatrimestre = ?, anio = ?, iddocente = ? WHERE id = ? ";
+	private static final String update = "UPDATE cursos SET idmateria= ?, cuatrimestre = ?, anio = ?, iddocente = ? WHERE id = ? ";
 
 	@Override
 	public boolean insert(Curso curso) {

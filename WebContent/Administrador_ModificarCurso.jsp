@@ -108,14 +108,28 @@
  
     <%ArrayList<Materia> materias = (ArrayList)request.getAttribute("materias");
     Materia mat = new Materia();
+ 
+    for (int i =0; i<materias.size(); i++){
+    	if (materias.get(i).getID() == cur.getMateria().getID()){
+    		cur.setMateria(materias.get(i));
+    		break;
+    	}
+    }
+ 
+    %>
+    <option value ="<%=cur.getMateria().getID() %>"><%=cur.getMateria().getNombre() %>
+    <%    
+    
     
     for (int i =0; i<materias.size(); i++){
     	mat.setID(materias.get(i).getID());
     	mat.setNombre(materias.get(i).getNombre());
- 
+ 	if (mat.getID() != cur.getMateria().getID()){
+ 		%>
+ 	      <option value="<%=mat.getID() %>"><%=mat.getNombre() %></option>
+ 	    <%} 	
+ 	}
     %>
-      <option value="<%=mat.getID() %>"><%=mat.getNombre() %></option>
-    <%} %>
  
     </select>
     </td>
@@ -124,36 +138,34 @@
      
     <td>
     <select id="Cuatrimestre" name="Cuatrimestre">
+    <%if (cur.getCuatrimestre() == "1ro"){
+    %>
       <option value="1ro">1° Cuatrimestre</option>
       <option value="2do">2° Cuatrimestre</option>
+    <%}else { %>
+      <option value="2do">2° Cuatrimestre</option>
+      <option value="1ro">1° Cuatrimestre</option>
+    <%} %>
     </select>
     </td>
  
  
     
     <td>
-    <select id="Año" name="Año">
-      <option value="2020">2020</option>
-      <option value="2019">2019</option>
-      <option value="2018">2018</option>
-      <option value="2017">2017</option>
-      <option value="2016">2016</option>
-      <option value="2015">2015</option>
-	  <option value="2014">2014</option>
-	  <option value="2013">2013</option>
-      <option value="2012">2012</option>
-      <option value="2011">2011</option>
-      <option value="2010">2010</option>
-      <option value="2009">2009</option>
-      <option value="2008">2008</option>
-      <option value="2007">2007</option>
-      <option value="2006">2006</option>
-      <option value="2005">2005</option>
-      <option value="2004">2004</option>
-      <option value="2003">2003</option>
-      <option value="2002">2002</option>
-      <option value="2001">2001</option>
-      <option value="2000">2000</option>
+    <select id="Año" name="Anio">
+    
+    <option value="<%=cur.getAnio()%>"><%=cur.getAnio()%></option>
+    
+    <%for (int i=2000;i<=2020;i++){
+    
+    	if (i != Integer.parseInt(cur.getAnio())){
+    		
+    	%>
+    	<option value="<%=i %>"><%=i %></option> 
+    	
+    	<%}
+    	
+    }%>	
     </select>
     </td>
  
@@ -164,18 +176,30 @@
       
       <%ArrayList<Docente> docentes = (ArrayList)request.getAttribute("docentes");
     Docente doc = new Docente();
+    for (int i =0; i<docentes.size(); i++){
+    	if (cur.getDocente().getLegajo() == docentes.get(i).getLegajo()){
+    		cur.setDocente(docentes.get(i));
+    		break;
+    	}
+    }
+    
+    %>
+    <option value="<%=cur.getDocente().getLegajo() %>"><%=cur.getDocente().getApellido()%>, <%=cur.getDocente().getNombre()%> </option>
+    <%
     
     for (int i =0; i<docentes.size(); i++){
     	doc.igualar(docentes.get(i));
- 
+ 		if (cur.getDocente().getLegajo() != doc.getLegajo()){
+ 			
+ 		
     %>
     
       <option value="<%=doc.getLegajo() %>"><%=doc.getApellido()%>, <%=doc.getNombre()%> </option>
-    <%} %>
+    <%} }%>
     </select>
     </td>
-    <td style="text-align:center"> <input type="button" value="Actualizar Curso" name="btn_ModificarCurso"style="BORDER: rgb(128,128,128) 3px solid; WIDTH: 150px; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;"></td>
-    <td style="text-align:center"> <input type="button" value="Eliminar Curso" name="btn_EliminarCurso"style="BORDER: rgb(128,128,128) 3px solid; WIDTH: 150px; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;"></td>
+    <td style="text-align:center"> <input type="submit" value="Actualizar Curso" name="btn_ModCurso"style="BORDER: rgb(128,128,128) 3px solid; WIDTH: 150px; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;"></td>
+    <td style="text-align:center"> <input type="submit" value="Eliminar Curso" name="btn_EliminarCurso"style="BORDER: rgb(128,128,128) 3px solid; WIDTH: 150px; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;"></td>
     
     
 
