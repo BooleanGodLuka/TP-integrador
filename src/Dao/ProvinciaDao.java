@@ -1,5 +1,6 @@
 package Dao;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import dominio.Provincia;
 
@@ -14,5 +15,7 @@ public interface ProvinciaDao {
 	public ArrayList<Provincia> readall(String consigna);
 
 	public boolean update(Provincia provincia_a_modificar);
+	
+	public String getNombreProvincia (String idlocalidad) throws SQLException;
 
 }

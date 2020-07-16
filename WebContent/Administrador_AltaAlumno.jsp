@@ -1,6 +1,5 @@
-<%@ page import="dominio.Provincia"%>
-<%@ page import="dominio.Localidad"%>
-<%@ page import="java.util.List"%>
+<%@ page import="dominio.*"%>
+<%@ page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -20,58 +19,67 @@
 		<h1>Alta de alumno</h1>
 		
 		<div class="container">
-			<form name="form1" method="post" action="../../ServletAlta">
+			<form method="post" action="ServletAltaAlumnos">
 	
 				<label for="txtNombre"> Nombre: </label><br>
-				<input type="text" id="txtNombre" name="nombre"><br>
+				<input type="text" id="txtNombre" name="nombre" required></input><br>
 	
 				<label for="txtApellido"> Apellido: </label><br>
-				<input type="text" id="txtApellido" name="apellido"><br>
+				<input type="text" id="txtApellido" name="apellido" required></input><br>
 	
 				<label for="txtDni"> DNI: </label><br>
-				<input type="text" id="txtDni" name="dni"><br>
+				<input type="text" id="txtDni" name="dni" required></input><br>
 				
 				<label for="dateFechaNacimiento"> Fecha de nacimiento: </label><br>
-				<input type="date" id="dateFechaNacimiento"><br>
+				<input type="date" id="dateFechaNacimiento" name="fechanacimiento" required></input><br>
 	
 				<label for="txtEmail"> Email: </label><br>
-				<input type="text" id="txtEmail" name="email" placeholder="email@ejemplo.com"><br>
+				<input type="text" id="txtEmail" name="email" placeholder="email@ejemplo.com" required></input><br>
 	
 				<label for="txtTelefono"> Teléfono: </label><br>
-				<input type="text" id="txtTelefono" name="telefono"><br>
-				
-				<input type="hidden" id="hiddenProvincia" name="hprovincia" value="this.formProvincia.cbProvincia.value">
-				<input type="hidden" id="hiddenLocalidad" name="hlocalidad" value="this.formLocalidad.cbLocalidad.value">
+				<input type="text" id="txtTelefono" name="telefono" required></input><br>
 			
 				<label for="cbProvincia"> Provincia: </label><br>
-				<select id="cbProvincias" name="provincia" onchange="this.form1.submit()">
-					<option value="0"> Seleccione una Provincia </option>
+				<select id="cbProvincias" name="slctProvincia" required onchange="this.form1.submit()">
+					<option value="0">- Seleccione Provincia -</option>
 					<%
-						List<Provincia> listProvincias = null;
-						if (request.getAttribute("ListaProvincias") != null) {
-							listProvincias = (List<Provincia>) request.getAttribute("ListaProvincias");
+						ArrayList<Provincia> listProvincias = null;
+					
+						if (request.getAttribute("ListaProvincias") != null) 
+						{
+							listProvincias = (ArrayList<Provincia>) request.getAttribute("ListaProvincias");
 						}
 		
-						if (listProvincias != null) {
-							for (Provincia prov : listProvincias) {
+						if (listProvincias != null) 
+						{
+							
+							for (Provincia prov : listProvincias) 
+							{
 					%>
-					
 					<option value=" <%=prov.getID()%> "> <%=prov.getNombre()%> </option>
 					<%
-						}
+							}
+							
 						}
 					%>
 				</select><br>
 				
-				<label for="cbLocalidad">Localidades</label> <br> 
-				<select	id="cbLocalidad" name="localidad"> 
-					<option value="0"> Seleccione una Localidad </option>
+				<script>
+				function myFunction() {
+ 				 document.getElementById("mySelect").value = "banana";
+			}
+				</script>
+				
+				<label for="cbLocalidad">Localidad: </label> <br> 
+				<select	id="cbLocalidad" name="localidad" required> 
+					<option value="0">- Seleccione Localidad -</option>
 					<%
-						List<Localidad> listLocalidades = null;
+					ArrayList<Localidad> listLocalidades = null;
 					 	if (request.getAttribute("ListaLocalidades") != null) {
-					 		listLocalidades = (List<Localidad>) request.getAttribute("ListaLocalidades");
+					 		listLocalidades = (ArrayList<Localidad>) request.getAttribute("ListaLocalidades");
 					 	}
-					 	//int e = document.getElementById("cbProvincias");
+
+					//	int idprovincia = document.getElementById("cbProvincias").value;
 					 	
 					 	if (listLocalidades != null) {
 							for (Localidad loc : listLocalidades) {
@@ -84,8 +92,11 @@
 					%>
 					
 				</select> <br>
+				
+				<label for="txtDireccion"> Direccion: </label><br>
+				<input type="text" id="txtDireccion" name="direccion" required></input><br>
 	
-				<input type=submit value="Guardar" name="btnAltaAlumno">
+				<input type=submit value="Guardar" name="btnAltaAlumno"></input>
 				
 			</form>
 		</div>

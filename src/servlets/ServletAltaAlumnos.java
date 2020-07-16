@@ -27,9 +27,6 @@ import negocioImpl.ProvinciaNegocioImpl;
 @WebServlet("/ServletAltaAlumnos")
 public class ServletAltaAlumnos extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	ProvinciaNegocio provinciaNeg = new ProvinciaNegocioImpl();
-	LocalidadNegocio localidadNeg = new LocalidadNegocioImpl();
-	AlumnoNegocio alumnoNeg = new AlumnoNegocioImpl();
 
 	public ServletAltaAlumnos() {
 		super();
@@ -37,51 +34,39 @@ public class ServletAltaAlumnos extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		try {
-			List<Provincia> provincias = provinciaNeg.readall();
-			request.setAttribute("ListaProvincias", provincias);
-
-			List<Localidad> localidades = localidadNeg.readall();
-			request.setAttribute("ListaLocalidades", localidades);
-
-			RequestDispatcher rd = request.getRequestDispatcher("Administrador_AltaAlumno.jsp");
-			rd.forward(request, response);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+	
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO la idea era cargar el combobox mandando un form por post... al apretar
-		// un boton, no se como hacerlo en "onchange="
-		// int idProvincia = Integer.parseInt(request.getParameter("idprovincia"));
-		// request.setAttribute("selectedProvId", idProvincia);
-
-		// TODO así que ahora envía los datos del alumno al server.
-		try {
-
+		
+		AlumnoNegocio alumnoneg = new AlumnoNegocioImpl(); 
+		
+		if(request.getParameter("btn_aceptar") != null)
+		{ 
 			Alumno alumno = new Alumno();
-			cargarAlumno(alumno, request);
-			alumnoNeg.insert(alumno);
-
-			RequestDispatcher rd = request.getRequestDispatcher("AsignacionMasiva_Servlet");
+			alumno.setNombre(request.getParameter("nombre"));
+			alumno.setApellido(request.getParameter("apellido"));
+			alumno.setDni(request.getParameter("dni"));
+			alumno.setFechaNacimiento(request.getParameter("fechanacimiento").toString());
+			alumno.setEmail(request.getParameter("email"));
+			alumno.setTelefono(request.getParameter("telefono"));
+			
+			Provincia provincia = new Provincia();
+			provincia.setID(Integer.parseInt(request.getParameter("slctProvincia")));
+			Localidad localidad = new Localidad();
+			localidad.setID(Integer.parseInt(request.getParameter("slctLoc")));
+			localidad.setIDProvincia(provincia.getID());
+			
+			alumno.setIDLocalidad(localidad.getID());
+			
+			boolean agrego = alumnoneg.insert(alumno);
+			
+			request.setAttribute("agrego", agrego);
+					
+			RequestDispatcher rd = request.getRequestDispatcher("servletProvincias?param=1");
 			rd.forward(request, response);
-
-		} catch (Exception e) {
-			e.printStackTrace();
 		}
-	}
 
-	private void cargarAlumno(Alumno alumno, HttpServletRequest request) {
-		alumno.setDni(Integer.parseInt(request.getParameter("dni")));
-		alumno.setNombre(request.getParameter("nombre"));
-		alumno.setApellido(request.getParameter("apellido"));
-		alumno.setFechaNacimiento(request.getParameter("fechanacimiento"));
-		alumno.setEmail(request.getParameter("email"));
-		alumno.setDireccion(request.getParameter("direccion"));
-		alumno.setIDLocalidad(request.getParameter("localidad"));
-		alumno.setTelefono(Integer.parseInt(request.getParameter("telefono")));
-		alumno.setActivo(Boolean.getBoolean(request.getParameter("activo")));
-	}
+
 }

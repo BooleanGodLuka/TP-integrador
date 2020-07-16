@@ -4,9 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.List;
-
 import Dao.ProvinciaDao;
 import dominio.Provincia;
 
@@ -115,4 +114,22 @@ public class ProvinciaDaoImpl implements ProvinciaDao {
 		return null;
 	}
 
+	public String getNombreProvincia(String idlocalidad) throws SQLException {
+		Conexion conexion = Conexion.getConexion();
+		String query = "SELECT provincias.nombre FROM provincias INNER JOIN localidades ON provincias.id = localidades.idprovincia WHERE localidades.id = "
+				+ idlocalidad;
+		String nombre = "";
+		Statement statement = conexion.getSQLConexion().createStatement();
+		ResultSet resultSet = statement.executeQuery(query);
+		
+		try {
+			while (resultSet.next()) {
+				nombre = resultSet.getString("nombre");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return nombre;
+	}
+	
 }

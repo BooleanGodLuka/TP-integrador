@@ -2,6 +2,7 @@ package Dao;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+
 import dominio.Docente;
 
 public interface DocenteDao {
@@ -17,4 +18,6 @@ public interface DocenteDao {
 	public boolean update(Docente docente_a_modificar);
 	
 	public String getNombreDocente(int iddocente) throws SQLException;
+	
+	public String getApellidoDocente(int iddocente) throws SQLException;
 }

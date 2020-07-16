@@ -1,11 +1,11 @@
 package negocioImpl;
 
-import java.util.List;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 import Dao.LocalidadDao;
 import DaoImpl.LocalidadDaoImpl;
 import dominio.Localidad;
-import dominio.Provincia;
 import negocio.LocalidadNegocio;
 
 public class LocalidadNegocioImpl implements LocalidadNegocio{
@@ -13,28 +13,16 @@ public class LocalidadNegocioImpl implements LocalidadNegocio{
 	LocalidadDao ldao = new LocalidadDaoImpl();
 
 	@Override
-	public boolean insert(Localidad localidad) {
-		return ldao.insert(localidad);
-	}
-
-	@Override
-	public boolean delete(Localidad localidad_a_borrar) {
-		return ldao.delete(localidad_a_borrar);
-	}
-
-	@Override
-	public List<Localidad> readall() {
-		return ldao.readall();
-	}
-
-	@Override
-	public List<Localidad> readall(String idprovincia) {
+	public ArrayList<Localidad> readall(String idprovincia) {
 		return ldao.readall(idprovincia);
 	}
 
+
 	@Override
-	public boolean update(Localidad localidad_a_modificar) {
-		return ldao.update(localidad_a_modificar);
+	public String getNombreLocalidad(String idlocalidad) throws SQLException {
+		return ldao.getNombreLocalidad(idlocalidad);
 	}
+	
+	
 
 }

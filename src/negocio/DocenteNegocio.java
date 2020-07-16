@@ -17,5 +17,7 @@ public interface DocenteNegocio {
 	public boolean update(Docente docente_a_modificar);
 	
 	public String getNombreDocente(int iddocente) throws SQLException;
+	
+	public String getApellidoDocente(int iddocente) throws SQLException;
 
 }

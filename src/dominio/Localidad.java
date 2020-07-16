@@ -6,6 +6,10 @@ public class Localidad {
 	private String Nombre;
 	private int IDProvincia;
 
+	public Localidad() {
+		super();
+	}
+
 	public Localidad(int id, String nombre, int idprovincia) {
 		this.ID = id;
 		this.Nombre = nombre;

@@ -5,6 +5,10 @@ public class Provincia {
 	private int ID;
 	private String Nombre;
 	
+	public Provincia() {
+		super();
+	}
+
 	public Provincia(int id, String nombre) {
 		this.ID = id;
 		this.Nombre = nombre;

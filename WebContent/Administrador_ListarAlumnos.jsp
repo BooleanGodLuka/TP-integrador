@@ -4,6 +4,8 @@
     <%@page import="java.util.ArrayList" %>
 <%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
 <%@page import="dominio.*" %>
+<%@page import="negocio.*" %>
+<%@page import="negocioImpl.*" %>
 
 <head>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -52,7 +54,7 @@
 				<input type="text" name="txtFiltroCriterio" class="textbox" placeholder="Filtrar" style= "width: 500px;">
 			    <input type="submit" value="Buscar"/>
 			    
-			    <p>Filtrar por:</p>
+			    <h3>Filtrar por:</h3>
 				  <input type="radio" id="legajo" name="criterio" value="legajo">
 				  <label for="legajo">Legajo</label>
 				  <input type="radio" id="nombre" name="criterio" value="nombre">
@@ -68,6 +70,7 @@
 	<form action="/ServletFiltrosxCurso" method="post">
 	<h3>Filtro por Curso:
 		<select>
+			<option value="empty">- Seleccione Curso -</option>
 			  <option value="Laboratorio IV">Laboratorio IV</option>
 			  <option value="Metodologia de Sistemas I">Metodologia de Sistemas I</option>
 			  <option value="Diseño y Administracion de Base de Datos I">Diseño y Administracion de Base de Datos I</option><br><br>
@@ -88,7 +91,7 @@
     <th>Email</th>
     <th>Fecha de Nacimiento</th>
     <th>Direccion</th>
-    <!-- <th>Provincia</th>-->
+  	<th>Provincia</th>
     <th>Localidad</th>
     <th>Telefono</th>
    <!-- <th>Regularidad</th>-->
@@ -101,6 +104,10 @@
 	 <% 
 
 		ArrayList<Alumno> listaAlumnos = new ArrayList<Alumno>();
+	 
+	 	ProvinciaNegocio provneg = new ProvinciaNegocioImpl();
+	 	
+	 	LocalidadNegocio lneg = new LocalidadNegocioImpl();
 
 		if(request.getAttribute("listaAlum") != null)
 		{
@@ -114,9 +121,9 @@
 				
 				if (alumno.getActivo() == true){
 	  %>
-
+	
   <tr>
-
+					<form method="get" action="/ServletModificarAlumno">
 					<td><%=alumno.getLegajo() %></td>   
 					<td><%=alumno.getNombre() %></td> 
 					<td><%=alumno.getApellido() %></td>
@@ -124,10 +131,9 @@
 					<td><%=alumno.getEmail()%></td>
 					<td><%=alumno.getFechaNacimiento()%></td>
 					<td><%=alumno.getDireccion()%></td> 
-					<!-- <<td>alumno.getProvincia()</td> -->
-					<td><%=alumno.getIDLocalidad() %></td>
+					<td><%=provneg.getNombreProvincia(alumno.getIDLocalidad()) %></td>
+					<td><%=lneg.getNombreLocalidad(alumno.getIDLocalidad()) %></td>
 					<td><%=alumno.getTelefono() %></td>	
-					<form method="get" action="/ServletModificarAlumno">	  
 					<td> <input type="button" value="Modificar Alumno" name="btn_ModificarAlumno"style="BORDER: rgb(128,128,128) 3px solid; WIDTH: 150px; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;"></td>
 					</form>
     

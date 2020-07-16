@@ -40,15 +40,15 @@
 </head>
 <body>
 
-<jsp:include page="/Navegacion.jsp"></jsp:include>
+<jsp:include page="Navegacion.jsp"></jsp:include>
 
 <h2 ALIGN="center">LISTADO DE CURSOS</h2>
 
 <div align="center">
-			<form action="/action_page.php" align="center">
+			<form action="/action_page.php" method="get">
 				<input type="text" name="txtFiltroCriterio" class="textbox" placeholder="Filtrar" style= "width: 500px;">
-			    <input type="submit" value="Buscar"/>
-			    <p>Filtrar por:</p>
+			    <input type="submit" value="Buscar" style= "width: 100px"/>
+			    <h3>Filtrar por:</h3>
 				  <input type="radio" id="legajo" name="criterio" value="legajo">
 				  <label for="legajo">Legajo</label>
 				  <input type="radio" id="nombre" name="criterio" value="nombre">
@@ -59,20 +59,20 @@
 		</div>
 		<br>
 	
-	<div align=center">
-		<form action="/action_page.php">
+	<div align="center">
+		<form action="/action_page.php" method="get">
 				<select>
 				<option value="empty">Materia</option>
 				<option value="Laboratorio IV">Laboratorio IV</option>
 				<option value="Metodologia de Sistemas I">Metodologia de Sistemas I</option>
-				<option value="Diseño y Administracion de Base de Datos I">Diseño y Administracion de Base de Datos I</option><br><br>
+				<option value="Diseño y Administracion de Base de Datos I">Diseño y Administracion de Base de Datos I</option><br>
 			</select>
 			
 			<select>
 				<option value="empty">Cuatrimestre</option>
 				<option value="Laboratorio IV">Laboratorio IV</option>
 				<option value="Metodologia de Sistemas I">Metodologia de Sistemas I</option>
-				<option value="Diseño y Administracion de Base de Datos I">Diseño y Administracion de Base de Datos I</option><br><br>
+				<option value="Diseño y Administracion de Base de Datos I">Diseño y Administracion de Base de Datos I</option><br>
 			</select>
 			
 			<select>
@@ -123,7 +123,7 @@
 <td><%=mneg.getNombreMateria(cur.getMateria().getID())%></td>
 <td><%=cur.getCuatrimestre() %></td> 
 <td><%=cur.getAnio() %></td> 
-<td><%=docneg.getNombreDocente(cur.getDocente().getLegajo())%></td> 
+<td><%=docneg.getApellidoDocente(cur.getDocente().getLegajo())%></td> 
 <td style="text-align:center"> <input type="button" value="Ver Alumnos" name="btn_VerAlumnos"style="BORDER: rgb(128,128,128) 3px solid; WIDTH: 150px; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;"></td>
 <td style="text-align:center"> <input type="button" value="Modificar Curso" name="btn_ModificarCurso"style="BORDER: rgb(128,128,128) 3px solid; WIDTH: 150px; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;"></td>
 </tr>

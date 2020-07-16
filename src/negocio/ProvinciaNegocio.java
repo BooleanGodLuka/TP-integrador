@@ -1,7 +1,7 @@
 package negocio;
 
-import java.util.List;
-
+import java.sql.SQLException;
+import java.util.ArrayList;
 import dominio.Provincia;
 
 public interface ProvinciaNegocio {
@@ -10,8 +10,10 @@ public interface ProvinciaNegocio {
 
 	public boolean delete(Provincia provincia_a_borrar);
 
-	public List<Provincia> readall();
+	public ArrayList<Provincia> readall();
 
 	public boolean update(Provincia provincia_a_modificar);
+	
+	public String getNombreProvincia(String idlocalidad) throws SQLException;
 
 }

@@ -4,6 +4,8 @@
 <%@page import="java.util.List" %>
 <%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
 <%@page import="dominio.*" %>
+<%@page import="negocio.*" %>
+<%@page import="negocioImpl.*" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -49,7 +51,7 @@
 				<input type="text" name="txtFiltroCriterio" class="textbox" placeholder="Filtrar" style= "width: 500px;">
 			    <input type="submit" value="Buscar"/>
 			    
-			    <p>Filtrar por:</p>
+			    <h3>Filtrar por:</h3>
 				  <input type="radio" id="legajo" name="criterio" value="legajo">
 				  <label for="legajo">Legajo</label>
 				  <input type="radio" id="nombre" name="criterio" value="nombre">
@@ -85,6 +87,8 @@
 	 <% 
 
 		ArrayList<Docente> listaDocentes = new ArrayList<Docente>();
+						  
+		ProvinciaNegocio provneg = new ProvinciaNegocioImpl();
 
 		if(request.getAttribute("listaDoc") != null)
 		{
@@ -106,7 +110,7 @@
 					<td><%=docente.getDni()%></td> 
 					<td><%=docente.getEmail()%></td> 
 					<td><%=docente.getFechaNacimiento()%></td> 
-					<td><%=docente.getIDLocalidad() %></td>
+					<td><%=provneg.getNombreProvincia(docente.getIDLocalidad()) %></td>
 					<td><%=docente.getTelefono() %></td>
 
 <td style="text-align:center"> <input type="button" value="Modificar Docente" name="btn_ModificarDocente"style="BORDER: rgb(128,128,128) 3px solid; WIDTH: 150px; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;"></td>

@@ -170,6 +170,24 @@ public class DocenteDaoImpl implements DocenteDao {
 		
 	}
 	
+	@Override
+	public String getApellidoDocente(int iddocente) throws SQLException {
+		Conexion conexion = Conexion.getConexion();
+		String query = "SELECT apellido FROM docentes WHERE id = "
+				+ iddocente;
+		Statement statement = conexion.getSQLConexion().createStatement();
+		ResultSet resultSet = statement.executeQuery(query);
+		String apellido = "";
+		try {
+			while (resultSet.next()) {
+				apellido = resultSet.getString("apellido");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return apellido;
+	}
+	
 	
 
 }

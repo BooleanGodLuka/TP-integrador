@@ -10,6 +10,7 @@ public class Alumno {
 	private String Apellido;
 	private String FechaNacimiento;
 	private String Direccion;
+	private String IDProvincia;
 	private String IDLocalidad;
 	private String Email;
 	private String Telefono;
@@ -27,13 +28,14 @@ public class Alumno {
 		this.Apellido = a.Apellido;
 		this.FechaNacimiento = a.FechaNacimiento;
 		this.Direccion = a.Direccion;
+		this.IDProvincia = a.IDProvincia;
 		this.IDLocalidad = a.IDLocalidad;
 		this.Email = a.Email;
 		this.Telefono = a.Telefono;
 		this.Activo = a.Activo;
 	}
 
-	public Alumno(int id, String dni, String nombre, String apellido, String fnacimiento, String direccion,
+	public Alumno(int id, String dni, String nombre, String apellido, String fnacimiento, String direccion, String idprovincia,
 			String idlocalidad, String email, String telefono, Boolean activo) {
 		super();
 		this.Legajo = id;
@@ -42,13 +44,14 @@ public class Alumno {
 		this.Apellido = apellido;
 		this.FechaNacimiento = fnacimiento;
 		this.Direccion = direccion;
+		this.IDProvincia= idprovincia;
 		this.IDLocalidad = idlocalidad;
 		this.Email = email;
 		this.Telefono = telefono;
 		this.Activo = activo;
 	}
 
-	public Alumno(String dni, String nombre, String apellido, String fnacimiento, String direccion, String idlocalidad,
+	public Alumno(String dni, String nombre, String apellido, String fnacimiento, String direccion, String idprovincia, String idlocalidad,
 			String email, String telefono, Boolean activo) {
 		super();
 		this.Legajo = 0;
@@ -57,6 +60,7 @@ public class Alumno {
 		this.Apellido = apellido;
 		this.FechaNacimiento = fnacimiento;
 		this.Direccion = direccion;
+		this.IDProvincia= idprovincia;
 		this.IDLocalidad = idlocalidad;
 		this.Email = email;
 		this.Telefono = telefono;
@@ -143,6 +147,16 @@ public class Alumno {
 	public void setActivo(Boolean activo) {
 		Activo = activo;
 	}
+	
+	public String getIDProvincia() {
+		return IDProvincia;
+	}
+
+	public void setIDProvincia(String iDProvincia) {
+		IDProvincia = iDProvincia;
+	}
+	
+	
 
 	public boolean validar_exist(ArrayList<Alumno> lista) {
 		boolean validar = false;
@@ -174,6 +188,7 @@ public class Alumno {
 		this.Nombre = al.getNombre();
 		this.Telefono = al.getTelefono();
 	}
+
 
 
 }

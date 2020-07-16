@@ -136,7 +136,7 @@ body {
       </form>
     </div>
   </div>
- <form action="" method="get">
+ <form action="reporte_servlet" method="get">
   <a href="reporte_servlet" style="color: white;">Reporte</a>
   </form>
   <a href="login_JSP.jsp">Cerrar Sesion</a>

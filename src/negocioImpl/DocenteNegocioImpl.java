@@ -2,8 +2,6 @@ package negocioImpl;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
-
 import Dao.DocenteDao;
 import DaoImpl.DocenteDaoImpl;
 import dominio.Docente;
@@ -35,6 +33,11 @@ public class DocenteNegocioImpl implements DocenteNegocio {
 
 	public String getNombreDocente(int iddocente) throws SQLException {
 		return docdao.getNombreDocente(iddocente);
+	}
+
+	@Override
+	public String getApellidoDocente(int iddocente) throws SQLException {
+		return docdao.getApellidoDocente(iddocente);
 	}
 
 }
