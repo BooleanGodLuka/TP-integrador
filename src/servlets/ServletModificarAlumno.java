@@ -1,6 +1,7 @@
 package servlets;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,8 +11,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dominio.Alumno;
+import dominio.Localidad;
+import dominio.Provincia;
 import negocio.AlumnoNegocio;
 import negocioImpl.AlumnoNegocioImpl;
+import negocioImpl.LocalidadNegocioImpl;
+import negocioImpl.ProvinciaNegocioImpl;
 
 /**
  * Servlet implementation class ServletModificarAlumno
@@ -28,25 +33,45 @@ public class ServletModificarAlumno extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		try {
-
-			Alumno alumno = new Alumno();
-			cargarAlumno(alumno, request);
-
-			RequestDispatcher rd = request.getRequestDispatcher("Home.jsp");
+		Alumno al = new Alumno();
+		AlumnoNegocioImpl aldao = new AlumnoNegocioImpl();
+		ProvinciaNegocioImpl prodao = new ProvinciaNegocioImpl();
+		LocalidadNegocioImpl locdao = new LocalidadNegocioImpl();
+		
+		
+		if (request.getParameter("btn_ModificarAlumno") != null) {
+		
+			String id = request.getParameter("id_alumno");
+			al.igualar(aldao.readall(id).get(0));
+			request.setAttribute("alumno", al);
+			
+			ArrayList<Provincia> provincias = new ArrayList<Provincia>();
+			provincias = (ArrayList<Provincia>) prodao.readall();
+			request.setAttribute("provincias", provincias);
+			
+			ArrayList<Localidad> localidades = new ArrayList<Localidad>();
+			localidades = (ArrayList<Localidad>) locdao.readall();
+			request.setAttribute("localidades", localidades);
+			
+			
+			RequestDispatcher rd = request.getRequestDispatcher("Administrador_ModificarAlumno.jsp");
 			rd.forward(request, response);
 
-		} catch (Exception e) {
-			e.printStackTrace();
 		}
+		
+		
 	}
 
+	
+	
+	
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try {
 
 			Alumno alumno = new Alumno();
-			cargarAlumno(alumno, request);
+			//cargarAlumno(alumno, request);
 			alumnoNeg.insert(alumno);
 
 			RequestDispatcher rd = request.getRequestDispatcher("Home.jsp");
@@ -57,17 +82,5 @@ public class ServletModificarAlumno extends HttpServlet {
 		}
 	}
 
-	private void cargarAlumno(Alumno alumno, HttpServletRequest request) {
-		alumno.setLegajo(Integer.parseInt(request.getParameter("legajo")));
-		alumno.setDni(Integer.parseInt(request.getParameter("dni")));
-		alumno.setNombre(request.getParameter("nombre"));
-		alumno.setApellido(request.getParameter("apellido"));
-		alumno.setFechaNacimiento(request.getParameter("fechanacimiento"));
-		alumno.setEmail(request.getParameter("email"));
-		alumno.setDireccion(request.getParameter("direccion"));
-		alumno.setIDLocalidad(request.getParameter("localidad"));
-		alumno.setTelefono(Integer.parseInt(request.getParameter("telefono")));
-		alumno.setActivo(Boolean.getBoolean(request.getParameter("activo")));
-	}
 
 }

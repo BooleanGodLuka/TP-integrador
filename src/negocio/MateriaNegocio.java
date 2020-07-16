@@ -14,6 +14,6 @@ public interface MateriaNegocio {
 
 	public boolean update(Materia materia);
 	
-	public String getNombreMateria(int idmateria) throws SQLException;
+	public String getNombreMateria(int idmateria);
 
 }

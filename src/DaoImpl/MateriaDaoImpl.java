@@ -132,4 +132,25 @@ public class MateriaDaoImpl implements MateriaDao {
 		materia.setNombre(resultSet.getString("nombre"));
 	}
 
+	@Override
+	public String getNombre(String id_materia) {
+		PreparedStatement statement;
+		ResultSet resultSet;
+		String materia = "No conseguida";
+		Conexion conexion = Conexion.getConexion();
+		try {
+			statement = conexion.getSQLConexion().prepareStatement(readall + " WHERE ID=" + id_materia);
+			resultSet = statement.executeQuery();
+			Materia mat;
+			while (resultSet.next()) {
+				mat = new Materia();
+				getMateria(mat, resultSet);
+				materia = mat.getNombre();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return materia;
+	}
+
 }

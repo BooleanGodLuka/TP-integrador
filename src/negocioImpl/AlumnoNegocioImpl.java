@@ -38,13 +38,22 @@ public class AlumnoNegocioImpl implements AlumnoNegocio {
 		return dao.readall();
 	}
 
-	public ArrayList<Alumno> readall(String consigna) {
-		return dao.readall(consigna);
-	}
 
 	@Override
 	public boolean update(Alumno alumno_a_modificar) {
 		return dao.update(alumno_a_modificar);
+	}
+
+	@Override
+	public Alumno read(int idalumno) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<Alumno> readall(String consigna) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

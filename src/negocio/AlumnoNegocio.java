@@ -7,14 +7,18 @@ import dominio.Alumno;
 
 public interface AlumnoNegocio {
 
-	public boolean insert(Alumno alumno);
 
-	public boolean delete(Alumno alumno_a_borrar);
+		public boolean insert(Alumno alumno);
 
-	public ArrayList<Alumno> readall();
+		public boolean delete(Alumno alumno);
 
-	public ArrayList<Alumno> readall(String consigna);
+		public ArrayList<Alumno> readall();
+		
+		public ArrayList<Alumno> readall(String consigna);
 
-	public boolean update(Alumno alumno_a_modificar);
+		public Alumno read(int idalumno);
+
+		public boolean update(Alumno alumno);
 
 }
+

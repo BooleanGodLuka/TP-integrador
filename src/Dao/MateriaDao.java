@@ -15,5 +15,7 @@ public interface MateriaDao {
 	public boolean update(Materia materia);
 
 	public String getNombreMateria(int idmateria) throws SQLException;
+	
+	public String getNombre (String id_materia);
 
 }

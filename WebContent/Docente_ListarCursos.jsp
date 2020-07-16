@@ -159,7 +159,7 @@ input[type=submit] {
 			<tr>
 				<form action = "docente_modificar_nota_servlet" method ="get">
 				  	<td> <%=cur.getID() %> <input type="hidden" name ="id_curso" value ="<%= cur.getID() %>"> </td>
-				    <td> <%=cur.getMateria().getID() %> </td>
+				    <td> <%=cur.getMateria().getNombre() %> </td>
 				    <td> <%=cur.getCuatrimestre() %> </td>
 				    <td> <%=cur.getAnio() %> </td>
 					<td> <input type="submit" name="btn_alumnos" value="Ver alumnos"></td>

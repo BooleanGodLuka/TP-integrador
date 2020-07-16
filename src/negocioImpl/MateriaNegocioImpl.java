@@ -32,10 +32,11 @@ public class MateriaNegocioImpl implements MateriaNegocio{
 	}
 
 	@Override
-	public String getNombreMateria(int idmateria) throws SQLException {
-		return	mdao.getNombreMateria(idmateria);
+	public String getNombreMateria(int idmateria) {
+		return	mdao.getNombre(Integer.toString(idmateria));
 		
 	}
-
+	
+	
 
 }
