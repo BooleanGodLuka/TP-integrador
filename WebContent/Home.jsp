@@ -22,10 +22,13 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 .w3-bar,h1,button {font-family: "Montserrat", sans-serif}
 .fa-anchor,.fa-coffee {font-size:200px}
 
+<!-- donde esta el mensaje de bienvenidos -->
+
 .about-section {
   padding: 50px;
   text-align: center;
   background-color: #474e5d;
+  opacity: 2;
   color: white;
 }
 </style>

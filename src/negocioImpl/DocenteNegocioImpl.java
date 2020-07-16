@@ -1,5 +1,7 @@
 package negocioImpl;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import Dao.DocenteDao;
@@ -19,16 +21,20 @@ public class DocenteNegocioImpl implements DocenteNegocio {
 		return docdao.delete(docente_a_eliminar);
 	}
 
-	public List<Docente> readall() {
+	public ArrayList<Docente> readall() {
 		return docdao.readall();
 	}
 
-	public List<Docente> readall(String consigna) {
+	public ArrayList<Docente> readall(String consigna) {
 		return docdao.readall(consigna);
 	}
 
 	public boolean update(Docente docente_a_modificar) {
 		return docdao.update(docente_a_modificar);
+	}
+
+	public String getNombreDocente(int iddocente) throws SQLException {
+		return docdao.getNombreDocente(iddocente);
 	}
 
 }

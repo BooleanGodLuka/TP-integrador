@@ -114,10 +114,9 @@
 				
 				if (alumno.getActivo() == true){
 	  %>
-	  
+
   <tr>
-  
-  <form method="get" action="ServletListarAlumno">
+
 					<td><%=alumno.getLegajo() %></td>   
 					<td><%=alumno.getNombre() %></td> 
 					<td><%=alumno.getApellido() %></td>
@@ -127,9 +126,10 @@
 					<td><%=alumno.getDireccion()%></td> 
 					<!-- <<td>alumno.getProvincia()</td> -->
 					<td><%=alumno.getIDLocalidad() %></td>
-					<td><%=alumno.getTelefono() %></td>
+					<td><%=alumno.getTelefono() %></td>	
+					<form method="get" action="/ServletModificarAlumno">	  
 					<td> <input type="button" value="Modificar Alumno" name="btn_ModificarAlumno"style="BORDER: rgb(128,128,128) 3px solid; WIDTH: 150px; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;"></td>
-</form>				
+					</form>
     
  </tr>
  

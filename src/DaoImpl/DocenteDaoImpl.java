@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -148,5 +149,27 @@ public class DocenteDaoImpl implements DocenteDao {
 		return new Docente(legajo, dni, nombre, apellido, fechanacimiento, direccion, idlocalidad, email, telefono, activo);
 
 	}
+
+	@Override
+	public String getNombreDocente(int iddocente) throws SQLException {
+		Conexion conexion = Conexion.getConexion();
+		String query = "SELECT nombre FROM docentes WHERE id = "
+				+ iddocente;
+		String nombre = "";
+		Statement statement = conexion.getSQLConexion().createStatement();
+		ResultSet resultSet = statement.executeQuery(query);
+		
+		try {
+			while (resultSet.next()) {
+				nombre = resultSet.getString("nombre");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return nombre;
+		
+	}
+	
+	
 
 }

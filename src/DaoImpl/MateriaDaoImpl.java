@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -83,22 +84,22 @@ public class MateriaDaoImpl implements MateriaDao {
 	}
 
 	@Override
-	public Materia read(int idmateria) {
-		PreparedStatement statement;
-		ResultSet resultSet;
-		Materia materia = new Materia();
+	public String getNombreMateria(int idmateria) throws SQLException {
 		Conexion conexion = Conexion.getConexion();
+		String query = "SELECT nombre FROM materias WHERE id = "
+				+ idmateria;
+		String nombre = "";
+		Statement statement = conexion.getSQLConexion().createStatement();
+		ResultSet resultSet = statement.executeQuery(query);
+		
 		try {
-			statement = conexion.getSQLConexion().prepareStatement(readall + "WHERE id = " + idmateria);
-			resultSet = statement.executeQuery();
-			if (resultSet != null) {
-				getMateria(materia, resultSet);
-				return materia;
+			while (resultSet.next()) {
+				nombre = resultSet.getString("nombre");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return materia;
+		return nombre;
 	}
 
 	@Override

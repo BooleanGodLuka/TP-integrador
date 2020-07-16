@@ -1,7 +1,7 @@
 package negocioImpl;
 
-import java.util.List;
-
+import java.sql.SQLException;
+import java.util.ArrayList;
 import Dao.MateriaDao;
 import DaoImpl.MateriaDaoImpl;
 import dominio.Materia;
@@ -17,24 +17,25 @@ public class MateriaNegocioImpl implements MateriaNegocio{
 	}
 
 	@Override
-	public boolean delete(Materia materia_a_eliminar) {
-		return mdao.delete(materia_a_eliminar);
+	public boolean delete(Materia materia) {
+		return mdao.delete(materia);
 	}
 
 	@Override
-	public List<Materia> readall() {
+	public ArrayList<Materia> readall() {
 		return mdao.readall();
 	}
 
 	@Override
-	public boolean update(Materia materia_a_modificar) {
-		return mdao.update(materia_a_modificar);
+	public boolean update(Materia materia) {
+		return mdao.update(materia);
 	}
 
 	@Override
-	public Materia read(int idmateria) {
-		// TODO Auto-generated method stub
-		return mdao.read(idmateria);
+	public String getNombreMateria(int idmateria) throws SQLException {
+		return	mdao.getNombreMateria(idmateria);
+		
 	}
+
 
 }

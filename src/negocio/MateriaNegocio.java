@@ -1,19 +1,19 @@
 package negocio;
 
-import java.util.List;
-
+import java.sql.SQLException;
+import java.util.ArrayList;
 import dominio.Materia;
 
 public interface MateriaNegocio {
 
 	public boolean insert(Materia materia);
 
-	public boolean delete(Materia materia_a_eliminar);
+	public boolean delete(Materia materia);
 
-	public List<Materia> readall();
+	public ArrayList<Materia> readall();
 
-	public boolean update(Materia materia_a_modificar);
+	public boolean update(Materia materia);
 	
-	public Materia read(int idmateria);
+	public String getNombreMateria(int idmateria) throws SQLException;
 
 }

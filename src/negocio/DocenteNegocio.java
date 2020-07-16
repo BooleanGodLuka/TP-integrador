@@ -1,7 +1,7 @@
 package negocio;
 
-import java.util.List;
-
+import java.sql.SQLException;
+import java.util.ArrayList;
 import dominio.Docente;
 
 public interface DocenteNegocio {
@@ -10,10 +10,12 @@ public interface DocenteNegocio {
 	
 	public boolean delete(Docente docente_a_eliminar);
 	
-	public List<Docente> readall();
+	public ArrayList<Docente> readall();
 	
-	public List<Docente> readall(String consigna);
+	public ArrayList<Docente> readall(String consigna);
 	
 	public boolean update(Docente docente_a_modificar);
+	
+	public String getNombreDocente(int iddocente) throws SQLException;
 
 }

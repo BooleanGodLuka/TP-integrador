@@ -139,7 +139,8 @@ body {
  <form action="" method="get">
   <a href="reporte_servlet" style="color: white;">Reporte</a>
   </form>
-<div style="text-align: right;color: white"><%=nombre%></div>
+  <a href="login_JSP.jsp">Cerrar Sesion</a>
+<div style="text-align: right;color: white; font-size:20px"><%=nombre%></div>
 </div>
 </header> 
 </div>
@@ -163,7 +164,8 @@ body {
   <a href="docente_listar_cursos_servlet">Cursos</a>
   </form>
   <a href="#">Alumnos</a>
-  <div style="text-align: right;color: white"><%=nombre%> <%=apellido%></div>
+  <a href="login_JSP.jsp">Cerrar Sesion</a>
+  <div style="text-align: right;color: white; font-size:20px" ><%=nombre%> <%=apellido%></div>
 </div>
 </header>
 </div>

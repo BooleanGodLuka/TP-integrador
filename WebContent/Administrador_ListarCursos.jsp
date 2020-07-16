@@ -4,6 +4,8 @@
     <%@page import="java.util.ArrayList" %>
 <%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
 <%@page import="dominio.*" %>
+<%@page import="negocioImpl.*" %>
+<%@page import="negocio.*" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <head>
@@ -46,7 +48,6 @@
 			<form action="/action_page.php" align="center">
 				<input type="text" name="txtFiltroCriterio" class="textbox" placeholder="Filtrar" style= "width: 500px;">
 			    <input type="submit" value="Buscar"/>
-			    
 			    <p>Filtrar por:</p>
 				  <input type="radio" id="legajo" name="criterio" value="legajo">
 				  <label for="legajo">Legajo</label>
@@ -101,7 +102,11 @@
 <tbody>
 <% 
 		ArrayList<Curso> listaCursos = new ArrayList<Curso>();
-
+	
+		MateriaNegocio mneg = new MateriaNegocioImpl();
+						  
+		DocenteNegocio docneg = new DocenteNegocioImpl();
+						  
 		if(request.getAttribute("listacur") != null)
 		{
 			listaCursos = (ArrayList<Curso>)request.getAttribute("listacur");
@@ -115,10 +120,10 @@
 	  %>
 <tr>
 <td><%=cur.getID() %> <input type="hidden" name="idCurso" value="<%=cur.getID()%>"> </td> 
-<td><%=cur.getMateria().getNombre()%></td>
+<td><%=mneg.getNombreMateria(cur.getMateria().getID())%></td>
 <td><%=cur.getCuatrimestre() %></td> 
 <td><%=cur.getAnio() %></td> 
-<td><%=cur.getDocente().getNombre() %></td> 
+<td><%=docneg.getNombreDocente(cur.getDocente().getLegajo())%></td> 
 <td style="text-align:center"> <input type="button" value="Ver Alumnos" name="btn_VerAlumnos"style="BORDER: rgb(128,128,128) 3px solid; WIDTH: 150px; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;"></td>
 <td style="text-align:center"> <input type="button" value="Modificar Curso" name="btn_ModificarCurso"style="BORDER: rgb(128,128,128) 3px solid; WIDTH: 150px; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;"></td>
 </tr>

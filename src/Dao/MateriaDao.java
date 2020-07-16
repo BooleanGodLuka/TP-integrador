@@ -1,5 +1,6 @@
 package Dao;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import dominio.Materia;
 
@@ -11,8 +12,8 @@ public interface MateriaDao {
 
 	public ArrayList<Materia> readall();
 	
-	public Materia read(int idmateria);
-
 	public boolean update(Materia materia);
+
+	public String getNombreMateria(int idmateria) throws SQLException;
 
 }
