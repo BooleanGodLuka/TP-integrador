@@ -45,15 +45,15 @@ public class AlumnoNegocioImpl implements AlumnoNegocio {
 	}
 
 	@Override
-	public Alumno read(int idalumno) {
+	public Alumno read(String idalumno) {
 		// TODO Auto-generated method stub
-		return null;
+		return dao.read(Integer.parseInt(idalumno));
 	}
 
 	@Override
-	public ArrayList<Alumno> readall(String consigna) {
+	public ArrayList<Alumno> readall(String id_alumno) {
 		// TODO Auto-generated method stub
-		return null;
+		return dao.readall(id_alumno);
 	}
 
 }

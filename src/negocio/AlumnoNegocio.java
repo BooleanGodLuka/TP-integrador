@@ -16,7 +16,7 @@ public interface AlumnoNegocio {
 		
 		public ArrayList<Alumno> readall(String consigna);
 
-		public Alumno read(int idalumno);
+		public Alumno read(String idalumno);
 
 		public boolean update(Alumno alumno);
 

@@ -59,7 +59,7 @@ public class ServletModificarAlumno extends HttpServlet {
 			al.setIDProvincia(request.getParameter("provincia"));
 			
 			
-			aldao.update(al);
+			boolean temp= aldao.update(al);
 			
 			ArrayList<Provincia> provincias = new ArrayList<Provincia>();
 			provincias = (ArrayList<Provincia>) prodao.readall();
@@ -78,7 +78,7 @@ public class ServletModificarAlumno extends HttpServlet {
 		}else if (request.getParameter("btn_ModificarAlumno") != null) {	//Si entra a la pantalla por el listar cursos
 		
 			String id = request.getParameter("id_alumno");
-			al.igualar(aldao.readall(id).get(0));
+			al.igualar(aldao.readall("id="+id).get(0));
 			request.setAttribute("alumno", al);
 			
 			ArrayList<Provincia> provincias = new ArrayList<Provincia>();

@@ -40,7 +40,7 @@ public class LocalidadDaoImpl implements LocalidadDao {
 		ArrayList<Localidad> localidades = new ArrayList<Localidad>();
 		Conexion conexion = Conexion.getConexion();
 		try {
-			statement = conexion.getSQLConexion().prepareStatement(readallwhere);
+			statement = conexion.getSQLConexion().prepareStatement(readall);
 			resultSet = statement.executeQuery();
 			while (resultSet.next()) {
 				localidades.add(getLocalidad(resultSet));

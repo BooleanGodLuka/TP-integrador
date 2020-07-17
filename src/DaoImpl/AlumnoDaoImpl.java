@@ -14,7 +14,7 @@ public class AlumnoDaoImpl implements AlumnoDao {
 	private static final String insert = "INSERT INTO alumnos(dni, nombre, apellido, fechanacimiento, direccion, idlocalidad, email, telefono, activo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, true) ";
 	private static final String delete = "UPDATE alumnos (activo) VALUES (false) WHERE id = ? ";
 	private static final String readall = "SELECT * FROM alumnos ";
-	private static final String update = "UPDATE alumnos (dni, nombre, apellido, fechanacimiento, direccion, idlocalidad, email, telefono, activo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) WHERE id = ? ";
+	private static final String update = "UPDATE alumnos SET dni=?, nombre=?, apellido=?, fechanacimiento=?, direccion=?, idlocalidad=?, email=?, telefono=?, activo=?  WHERE id = ? ";
 
 	@Override
 	public boolean insert(Alumno alumno) {

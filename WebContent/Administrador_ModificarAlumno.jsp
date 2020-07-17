@@ -74,6 +74,7 @@
 	</thead>
   
 	<tbody>
+	<form action="ServletModificarAlumno" method="get">
 	<%
 		if (request.getAttribute("alumno") != null){
 	Alumno al = new Alumno();		
@@ -123,10 +124,13 @@
     	<%} %>
     </select>
     </td>
-    <td style="text-align:center"> <input type="button" value="Actualizar" name="btn_ModAlumno"style="BORDER: rgb(128,128,128) 3px solid; WIDTH: 150px; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;"></td>
-    <td style="text-align:center"> <input type="button" value="Eliminar" name="btn_EliminarAlumno"style="BORDER: rgb(128,128,128) 3px solid; WIDTH: 150px; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;"></td>
+    <td style="text-align:center"> <input type="submit" value="Actualizar" name="btn_ModAlumno"style="BORDER: rgb(128,128,128) 3px solid; WIDTH: 150px; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;"></td>
+    <td style="text-align:center"> <input type="submit" value="Eliminar" name="btn_EliminarAlumno"style="BORDER: rgb(128,128,128) 3px solid; WIDTH: 150px; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;"></td>
   </tr>
 <%} %>
+	
+	</form>
+	
 </tbody>
 
 </table>
