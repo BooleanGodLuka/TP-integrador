@@ -10,8 +10,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import dominio.Docente;
 import dominio.Localidad;
+import dominio.Usuario;
 import negocio.DocenteNegocio;
+import negocio.UsuarioNegocio;
 import negocioImpl.DocenteNegocioImpl;
+import negocioImpl.UsuarioNegocioImpl;
 
 @WebServlet("/ServletAltaDocentes")
 public class ServletAltaDocentes extends HttpServlet {
@@ -30,9 +33,11 @@ public class ServletAltaDocentes extends HttpServlet {
 			throws ServletException, IOException {
 
 		DocenteNegocio docneg = new DocenteNegocioImpl();
+		UsuarioNegocio usneg = new UsuarioNegocioImpl();
 
 		if (request.getParameter("btnAltaDocente") != null) {
 			Docente docente = new Docente();
+			Usuario usuario = new Usuario();
 
 			docente.setNombre(request.getParameter("nombre"));
 			docente.setApellido(request.getParameter("apellido"));
@@ -44,6 +49,12 @@ public class ServletAltaDocentes extends HttpServlet {
 			docente.setDireccion(request.getParameter("direccion"));
 
 			boolean agrego = docneg.insert(docente);
+			
+			///nususario
+			
+			usuario.setIDDocente(request.getParameter(""));
+			
+			usneg.insert(usuario);
 
 			request.setAttribute("agrego", agrego);
 

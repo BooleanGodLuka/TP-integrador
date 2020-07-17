@@ -19,6 +19,12 @@ public class AlumnoXCurso {
 	public AlumnoXCurso(AlumnoXCurso axc) {
 		Alumno = new Alumno(axc.getAlumno());
 		Curso = new Curso(axc.getCurso());
+		this.aprobado = axc.aprobado;
+        this.Nota1 = axc.Nota1;
+        this.Nota2 = axc.Nota2;
+        this.Nota3 = axc.Nota3;
+        this.Nota4 = axc.Nota4;
+        this.Regularidad = axc.Regularidad;
 	}
 
 	public AlumnoXCurso(int idalumno, int idcurso, int nota1, int nota2, int nota3, int nota4, String nombre,

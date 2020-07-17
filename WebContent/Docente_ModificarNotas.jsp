@@ -116,7 +116,7 @@ input[type=submit] {
 		</div>
 		<br>
  
-<label for="fname">Curso: [INSERTE NOMBRE DE CURSO AQUÍ]</label>
+<label for="fname">Curso Numero: <%=request.getAttribute("id_curso") %></label>
 <br>
 <form method="get" action="docente_modificar_nota_servlet">
 <table id="customers">
@@ -129,6 +129,7 @@ input[type=submit] {
     <th>Parcial 2</th>
     <th>Recuperatorio 2</th>
     <th>Regularidad</th>
+    <th>Aprobacion</th>
   </tr>
   
    
@@ -140,6 +141,9 @@ input[type=submit] {
        	
        	for (int i=0; i<lista.size();i++ ){
        		axc.igualar(lista.get(i));
+       		if (axc.getAlumno().getActivo()){
+       			
+       		
        %>  
   <tr>
     <td><%= axc.getAlumno().getLegajo() %></td> <!--  <input type="hidden" name ="alumno" value= "<%//axc.getAlumno().getLegajo() %>" >-->
@@ -172,9 +176,27 @@ input[type=submit] {
 	                    	}
 	                    
 	                    %>
-	                      </select>
+	                      </select></td>
+	<td><%if (axc.isAprobado()){
+		
+	%>
+	
+	<input type="radio" name="aprobacion_<%=axc.getAlumno().getLegajo() %>" value="true" checked="checked"> Aprobado<br>
+  <input type="radio" name="aprobacion_<%=axc.getAlumno().getLegajo() %>" value="false"> Desaprobado<br>
+	
+	<%		
+	}else {
+	%>
+	<input type="radio" name="aprobacion_<%=axc.getAlumno().getLegajo() %>" value="true" > Aprobado<br>
+  <input type="radio" name="aprobacion_<%=axc.getAlumno().getLegajo() %>" value="false" checked="checked"> Desaprobado<br>
+	 
+  <%} %>
+  
+  </td>
+	
+	
   </tr>
- <%}%>
+ <%}}%>
  <input type="hidden" name ="id_curso" value="<%=lista.get(0).getCurso().getID() %>">
  <%}%>
   

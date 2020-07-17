@@ -58,6 +58,7 @@ public class docente_modificar_nota_servlet extends HttpServlet {
 				axc.setNota3(Integer.parseInt(request.getParameter("nota3_" + axc.getAlumno().getLegajo())));
 				axc.setNota4(Integer.parseInt(request.getParameter("nota4_" + axc.getAlumno().getLegajo())));
 				axc.setRegularidad(request.getParameter("Estado"+ axc.getAlumno().getLegajo()));
+				axc.setAprobado(Boolean.parseBoolean(request.getParameter("aprobacion_"+axc.getAlumno().getLegajo())));
 				
 				aldao.actualizar_alumnoXcurso(axc);
 				//lista.set(i, axc);
@@ -67,10 +68,8 @@ public class docente_modificar_nota_servlet extends HttpServlet {
 			lista =aldao.leer_alumnoXcurso(Integer.parseInt(request.getParameter("id_curso")));
 			request.setAttribute("lista_alumnos", lista);
 
-			RequestDispatcher rd = request.getRequestDispatcher("Docente_ModificarNotas.jsp");
-			rd.forward(request, response);
-
-			
+			request.setAttribute("id_curso", request.getParameter("id_curso"));
+					
 			
 			
 			
@@ -78,46 +77,46 @@ public class docente_modificar_nota_servlet extends HttpServlet {
 			AlumnoNegocio al = new AlumnoNegocioImpl();
 			
 			
+			AlumnoXCurso axc;
 			ArrayList<AlumnoXCurso> lista_final = new ArrayList<AlumnoXCurso>();
-			int cont =0;
-			
-			AlumnoXCurso axc = new AlumnoXCurso();
-			
 			 
-			/*for (int i = 0; i < lista.size(); i++) {
-				axc.igualar(lista.get(i));
+			for (int i = 0; i < lista.size(); i++) {
+				axc = new AlumnoXCurso(lista.get(i));
 				if (al.readall(" id=" + axc.getAlumno().getLegajo()) != null) {
 				Alumno cursante = new Alumno((Alumno) al.readall(" id=" + axc.getAlumno().getLegajo()).get(0));
 				axc.setAlumno(cursante);
-				//if (cursante.getActivo()) {
-					
-					//lista_final.add(cont,axc);
-					//cont ++;
+				/*axc.getAlumno().setActivo(cursante.getActivo());
+				axc.getAlumno().setApellido(cursante.getApellido());
+				axc.getAlumno().setDireccion(cursante.getDireccion());
+				axc.getAlumno().setDni(cursante.getDni());
+				axc.getAlumno().setEmail(cursante.getEmail());
+				axc.getAlumno().setFechaNacimiento(cursante.getFechaNacimiento());
+				axc.getAlumno().setIDLocalidad(cursante.getIDLocalidad());
+				axc.getAlumno().setIDProvincia(cursante.getIDProvincia());
+				axc.getAlumno().setLegajo(cursante.getLegajo());
+				axc.getAlumno().setNombre(cursante.getNombre());
+				axc.getAlumno().setTelefono(cursante.getTelefono());*/
+
 					lista.set(i, axc);
-					//}
+				//lista_final.add(axc);
+
 				}
-			}*/
+			}
 		
 			request.setAttribute("lista_alumnos", lista);
 			//request.setAttribute("lista_alumnos", lista_final);
 
-			RequestDispatcher rd = request.getRequestDispatcher("Docente_ModificarNotas.jsp");
-			rd.forward(request, response);
 		
 		
 		}
+		
+		RequestDispatcher rd = request.getRequestDispatcher("Docente_ModificarNotas.jsp");
+		rd.forward(request, response);
+	
+		
 
-		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
-	
-	
-	
-	
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 
 	
 	
