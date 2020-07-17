@@ -1,6 +1,7 @@
 package servlets;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -40,19 +41,44 @@ public class ServletAltaCursos extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		try {
-			List<Materia> materias = materiaNeg.readall();
+		Curso cur = new Curso();
+		CursoNegocioImpl curdao = new CursoNegocioImpl();
+		
+		
+		if (request.getParameter("btnAltaCurso") != null) {
+		cur.setAnio(request.getParameter("anio"));
+		cur.setCuatrimestre(request.getParameter("cuatrimestre"));
+		cur.getDocente().setLegajo(Integer.parseInt(request.getParameter("docente")));
+		cur.getMateria().setID(Integer.parseInt(request.getParameter("materia")));
+			
+		boolean temp =curdao.insert(cur);
+		
+		if (temp) {
+			int id_cur = curdao.leer_ultimo_curso_id().get(0).getID();
+			request.setAttribute("id_curso", id_cur);
+			
+			RequestDispatcher rd = request.getRequestDispatcher("AsignacionMasiva_Servlet");
+			rd.forward(request, response);
+		}
+		
+			
+		}else {
+
+			ArrayList<Materia> materias = materiaNeg.readall();
 			request.setAttribute("ListaMaterias", materias);
 
-			List<Docente> docentes = docenteNeg.readall();
+			ArrayList<Docente> docentes = docenteNeg.readall();
 			request.setAttribute("ListaDocentes", docentes);
 
 			RequestDispatcher rd = request.getRequestDispatcher("Administrador_AltaCurso.jsp");
 			rd.forward(request, response);
 
-		} catch (Exception e) {
-			e.printStackTrace();
 		}
+		
+		
+		
+
+			
 	}
 
 	/**
@@ -61,29 +87,9 @@ public class ServletAltaCursos extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		try {
-			if (request.getParameter("btnAltaCurso") != null) {
-				Curso curso = new Curso();
-				
-
-				cargarCurso(curso, request);
-
-				cursoNeg.insert(curso);
-
-				RequestDispatcher rd = request.getRequestDispatcher("AsignacionMasiva_Servlet");
-				rd.forward(request, response);
-			}
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		doGet(request, response);
 	}
 
-	private void cargarCurso(Curso curso, HttpServletRequest request) {
-		curso.getMateria().setID(Integer.parseInt(request.getParameter("materia")));
-		curso.getDocente().setLegajo(Integer.parseInt(request.getParameter("docente")));
-		curso.setCuatrimestre(Integer.parseInt(request.getParameter("cuatrimestre")));
-		curso.setAnio(Integer.parseInt(request.getParameter("anio")));
-	}
+
 
 }

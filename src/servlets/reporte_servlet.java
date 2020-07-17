@@ -15,8 +15,10 @@ import dominio.Docente;
 import dominio.Reporte;
 import negocio.CursoNegocio;
 import negocio.DocenteNegocio;
+import negocioImpl.AlumnoXCursoNegocioImpl;
 import negocioImpl.CursoNegocioImpl;
 import negocioImpl.DocenteNegocioImpl;
+import negocioImpl.MateriaNegocioImpl;
 
 /**
  * Servlet implementation class reporte_servlet
@@ -40,27 +42,31 @@ public class reporte_servlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		ArrayList<Reporte> lista = new ArrayList<Reporte>();
-		Reporte rep = new Reporte();
+		Reporte rep;
 		CursoNegocio cursoNeg = new CursoNegocioImpl();
-		
+		AlumnoXCursoNegocioImpl aldao = new AlumnoXCursoNegocioImpl();
+		MateriaNegocioImpl matdao = new MateriaNegocioImpl();
+		DocenteNegocioImpl docdao = new DocenteNegocioImpl();
 		
 		ArrayList<Curso> cursos = cursoNeg.readall();
 		
 		for (Curso cur : cursos) {
-			rep.getCurso().setCuatrimestre(cur.getCuatrimestre());
+			rep = new Reporte();
 			rep.getCurso().setAnio(cur.getAnio());
-			rep.setCant_alumn(cursoNeg.calcular_cant_alumnXcurso(cur.getID()));
-			rep.setCant_aprob(cursoNeg.calcular_cant_alumnXcurso_aprob(cur.getID()));
-			rep.setCant_desaprob(cursoNeg.calcular_cant_alumnXcurso_desap(cur.getID()));
+			rep.getCurso().setCuatrimestre(cur.getCuatrimestre());
+			rep.getCurso().setID(cur.getID());
+			rep.getCurso().setDocente(docdao.readall(" WHERE id=" + cur.getDocente().getLegajo()).get(0));
+			rep.getCurso().getMateria().setNombre(matdao.getNombreMateria(cur.getMateria().getID()));
+			rep.setCant_alumn(aldao.calcular_cant_alumnXcurso(cur.getID()));
+			rep.setCant_aprob(aldao.calcular_cant_alumnXcurso_aprob(cur.getID()));
+			rep.setCant_desaprob(aldao.calcular_cant_alumnXcurso_desap(cur.getID()));
 			rep.cargar_porcentaje();
-			//TODO Dittu: no se que se supone que hay que mostrar en la linea a de abajo, si me explicas yo lo arreglo
-			rep.getCurso().getMateria().setID(Integer.parseInt(cursoNeg.leer_materia(cur.getMateria().getID())));
 			lista.add(rep);
 		}
 		
 		request.setAttribute("lista_reportes", lista);
 		
-		RequestDispatcher rd =request.getRequestDispatcher("administrador/Administrador_Reporte");
+		RequestDispatcher rd =request.getRequestDispatcher("Administrador_Reporte.jsp");
 		rd.forward(request, response);
 		
 		

@@ -22,25 +22,56 @@ public class AlumnoXCursoNegocioImpl implements AlumnoXCursoNegocio {
 	@Override
 	public int calcular_cant_alumnXcurso_aprob(int id) {
 		// TODO Auto-generated method stub
-		return 0;
+		ArrayList<AlumnoXCurso> lista = new ArrayList<AlumnoXCurso>();
+		lista = aldao.readall(id);
+		int cont=0;
+		AlumnoXCurso al = new AlumnoXCurso();
+		for (int i=0;i<lista.size();i++) {
+			al.igualar(lista.get(i));
+			if (al.isAprobado()) {
+				cont++;
+			}
+		}
+		
+		return cont;
 	}
 
 	@Override
 	public int calcular_cant_alumnXcurso_desap(int id) {
 		// TODO Auto-generated method stub
-		return 0;
+		ArrayList<AlumnoXCurso> lista = new ArrayList<AlumnoXCurso>();
+		lista = aldao.readall(id);
+		int cont=0;
+		AlumnoXCurso al = new AlumnoXCurso();
+		for (int i=0;i<lista.size();i++) {
+			al.igualar(lista.get(i));
+			if (!al.isAprobado()) {
+				cont++;
+			}
+		}
+		
+		return cont;
 	}
 
 	@Override
 	public int calcular_cant_alumnXcurso(int id) {
 		// TODO Auto-generated method stub
-		return 0;
+		ArrayList<AlumnoXCurso> lista = new ArrayList<AlumnoXCurso>();
+		lista = aldao.readall(id);
+		int cont=0;
+		
+		for (int i=0;i<lista.size();i++) {
+			cont++;
+		
+		}
+		
+		return cont;
 	}
 
 	@Override
 	public boolean insert_alumnoXcurso(AlumnoXCurso alumno) {
 		// TODO Auto-generated method stub
-		return false;
+		return aldao.insert(alumno);
 	}
 
 	@Override

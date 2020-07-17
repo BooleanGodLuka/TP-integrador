@@ -98,9 +98,6 @@ input[type=submit] {
 
 <jsp:include page="Navegacion.jsp"/>
 
-<br>
-<label for="fname">Curso: [INSERTE NOMBRE DE CURSO AQUÍ]</label>
-<br><br>
 
 <div align="center">
 			<form action="/action_page.php" align="center">
@@ -120,6 +117,11 @@ input[type=submit] {
 
 
 
+<form action = "AsignacionMasiva_Servlet" method= "post">
+<br>
+<label for="fname">Curso Numero: <%=request.getAttribute("id_curso") %></label>
+<br><br>
+<input type="hidden" name="id_curso" value="<%=request.getAttribute("id_curso") %>">
 
 <table id="customers">
   <tr>
@@ -128,7 +130,7 @@ input[type=submit] {
     <th>Apellido</th>
     <th>Opcion</th>
   </tr>
-  <form action = "AsignacionMasiva_Servlet" method= "post">
+  
   
   <%
   if (request.getAttribute("lista_alumnos")!= null){
@@ -159,8 +161,12 @@ input[type=submit] {
 	<label for="fname">Oprima para terminar el agregado de alumnos</label>
 	<br>
     <input type="submit" name="btn_cargar" value="Aceptar">
-    </form>
-
+  
+  
+  
+  </form>
+  
+  
 
 </body>
 </html>

@@ -9,6 +9,7 @@ public class AlumnoXCurso {
 	private int Nota3;
 	private int Nota4;
 	private String Regularidad;
+	private boolean aprobado;
 
 	public AlumnoXCurso() {
 		Alumno = new Alumno();
@@ -100,7 +101,17 @@ public class AlumnoXCurso {
 		this.Nota3 = al.getNota3();
 		this.Nota4 = al.getNota4();
 		this.Regularidad = al.getRegularidad();
+		this.aprobado = al.aprobado;
 	}
+
+	public boolean isAprobado() {
+		return aprobado;
+	}
+
+	public void setAprobado(boolean aprobado) {
+		this.aprobado = aprobado;
+	}
+	
 	
 
 }
