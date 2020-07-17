@@ -37,6 +37,7 @@ public class AsignacionMasiva_Servlet extends HttpServlet {
 		AlumnoXCursoNegocioImpl alcurdao = new AlumnoXCursoNegocioImpl();
 		AlumnoNegocioImpl aldao = new AlumnoNegocioImpl();
 		ArrayList<Alumno> al_lista = new ArrayList<Alumno>();
+		ArrayList<Alumno> al_lista_final = new ArrayList<Alumno>();
 		ArrayList<AlumnoXCurso> alcur_lista = new ArrayList<AlumnoXCurso>();
 		
 		if (request.getAttribute("id_curso")!= null) {
@@ -56,7 +57,7 @@ public class AsignacionMasiva_Servlet extends HttpServlet {
 			boolean bandera = true;
 			String temp="";
 			Alumno al;
-			
+			int a;
 			
 			for (int i =0; i<al_lista.size(); i++) {
 				bandera = true;
@@ -64,20 +65,21 @@ public class AsignacionMasiva_Servlet extends HttpServlet {
 
 				for (int j=0; j<alumnos_seleccionados.length;j++) {
 					temp = alumnos_seleccionados[j];
-					
-					if (Integer.toString(al.getLegajo()) == temp) {
+					a= Integer.parseInt(temp);
+					if (al.getLegajo() == a) {
 						bandera = false;
 					}
 				}
-				if (bandera) { 
-					al_lista.remove(al);
+				if (!bandera) { 
+					al_lista_final.add(al);
+					//al_lista.remove(al);
 				}
 
 			}
 			
 			int id_curso = Integer.parseInt((String) request.getParameter("id_curso"));
 			AlumnoXCurso cursante = new AlumnoXCurso();
-			for (Alumno alu : al_lista) {
+			for (Alumno alu : al_lista_final) {
 				cursante.setAlumno(alu);
 				cursante.setAprobado(false);
 				cursante.getCurso().setID(id_curso);
