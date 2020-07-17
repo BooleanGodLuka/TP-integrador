@@ -83,7 +83,7 @@
     <td><input type="email" name="Email_Docente" value="<%=doc.getEmail() %>" ></td>
     <td><input type="text" name="Telefono_Docente" value="<%=doc.getTelefono() %>" maxlength="10" onkeypress="return ((event.charCode >= 48 && event.charCode <= 57))" ></td>
     <td><select id="slctProvincia" name="slctProvincia" onchange="llenarLocalidades()">
-					<option value="" selected>- Seleccione Provincia -</option>
+					<option value="0" selected required>- Seleccione Provincia -</option>
 					<%
 						ArrayList<Provincia> listProvincias = null;
 					
@@ -106,7 +106,7 @@
 					%>
 				</select></td>
 				<td><select	id="slctLocalidad" name="slctLocalidad"> 
-					<option value="" selected>- Seleccione Localidad -</option>
+					<option value="0" selected required>- Seleccione Localidad -</option>
 				</select></td>
     
     <td style="text-align:center"> <input type="submit" value="Actualizar" name="btn_ModDocente"style="BORDER: rgb(128,128,128) 3px solid; WIDTH: 150px; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;"></td>

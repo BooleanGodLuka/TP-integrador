@@ -78,8 +78,8 @@
 	    <td><input type="email" name="email" value="<%=al.getEmail()%>"></td>
 	    <td><input type="text" name="telefono" value="<%=al.getTelefono()%>" maxlength="10" onkeypress="return ((event.charCode >= 48 && event.charCode <= 57))"></td>
 	    <td><input type="text" name="direccion" value="<%=al.getDireccion()%>"></td>
-    	<td><select id="slctProvincia" name="slctProvincia" onchange="llenarLocalidades()">
-					<option value="" selected>- Seleccione Provincia -</option>
+    	<td><select id="slctProvincia" name="slctProvincia" required onchange="llenarLocalidades()">
+					<option value="0" selected>- Seleccione Provincia -</option>
 					<%
 						ArrayList<Provincia> listProvincias = null;
 					
@@ -102,8 +102,8 @@
 					%>
 				</select></td>
 				
-				<td><select	id="slctLocalidad" name="slctLocalidad"> 
-					<option value="" selected>- Seleccione Localidad -</option>
+				<td><select	id="slctLocalidad" required name="slctLocalidad" > 
+					<option value="0" selected>- Seleccione Localidad -</option>
 				</select></td>
     <td style="text-align:center"> <input type="submit" value="Actualizar" name="btn_ModAlumno"style="BORDER: rgb(128,128,128) 3px solid; WIDTH: 150px; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;"></td>
     <td style="text-align:center"> <input type="submit" value="Eliminar" name="btn_EliminarAlumno"style="BORDER: rgb(128,128,128) 3px solid; WIDTH: 150px; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;"></td>

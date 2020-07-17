@@ -17,7 +17,7 @@ public class DocenteDaoImpl implements DocenteDao {
 	private static final String insert = "INSERT INTO docentes (dni, nombre, apellido, fechanacimiento, direccion, idlocalidad, email, telefono, activo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, true) ";
 	private static final String delete = "UPDATE docentes SET activo = false WHERE id = ? ";
 	private static final String readall = "SELECT * FROM docentes ";
-	private static final String update = "UPDATE docentes SET dni=?, nombre=?, apellido=?, fechanacimiento=?, direccion=?, idlocalidad=?, email=?, telefono=?, activo=true  WHERE id = ? ";
+	private static final String update = "UPDATE docentes SET dni=?, nombre=?, apellido=?, fechanacimiento=?, direccion=?, idlocalidad=?, email=?, telefono=?  WHERE id = ? ";
 
 	@Override
 	public boolean insert(Docente docente) {
