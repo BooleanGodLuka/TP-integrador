@@ -75,7 +75,7 @@
     <th>Docente</th>
     <th>Modificar</th>
     <th>Eliminar</th>
-    
+    <th>Agregar alumno (Legajo)</th>
 </tr>
 </thead> 
   
@@ -198,12 +198,25 @@
     <%} }%>
     </select>
     </td>
+    
+    
     <td style="text-align:center"> <input type="submit" value="Actualizar Curso" name="btn_ModCurso"style="BORDER: rgb(128,128,128) 3px solid; WIDTH: 150px; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;"></td>
     <td style="text-align:center"> <input type="submit" value="Eliminar Curso" name="btn_EliminarCurso"style="BORDER: rgb(128,128,128) 3px solid; WIDTH: 150px; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;"></td>
     
     
 
   </form>
+  
+	<td>
+	<form action ="ServletModificarCurso" method="get">
+	<input type="hidden" name="idCurso" value ="<%=cur.getID() %>">
+	 <input type="text" name="legajo_alum" onkeypress="return ((event.charCode >= 48 && event.charCode <= 57))"> 
+	<input type="submit" value="Agregar" name="btn_AgregarAlumn" style="BORDER: rgb(128,128,128) 3px solid; WIDTH: 150px; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;">
+	</form>
+	</td>
+ 
+  
+  
   </tr>
 <%}%>
 </tbody>

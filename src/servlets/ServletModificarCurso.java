@@ -10,9 +10,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dominio.Alumno;
+import dominio.AlumnoXCurso;
 import dominio.Curso;
 import dominio.Docente;
 import dominio.Materia;
+import negocioImpl.AlumnoNegocioImpl;
+import negocioImpl.AlumnoXCursoNegocioImpl;
 import negocioImpl.CursoNegocioImpl;
 import negocioImpl.DocenteNegocioImpl;
 import negocioImpl.MateriaNegocioImpl;
@@ -74,6 +78,42 @@ public class ServletModificarCurso extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("Administrador_ModificarCurso.jsp");
 			rd.forward(request, response);
 			
+			
+		}else if (request.getParameter("btn_AgregarAlumn") != null) {
+			
+			AlumnoNegocioImpl aldao = new AlumnoNegocioImpl();
+			AlumnoXCurso cursante = new AlumnoXCurso();
+			int id_curso = Integer.parseInt(request.getParameter("idCurso"));
+			Alumno al = new Alumno();
+			AlumnoXCursoNegocioImpl alcurdao = new AlumnoXCursoNegocioImpl();
+			String id = request.getParameter("legajo_alum");
+			al.igualar(aldao.readall("id="+id).get(0));
+			//al.igualar(aldao.read(id)); 
+			
+			cursante.setAlumno(al);
+			cursante.setAprobado(false);
+			cursante.getCurso().setID(id_curso);
+			cursante.setRegularidad("Regular");
+			cursante.setNota1(0);
+			cursante.setNota2(0);
+			cursante.setNota3(0);
+			cursante.setNota4(0);
+			boolean temp = alcurdao.insert_alumnoXcurso(cursante);
+			
+			
+			cur.igualar(curdao.readall("id="+id_curso).get(0));
+			request.setAttribute("curso", cur);
+			
+			ArrayList<Materia> materias = new ArrayList<Materia>();
+			materias = matdao.readall();
+			request.setAttribute("materias", materias);
+			
+			ArrayList<Docente> profesores = new ArrayList<Docente>();
+			profesores = docdao.readall();
+			request.setAttribute("docentes", profesores);
+
+			RequestDispatcher rd = request.getRequestDispatcher("Administrador_ModificarCurso.jsp");
+			rd.forward(request, response);
 			
 		}
 		
