@@ -163,7 +163,6 @@ body {
   <form action="docente_listar_cursos_servlet" method="get">
   <a href="docente_listar_cursos_servlet">Cursos</a>
   </form>
-  <a href="#">Alumnos</a>
   <a href="login_JSP.jsp">Cerrar Sesion</a>
   <div style="text-align: right;color: white; font-size:20px" ><%=nombre%> <%=apellido%></div>
 </div>

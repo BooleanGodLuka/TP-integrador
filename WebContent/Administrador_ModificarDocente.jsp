@@ -4,7 +4,7 @@
 <%@page import="dominio.Docente"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -76,54 +76,13 @@
   
   <tr>
   	<td><input type="text" name="ID_Docente" value="<%=doc.getLegajo() %>" readonly="readonly"></td>
-  	<td><input type="text" name="DNI_Docente" value= "<%=doc.getDni() %>"></td>
-    <td><input type="text" name="Nombre_Docente" value= "<%=doc.getNombre() %>"></td>
-    <td><input type="text" name="Apellido_Docente" value= "<%=doc.getApellido() %>"></td>
-    
-    
-    
-    
-    <td style="text-align: center">
-    <div class="control-group">
-  <div class="controls">
-    <select name="dia" id="dia">
-    
-    <%for (int i=1;i<=31;i++){
-    	
-    	%>
-    	<option value="<%=i %>"><%=i %></option>
-    <%} %>
-    </select>
-    
-    
-    <select name="mes" id="mes">
-      <%for (int i=1;i<=12;i++){
-    	
-    	%>
-    	<option value="<%=i %>"><%=i %></option>
-    <%} %>
-    </select>
-    
-    
-    
-    
-    <select name="anio" id="año">
-      <%for (int i=2000;i>=1900;i--){
-    	
-    	%>
-    	<option value="<%=i %>"><%=i %></option>
-    <%} %>
-    </select>
-    
-    
-    
-  </div>
-</div>
-</td>
-    
-    <td><input type="text" name="Direccion_Docente" value="<%=doc.getApellido()%>"></td>
-    <td><input type="text" name="Email_Docente" value="<%=doc.getEmail() %>"></td>
-    <td><input type="text" name="Telefono_Docente" value="<%=doc.getTelefono() %>"></td>
+  	<td><input type="text" name="DNI_Docente" value= "<%=doc.getDni() %>" maxlength="8" pattern="\d{8}" title="Se requieren 8 digitos." onkeypress="return ((event.charCode >= 48 && event.charCode <= 57))"></td>
+    <td><input type="text" name="Nombre_Docente" value= "<%=doc.getNombre() %>" onkeypress="return (event.charCode ==32 || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode >= 65 && event.charCode <= 90))"></td>
+    <td><input type="text" name="Apellido_Docente" value= "<%=doc.getApellido() %>" onkeypress="return (event.charCode ==32 || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode >= 65 && event.charCode <= 90))"></td>
+    <td><input type="date" name="fechanacimiento" value="<%=doc.getFechaNacimiento() %>" ></td>
+    <td><input type="text" name="Direccion_Docente" value="<%=doc.getDireccion()%>" ></td>
+    <td><input type="email" name="Email_Docente" value="<%=doc.getEmail() %>" ></td>
+    <td><input type="text" name="Telefono_Docente" value="<%=doc.getTelefono() %>" maxlength="10" onkeypress="return ((event.charCode >= 48 && event.charCode <= 57))" ></td>
     
     <td>
     <select id="provincia" name="provincia">

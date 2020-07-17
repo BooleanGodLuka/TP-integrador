@@ -85,12 +85,12 @@
 	
 	<tr>
 	    <td><input type="text" name="id" value="<%=al.getLegajo()%>" readonly></td>
-	    <td><input type="text" name="dni" value="<%=al.getDni()%>"></td> 
-	    <td><input type="text" name="nombre" value="<%=al.getNombre()%>"></td>
-	    <td><input type="text" name="apellido" value="<%=al.getApellido()%>"></td>
+	    <td><input type="text" name="dni" value="<%=al.getDni()%>" maxlength="8" pattern="\d{8}" title="Se requieren 8 digitos." onkeypress="return ((event.charCode >= 48 && event.charCode <= 57))"></td> 
+	    <td><input type="text" name="nombre" value="<%=al.getNombre()%>" onkeypress="return (event.charCode ==32 || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode >= 65 && event.charCode <= 90))"></td>
+	    <td><input type="text" name="apellido" value="<%=al.getApellido()%>" onkeypress="return (event.charCode ==32 || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode >= 65 && event.charCode <= 90))"></td>
 	    <td><input type="date" name="fechanacimiento" value="<%=al.getFechaNacimiento() %>"></td>
-	    <td><input type="text" name="email" value="<%=al.getEmail()%>"></td>
-	    <td><input type="text" name="telefono" value="<%=al.getTelefono()%>"></td>
+	    <td><input type="email" name="email" value="<%=al.getEmail()%>"></td>
+	    <td><input type="text" name="telefono" value="<%=al.getTelefono()%>" maxlength="10" onkeypress="return ((event.charCode >= 48 && event.charCode <= 57))"></td>
 	    <td><input type="text" name="direccion" value="<%=al.getDireccion()%>"></td>
     
     
