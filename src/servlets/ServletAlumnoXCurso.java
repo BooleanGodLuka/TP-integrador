@@ -10,8 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dominio.Alumno;
 import dominio.AlumnoXCurso;
 import negocio.AlumnoXCursoNegocio;
+import negocioImpl.AlumnoNegocioImpl;
 import negocioImpl.AlumnoXCursoNegocioImpl;
 
 
@@ -39,9 +41,24 @@ public class ServletAlumnoXCurso extends HttpServlet {
 			if(request.getParameter("idCurso") != null) 
 			{
 				
+			AlumnoXCurso axc;
+			AlumnoNegocioImpl al = new AlumnoNegocioImpl();
+			
 			int idcurso = Integer.parseInt(request.getParameter("idCurso"));
 			
 			ArrayList<AlumnoXCurso> listaAxc = (ArrayList<AlumnoXCurso>) axcneg.leer_alumnoXcurso(idcurso);
+			
+			for (int i = 0; i < listaAxc.size(); i++) {
+				axc = new AlumnoXCurso(listaAxc.get(i));
+				if (al.readall(" id=" + axc.getAlumno().getLegajo()) != null) {
+				Alumno cursante = new Alumno((Alumno) al.readall(" id=" + axc.getAlumno().getLegajo()).get(0));
+				axc.setAlumno(cursante);
+
+				listaAxc.set(i, axc);
+			
+
+				}
+			}
 			
 			if(listaAxc.size() != 0) 
 			{
