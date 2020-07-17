@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import dominio.Curso;
 import dominio.Docente;
+import dominio.Materia;
 import dominio.Reporte;
 import negocio.CursoNegocio;
 import negocio.DocenteNegocio;
@@ -47,8 +48,47 @@ public class reporte_servlet extends HttpServlet {
 		AlumnoXCursoNegocioImpl aldao = new AlumnoXCursoNegocioImpl();
 		MateriaNegocioImpl matdao = new MateriaNegocioImpl();
 		DocenteNegocioImpl docdao = new DocenteNegocioImpl();
+		String consulta ="";
+		if (request.getParameter("btn_filtrar") != null) {
+			
+			String a = request.getParameter("materia");
+			
+			if (request.getParameter("materia") != "empty") {
+				consulta += " idmateria=" + request.getParameter("materia");
+			}
+			
+			String b = request.getParameter("anio");
+			
+			if (request.getParameter("anio") != "empty") {
+				if (consulta == "") {
+					consulta += " anio= " + "'" +request.getParameter("anio") +"'";
+				}else {
+					consulta += " AND anio=" +"'" +  request.getParameter("anio") + "'";
+				}
+				
+			}
+			
+			String c = request.getParameter("cuatrimestre");
+			
+			if (request.getParameter("cuatrimestre") != "empty") {
+				if (consulta == "") {
+					consulta += " cuatrimestre=" +"'" +request.getParameter("cuatrimestre")+"'";
+				}else {
+					consulta += " AND cuatrimestre="+"'" + request.getParameter("cuatrimestre")+"'";
+				}
+			}
+			
+			
+		}
 		
-		ArrayList<Curso> cursos = cursoNeg.readall();
+		
+		ArrayList<Curso> cursos = new ArrayList<Curso>();
+		if (consulta == "") {
+			cursos = cursoNeg.readall();	
+		}else {
+			cursos = cursoNeg.readall(consulta);
+		}
+		
 		
 		for (Curso cur : cursos) {
 			rep = new Reporte();
@@ -65,6 +105,12 @@ public class reporte_servlet extends HttpServlet {
 		}
 		
 		request.setAttribute("lista_reportes", lista);
+		
+		ArrayList<Materia> materias = new ArrayList<Materia>();
+		materias = matdao.readall();
+		request.setAttribute("materias", materias);
+		
+		
 		
 		RequestDispatcher rd =request.getRequestDispatcher("Administrador_Reporte.jsp");
 		rd.forward(request, response);

@@ -73,7 +73,7 @@
 							for (Docente doc : listDocentes) {
 					%>
 					
-					<option value="<%=doc.getLegajo()%>"> <%=doc.getNombre()%> </option>
+					<option value="<%=doc.getLegajo()%>"> <%=  doc.getLegajo()+ ":" + doc.getApellido() + ", "+ doc.getNombre()%> </option>
 					<%
 							}
 						
