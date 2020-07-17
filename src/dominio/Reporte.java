@@ -10,6 +10,7 @@ public class Reporte {
 
 	public Reporte() {
 		super();
+		Curso = new Curso();
 	}
 
 	public Reporte(int idmateria, String cuatrimestre, String anio, int iddocente, int cantalum, int cantaprob, int cantdesaprob) {

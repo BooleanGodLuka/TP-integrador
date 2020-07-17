@@ -95,6 +95,7 @@ public class AlumnoXCursoDaoImpl implements AlumnoXCursoDao {
 		alumXcurso.setNota3(resultSet.getInt("nota3"));
 		alumXcurso.setNota4(resultSet.getInt("nota4"));
 		alumXcurso.setRegularidad(resultSet.getString("regularidad"));
+		alumXcurso.setAprobado(resultSet.getBoolean("aprobado"));
 	} 
 
 	@Override

@@ -72,7 +72,7 @@
 	   
 	  %>
   
-  <form>
+  <form action="ServletModificarDocente" method="get">
   
   <tr>
   	<td><input type="text" name="ID_Docente" value="<%=doc.getLegajo() %>" readonly="readonly"></td>
@@ -129,6 +129,8 @@
     <select id="provincia" name="provincia">
      <%ArrayList<Provincia> provincias = (ArrayList<Provincia>) request.getAttribute("provincias"); 
     	Provincia prov = new Provincia(); 
+    	
+    	
     	for (int i =0; i<provincias.size(); i++){ 
     		prov.setID(provincias.get(i).getID());
     		prov.setNombre(provincias.get(i).getNombre());
@@ -145,6 +147,19 @@
     <select id="localidad" name="localidad">
      	<%ArrayList<Localidad> localidades = (ArrayList<Localidad>) request.getAttribute("localidades"); 
     	Localidad loc = new Localidad();
+    	for (int i =0; i<localidades.size(); i++){
+    		if (localidades.get(i).getID() == Integer.parseInt(doc.getIDLocalidad())){
+    			loc.setID(localidades.get(i).getID());
+    			loc.setNombre(localidades.get(i).getNombre());
+    		}
+    	}
+  
+    	%>
+    	<option name="loc_<%=loc.getID() %>" value="<%=loc.getID()%>"><%=loc.getNombre()%></option>
+    	
+    	<%
+    	
+  
     	for (int i =0; i<localidades.size(); i++){ 
     		loc.setID(localidades.get(i).getID());
     		loc.setNombre(localidades.get(i).getNombre());
