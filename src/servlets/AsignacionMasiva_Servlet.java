@@ -16,6 +16,7 @@ import dominio.Provincia;
 import dominio.AlumnoXCurso;
 import negocio.AlumnoNegocio;
 import negocioImpl.AlumnoNegocioImpl;
+import negocioImpl.AlumnoXCursoNegocioImpl;
 import negocioImpl.CursoNegocioImpl;
 
 /**
@@ -33,23 +34,74 @@ public class AsignacionMasiva_Servlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		try {
-			if (request.getParameter("btnAltaCurso") != null) {
-				List<Alumno> provincias = alumnoNeg.readall();
-				request.setAttribute("lista_alumnos", provincias);
+		AlumnoXCursoNegocioImpl alcurdao = new AlumnoXCursoNegocioImpl();
+		AlumnoNegocioImpl aldao = new AlumnoNegocioImpl();
+		ArrayList<Alumno> al_lista = new ArrayList<Alumno>();
+		ArrayList<AlumnoXCurso> alcur_lista = new ArrayList<AlumnoXCurso>();
+		
+		if (request.getAttribute("id_curso")!= null) {
+			al_lista = aldao.readall();
+			request.setAttribute("lista_alumnos", al_lista);
+			
+			request.setAttribute("id_curso",request.getAttribute("id_curso"));
+			
+			RequestDispatcher rd = request.getRequestDispatcher("Administrador_AsignacionMasiva.jsp");
+			rd.forward(request, response);
+			
+			
+			
+		}else if (request.getParameter("btn_cargar") != null) {
+			String[] alumnos_seleccionados = request.getParameterValues("seleccionado");
+			al_lista = aldao.readall();
+			boolean bandera = true;
+			String temp="";
+			Alumno al;
+			
+			
+			for (int i =0; i<al_lista.size(); i++) {
+				bandera = true;
+				al = new Alumno(al_lista.get(i));
 
-				RequestDispatcher rd = request.getRequestDispatcher("Administrador_AsignacionMasiva.jsp");
-				rd.forward(request, response);
+				for (int j=0; j<alumnos_seleccionados.length;j++) {
+					temp = alumnos_seleccionados[j];
+					
+					if (Integer.toString(al.getLegajo()) == temp) {
+						bandera = false;
+					}
+				}
+				if (bandera) { 
+					al_lista.remove(al);
+				}
+
 			}
-
-		} catch (Exception e) {
-			e.printStackTrace();
+			
+			int id_curso = Integer.parseInt((String) request.getParameter("id_curso"));
+			AlumnoXCurso cursante = new AlumnoXCurso();
+			for (Alumno alu : al_lista) {
+				cursante.setAlumno(alu);
+				cursante.setAprobado(false);
+				cursante.getCurso().setID(id_curso);
+				cursante.setRegularidad("Regular");
+				cursante.setNota1(0);
+				cursante.setNota2(0);
+				cursante.setNota3(0);
+				cursante.setNota4(0);
+				alcurdao.insert_alumnoXcurso(cursante);
+			}
+			
+			RequestDispatcher rd = request.getRequestDispatcher("Home.jsp");
+			rd.forward(request, response);
+			
+			
 		}
+		
+		
+		 
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+/*
 		if (request.getParameter("btn_cargar") != null) {
 
 			AlumnoNegocioImpl alumn = new AlumnoNegocioImpl();
@@ -79,18 +131,19 @@ public class AsignacionMasiva_Servlet extends HttpServlet {
 
 			}
 
-			int id_curso = Integer.parseInt(cudao.leer_ultimo_curso_id());
+			int id_curso = 0;
+			//int id_curso = Integer.parseInt(cudao.leer_ultimo_curso_id());
 			AlumnoXCurso cursante;
 			for (Alumno alu : lista_alumnos) {
 				cursante = new AlumnoXCurso();
 				cursante.setAlumno(alu);
-				cursante.setId_curso(id_curso);
+				//cursante.setId_curso(id_curso);
 				cursante.setNota1(0);
 				cursante.setNota2(0);
 				cursante.setNota3(0);
 				cursante.setNota4(0);
 				cursante.setRegularidad("Regular");
-				cudao.insert_alumnoXcurso(cursante);
+				//cudao.insert_alumnoXcurso(cursante);
 			}
 
 			RequestDispatcher rd = request.getRequestDispatcher("Home.jsp");
@@ -113,7 +166,7 @@ public class AsignacionMasiva_Servlet extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("Docente_ListarCursos.jsp");
 			rd.forward(request, response);
 
-		}
+		}*/
 
 		doGet(request, response);
 	}

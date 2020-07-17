@@ -1,6 +1,6 @@
 <%@ page import="dominio.Materia"%>
 <%@ page import="dominio.Docente"%>
-<%@ page import="java.util.List"%>
+<%@ page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
@@ -15,21 +15,26 @@
 	
 	<body>
 		<jsp:include page="Navegacion.jsp"/>
+		
 		<h1>Alta de curso</h1>
+		
+		
+		
+		
 		
 		<div class="container" >
 			<form action="ServletAltaCursos" method="post">
+		
+		
 		  
 				<label for="meteria"> Materia </label><br>
 				<select id="cbMateria" name="materia">
-					<option value="empty"> Seleccione una materia </option>
 					<%
-						List<Materia> listMaterias = null;
+						ArrayList<Materia> listMaterias = new ArrayList<Materia>();;
 						if (request.getAttribute("ListaMaterias") != null) {
-							listMaterias = (List<Materia>) request.getAttribute("ListaMaterias");
-						}
+							listMaterias = (ArrayList<Materia>) request.getAttribute("ListaMaterias");
+						
 	
-						if (listMaterias != null) {
 							for (Materia mat : listMaterias) {
 					%>
 					
@@ -38,18 +43,17 @@
 						}
 						}
 					%>
+					
 				</select><br>
 			
 				<label for="cuatrimestre"> Cuatrimestre </label><br>
 				<select id="cbCuatrimestre" name="cuatrimestre">
-					<option value="Vacio">-Seleccione un Cuatrimestre-</option>
-					<option value="1">1°</option>
-					<option value="2">2°</option>
+					<option value="1ro">1°</option>
+					<option value="2do">2°</option>
 				</select><br>
 			    
 				<label for="anio"> Año </label><br>
 				<select id ="cbAnio" name="anio">
-					<option value="empty"> Seleccione una año </option>
 					<%
 						for(int i=2020; i>2000; i--){
 							%><option value ="<%=i%>"> <%=i%> </option><%
@@ -59,21 +63,20 @@
 			    
 				<label for="docente"> Docente </label><br>
 				<select id="cbDocente" name="docente">
-					<option value="empty"> Seleccione un docente </option>
 					<%
-						List<Docente> listDocentes = null;
+						ArrayList<Docente> listDocentes = null;
 						if (request.getAttribute("ListaDocentes") != null) {
-							listDocentes = (List<Docente>) request.getAttribute("ListaDocentes");
+							listDocentes = (ArrayList<Docente>) request.getAttribute("ListaDocentes");
 						}
 	
-						if (listDocentes != null) {
+						
 							for (Docente doc : listDocentes) {
 					%>
 					
 					<option value="<%=doc.getLegajo()%>"> <%=doc.getNombre()%> </option>
 					<%
 							}
-						}
+						
 					%>
 				</select><br>
 				

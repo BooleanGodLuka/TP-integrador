@@ -14,7 +14,7 @@ import dominio.Curso;
 
 public class AlumnoXCursoDaoImpl implements AlumnoXCursoDao {
 
-	private static final String insert = "INSERT INTO alumnosxcursos (idalumno, idcurso, nota1, nota2, nota3, nota4, aprobado, regularidad) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+	private static final String insert = "INSERT INTO alumnosxcursos (idalumno, idcurso, nota1, nota2, nota3, nota4, aprobado, regularidad,activo) VALUES (?, ?, ?, ?, ?, ?, ?, ?,true)";
 	private static final String delete = "UPDATE alumnosxcursos SET activo = false WHERE idalumno= ? AND idcurso= ?";
 	private static final String readall = "Select * from alumnosxcursos ";
 	private static final String update = "UPDATE alumnosxcursos SET nota1 = ?, nota2 = ?, nota3 = ?, nota4 = ?, regularidad = ? WHERE idalumno = ? AND idcurso = ? ";
@@ -39,9 +39,7 @@ public class AlumnoXCursoDaoImpl implements AlumnoXCursoDao {
 			statement.setInt(5, alumXcurso.getNota3());
 			statement.setInt(6, alumXcurso.getNota4());
 			statement.setBoolean(7, false);
-			statement.setString(8, alumXcurso.getAlumno().getNombre());
-			statement.setString(9, alumXcurso.getAlumno().getApellido());
-			statement.setString(10, alumXcurso.getRegularidad());
+			statement.setString(8, alumXcurso.getRegularidad());
 
 			if (statement.executeUpdate() > 0) {
 				conexion.commit();

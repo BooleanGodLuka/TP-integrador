@@ -116,7 +116,7 @@ body {
     </button>
     <div class="dropdown-content">
       <a href="#" style="color: black;">Docente</a>
-      <a href="#" style="color: black;">Curso</a>
+      <a href="ServletAltaCursos" style="color: black;">Curso</a>
       <a href="ServletAltaAlumnos" style="color: black;">Alumno</a>
     </div>
     </div>
