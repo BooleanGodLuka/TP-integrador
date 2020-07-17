@@ -14,6 +14,7 @@ import dominio.Alumno;
 import dominio.Localidad;
 import dominio.Provincia;
 import negocio.AlumnoNegocio;
+import negocio.ProvinciaNegocio;
 import negocioImpl.AlumnoNegocioImpl;
 import negocioImpl.LocalidadNegocioImpl;
 import negocioImpl.ProvinciaNegocioImpl;
@@ -38,6 +39,12 @@ public class ServletModificarAlumno extends HttpServlet {
 		ProvinciaNegocioImpl prodao = new ProvinciaNegocioImpl();
 		LocalidadNegocioImpl locdao = new LocalidadNegocioImpl();
 		
+		ProvinciaNegocio provneg = new ProvinciaNegocioImpl();
+
+		ArrayList<Provincia> listProv = provneg.readall();
+
+		request.setAttribute("ListaProvincias", listProv);
+		
 		if (request.getParameter("btn_EliminarAlumno") != null) {	//Si entra al boton de eliminar
 			String id_alumno = request.getParameter("id");
 			aldao.delete(id_alumno);
@@ -55,8 +62,8 @@ public class ServletModificarAlumno extends HttpServlet {
 			al.setLegajo(Integer.parseInt(request.getParameter("id")));
 			al.setNombre(request.getParameter("nombre"));
 			al.setTelefono(request.getParameter("telefono"));
-			al.setIDLocalidad(request.getParameter("localidad"));
-			al.setIDProvincia(request.getParameter("provincia"));
+			al.setIDLocalidad(request.getParameter("slctLocalidad"));
+			al.setIDProvincia(request.getParameter("slctProvincia"));
 			
 			
 			boolean temp= aldao.update(al);

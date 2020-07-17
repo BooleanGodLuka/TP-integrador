@@ -38,7 +38,7 @@ public class ServletListarDocentes extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("Administrador_ListarDocentes.jsp");   
 	        rd.forward(request, response);
 		
-	
+
 	}
 
 	

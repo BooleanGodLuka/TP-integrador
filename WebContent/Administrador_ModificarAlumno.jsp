@@ -1,7 +1,7 @@
-<%@page import="dominio.Localidad"%>
-<%@page import="dominio.Provincia"%>
+
+<%@page import="dominio.*"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="dominio.Alumno"%>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -38,22 +38,10 @@
 </head>
 <body>
 
-
+<jsp:include page="Localidades.jsp"/>
 <jsp:include page="Navegacion.jsp"/>
 
 <h2 align="center">MODIFICAR ALUMNO</h2>
-
-	<%/*
-		if (request.getAttribute("ListaProvincias") != null) {
-			listProvincias = (List<Provincia>) request.getAttribute("ListaProvincias");
-		}
-
-		if (listProvincias != null) {
-			for (Provincia prov : listProvincias) {
-				
-			}
-		}*/
-	%>
 
 <table ALIGN="center" id="Modificaciones" width=80%>
 	<thead>
@@ -79,8 +67,6 @@
 		if (request.getAttribute("alumno") != null){
 	Alumno al = new Alumno();		
 	al.igualar((Alumno)request.getAttribute("alumno"));
-	
-	
 	%>
 	
 	<tr>
@@ -92,37 +78,33 @@
 	    <td><input type="email" name="email" value="<%=al.getEmail()%>"></td>
 	    <td><input type="text" name="telefono" value="<%=al.getTelefono()%>" maxlength="10" onkeypress="return ((event.charCode >= 48 && event.charCode <= 57))"></td>
 	    <td><input type="text" name="direccion" value="<%=al.getDireccion()%>"></td>
-    
-    
-    
-    
-    <td>
-    <select id="provincia" name="provincia">
-    	<%ArrayList<Provincia> provincias = (ArrayList<Provincia>) request.getAttribute("provincias"); 
-    	Provincia prov = new Provincia();
-    	for (int i =0; i<provincias.size(); i++){ 
-    		prov.setID(provincias.get(i).getID());
-    		prov.setNombre(provincias.get(i).getNombre());
-    	%>
-    	<option name="prov_<%=prov.getID() %>" value="<%=prov.getID()%>"><%=prov.getNombre()%></option>
-    	<%} %>
-    </select>
-    </td>
-    
-    
-    
-    <td>
-    <select id="localidad" name="localidad">
-    		<%ArrayList<Localidad> localidades = (ArrayList<Localidad>) request.getAttribute("localidades"); 
-    	Localidad loc = new Localidad(); 
-    	for (int i =0; i<localidades.size(); i++){ 
-    		loc.setID(localidades.get(i).getID());
-    		loc.setNombre(localidades.get(i).getNombre());
-    		loc.setIDProvincia(localidades.get(i).getIDProvincia());
-    	%>
-    	<option name="loc_<%=loc.getID() %>" value="<%=loc.getID()%>"><%=loc.getNombre()%></option>
-    	<%} %>
-    </select>
+    	<td><select id="slctProvincia" name="slctProvincia" onchange="llenarLocalidades()">
+					<option value="" selected>- Seleccione Provincia -</option>
+					<%
+						ArrayList<Provincia> listProvincias = null;
+					
+						if (request.getAttribute("ListaProvincias") != null) 
+						{
+							listProvincias = (ArrayList<Provincia>) request.getAttribute("ListaProvincias");
+						}
+		
+						if (listProvincias != null) 
+						{
+							
+							for (Provincia prov : listProvincias) 
+							{
+					%>
+					<option value=" <%=prov.getID()%> "> <%=prov.getNombre()%> </option>
+					<%
+							}
+							
+						}
+					%>
+				</select></td>
+				
+				<td><select	id="slctLocalidad" name="slctLocalidad"> 
+					<option value="" selected>- Seleccione Localidad -</option>
+				</select></td>
     </td>
     <td style="text-align:center"> <input type="submit" value="Actualizar" name="btn_ModAlumno"style="BORDER: rgb(128,128,128) 3px solid; WIDTH: 150px; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;"></td>
     <td style="text-align:center"> <input type="submit" value="Eliminar" name="btn_EliminarAlumno"style="BORDER: rgb(128,128,128) 3px solid; WIDTH: 150px; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;"></td>

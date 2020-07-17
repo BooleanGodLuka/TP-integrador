@@ -14,7 +14,7 @@ public class AlumnoDaoImpl implements AlumnoDao {
 	private static final String insert = "INSERT INTO alumnos(dni, nombre, apellido, fechanacimiento, direccion, idprovincia, idlocalidad, email, telefono, activo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, true) ";
 	private static final String delete = "UPDATE alumnos (activo) VALUES (false) WHERE id = ? ";
 	private static final String readall = "SELECT * FROM alumnos ";
-	private static final String update = "UPDATE alumnos SET dni=?, nombre=?, apellido=?, fechanacimiento=?, direccion=?, idlocalidad=?, email=?, telefono=?, activo=?  WHERE id = ? ";
+	private static final String update = "UPDATE alumnos SET dni=?, nombre=?, apellido=?, fechanacimiento=?, direccion=?, idprovincia=?, idlocalidad=?, email=?, telefono=?, activo=?  WHERE id = ? ";
 
 	@Override
 	public boolean insert(Alumno alumno) {
@@ -124,11 +124,12 @@ public class AlumnoDaoImpl implements AlumnoDao {
 			statement.setString(3, alumno.getApellido());
 			statement.setString(4, alumno.getFechaNacimiento());
 			statement.setString(5, alumno.getDireccion());
-			statement.setString(6, alumno.getIDLocalidad());
-			statement.setString(7, alumno.getEmail());
-			statement.setString(8, alumno.getTelefono());
-			statement.setBoolean(9, alumno.getActivo());
-			statement.setInt(10, alumno.getLegajo());
+			statement.setString(6, alumno.getIDProvincia());
+			statement.setString(7, alumno.getIDLocalidad());
+			statement.setString(8, alumno.getEmail());
+			statement.setString(9, alumno.getTelefono());
+			statement.setBoolean(10, alumno.getActivo());
+			statement.setInt(11, alumno.getLegajo());
 			if (statement.executeUpdate() > 0) {
 				conexion.commit();
 				isUpdateExitoso = true;

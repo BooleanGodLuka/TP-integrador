@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import dominio.Docente;
 import dominio.Localidad;
 import dominio.Provincia;
+import negocio.ProvinciaNegocio;
 import negocioImpl.DocenteNegocioImpl;
 import negocioImpl.LocalidadNegocioImpl;
 import negocioImpl.ProvinciaNegocioImpl;
@@ -42,6 +43,12 @@ public class ServletModificarDocente extends HttpServlet {
 		LocalidadNegocioImpl locdao = new LocalidadNegocioImpl();
 		ProvinciaNegocioImpl provdao = new ProvinciaNegocioImpl();
 		
+		ProvinciaNegocio provneg = new ProvinciaNegocioImpl();
+
+		ArrayList<Provincia> listProv = provneg.readall();
+
+		request.setAttribute("ListaProvincias", listProv);
+		
 		
 		if (request.getParameter("btn_EliminarDocente") != null) {
 			String id = request.getParameter("ID_Docente");
@@ -61,8 +68,8 @@ public class ServletModificarDocente extends HttpServlet {
 			doc.setLegajo(Integer.parseInt(request.getParameter("ID_Docente")));
 			doc.setNombre(request.getParameter("Nombre_Docente"));
 			doc.setTelefono(request.getParameter("Telefono_Docente"));
-			doc.setFechaNacimiento(request.getParameter("anio") + "-" + request.getParameter("mes") + "-" + request.getParameter("dia"));
-			doc.setIDLocalidad(request.getParameter("localidad"));
+			doc.setFechaNacimiento(request.getParameter("fechanacimiento").toString());
+			doc.setIDLocalidad(request.getParameter("slctLocalidad"));
 			
 			boolean temp =docdao.update(doc);
 			
