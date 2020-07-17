@@ -67,7 +67,16 @@ public class Reporte {
 	}
 
 	public void cargar_porcentaje() {
-		this.Porcentaje = (this.CantDesaprob * 100) / this.CantAlum;
+		this.Porcentaje = (this.CantAprob * 100) / this.CantAlum;
+	}
+	
+	public void igualar (Reporte rep) {
+		
+	this.CantAlum = rep.CantAlum;
+	this.CantAprob = rep.CantAprob;
+	this.CantDesaprob = rep.CantDesaprob;
+	this.Curso = new Curso(rep.Curso);
+	this.Porcentaje = rep.Porcentaje;
 	}
 
 }

@@ -42,7 +42,7 @@ public class reporte_servlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		ArrayList<Reporte> lista = new ArrayList<Reporte>();
-		Reporte rep = new Reporte();
+		Reporte rep;
 		CursoNegocio cursoNeg = new CursoNegocioImpl();
 		AlumnoXCursoNegocioImpl aldao = new AlumnoXCursoNegocioImpl();
 		MateriaNegocioImpl matdao = new MateriaNegocioImpl();
@@ -51,7 +51,7 @@ public class reporte_servlet extends HttpServlet {
 		ArrayList<Curso> cursos = cursoNeg.readall();
 		
 		for (Curso cur : cursos) {
-			String a = cur.getAnio();
+			rep = new Reporte();
 			rep.getCurso().setAnio(cur.getAnio());
 			rep.getCurso().setCuatrimestre(cur.getCuatrimestre());
 			rep.getCurso().setID(cur.getID());
@@ -66,7 +66,7 @@ public class reporte_servlet extends HttpServlet {
 		
 		request.setAttribute("lista_reportes", lista);
 		
-		RequestDispatcher rd =request.getRequestDispatcher("administrador/Administrador_Reporte");
+		RequestDispatcher rd =request.getRequestDispatcher("Administrador_Reporte.jsp");
 		rd.forward(request, response);
 		
 		

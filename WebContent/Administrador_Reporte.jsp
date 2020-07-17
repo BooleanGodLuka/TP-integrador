@@ -99,7 +99,7 @@ input[type=submit] {
 </head>
 <body>
 	
-	
+	<jsp:include page="Navegacion.jsp"></jsp:include>
 
 	<h1 align=center>Reporte de cursos</h1>
 
@@ -140,14 +140,17 @@ input[type=submit] {
 			<th>Aprobaciones</th>
 			<th>Desaprobaciones</th>
 			<th>Porcentaje</th>
-<% if (request.getParameter("lista_reportes") != null){
+			
+			
+<% if (request.getAttribute("lista_reportes") != null){
 	ArrayList<Reporte> lista;
 	lista = (ArrayList<Reporte>) request.getAttribute("lista_reportes");
-	
-	
-	for (Reporte rep: lista ){
-%>  
+	Reporte rep = new Reporte();
+	 
+	for (int i=0; i<lista.size(); i++){
+		rep.igualar(lista.get(i));
 		
+%>		
 		<tr>
 			<td><%=rep.getCurso().getMateria().getNombre() %></td>
 			<td><%=rep.getCurso().getCuatrimestre() %></td>

@@ -14,10 +14,10 @@ import dominio.Curso;
 
 public class AlumnoXCursoDaoImpl implements AlumnoXCursoDao {
 
-	private static final String insert = "INSERT INTO alumnos_x_cursos (idalumno, idcurso, nota1, nota2, nota3, nota4, aprobado, regularidad) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-	private static final String delete = "UPDATE alumnos_x_cursos SET activo = false WHERE idalumno= ? AND idcurso= ?";
-	private static final String readall = "Select * from alumnos_x_cursos ";
-	private static final String update = "UPDATE alumnos_x_cursos SET nota1 = ?, nota2 = ?, nota3 = ?, nota4 = ?, regularidad = ? WHERE idalumno = ? AND idcurso = ? ";
+	private static final String insert = "INSERT INTO alumnosxcursos (idalumno, idcurso, nota1, nota2, nota3, nota4, aprobado, regularidad) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+	private static final String delete = "UPDATE alumnosxcursos SET activo = false WHERE idalumno= ? AND idcurso= ?";
+	private static final String readall = "Select * from alumnosxcursos ";
+	private static final String update = "UPDATE alumnosxcursos SET nota1 = ?, nota2 = ?, nota3 = ?, nota4 = ?, regularidad = ? WHERE idalumno = ? AND idcurso = ? ";
 	private static final String readallmaterias = "SELECT * FROM materias";
 
 	AlumnoDao alumnoDao = new AlumnoDaoImpl();
@@ -85,11 +85,11 @@ public class AlumnoXCursoDaoImpl implements AlumnoXCursoDao {
 	private void cargarAlumnosXCurso(AlumnoXCurso alumXcurso, ResultSet resultSet) throws SQLException {
 
 		alumXcurso.getAlumno().setLegajo(resultSet.getInt("idalumno"));
-		alumnoDao.read(alumXcurso.getAlumno().getLegajo());
+		//alumnoDao.read(alumXcurso.getAlumno().getLegajo()); 
 		alumXcurso.getCurso().setID(resultSet.getInt("idcurso"));
-		alumnoDao.read(alumXcurso.getCurso().getID());
-		alumXcurso.getAlumno().setNombre(resultSet.getString("nombre_alumno"));
-		alumXcurso.getAlumno().setApellido(resultSet.getString("apellido_alumno"));
+		//alumnoDao.read(alumXcurso.getCurso().getID());
+		//alumXcurso.getAlumno().setNombre(resultSet.getString("nombre_alumno"));
+		//alumXcurso.getAlumno().setApellido(resultSet.getString("apellido_alumno"));
 		alumXcurso.setNota1(resultSet.getInt("nota1"));
 		alumXcurso.setNota2(resultSet.getInt("nota2"));
 		alumXcurso.setNota3(resultSet.getInt("nota3"));
