@@ -61,10 +61,10 @@ public class ServletModificarDocente extends HttpServlet {
 			doc.setLegajo(Integer.parseInt(request.getParameter("ID_Docente")));
 			doc.setNombre(request.getParameter("Nombre_Docente"));
 			doc.setTelefono(request.getParameter("Telefono_Docente"));
-			doc.setFechaNacimiento(request.getParameter("año") + "-" + request.getParameter("mes") + "-" + request.getParameter("dia"));
+			doc.setFechaNacimiento(request.getParameter("anio") + "-" + request.getParameter("mes") + "-" + request.getParameter("dia"));
 			doc.setIDLocalidad(request.getParameter("localidad"));
 			
-			docdao.update(doc);
+			boolean temp =docdao.update(doc);
 			
 			request.setAttribute("docente", doc);
 			
@@ -86,7 +86,9 @@ public class ServletModificarDocente extends HttpServlet {
 		
 		
 		if (request.getParameter("btn_ModificarDocente") != null) {
-			doc.igualar(docdao.readall(" WHERE id=" + request.getParameter("id_doc")).get(0));
+			
+			String id = request.getParameter("id_doc");
+			doc.igualar(docdao.readall(" WHERE id=" + id).get(0));
 			
 			request.setAttribute("docente", doc);
 			

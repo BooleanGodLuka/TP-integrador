@@ -104,11 +104,11 @@
 <tr>
 <form action="ServletModificarDocente" method="post"> 
 
-					<td><%=docente.getLegajo() %></td> <input type="hidden" name="id_doc" value="docente.getLegajo()">
+					<td><%=docente.getLegajo() %></td> <input type="hidden" name="id_doc" value="<%=docente.getLegajo()%>">
 					<!--  <td>docente.getUsuario()</td>   -->
 					<td><%=docente.getNombre() %></td> 
 					<td><%=docente.getApellido()%></td>  
-					<td><%=docente.getDni()%></td> 
+					<td><%=docente.getDni()%></td>  
 					<td><%=docente.getEmail()%></td> 
 					<td><%=docente.getFechaNacimiento()%></td> 
 					<td><%=provneg.getNombreProvincia(docente.getIDLocalidad()) %></td>

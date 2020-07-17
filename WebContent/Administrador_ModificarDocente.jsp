@@ -72,6 +72,7 @@
 	   
 	  %>
   
+  <form>
   
   <tr>
   	<td><input type="text" name="ID_Docente" value="<%=doc.getLegajo() %>" readonly="readonly"></td>
@@ -106,7 +107,7 @@
     
     
     
-    <select name="año" id="año">
+    <select name="anio" id="año">
       <%for (int i=2000;i>=1900;i--){
     	
     	%>
@@ -157,9 +158,11 @@
     
     
     
-    <td style="text-align:center"> <input type="button" value="Actualizar" name="btn_ModDocente"style="BORDER: rgb(128,128,128) 3px solid; WIDTH: 150px; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;"></td>
-    <td style="text-align:center"> <input type="button" value="Eliminar" name="btn_EliminarDocente"style="BORDER: rgb(128,128,128) 3px solid; WIDTH: 150px; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;"></td>
+    <td style="text-align:center"> <input type="submit" value="Actualizar" name="btn_ModDocente"style="BORDER: rgb(128,128,128) 3px solid; WIDTH: 150px; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;"></td>
+    <td style="text-align:center"> <input type="submit" value="Eliminar" name="btn_EliminarDocente"style="BORDER: rgb(128,128,128) 3px solid; WIDTH: 150px; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;"></td>
   </tr>
+  </form>
+  
 <% }%>
 </tbody>
 
