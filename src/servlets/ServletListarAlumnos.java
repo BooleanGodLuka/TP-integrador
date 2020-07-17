@@ -12,8 +12,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dominio.Alumno;
+import dominio.AlumnoXCurso;
 import negocio.AlumnoNegocio;
+import negocio.AlumnoXCursoNegocio;
 import negocioImpl.AlumnoNegocioImpl;
+import negocioImpl.AlumnoXCursoNegocioImpl;
 
 @WebServlet("/ServletListarAlumnos")
 public class ServletListarAlumnos extends HttpServlet {
@@ -26,6 +29,8 @@ public class ServletListarAlumnos extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
+		AlumnoNegocio alumnoNeg = new AlumnoNegocioImpl();
+		
 		if (request.getParameter("btn_ModificarCurso") != null) {
 			String id = request.getParameter("idCurso");
 		
@@ -36,8 +41,6 @@ public class ServletListarAlumnos extends HttpServlet {
 			
 		}
 		
-		AlumnoNegocio alumnoNeg = new AlumnoNegocioImpl();
-
 		ArrayList<Alumno> lista = alumnoNeg.readall();
 
 		request.setAttribute("listaAlum", lista);
@@ -49,7 +52,6 @@ public class ServletListarAlumnos extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
 		
 
 	}
