@@ -115,9 +115,9 @@ body {
       <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-content">
-      <a href="#" style="color: black;">Docente</a>
+      <a href="ServletProvincias?param=1" style="color: black;">Docente</a>
       <a href="#" style="color: black;">Curso</a>
-      <a href="ServletAltaAlumnos" style="color: black;">Alumno</a>
+      <a href="ServletProvincias?param2=1" style="color: black;">Alumno</a>
     </div>
     </div>
     <div class="dropdown">

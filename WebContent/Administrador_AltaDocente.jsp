@@ -1,9 +1,10 @@
-<%@ page import="dominio.Provincia"%>
-<%@ page import="dominio.Localidad"%>
-<%@ page import="java.util.List"%>
+<%@page import="java.sql.*"%>
+<%@ page import="dominio.*"%>
+<%@ page import="java.util.ArrayList"%>
+<%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -12,77 +13,64 @@
 </head>
 
 <body>
-
+	<jsp:include page="Localidades.jsp"/>
 	<jsp:include page="Navegacion.jsp"/>
 		
 	<h1>Alta de Docente</h1>
 	
 	<div class="container">
-		<form action="ServletAlta" method="post">
+		<form action="ServletAltaDocente" method="post">
 		
 			<label for="txtNombre"> Nombre: </label><br>
-			<input type="text" id="txtNombre" name="nombre"><br>
-
-			<label for="txtApellido"> Apellido: </label><br>
-			<input type="text" id="txtApellido" name="apellido"><br>
-
-			<label for="txtDni"> DNI: </label><br>
-			<input type="text" id="txtDni" name="dni"><br>
-			
-			<label for="dateFechaNacimiento"> Fecha de nacimiento: </label><br>
-			<input type="date" id="dateFechaNacimiento"><br>
-
-			<label for="txtEmail"> Email: </label><br>
-			<input type="text" id="txtEmail" name="email" placeholder="email@ejemplo.com"><br>
-
-			<label for="txtTelefono"> Teléfono: </label><br>
-			<input type="text" id="txtTelefono" name="telefono"><br>
-
-			<label for="cbProvincia"> Provincia: </label><br>
-			<select id="cbProvincias" name="provincia" onchange="test()">
-				<option value="0">-Seleccione una Provincia-</option>
-				<% List<Provincia> listProvincias = null;
-					if (request.getAttribute("ListaProvincias") != null) {
-						listProvincias = (List<Provincia>) request.getAttribute("ListaProvincias");
-					}
-
-					if (listProvincias != null) {
-						for (Provincia prov : listProvincias) {
-				%>
+				<input type="text" id="txtNombre" name="nombre" onkeypress="return (event.charCode ==32 || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode >= 65 && event.charCode <= 90))" required/><br>
+	
+				<label for="txtApellido"> Apellido: </label><br>
+				<input type="text" id="txtApellido" name="apellido" onkeypress="return (event.charCode ==32 || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode >= 65 && event.charCode <= 90))" required/><br>
+	
+				<label for="txtDni"> DNI: </label><br>
+				<input type="text" id="txtDni" name="dni" maxlength="8" pattern="\d{8}" title="Se requieren 8 digitos." onkeypress="return ((event.charCode >= 48 && event.charCode <= 57))" required/><br>
 				
-				<option value=" <%=prov.getID()%> "> <%=prov.getNombre()%> </option>
-				<%
-					}
-					}
-				%>
-			</select><br>
+				<label for="dateFechaNacimiento"> Fecha de nacimiento: </label><br>
+				<input type="date" id="dateFechaNacimiento" name="fechanacimiento" required/><br>
+	
+				<label for="txtEmail"> Email: </label><br><br>
+				<input type="email" id="txtEmail" name="email" placeholder="email@ejemplo.com" required/><br>
+				<br>
+				<label for="txtTelefono"> Teléfono: </label><br>
+				<input type="text" id="txtTelefono" name="telefono" maxlength="10" onkeypress="return ((event.charCode >= 48 && event.charCode <= 57))" required/><br>
 			
-			<label for="cbLocalidad">Localidades</label> <br> 
-			<select	id="cbLocalidad" name="localidad"> 
-				<option value="0">-Seleccione una Localidad-</option>
-				<%
-					List<Localidad> listLocalidades = null;
-				 	if (request.getAttribute("ListaLocalidades") != null) {
-				 		listLocalidades = (List<Localidad>) request.getAttribute("ListaLocalidades");
-				 	}
-				 	//int e = document.getElementById("cbProvincias");
-				 	
-				 	if (listLocalidades != null) {
-						for (Localidad loc : listLocalidades) {
-							//if(loc.getIDProvincia() == e.options[e.selectedIndex].value){
-							%>
-							<option value=" <%=loc.getID()%> "> <%=loc.getNombre()%> </option>
-							<%
+
+			<label for="slctProvincia"> Provincia: </label><br>
+				<select id="slctProvincia" name="slctProvincia" required onchange="llenarLocalidades()">
+					<option value="" selected>- Seleccione Provincia -</option>
+					<%
+						ArrayList<Provincia> listProvincias = null;
+					
+						if (request.getAttribute("ListaProvincias") != null) 
+						{
+							listProvincias = (ArrayList<Provincia>) request.getAttribute("ListaProvincias");
+						}
+		
+						if (listProvincias != null) 
+						{
+							
+							for (Provincia prov : listProvincias) 
+							{
+					%>
+					<option value=" <%=prov.getID()%> "> <%=prov.getNombre()%> </option>
+					<%
 							}
-				%>
-
+							
+						}
+					%>
+				</select><br>
 				
-				<%
-					}
-				%>
-			</select> <br>
+				<label for="slctLocalidad">Localidad: </label> <br> 
+				<select	id="slctLocalidad" name="slctLocalidad" required> 
+					<option value="" selected>- Seleccione Localidad -</option>
+				</select> <br>
 
-			<input type="submit" value="Aceptar">
+			<input type="submit" name="btnAltaDocente" value="Aceptar">
 
 		</form>
 	</div>

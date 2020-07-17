@@ -1,8 +1,7 @@
 package servlets;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,11 +14,8 @@ import dominio.Alumno;
 import dominio.Localidad;
 import dominio.Provincia;
 import negocio.AlumnoNegocio;
-import negocio.LocalidadNegocio;
-import negocio.ProvinciaNegocio;
 import negocioImpl.AlumnoNegocioImpl;
-import negocioImpl.LocalidadNegocioImpl;
-import negocioImpl.ProvinciaNegocioImpl;
+
 
 /**
  * Servlet implementation class ServletAltaAlumnos
@@ -34,39 +30,42 @@ public class ServletAltaAlumnos extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-	
+
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
+		AlumnoNegocio alumnoneg = new AlumnoNegocioImpl();
 		
-		AlumnoNegocio alumnoneg = new AlumnoNegocioImpl(); 
-		
-		if(request.getParameter("btn_aceptar") != null)
-		{ 
+		if (request.getParameter("btnAltaAlumno") != null) {
 			Alumno alumno = new Alumno();
+
 			alumno.setNombre(request.getParameter("nombre"));
 			alumno.setApellido(request.getParameter("apellido"));
 			alumno.setDni(request.getParameter("dni"));
 			alumno.setFechaNacimiento(request.getParameter("fechanacimiento").toString());
 			alumno.setEmail(request.getParameter("email"));
 			alumno.setTelefono(request.getParameter("telefono"));
-			
+
 			Provincia provincia = new Provincia();
 			provincia.setID(Integer.parseInt(request.getParameter("slctProvincia")));
 			Localidad localidad = new Localidad();
-			localidad.setID(Integer.parseInt(request.getParameter("slctLoc")));
+			localidad.setID(Integer.parseInt(request.getParameter("slctLocalidad")));
 			localidad.setIDProvincia(provincia.getID());
+
+			alumno.setIDLocalidad(Integer.toString(localidad.getID()));
 			
-			alumno.setIDLocalidad(localidad.getID());
+			alumno.setDireccion(request.getParameter("direccion"));
 			
 			boolean agrego = alumnoneg.insert(alumno);
-			
+
 			request.setAttribute("agrego", agrego);
-					
-			RequestDispatcher rd = request.getRequestDispatcher("servletProvincias?param=1");
+
+			RequestDispatcher rd = request.getRequestDispatcher("Administrador_AltaAlumno.jsp");
 			rd.forward(request, response);
 		}
 
+	}
 
 }

@@ -10,6 +10,7 @@ public class Docente {
 	private String Apellido;
 	private String FechaNacimiento;
 	private String Direccion;
+	private String IDProvincia;
 	private String IDLocalidad;
 	private String Email;
 	private String Telefono;
@@ -27,6 +28,7 @@ public class Docente {
 		this.Apellido = a.Apellido;
 		this.FechaNacimiento = a.FechaNacimiento;
 		this.Direccion = a.Direccion;
+		this.IDProvincia = a.IDProvincia;
 		this.IDLocalidad = a.IDLocalidad;
 		this.Email = a.Email;
 		this.Telefono = a.Telefono;
@@ -34,7 +36,7 @@ public class Docente {
 	}
 
 	public Docente(int id, String dni, String nombre, String apellido, String fnacimiento, String direccion,
-			String idlocalidad, String email, String telefono, Boolean activo) {
+			String idprovincia, String idlocalidad, String email, String telefono, Boolean activo) {
 		super();
 		this.Legajo = id;
 		this.Dni = dni;
@@ -48,8 +50,8 @@ public class Docente {
 		this.Activo = activo;
 	}
 
-	public Docente(String dni, String nombre, String apellido, String fnacimiento, String direccion, String idlocalidad,
-			String email, String telefono, Boolean activo) {
+	public Docente(String dni, String nombre, String apellido, String fnacimiento, String direccion, String idprovincia,
+			String idlocalidad, String email, String telefono, Boolean activo) {
 		super();
 		this.Legajo = 0;
 		this.Dni = dni;
@@ -57,6 +59,7 @@ public class Docente {
 		this.Apellido = apellido;
 		this.FechaNacimiento = fnacimiento;
 		this.Direccion = direccion;
+		this.IDProvincia = idprovincia;
 		this.IDLocalidad = idlocalidad;
 		this.Email = email;
 		this.Telefono = telefono;
@@ -160,8 +163,8 @@ public class Docente {
 		}
 		return validar;
 	}
-	
-	public void igualar (Docente doc) {
+
+	public void igualar(Docente doc) {
 		this.Activo = doc.Activo;
 		this.Apellido = doc.Apellido;
 		this.Direccion = doc.Direccion;
@@ -173,5 +176,15 @@ public class Docente {
 		this.Nombre = doc.Nombre;
 		this.Telefono = doc.Telefono;
 	}
+
+	public String getIDProvincia() {
+		return IDProvincia;
+	}
+
+	public void setIDProvincia(String iDProvincia) {
+		IDProvincia = iDProvincia;
+	}
+	
+	
 
 }

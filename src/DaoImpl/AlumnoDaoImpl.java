@@ -26,7 +26,7 @@ public class AlumnoDaoImpl implements AlumnoDao {
 			statement.setString(1, alumno.getDni());
 			statement.setString(2, alumno.getNombre());
 			statement.setString(3, alumno.getApellido());
-			statement.setString(4, alumno.getFechaNacimiento());
+			statement.setString(4, alumno.getFechaNacimiento().toString());
 			statement.setString(5, alumno.getDireccion());
 			statement.setString(6, alumno.getIDLocalidad());
 			statement.setString(7, alumno.getEmail());
