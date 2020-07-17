@@ -138,6 +138,17 @@ html {
   height: 100%;
 }
 
+let options = {
+    numberPerPage:10,
+    constNumberPerPage:10,
+    numberOfPages:0,
+    goBar:false,
+    pageCounter:true,
+    hasPagination:true,
+};
+
+paginate.init('Listados',options);
+
 input {
   border: none;
 }

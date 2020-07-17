@@ -13,6 +13,9 @@
 	<title>Listado Alumnos</title>
 	<link rel="StyleSheet" href="HojaEstilos.css" type="text/css">
 	
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+ <link rel="stylesheet" href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css">
+	
 <style>
 
 #Listados{
@@ -150,8 +153,15 @@
 </tbody>
 </table>
 
-<p>Pág.</p>
-<input type="submit" value="1">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script type="text/javascript"  src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript"  src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js">
+</script>
+<script>
+  $(document).ready(function(){
+    $('#Listados').dataTable();
+  });
+</script>
 
 </body>
 </html>

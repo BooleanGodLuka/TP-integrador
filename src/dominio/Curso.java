@@ -9,19 +9,22 @@ public class Curso {
 	private String Cuatrimestre;
 	private String Anio;
 	private Docente Docente;
+	private Boolean	activo; 
 
 	public Curso() {
 		Materia = new Materia();
 		Docente = new Docente();
+		this.activo = true;
 	}
 
-	public Curso(int id, Materia materia, String cuatrimestre, String anio, Docente docente) {
+	public Curso(int id, Materia materia, String cuatrimestre, String anio, Docente docente, boolean estado) {
 		super();
 		this.ID = id;
 		this.Materia = new Materia(materia);
 		this.Cuatrimestre = cuatrimestre;
 		this.Anio = anio;
 		this.Docente = new Docente(docente);
+		this.activo = estado;
 	}
 
 	public int getID() {
@@ -63,6 +66,14 @@ public class Curso {
 	public void setDocente(Docente docente) {
 		Docente = docente;
 	}
+	
+	public Boolean getActivo() {
+		return activo;
+	}
+
+	public void setActivo(Boolean activo) {
+		this.activo = activo;
+	}
 
 	public boolean validar_exist(ArrayList<Curso> lista) {
 		boolean validar = false;
@@ -94,5 +105,7 @@ public class Curso {
 		this.Docente = new Docente(cur.getDocente());
 		this.Materia = new Materia(cur.getMateria());
 	}
+
+
 
 }

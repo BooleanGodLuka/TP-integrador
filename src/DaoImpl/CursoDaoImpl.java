@@ -129,7 +129,7 @@ public class CursoDaoImpl implements CursoDao {
 		curso.setCuatrimestre(resultSet.getString("cuatrimestre"));
 		curso.setAnio(resultSet.getString("anio"));
 		curso.getDocente().setLegajo(resultSet.getInt("iddocente"));
-
+		curso.setActivo(resultSet.getBoolean("activo"));
 	}
 
 	@Override
