@@ -52,7 +52,17 @@ public class ServletModificarDocente extends HttpServlet {
 		
 		if (request.getParameter("btn_EliminarDocente") != null) {
 			String id = request.getParameter("ID_Docente");
-			docdao.delete(id);
+			
+			
+			boolean eliminar = docdao.delete(id);
+			
+			int elimino = 3;
+			
+			if(eliminar) {
+				elimino=4;
+			}
+			
+			request.setAttribute("modifico", elimino);
 			
 			RequestDispatcher rd = request.getRequestDispatcher("Home.jsp");
 			rd.forward(request, response);
@@ -73,7 +83,16 @@ public class ServletModificarDocente extends HttpServlet {
 			
 			boolean temp =docdao.update(doc);
 			
+			int modifico = 0;
+			
+			if(temp) {
+				modifico=1;
+			}
+			
+			
 			request.setAttribute("docente", doc);
+			
+			request.setAttribute("modifico", modifico);
 			
 			ArrayList<Provincia> provincias = new ArrayList<Provincia>();
 			provincias = (ArrayList<Provincia>) provdao.readall();

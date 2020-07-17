@@ -112,6 +112,42 @@
     <td style="text-align:center"> <input type="submit" value="Actualizar" name="btn_ModDocente"style="BORDER: rgb(128,128,128) 3px solid; WIDTH: 150px; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;"></td>
     <td style="text-align:center"> <input type="submit" value="Eliminar" name="btn_EliminarDocente"style="BORDER: rgb(128,128,128) 3px solid; WIDTH: 150px; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;"></td>
   </tr>
+  
+  <%
+				if(request.getAttribute("modifico") != null)
+				{	
+					String var = request.getAttribute("modifico").toString();
+			%>
+				<script type="text/javascript">
+					<% 
+						String mensaje = null;
+						if(var.equals("1")){
+							mensaje = "El docente se modifico correctamente.";
+						} else if (var.equals("0")) {
+							mensaje = "No se pudo modificar el docente.";
+						}
+						
+						else if (var.equals("4")){
+							mensaje = "El docente se elimino correctamente.";
+						}
+						
+						else if (var.equals("3")){
+							mensaje = "El docente no se pudo eliminar.";
+						}
+						
+					%>
+					var msg = "<%=mensaje%>";
+					$(document).ready(function(){
+						   setTimeout(function(){
+			   					alert(msg);
+						   },5); // 5000 to load it after 5 seconds from page load
+						});
+					
+				</script>
+				
+			<%		
+				}
+  %>
   </form>
   
 <% }%>

@@ -12,7 +12,7 @@ import dominio.Alumno;
 public class AlumnoDaoImpl implements AlumnoDao {
 
 	private static final String insert = "INSERT INTO alumnos(dni, nombre, apellido, fechanacimiento, direccion, idprovincia, idlocalidad, email, telefono, activo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, true) ";
-	private static final String delete = "UPDATE alumnos (activo) VALUES (false) WHERE id = ? ";
+	private static final String delete = "UPDATE alumnos SET activo = false  WHERE id = ? ";
 	private static final String readall = "SELECT * FROM alumnos ";
 	private static final String update = "UPDATE alumnos SET dni=?, nombre=?, apellido=?, fechanacimiento=?, direccion=?, idprovincia=?, idlocalidad=?, email=?, telefono=?, activo=?  WHERE id = ? ";
 

@@ -47,7 +47,16 @@ public class ServletModificarAlumno extends HttpServlet {
 		
 		if (request.getParameter("btn_EliminarAlumno") != null) {	//Si entra al boton de eliminar
 			String id_alumno = request.getParameter("id");
-			aldao.delete(id_alumno);
+			
+			boolean eliminar = aldao.delete(id_alumno);
+			
+			int elimino = 3;
+			
+			if(eliminar) {
+				elimino=4;
+			}
+			
+			request.setAttribute("modifico", elimino);
 			RequestDispatcher rd = request.getRequestDispatcher("Home.jsp");
 			rd.forward(request, response);
 		
@@ -68,6 +77,14 @@ public class ServletModificarAlumno extends HttpServlet {
 			
 			boolean temp= aldao.update(al);
 			
+			int modifico = 0;
+			
+			if(temp) {
+				modifico=1;
+			}
+			
+			
+			
 			ArrayList<Provincia> provincias = new ArrayList<Provincia>();
 			provincias = (ArrayList<Provincia>) prodao.readall();
 			request.setAttribute("provincias", provincias);
@@ -77,6 +94,8 @@ public class ServletModificarAlumno extends HttpServlet {
 			request.setAttribute("localidades", localidades);
 			
 			request.setAttribute("alumno", al);
+			
+			request.setAttribute("modifico", modifico);
 
 			RequestDispatcher rd = request.getRequestDispatcher("Administrador_ModificarAlumno.jsp");
 			rd.forward(request, response);

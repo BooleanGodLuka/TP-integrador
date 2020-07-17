@@ -105,13 +105,50 @@
 				<td><select	id="slctLocalidad" name="slctLocalidad"> 
 					<option value="" selected>- Seleccione Localidad -</option>
 				</select></td>
-    </td>
     <td style="text-align:center"> <input type="submit" value="Actualizar" name="btn_ModAlumno"style="BORDER: rgb(128,128,128) 3px solid; WIDTH: 150px; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;"></td>
     <td style="text-align:center"> <input type="submit" value="Eliminar" name="btn_EliminarAlumno"style="BORDER: rgb(128,128,128) 3px solid; WIDTH: 150px; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;"></td>
   </tr>
-<%} %>
+	<%
+				if(request.getAttribute("modifico") != null)
+				{	
+					String var = request.getAttribute("modifico").toString();
+			%>
+				<script type="text/javascript">
+					<% 
+						String mensaje = null;
+						if(var.equals("1")){
+							mensaje = "El alumno se modifico correctamente.";
+						} else if (var.equals("0")) {
+							mensaje = "No se pudo modificar el alumno.";
+						}
+						
+						else if (var.equals("4")){
+							mensaje = "El alumno se elimino correctamente.";
+						}
+						
+						else if (var.equals("3")){
+							mensaje = "El alumno no se pudo eliminar.";
+						}
+						
+					%>
+					var msg = "<%=mensaje%>";
+					$(document).ready(function(){
+						   setTimeout(function(){
+			   					alert(msg);
+						   },5); // 5000 to load it after 5 seconds from page load
+						});
+					
+				</script>
+				
+			<%		
+				}
+			%>
 	
 	</form>
+	
+	<% 
+	}
+	%>
 	
 </tbody>
 
