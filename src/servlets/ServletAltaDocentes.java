@@ -1,9 +1,6 @@
 package servlets;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import dominio.Docente;
 import dominio.Localidad;
-import dominio.Provincia;
 import negocio.DocenteNegocio;
 import negocioImpl.DocenteNegocioImpl;
 
@@ -44,22 +40,14 @@ public class ServletAltaDocentes extends HttpServlet {
 			docente.setFechaNacimiento(request.getParameter("fechanacimiento").toString());
 			docente.setEmail(request.getParameter("email"));
 			docente.setTelefono(request.getParameter("telefono"));
-
-			Provincia provincia = new Provincia();
-			provincia.setID(Integer.parseInt(request.getParameter("slctProvincia")));
-			Localidad localidad = new Localidad();
-			localidad.setID(Integer.parseInt(request.getParameter("slctLocalidad")));
-			localidad.setIDProvincia(provincia.getID());
-
-			docente.setIDLocalidad(Integer.toString(localidad.getID()));
-
+			docente.setIDLocalidad(request.getParameter("slctLocalidad"));
 			docente.setDireccion(request.getParameter("direccion"));
 
 			boolean agrego = docneg.insert(docente);
 
 			request.setAttribute("agrego", agrego);
 
-			RequestDispatcher rd = request.getRequestDispatcher("Administrador_AltaAlumno.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("Administrador_AltaDocente.jsp");
 			rd.forward(request, response);
 
 		}

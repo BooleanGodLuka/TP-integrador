@@ -16,10 +16,10 @@
 	<jsp:include page="Localidades.jsp"/>
 	<jsp:include page="Navegacion.jsp"/>
 		
-	<h1>Alta de Docente</h1>
+	<h1>Alta Docente</h1>
 	
 	<div class="container">
-		<form action="ServletAltaDocente" method="post">
+		<form action="ServletAltaDocentes" method="post">
 		
 			<label for="txtNombre"> Nombre: </label><br>
 				<input type="text" id="txtNombre" name="nombre" onkeypress="return (event.charCode ==32 || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode >= 65 && event.charCode <= 90))" required/><br>
@@ -69,8 +69,29 @@
 				<select	id="slctLocalidad" name="slctLocalidad" required> 
 					<option value="" selected>- Seleccione Localidad -</option>
 				</select> <br>
+				
+				<label for="txtDireccion"> Direccion: </label><br>
+				<input type="text" id="txtDireccion" name="direccion" required></input><br>
 
-			<input type="submit" name="btnAltaDocente" value="Aceptar">
+			<input type="submit" name="btnAltaDocente" value="Aceptar"><br><br>
+			
+				<%
+				if(request.getAttribute("agrego") != null){
+					String exito = request.getAttribute("agrego").toString();
+					if (exito.equals("true")){
+					%>
+					<label class='subtitle' style="color:red;"> El docente se agrego correctamente. </label>
+				<%
+				}
+					
+					else{
+				%>
+				<label class='subtitle' style="color:red;"> No se pudo agregar el docente. </label>
+				<%
+				}
+					
+				}
+				%>
 
 		</form>
 	</div>

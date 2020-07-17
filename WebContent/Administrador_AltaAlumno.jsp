@@ -20,7 +20,7 @@
 		<jsp:include page="Localidades.jsp"/>
 		<jsp:include page="Navegacion.jsp"/>
 			
-		<h1>Alta de Alumno</h1>
+		<h1>Alta Alumno</h1>
 		
 		<div class="container">
 		

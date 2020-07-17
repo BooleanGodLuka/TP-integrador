@@ -47,15 +47,8 @@ public class ServletAltaAlumnos extends HttpServlet {
 			alumno.setFechaNacimiento(request.getParameter("fechanacimiento").toString());
 			alumno.setEmail(request.getParameter("email"));
 			alumno.setTelefono(request.getParameter("telefono"));
-
-			Provincia provincia = new Provincia();
-			provincia.setID(Integer.parseInt(request.getParameter("slctProvincia")));
-			Localidad localidad = new Localidad();
-			localidad.setID(Integer.parseInt(request.getParameter("slctLocalidad")));
-			localidad.setIDProvincia(provincia.getID());
-
-			alumno.setIDLocalidad(Integer.toString(localidad.getID()));
-			
+			alumno.setIDProvincia(request.getParameter("slctProvincia"));
+			alumno.setIDLocalidad(request.getParameter("slctLocalidad"));
 			alumno.setDireccion(request.getParameter("direccion"));
 			
 			boolean agrego = alumnoneg.insert(alumno);

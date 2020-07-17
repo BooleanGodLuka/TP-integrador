@@ -69,14 +69,13 @@
 <thead>
  <tr>
  	<th>Legajo</th>
-   <!--  <th>Usuario</th> -->
     <th>Nombre/s</th>
     <th>Apellido/s</th>
     <th>DNI</th>
     <th>Email</th>
     <th>Fecha de Nacimiento</th>
     <th>Provincia</th>
-    <!--<th>Localidad</th>-->
+    <th>Localidad</th>
     <th>Telefono</th>
     <th>Modificar</th>
   </tr>
@@ -89,6 +88,8 @@
 		ArrayList<Docente> listaDocentes = new ArrayList<Docente>();
 						  
 		ProvinciaNegocio provneg = new ProvinciaNegocioImpl();
+						  
+		LocalidadNegocio lneg = new LocalidadNegocioImpl();
 
 		if(request.getAttribute("listaDoc") != null)
 		{
@@ -105,13 +106,13 @@
 <form action="ServletModificarDocente" method="post"> 
 
 					<td><%=docente.getLegajo() %></td> <input type="hidden" name="id_doc" value="<%=docente.getLegajo()%>">
-					<!--  <td>docente.getUsuario()</td>   -->
 					<td><%=docente.getNombre() %></td> 
 					<td><%=docente.getApellido()%></td>  
 					<td><%=docente.getDni()%></td>  
 					<td><%=docente.getEmail()%></td> 
 					<td><%=docente.getFechaNacimiento()%></td> 
 					<td><%=provneg.getNombreProvincia(docente.getIDLocalidad()) %></td>
+					<td><%=lneg.getNombreLocalidad(docente.getIDLocalidad()) %></td>
 					<td><%=docente.getTelefono() %></td>
 
 <td style="text-align:center"> <input type="submit" value="Modificar Docente" name="btn_ModificarDocente"style="BORDER: rgb(128,128,128) 3px solid; WIDTH: 150px; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;"></td>
