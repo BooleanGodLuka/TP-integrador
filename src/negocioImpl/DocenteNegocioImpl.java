@@ -40,4 +40,9 @@ public class DocenteNegocioImpl implements DocenteNegocio {
 		return docdao.getApellidoDocente(iddocente);
 	}
 
+	@Override
+	public int getIDUltimoDocente() {
+		return docdao.getIDUltimoDocente();
+	}
+
 }
