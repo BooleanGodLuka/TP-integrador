@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Dao.DocenteDao;
+import dominio.Curso;
 import dominio.Docente;
 
 public class DocenteDaoImpl implements DocenteDao {
@@ -187,8 +188,24 @@ public class DocenteDaoImpl implements DocenteDao {
 		}
 		return apellido;
 	}
-	
-	
+
+	@Override
+	public int getIDUltimoDocente() {
+		PreparedStatement statement;
+		ResultSet resultSet;
+		Conexion conexion = Conexion.getConexion();
+		int id = 0;
+		try {
+			statement = conexion.getSQLConexion().prepareStatement("SELECT * FROM cursos ORDER BY id DESC LIMIT 0, 1");
+			resultSet = statement.executeQuery();
+			while (resultSet.next()) {
+				id = resultSet.getInt("id");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return id;
+	}
 	
 	
 

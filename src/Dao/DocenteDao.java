@@ -20,4 +20,6 @@ public interface DocenteDao {
 	public String getNombreDocente(int iddocente) throws SQLException;
 	
 	public String getApellidoDocente(int iddocente) throws SQLException;
+	
+	public int getIDUltimoDocente ();
 }
