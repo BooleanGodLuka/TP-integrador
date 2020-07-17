@@ -52,7 +52,7 @@ public class ServletAltaDocentes extends HttpServlet {
 			
 			///nususario
 			
-			usuario.setIDDocente(request.getParameter(""));
+			//usuario.setIDDocente(request.getParameter(""));
 			
 			usneg.insert(usuario);
 

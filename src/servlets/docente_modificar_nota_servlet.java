@@ -45,6 +45,7 @@ public class docente_modificar_nota_servlet extends HttpServlet {
 		CursoNegocioImpl cudao = new CursoNegocioImpl();
 		AlumnoXCursoNegocioImpl aldao = new AlumnoXCursoNegocioImpl();
 		ArrayList<AlumnoXCurso> lista = aldao.leer_alumnoXcurso(Integer.parseInt(request.getParameter("id_curso")));
+		AlumnoNegocio al = new AlumnoNegocioImpl();
 
 		
 		if (request.getParameter("btn_guardar") != null) {
@@ -66,6 +67,20 @@ public class docente_modificar_nota_servlet extends HttpServlet {
 
 			lista = null;
 			lista =aldao.leer_alumnoXcurso(Integer.parseInt(request.getParameter("id_curso")));
+			
+			
+			 
+			for (int i = 0; i < lista.size(); i++) {
+				axc = new AlumnoXCurso(lista.get(i));
+				if (al.readall(" id=" + axc.getAlumno().getLegajo()) != null) {
+				Alumno cursante = new Alumno((Alumno) al.readall(" id=" + axc.getAlumno().getLegajo()).get(0));
+				axc.setAlumno(cursante);
+
+					lista.set(i, axc);
+			
+
+				}
+			}
 			request.setAttribute("lista_alumnos", lista);
 
 			request.setAttribute("id_curso", request.getParameter("id_curso"));
@@ -74,7 +89,7 @@ public class docente_modificar_nota_servlet extends HttpServlet {
 			
 			
 		}else if (request.getParameter("btn_alumnos") != null) {
-			AlumnoNegocio al = new AlumnoNegocioImpl();
+
 			
 			
 			AlumnoXCurso axc;
