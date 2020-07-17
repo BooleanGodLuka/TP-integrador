@@ -186,7 +186,6 @@ public class CursoDaoImpl implements CursoDao {
 
 	@Override
 	public ArrayList<Curso> leer_ultimo_curso_id() {
-		// TODO Auto-generated method stub
 		PreparedStatement statement;
 		ResultSet resultSet;
 		ArrayList<Curso> cursos = new ArrayList<Curso>();

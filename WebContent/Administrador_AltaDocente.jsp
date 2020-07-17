@@ -71,27 +71,36 @@
 				</select> <br>
 				
 				<label for="txtDireccion"> Direccion: </label><br>
-				<input type="text" id="txtDireccion" name="direccion" required></input><br>
+				<input type="text" id="txtDireccion" name="direccion" required></input><br><br>
 
-			<input type="submit" name="btnAltaDocente" value="Aceptar"><br><br>
+				<input type="submit" name="btnAltaDocente" value="Aceptar">
 			
 				<%
-				if(request.getAttribute("agrego") != null){
-					String exito = request.getAttribute("agrego").toString();
-					if (exito.equals("true")){
+				if(request.getAttribute("agrego") != null){	
+					String var = request.getAttribute("agrego").toString();
+				%>
+				<script type="text/javascript">
+					<% 
+						String mensaje = null;
+						if(var.equals("true")){
+							mensaje = "El profesor se agrego correctamente.";
+						} else {
+							mensaje = "No se pudo agregar el profesor.";
+						}
+						
 					%>
-					<label class='subtitle' style="color:red;"> El docente se agrego correctamente. </label>
-				<%
-				}
+					var msg = "<%=mensaje%>";
+					$(document).ready(function(){
+						   setTimeout(function(){
+			   					alert(msg);
+						   },5); // 5000 to load it after 5 seconds from page load
+						});
 					
-					else{
-				%>
-				<label class='subtitle' style="color:red;"> No se pudo agregar el docente. </label>
-				<%
+				</script>
+				
+			<%		
 				}
-					
-				}
-				%>
+			%>
 
 		</form>
 	</div>

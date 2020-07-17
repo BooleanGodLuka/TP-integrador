@@ -50,13 +50,18 @@ public class ServletAltaDocentes extends HttpServlet {
 
 			boolean agrego = docneg.insert(docente);
 			
-			///nususario
+			usuario.setIDDocente(docneg.getIDUltimoDocente());
 			
-			//usuario.setIDDocente(request.getParameter(""));
+			String nusuario = request.getParameter("nombre").charAt(0)+request.getParameter("apellido");
+			String claveu = request.getParameter("dni");
 			
-			usneg.insert(usuario);
+			usuario.setUsuario(nusuario);
+			usuario.setClave(claveu);
+			
+			boolean agregousuario = usneg.insert(usuario);
 
 			request.setAttribute("agrego", agrego);
+			request.setAttribute("agregousuario", agregousuario);
 
 			RequestDispatcher rd = request.getRequestDispatcher("Administrador_AltaDocente.jsp");
 			rd.forward(request, response);

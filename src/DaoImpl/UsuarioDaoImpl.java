@@ -14,7 +14,7 @@ import dominio.Usuario;
 
 public class UsuarioDaoImpl implements UsuarioDao {
 
-	public static final String insert = "INSERT INTO usuarios(iddocente, usuario, clave, estado) VALUES (?, ?, ?, true) ";
+	public static final String insert = "INSERT INTO usuarios(iddocente, usuario, clave, activo) VALUES (?, ?, ?, true) ";
 	public static final String delete = "UPDATE FROM usuarios (estado) VALUES ('false') WHERE idusuario = ? ";
 	public static final String validate = "SELECT * FROM usuarios WHERE usuario = ? AND clave = ? ";
 	public static final String update = "UPDATE usuarios SET clave = ? WHERE usuario = ? ";

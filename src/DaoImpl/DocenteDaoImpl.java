@@ -196,7 +196,7 @@ public class DocenteDaoImpl implements DocenteDao {
 		Conexion conexion = Conexion.getConexion();
 		int id = 0;
 		try {
-			statement = conexion.getSQLConexion().prepareStatement("SELECT * FROM cursos ORDER BY id DESC LIMIT 0, 1");
+			statement = conexion.getSQLConexion().prepareStatement("SELECT * FROM docentes ORDER BY id DESC LIMIT 0, 1");
 			resultSet = statement.executeQuery();
 			while (resultSet.next()) {
 				id = resultSet.getInt("id");

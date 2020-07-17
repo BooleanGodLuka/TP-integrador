@@ -79,22 +79,31 @@
 				<input type="submit" value="Guardar" name="btnAltaAlumno"/><br><br>
 				
 				<%
-				if(request.getAttribute("agrego") != null){
-					String exito = request.getAttribute("agrego").toString();
-					if (exito.equals("true")){
+				if(request.getAttribute("agrego") != null){	
+					String var = request.getAttribute("agrego").toString();
+			%>
+				<script type="text/javascript">
+					<% 
+						String mensaje = null;
+						if(var.equals("true")){
+							mensaje = "El alumno se agrego correctamente.";
+						} else {
+							mensaje = "No se pudo agregar el alumno.";
+						}
+						
 					%>
-					<label class='subtitle' style="color:red;"> El alumno se agrego correctamente. </label>
-				<%
-				}
+					var msg = "<%=mensaje%>";
+					$(document).ready(function(){
+						   setTimeout(function(){
+			   					alert(msg);
+						   },5); // 5000 to load it after 5 seconds from page load
+						});
 					
-					else{
-				%>
-				<label class='subtitle' style="color:red;"> No se pudo agregar el alumno. </label>
-				<%
+				</script>
+				
+			<%		
 				}
-					
-				}
-				%>
+			%>
 				
 			</form>
 		</div>
